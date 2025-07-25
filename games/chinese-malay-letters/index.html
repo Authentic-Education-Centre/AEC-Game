@@ -13,9 +13,15 @@
 
         body {
             font-family: 'Arial', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #ff6b9d 100%);
             min-height: 100vh;
             overflow-x: hidden;
+            animation: background-shift 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes background-shift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #ff6b9d 100%); }
+            100% { background: linear-gradient(135deg, #ff6b9d 0%, #f093fb 30%, #764ba2 70%, #667eea 100%); }
         }
 
         .container {
@@ -40,15 +46,39 @@
         }
 
         .chinese-word-display {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 50%, #ff9800 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 30%, #ff9800 70%, #ffcc02 100%);
             color: white;
-            padding: 30px;
-            border-radius: 25px;
+            padding: 35px;
+            border-radius: 30px;
             margin: 20px auto;
             max-width: 500px;
             text-align: center;
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-            border: 3px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 50px rgba(255, 107, 107, 0.5), inset 0 3px 10px rgba(255,255,255,0.2);
+            border: 4px solid rgba(255,255,255,0.4);
+            animation: chinese-word-glow 4s ease-in-out infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chinese-word-display::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes chinese-word-glow {
+            0% { box-shadow: 0 20px 50px rgba(255, 107, 107, 0.5), inset 0 3px 10px rgba(255,255,255,0.2), 0 0 20px rgba(255, 107, 107, 0.3); }
+            100% { box-shadow: 0 20px 50px rgba(255, 204, 2, 0.5), inset 0 3px 10px rgba(255,255,255,0.3), 0 0 30px rgba(255, 204, 2, 0.4); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .chinese-word {
@@ -59,37 +89,74 @@
         }
 
         .game-area {
-            background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 70%, #90EE90 100%);
-            border: 3px solid rgba(255,255,255,0.6);
-            border-radius: 20px;
+            background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 40%, #90EE90 70%, #FFE4B5 100%);
+            border: 4px solid rgba(255,255,255,0.8);
+            border-radius: 25px;
             width: 800px;
             height: 400px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4), inset 0 5px 15px rgba(255,255,255,0.3);
+            animation: game-area-glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes game-area-glow {
+            0% { box-shadow: 0 25px 60px rgba(0,0,0,0.4), inset 0 5px 15px rgba(255,255,255,0.3), 0 0 20px rgba(135, 206, 235, 0.5); }
+            100% { box-shadow: 0 25px 60px rgba(0,0,0,0.4), inset 0 5px 15px rgba(255,255,255,0.3), 0 0 30px rgba(255, 228, 181, 0.7); }
+        }
+
+        @keyframes game-area-celebrate {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 25px 60px rgba(0,0,0,0.4), inset 0 5px 15px rgba(255,255,255,0.3), 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+            25% { 
+                transform: scale(1.02) rotate(1deg);
+                box-shadow: 0 30px 70px rgba(255,215,0,0.6), inset 0 8px 20px rgba(255,255,255,0.5), 0 0 40px rgba(255, 215, 0, 1);
+            }
+            50% { 
+                transform: scale(1.03) rotate(0deg);
+                box-shadow: 0 35px 80px rgba(255,105,180,0.6), inset 0 10px 25px rgba(255,255,255,0.6), 0 0 50px rgba(255, 105, 180, 1);
+            }
+            75% { 
+                transform: scale(1.02) rotate(-1deg);
+                box-shadow: 0 30px 70px rgba(0,255,127,0.6), inset 0 8px 20px rgba(255,255,255,0.5), 0 0 40px rgba(0, 255, 127, 1);
+            }
         }
 
         .falling-letter {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: white;
             cursor: pointer;
-            transition: all 0.2s ease;
-            border: 3px solid rgba(255,255,255,0.8);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 4px solid rgba(255,255,255,0.9);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,255,0.3);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+            animation: letter-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes letter-pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(2deg); }
         }
 
         .falling-letter:hover {
-            transform: scale(1.2) rotate(5deg);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            transform: scale(1.3) rotate(10deg) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.5);
+            animation: letter-sparkle 0.6s ease-in-out;
+        }
+
+        @keyframes letter-sparkle {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+            50% { filter: brightness(1.3) drop-shadow(0 0 20px rgba(255,255,255,0.8)); }
         }
 
         .built-word-display {
@@ -185,11 +252,125 @@
             }
         }
 
+        /* 错误震动动画 */
+        @keyframes error-shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        /* 正确字母特效 */
+        .correct-letter {
+            animation: correct-glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes correct-glow {
+            0% { 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 20px rgba(255,215,0,0.6);
+                filter: brightness(1);
+            }
+            100% { 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 40px rgba(255,215,0,1);
+                filter: brightness(1.2);
+            }
+        }
+
+        /* 波纹效果 */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid rgba(255,215,0,0.8);
+            pointer-events: none;
+            animation: ripple-expand 1s ease-out forwards;
+        }
+
+        @keyframes ripple-expand {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        /* 烟花效果 */
+        .firework {
+            position: absolute;
+            pointer-events: none;
+            font-size: 2rem;
+            animation: firework-burst 2s ease-out forwards;
+        }
+
+        @keyframes firework-burst {
+            0% {
+                opacity: 1;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(360deg);
+            }
+        }
+
+        /* 漂浮动画 */
+        @keyframes float-up {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-350px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-370px) scale(0);
+            }
+        }
+
+        /* 成功消息增强 */
+        .message-success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            animation: success-pulse 0.6s ease-in-out;
+        }
+
+        @keyframes success-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* 错误消息增强 */
+        .message-error {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+            animation: error-pulse 0.6s ease-in-out;
+        }
+
+        @keyframes error-pulse {
+            0%, 100% { transform: scale(1); }
+            25%, 75% { transform: scale(1.02) rotate(-1deg); }
+            50% { transform: scale(1.02) rotate(1deg); }
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .title { font-size: 2rem; }
             .chinese-word { font-size: 2.5rem; }
             .game-area { width: 95vw; height: 350px; }
+            .falling-letter { width: 45px; height: 45px; font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -325,7 +506,7 @@
             gameInterval = setInterval(generateFallingLetter, 1000);
         }
 
-        // 生成掉落字母
+        // 增强掉落字母生成
         function generateFallingLetter() {
             if (gameState !== 'playing') return;
             
@@ -335,40 +516,122 @@
             const letterEl = document.createElement('div');
             letterEl.className = 'falling-letter';
             letterEl.textContent = letter;
-            letterEl.style.left = Math.random() * (gameArea.offsetWidth - 50) + 'px';
-            letterEl.style.top = '-50px';
-            letterEl.style.background = letterColors[Math.floor(Math.random() * letterColors.length)];
+            letterEl.style.left = Math.random() * (gameArea.offsetWidth - 55) + 'px';
+            letterEl.style.top = '-55px';
+            
+            // 随机选择更丰富的颜色
+            const enhancedColors = [
+                'linear-gradient(135deg, #ff6b6b, #ffa726)',
+                'linear-gradient(135deg, #4CAF50, #45a049)',
+                'linear-gradient(135deg, #2196F3, #1976D2)',
+                'linear-gradient(135deg, #9c27b0, #7b1fa2)',
+                'linear-gradient(135deg, #ff9800, #f57c00)',
+                'linear-gradient(135deg, #00bcd4, #0097a7)',
+                'linear-gradient(135deg, #e91e63, #ad1457)',
+                'linear-gradient(135deg, #ff5722, #d84315)',
+                'linear-gradient(135deg, #795548, #5d4037)',
+                'linear-gradient(135deg, #607d8b, #455a64)'
+            ];
+            letterEl.style.background = enhancedColors[Math.floor(Math.random() * enhancedColors.length)];
+            
+            // 添加特殊效果给正确字母
+            const nextNeededLetter = targetWord[builtWord.length];
+            if (letter === nextNeededLetter) {
+                letterEl.style.boxShadow = '0 10px 25px rgba(0,0,0,0.4), 0 0 30px rgba(255,215,0,0.8)';
+                letterEl.style.border = '4px solid rgba(255,215,0,0.9)';
+                letterEl.classList.add('correct-letter');
+            }
             
             // 添加点击事件
             letterEl.onclick = () => handleLetterClick(letter, letterEl);
             
             gameArea.appendChild(letterEl);
             
+            // 入场动画
+            letterEl.style.transform = 'scale(0) rotate(180deg)';
+            letterEl.style.opacity = '0';
+            setTimeout(() => {
+                letterEl.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                letterEl.style.transform = 'scale(1) rotate(0deg)';
+                letterEl.style.opacity = '1';
+            }, 50);
+            
             // 动画掉落
-            animateLetter(letterEl);
+            setTimeout(() => animateLetter(letterEl), 500);
         }
 
-        // 获取随机字母
+        // 获取随机字母 - 智能难度调节
         function getRandomLetter() {
             const nextNeededLetter = targetWord[builtWord.length];
             const allLetters = 'abcdefghijklmnopqrstuvwxyz ';
             
-            // 70%几率给出正确字母
-            if (Math.random() < 0.7 && nextNeededLetter) {
+            // 根据进度调节难度
+            const progress = builtWord.length / targetWord.length;
+            let correctProbability = 0.75; // 基础概率
+            
+            // 越接近完成，正确字母出现率越高
+            if (progress > 0.8) correctProbability = 0.9;
+            else if (progress > 0.5) correctProbability = 0.8;
+            
+            if (Math.random() < correctProbability && nextNeededLetter) {
                 return nextNeededLetter;
             } else {
+                // 选择与正确字母相似的干扰字母
+                const similarLetters = getSimilarLetters(nextNeededLetter);
+                if (Math.random() < 0.3 && similarLetters.length > 0) {
+                    return similarLetters[Math.floor(Math.random() * similarLetters.length)];
+                }
                 return allLetters[Math.floor(Math.random() * allLetters.length)];
             }
         }
+        
+        // 获取相似字母
+        function getSimilarLetters(targetLetter) {
+            const similarGroups = {
+                'b': ['d', 'p', 'q'],
+                'd': ['b', 'p', 'q'],
+                'p': ['b', 'd', 'q'],
+                'q': ['b', 'd', 'p'],
+                'm': ['n', 'w'],
+                'n': ['m', 'u'],
+                'u': ['n', 'v'],
+                'v': ['u', 'w'],
+                'w': ['v', 'm'],
+                'l': ['i', 'j'],
+                'i': ['l', 'j'],
+                'j': ['i', 'l']
+            };
+            return similarGroups[targetLetter] || [];
+        }
 
-        // 字母掉落动画
+        // 增强字母掉落动画
         function animateLetter(letterEl) {
             let position = -50;
-            const speed = 3;
+            const speed = 2 + Math.random() * 2; // 随机速度
+            const wobbleAmount = 1 + Math.random() * 2; // 摆动幅度
+            const rotationSpeed = (Math.random() - 0.5) * 4; // 旋转速度
+            let rotation = 0;
+            let wobblePhase = Math.random() * Math.PI * 2;
+            const originalLeft = parseInt(letterEl.style.left);
             
             const fall = setInterval(() => {
                 position += speed;
+                rotation += rotationSpeed;
+                wobblePhase += 0.1;
+                
+                // 添加摆动效果
+                const wobbleX = Math.sin(wobblePhase) * wobbleAmount;
                 letterEl.style.top = position + 'px';
+                letterEl.style.left = (originalLeft + wobbleX) + 'px';
+                letterEl.style.transform = `rotate(${rotation}deg) scale(${1 + Math.sin(wobblePhase * 2) * 0.1})`;
+                
+                // 添加闪烁效果
+                if (Math.random() < 0.05) {
+                    letterEl.style.filter = 'brightness(1.5) drop-shadow(0 0 15px rgba(255,255,255,0.8))';
+                    setTimeout(() => {
+                        letterEl.style.filter = 'brightness(1) drop-shadow(0 0 10px rgba(255,255,255,0.3))';
+                    }, 200);
+                }
                 
                 if (position > 450) {
                     letterEl.remove();
@@ -377,19 +640,31 @@
             }, 20);
         }
 
-        // 处理字母点击
+        // 增强字母点击处理
         function handleLetterClick(letter, letterEl) {
             const nextNeededLetter = targetWord[builtWord.length];
             
             if (letter === nextNeededLetter) {
-                // 正确字母
+                // 正确字母 - 增强效果
                 builtWord += letter;
                 score += 10;
                 
                 const rect = letterEl.getBoundingClientRect();
-                letterEl.remove();
+                
+                // 正确字母爆炸动画
+                letterEl.style.transform = 'scale(1.5) rotate(360deg)';
+                letterEl.style.background = 'linear-gradient(135deg, #FFD700, #FFA500)';
+                letterEl.style.boxShadow = '0 0 50px rgba(255,215,0,1), 0 0 100px rgba(255,215,0,0.5)';
+                letterEl.style.filter = 'brightness(2)';
+                
+                setTimeout(() => {
+                    letterEl.style.opacity = '0';
+                    letterEl.style.transform = 'scale(2) rotate(720deg)';
+                    setTimeout(() => letterEl.remove(), 300);
+                }, 200);
                 
                 createConfetti(rect.left, rect.top);
+                createRippleEffect(rect.left + 25, rect.top + 25);
                 showMessage('🎉 正确！Betul! 🎉', 'success');
                 updateDisplay();
                 
@@ -397,16 +672,45 @@
                 if (builtWord === targetWord) {
                     gameState = 'completed';
                     clearInterval(gameInterval);
-                    showMessage('🎆 完成了！单词: ' + targetWord + ' 🎆', 'success');
+                    score += 50; // 完成奖励
                     
-                    // 大爆发彩带
-                    setTimeout(() => createBigConfetti(), 500);
+                    // 特殊完成消息
+                    const completionMessages = [
+                        '🎆 太棒了！完美完成！ 🎆',
+                        '🎉 你真是天才！ 🎉',
+                        '✨ 了不起！全部正确！ ✨',
+                        '🏆 冠军级别的表现！ 🏆'
+                    ];
+                    const randomMessage = completionMessages[Math.floor(Math.random() * completionMessages.length)];
+                    showMessage(randomMessage + ' 单词: ' + targetWord, 'success');
+                    
+                    // 大爆发彩带和烟花
+                    setTimeout(() => {
+                        createBigConfetti();
+                        createFireworks();
+                        // 游戏区域闪烁效果
+                        const gameArea = document.getElementById('game-area');
+                        gameArea.style.animation = 'game-area-celebrate 2s ease-in-out';
+                        setTimeout(() => {
+                            gameArea.style.animation = 'game-area-glow 3s ease-in-out infinite alternate';
+                        }, 2000);
+                    }, 500);
                 }
             } else {
-                // 错误字母
+                // 错误字母 - 增强效果
                 score = Math.max(0, score - 3);
+                
+                // 错误震动效果
+                letterEl.style.animation = 'error-shake 0.5s ease-in-out';
                 letterEl.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
-                setTimeout(() => letterEl.remove(), 500);
+                letterEl.style.boxShadow = '0 0 30px rgba(244,67,54,0.8)';
+                
+                setTimeout(() => {
+                    letterEl.style.opacity = '0';
+                    letterEl.style.transform = 'scale(0.5) rotate(-180deg)';
+                    setTimeout(() => letterEl.remove(), 300);
+                }, 200);
+                
                 showMessage('☹️ 错误！Salah! ☹️', 'error');
                 updateDisplay();
             }
@@ -428,15 +732,48 @@
             }
         }
 
-        // 大爆发彩带
+        // 波纹效果
+        function createRippleEffect(x, y) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = (x - 100) + 'px';
+            ripple.style.top = (y - 100) + 'px';
+            ripple.style.width = '0px';
+            ripple.style.height = '0px';
+            
+            document.body.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 1000);
+        }
+
+        // 烟花效果
+        function createFireworks() {
+            const fireworkEmojis = ['🎆', '🎇', '✨', '🎉', '🎊', '🎋'];
+            const gameArea = document.getElementById('game-area');
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.textContent = fireworkEmojis[Math.floor(Math.random() * fireworkEmojis.length)];
+                    firework.style.left = (Math.random() * gameArea.offsetWidth) + 'px';
+                    firework.style.top = (Math.random() * gameArea.offsetHeight) + 'px';
+                    firework.style.color = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA726'][Math.floor(Math.random() * 5)];
+                    
+                    gameArea.appendChild(firework);
+                    setTimeout(() => firework.remove(), 2000);
+                }, i * 200);
+            }
+        }
+
+        // 增强大爆发彩带
         function createBigConfetti() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     createConfetti(
                         Math.random() * window.innerWidth,
-                        Math.random() * window.innerHeight
+                        Math.random() * window.innerHeight * 0.7
                     );
-                }, i * 100);
+                }, i * 80);
             }
         }
 
@@ -480,9 +817,33 @@
             showMessage(`第 ${currentWordIndex + 1} 关！点击开始！`, '');
         }
 
+        // 背景粒子效果
+        function createBackgroundParticles() {
+            const gameArea = document.getElementById('game-area');
+            
+            setInterval(() => {
+                if (Math.random() < 0.3) {
+                    const particle = document.createElement('div');
+                    particle.style.position = 'absolute';
+                    particle.style.left = Math.random() * gameArea.offsetWidth + 'px';
+                    particle.style.top = gameArea.offsetHeight + 'px';
+                    particle.style.width = '3px';
+                    particle.style.height = '3px';
+                    particle.style.backgroundColor = 'rgba(255,255,255,0.6)';
+                    particle.style.borderRadius = '50%';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.animation = 'float-up 4s linear forwards';
+                    
+                    gameArea.appendChild(particle);
+                    setTimeout(() => particle.remove(), 4000);
+                }
+            }, 500);
+        }
+
         // 页面加载完成后初始化
         window.addEventListener('load', () => {
             updateDisplay();
+            createBackgroundParticles();
             
             // 确保语音库加载
             if ('speechSynthesis' in window) {
