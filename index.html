@@ -1,37 +1,360 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chinese-Malay Word Game</title><style>body {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEC Educational Games - Authentic Education Centre</title>
+    <style>
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        
-        #root {
-            min-height: 100vh;
-        }
-        
-        /* Loading animation */
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+
+        .header {
+            text-align: center;
+            padding: 2rem 1rem;
             color: white;
-            font-size: 2rem;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .institution {
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+
+        .games-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .game-card:hover::before {
+            left: 100%;
+        }
+
+        .game-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .game-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .game-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-features li {
+            background: rgba(102, 126, 234, 0.1);
+            margin: 0.3rem 0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .play-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .play-button:hover {
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            transform: scale(1.05);
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+            position: relative;
+        }
+
+        .coming-soon::after {
+            content: 'Coming Soon';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: bold;
         }
-        
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin-right: 20px;
+
+        .stats {
+            background: rgba(255,255,255,0.1);
+            margin: 2rem auto;
+            max-width: 600px;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
         }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }</style><script defer="defer" src="bundle.js"></script></head><body><div id="root"><div class="loading"><div class="spinner"></div>正在加载中文马来文游戏...</div></div></body></html>
+
+        .stats h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .games-container { grid-template-columns: 1fr; }
+            .game-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">🎓</div>
+        <h1 class="title">AEC Educational Games</h1>
+        <p class="subtitle">Interactive Learning Through Gaming</p>
+        <div class="institution">🏫 Authentic Education Centre</div>
+    </div>
+
+    <div class="stats">
+        <h3>🎮 Learning Statistics</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Games</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Languages</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Fun</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Learning</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="games-container">
+        <!-- Game 1: Chinese-Malay Letters -->
+        <div class="game-card floating" onclick="playGame('chinese-malay-letters')">
+            <span class="game-icon">🎯</span>
+            <h2 class="game-title">Chinese-Malay Letter Game</h2>
+            <p class="game-description">Learn Chinese vocabulary by clicking falling letters to spell Malay words!</p>
+            <ul class="game-features">
+                <li>🔊 Chinese pronunciation</li>
+                <li>🎊 Confetti celebrations</li>
+                <li>📱 Mobile friendly</li>
+                <li>🌟 9 word pairs</li>
+            </ul>
+            <button class="play-button">🎮 Play Now</button>
+        </div>
+
+        <!-- Game 2: Math Challenge -->
+        <div class="game-card floating coming-soon" style="animation-delay: 0.2s;">
+            <span class="game-icon">🔢</span>
+            <h2 class="game-title">Math Challenge</h2>
+            <p class="game-description">Solve math problems by catching the correct numbers!</p>
+            <ul class="game-features">
+                <li>➕ Addition & Subtraction</li>
+                <li>🏆 High scores</li>
+                <li>⏱️ Time challenges</li>
+                <li>🎯 Progressive difficulty</li>
+            </ul>
+            <button class="play-button" disabled>🔜 Coming Soon</button>
+        </div>
+
+        <!-- Game 3: English Vocabulary -->
+        <div class="game-card floating coming-soon" style="animation-delay: 0.4s;">
+            <span class="game-icon">📚</span>
+            <h2 class="game-title">English Vocabulary</h2>
+            <p class="game-description">Expand your English vocabulary with interactive word games!</p>
+            <ul class="game-features">
+                <li>🎧 Audio pronunciation</li>
+                <li>🖼️ Picture matching</li>
+                <li>📝 Spelling practice</li>
+                <li>🌈 Colorful interface</li>
+            </ul>
+            <button class="play-button" disabled>🔜 Coming Soon</button>
+        </div>
+
+        <!-- Game 4: Memory Game -->
+        <div class="game-card floating coming-soon" style="animation-delay: 0.6s;">
+            <span class="game-icon">🧠</span>
+            <h2 class="game-title">Memory Challenge</h2>
+            <p class="game-description">Test and improve your memory with educational card matching!</p>
+            <ul class="game-features">
+                <li>🃏 Card matching</li>
+                <li>🎨 Beautiful graphics</li>
+                <li>🔄 Multiple themes</li>
+                <li>📊 Progress tracking</li>
+            </ul>
+            <button class="play-button" disabled>🔜 Coming Soon</button>
+        </div>
+
+        <!-- Game 5: Science Quiz -->
+        <div class="game-card floating coming-soon" style="animation-delay: 0.8s;">
+            <span class="game-icon">🔬</span>
+            <h2 class="game-title">Science Explorer</h2>
+            <p class="game-description">Discover science through interactive quizzes and experiments!</p>
+            <ul class="game-features">
+                <li>🌍 Earth & Space</li>
+                <li>⚗️ Chemistry basics</li>
+                <li>🧬 Biology facts</li>
+                <li>🎪 Fun animations</li>
+            </ul>
+            <button class="play-button" disabled>🔜 Coming Soon</button>
+        </div>
+
+        <!-- Game 6: Geography -->
+        <div class="game-card floating coming-soon" style="animation-delay: 1s;">
+            <span class="game-icon">🗺️</span>
+            <h2 class="game-title">World Explorer</h2>
+            <p class="game-description">Learn about countries, capitals, and cultures around the world!</p>
+            <ul class="game-features">
+                <li>🌏 Interactive maps</li>
+                <li>🏛️ Country facts</li>
+                <li>🎌 Flag recognition</li>
+                <li>📍 Capital cities</li>
+            </ul>
+            <button class="play-button" disabled>🔜 Coming Soon</button>
+        </div>
+    </div>
+
+    <script>
+        function playGame(gameName) {
+            window.location.href = `games/${gameName}/`;
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effect to available games
+            const gameCards = document.querySelectorAll('.game-card:not(.coming-soon)');
+            gameCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
