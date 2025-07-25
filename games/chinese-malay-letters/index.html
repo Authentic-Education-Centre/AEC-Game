@@ -102,7 +102,8 @@
     <div class="message" id="message">🔊 点击开始按钮开始游戏！</div>
     
     <div>
-        <button onclick="startGame()">🔊 开始游戏</button>
+        <button onclick="startGame()" id="start-btn">🔊 开始游戏</button>
+        <button onclick="repeatChinese()" id="repeat-btn" style="display: none;">🔊 重复发音</button>
         <button onclick="resetGame()">🔄 重置</button>
         <button onclick="nextWord()" id="next-btn" disabled>➡️ 下一关</button>
     </div>
@@ -146,6 +147,12 @@
                 speechSynthesis.speak(utterance);
                 showMessage('🔊 正在播放中文发音...', 'success');
             }
+        }
+
+        // 重复中文发音
+        function repeatChinese() {
+            const currentPair = wordPairs[currentWordIndex];
+            speakChinese(currentPair.chinese);
         }
 
         // 开始游戏
@@ -204,17 +211,17 @@
             gameArea.appendChild(letterEl);
             console.log('字母已添加:', letter);
             
-            // 掉落动画 - 稍微慢一点
+            // 掉落动画 - 调快速度
             let top = 0;
             const fall = setInterval(() => {
-                top += 1.5;
+                top += 2.5;
                 letterEl.style.top = top + 'px';
                 
                 if (top > 350) {
                     letterEl.remove();
                     clearInterval(fall);
                 }
-            }, 20);
+            }, 18);
         }
 
         // 获取随机字母
@@ -278,8 +285,19 @@
             
             document.getElementById('game-area').innerHTML = '';
             document.getElementById('next-btn').disabled = true;
+            
+            // 重置按钮显示状态
+            if (currentWordIndex === 0) {
+                document.getElementById('start-btn').style.display = 'inline-block';
+                document.getElementById('repeat-btn').style.display = 'none';
+                showMessage('🎮 点击开始按钮开始游戏！');
+            } else {
+                document.getElementById('start-btn').style.display = 'none';
+                document.getElementById('repeat-btn').style.display = 'inline-block';
+                showMessage('🎮 点击重复发音或重置游戏！');
+            }
+            
             updateDisplay();
-            showMessage('🎮 点击开始按钮开始游戏！');
         }
 
         // 下一关
@@ -303,6 +321,11 @@
             // 自动开始新一关
             setTimeout(() => {
                 startGame();
+                // 从第二关开始显示重复发音按钮，隐藏开始按钮
+                if (currentWordIndex > 0) {
+                    document.getElementById('start-btn').style.display = 'none';
+                    document.getElementById('repeat-btn').style.display = 'inline-block';
+                }
             }, 1000); // 1秒后自动开始
         }
 
