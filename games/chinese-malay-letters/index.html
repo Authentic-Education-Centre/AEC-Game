@@ -222,8 +222,15 @@
             
             console.log('目标单词:', targetWord);
             
-            speakChinese(currentPair.chinese);
+            // 手机优先显示游戏内容，语音可选
             showMessage('点击掉落的字母来拼出马来文单词！', 'success');
+            
+            // 尝试播放语音（手机可能无效，但不影响游戏）
+            try {
+                speakChinese(currentPair.chinese);
+            } catch (e) {
+                console.log('语音播放失败，但游戏继续');
+            }
             
             // 清理旧字母
             document.getElementById('game-area').innerHTML = '';
@@ -234,7 +241,7 @@
             }
             
             console.log('开始生成字母...');
-            gameInterval = setInterval(createLetter, 200); // 大幅增加字母数量，真正的字母雨
+            gameInterval = setInterval(createLetter, 200);
         }
 
         // 创建掉落字母
@@ -252,8 +259,19 @@
             letterEl.style.left = Math.random() * (gameArea.offsetWidth - 50) + 'px';
             letterEl.style.top = '0px';
             
-            // 点击事件
-            letterEl.onclick = () => handleLetterClick(letter, letterEl);
+            // 点击事件 - 手机兼容
+            letterEl.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleLetterClick(letter, letterEl);
+            };
+            
+            // 触摸事件 - 手机兼容
+            letterEl.ontouchstart = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleLetterClick(letter, letterEl);
+            };
             
             gameArea.appendChild(letterEl);
             console.log('字母已添加:', letter);
