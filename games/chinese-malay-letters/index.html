@@ -82,8 +82,19 @@
             border-radius: 10px;
         }
         
-        .success { background: rgba(76, 175, 80, 0.8); }
-        .error { background: rgba(244, 67, 54, 0.8); }
+        .success { background: rgba(76, 175, 80, 0.9); color: white; }
+        .error { 
+            background: rgba(244, 67, 54, 0.9); 
+            color: white; 
+            border: 2px solid #f44336;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
         
         @media (max-width: 768px) {
             .game-area { width: 95vw; height: 350px; }
@@ -301,6 +312,7 @@
         function nextWord() {
             if (!wordCompleted) {
                 showMessage('❌ 请先完成当前单词才能进入下一关！', 'error');
+                console.log('阻止进入下一关 - 当前单词未完成');
                 return;
             }
             
