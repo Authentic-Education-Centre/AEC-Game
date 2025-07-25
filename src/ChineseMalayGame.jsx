@@ -448,4 +448,4 @@ const ChineseMalayGame = () => {
   );
 };
 
-export default ChineseMalayGame;
+export default ChineseMalayGame;console.log('Testing new build');
