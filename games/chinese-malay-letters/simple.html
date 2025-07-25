@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎯 中文马来文字母游戏 - AEC</title>
+    <title>🎯 中文马来文字母游戏 - 简化版</title>
     <style>
         * {
             margin: 0;
@@ -238,6 +238,8 @@
     </div>
 
     <script>
+        console.log('JavaScript开始加载');
+
         // 游戏数据
         const wordPairs = [
             { chinese: '交通工具', malay: 'kenderaan' },
@@ -270,8 +272,11 @@
             'linear-gradient(135deg, #e91e63, #ad1457)'
         ];
 
+        console.log('变量初始化完成');
+
         // 语音播放
         function speakChinese(text) {
+            console.log('播放中文:', text);
             if ('speechSynthesis' in window) {
                 speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
@@ -294,6 +299,7 @@
 
         // 显示消息
         function showMessage(text, type = '') {
+            console.log('显示消息:', text, type);
             const messageArea = document.getElementById('message-area');
             messageArea.innerHTML = `<strong>${text}</strong>`;
             messageArea.className = 'message-area';
@@ -306,7 +312,13 @@
 
         // 开始游戏
         function startGame() {
-            if (gameState === 'playing') return;
+            console.log('=== 开始游戏 ===');
+            console.log('当前状态:', gameState);
+            
+            if (gameState === 'playing') {
+                console.log('游戏已在进行中，返回');
+                return;
+            }
             
             gameState = 'playing';
             builtWord = '';
@@ -314,6 +326,9 @@
             
             const currentPair = wordPairs[currentWordIndex];
             targetWord = currentPair.malay;
+            
+            console.log('目标单词:', targetWord);
+            console.log('中文词语:', currentPair.chinese);
             
             speakChinese(currentPair.chinese);
             showMessage('点击掉落的字母来拼出马来文单词！', 'success');
@@ -323,14 +338,18 @@
                 clearInterval(gameInterval);
             }
             gameInterval = setInterval(generateFallingLetter, 1000);
+            console.log('字母生成定时器已启动');
         }
 
         // 生成掉落字母
         function generateFallingLetter() {
+            console.log('生成字母，游戏状态:', gameState);
             if (gameState !== 'playing') return;
             
             const gameArea = document.getElementById('game-area');
             const letter = getRandomLetter();
+            
+            console.log('生成字母:', letter);
             
             const letterEl = document.createElement('div');
             letterEl.className = 'falling-letter';
@@ -340,9 +359,13 @@
             letterEl.style.background = letterColors[Math.floor(Math.random() * letterColors.length)];
             
             // 添加点击事件
-            letterEl.onclick = () => handleLetterClick(letter, letterEl);
+            letterEl.onclick = () => {
+                console.log('点击字母:', letter);
+                handleLetterClick(letter, letterEl);
+            };
             
             gameArea.appendChild(letterEl);
+            console.log('字母已添加到游戏区域');
             
             // 动画掉落
             animateLetter(letterEl);
@@ -355,9 +378,12 @@
             
             // 70%几率给出正确字母
             if (Math.random() < 0.7 && nextNeededLetter) {
+                console.log('返回正确字母:', nextNeededLetter);
                 return nextNeededLetter;
             } else {
-                return allLetters[Math.floor(Math.random() * allLetters.length)];
+                const randomLetter = allLetters[Math.floor(Math.random() * allLetters.length)];
+                console.log('返回随机字母:', randomLetter);
+                return randomLetter;
             }
         }
 
@@ -380,6 +406,7 @@
         // 处理字母点击
         function handleLetterClick(letter, letterEl) {
             const nextNeededLetter = targetWord[builtWord.length];
+            console.log('点击处理 - 点击字母:', letter, '需要字母:', nextNeededLetter);
             
             if (letter === nextNeededLetter) {
                 // 正确字母
@@ -393,14 +420,14 @@
                 showMessage('🎉 正确！Betul! 🎉', 'success');
                 updateDisplay();
                 
+                console.log('当前拼成:', builtWord, '目标:', targetWord);
+                
                 // 检查是否完成单词
                 if (builtWord === targetWord) {
                     gameState = 'completed';
                     clearInterval(gameInterval);
                     showMessage('🎆 完成了！单词: ' + targetWord + ' 🎆', 'success');
-                    
-                    // 大爆发彩带
-                    setTimeout(() => createBigConfetti(), 500);
+                    console.log('单词完成！');
                 }
             } else {
                 // 错误字母
@@ -428,18 +455,6 @@
             }
         }
 
-        // 大爆发彩带
-        function createBigConfetti() {
-            for (let i = 0; i < 30; i++) {
-                setTimeout(() => {
-                    createConfetti(
-                        Math.random() * window.innerWidth,
-                        Math.random() * window.innerHeight
-                    );
-                }, i * 100);
-            }
-        }
-
         // 更新显示
         function updateDisplay() {
             document.getElementById('built-word').textContent = builtWord || '等待开始...';
@@ -447,6 +462,7 @@
 
         // 重置游戏
         function resetGame() {
+            console.log('重置游戏');
             gameState = 'ready';
             builtWord = '';
             if (gameInterval) {
@@ -465,6 +481,7 @@
 
         // 下一个单词
         function nextWord() {
+            console.log('下一个单词');
             if (currentWordIndex < wordPairs.length - 1) {
                 currentWordIndex++;
             } else {
@@ -482,16 +499,21 @@
 
         // 页面加载完成后初始化
         window.addEventListener('load', () => {
+            console.log('页面加载完成，初始化游戏');
             updateDisplay();
             
             // 确保语音库加载
             if ('speechSynthesis' in window) {
                 speechSynthesis.getVoices();
                 speechSynthesis.onvoiceschanged = () => {
-                    // 语音库加载完成
+                    console.log('语音库加载完成');
                 };
             }
+            
+            console.log('游戏初始化完成');
         });
+
+        console.log('JavaScript加载完成');
     </script>
 </body>
 </html>
