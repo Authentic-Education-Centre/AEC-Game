@@ -1,37 +1,724 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chinese-Malay Word Game</title><style>body {
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 中文马来文字母游戏 - AEC</title>
+    <style>
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            box-sizing: border-box;
         }
-        
-        #root {
+
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
-        
-        /* Loading animation */
-        .loading {
+
+        /* 动态背景星星 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            animation: twinkle 3s infinite, float 6s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 10px;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
+            flex-direction: column;
         }
-        
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite, glow 2s ease-in-out infinite alternate;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #fff, #ffeb3b, #ff9800, #fff);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 3s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .game-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .chinese-word-display {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 50%, #ff9800 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 25px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+            border: 3px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chinese-word-display::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .chinese-word {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-area {
+            background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 70%, #90EE90 100%);
+            border: 3px solid rgba(255,255,255,0.6);
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            flex: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            color: rgba(255,255,255,0.8);
+            font-size: 30px;
+            animation: drift 8s linear infinite;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @keyframes drift {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        .falling-letter {
+            position: absolute;
             width: 50px;
             height: 50px;
-            animation: spin 1s linear infinite;
-            margin-right: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }</style><script defer="defer" src="bundle.js"></script></head><body><div id="root"><div class="loading"><div class="spinner"></div>正在加载中文马来文游戏...</div></div></body></html>
+
+        .falling-letter:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+
+        .built-word-display {
+            background: rgba(255,255,255,0.95);
+            border: 3px solid #4CAF50;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        }
+
+        .built-word {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2e7d32;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .message-area {
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .message-success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .message-error {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .control-btn {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(33, 150, 243, 0.5);
+        }
+
+        .control-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .reset-btn {
+            background: linear-gradient(45deg, #ff6b6b, #f44336);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .next-btn {
+            background: linear-gradient(45deg, #9c27b0, #7b1fa2);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
+        }
+
+        .confetti {
+            position: absolute;
+            pointer-events: none;
+            font-size: 2rem;
+            z-index: 10;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+
+        .instructions {
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 500px;
+            text-align: center;
+            color: #333;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .instructions h3 {
+            color: #2196F3;
+            margin-bottom: 10px;
+        }
+
+        /* 动画效果 */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff; }
+            to { text-shadow: 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff; }
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(300px) rotate(720deg) scale(0.5);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .chinese-word { font-size: 2.5rem; }
+            .game-area { height: 350px; margin: 10px; }
+            .controls { grid-template-columns: repeat(2, 1fr); }
+            .control-btn { padding: 12px 16px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态星星背景 -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">🎯</div>
+            <h1 class="title">中文马来文字母游戏</h1>
+            <p class="subtitle">🎮 点击字母拼出马来文单词 🎮</p>
+        </div>
+
+        <!-- 游戏信息面板 -->
+        <div class="game-info">
+            <div class="info-card">
+                <div>🎯 关卡</div>
+                <div id="level-display">1</div>
+            </div>
+            <div class="info-card">
+                <div>🏆 得分</div>
+                <div id="score-display">0</div>
+            </div>
+            <div class="info-card">
+                <div>📝 进度</div>
+                <div id="progress-display">0/9</div>
+            </div>
+        </div>
+
+        <!-- 中文词语显示 -->
+        <div class="chinese-word-display">
+            <div class="chinese-word" id="chinese-word">交通工具</div>
+            <div style="font-size: 1.2rem; margin-top: 10px; opacity: 0.9;">
+                目标: <span id="target-word">kenderaan</span>
+            </div>
+        </div>
+
+        <!-- 游戏区域 -->
+        <div class="game-area" id="game-area">
+            <!-- 动态云朵 -->
+            <div class="cloud" style="top: 20px; animation-delay: 0s;">☁️</div>
+            <div class="cloud" style="top: 60px; animation-delay: 2s;">☁️</div>
+            <div class="cloud" style="top: 100px; animation-delay: 4s;">☁️</div>
+            
+            <!-- 掉落字母会在这里动态生成 -->
+        </div>
+
+        <!-- 已拼单词显示 -->
+        <div class="built-word-display">
+            <div class="built-word" id="built-word">准备开始...</div>
+        </div>
+
+        <!-- 消息区域 -->
+        <div class="message-area" id="message-area">
+            <strong>🔊 点击开始按钮开始游戏！</strong>
+        </div>
+
+        <!-- 控制按钮 -->
+        <div class="controls">
+            <button class="control-btn start-btn" id="start-btn" onclick="startGame()">
+                🔊 开始游戏
+            </button>
+            <button class="control-btn reset-btn" id="reset-btn" onclick="resetGame()">
+                🔄 重置
+            </button>
+            <button class="control-btn next-btn" id="next-btn" onclick="nextWord()">
+                ➡️ 下一关
+            </button>
+            <button class="control-btn" id="repeat-btn" onclick="repeatChinese()">
+                🔊 重复
+            </button>
+        </div>
+
+        <!-- 游戏说明 -->
+        <div class="instructions">
+            <h3>🎮 游戏说明</h3>
+            <p>🎯 听中文发音，点击掉落的字母拼出对应的马来文单词</p>
+            <p>✨ 答对有华丽彩带庆祝效果！</p>
+            <p>📱 支持手机和电脑，全屏体验</p>
+        </div>
+    </div>
+
+    <script>
+        // 游戏数据
+        const wordPairs = [
+            { chinese: '交通工具', malay: 'kenderaan' },
+            { chinese: '状况', malay: 'situasi' },
+            { chinese: '安全带', malay: 'tali pinggang keledar' },
+            { chinese: '出发', malay: 'bertolak' },
+            { chinese: '标签', malay: 'label' },
+            { chinese: '零食', malay: 'makanan ringan' },
+            { chinese: '材料', malay: 'ramuan' },
+            { chinese: '色素', malay: 'pewarna' },
+            { chinese: '防腐剂', malay: 'bahan pengawet' }
+        ];
+
+        // 游戏状态
+        let currentWordIndex = 0;
+        let targetWord = '';
+        let builtWord = '';
+        let score = 0;
+        let gameState = 'ready'; // ready, playing, completed
+        let fallingLetters = [];
+        let gameInterval;
+
+        // 字母颜色
+        const letterColors = [
+            'linear-gradient(135deg, #ff6b6b, #ffa726)',
+            'linear-gradient(135deg, #4CAF50, #45a049)',
+            'linear-gradient(135deg, #2196F3, #1976D2)',
+            'linear-gradient(135deg, #9c27b0, #7b1fa2)',
+            'linear-gradient(135deg, #ff9800, #f57c00)',
+            'linear-gradient(135deg, #00bcd4, #0097a7)',
+            'linear-gradient(135deg, #e91e63, #ad1457)'
+        ];
+
+        // 初始化
+        function initGame() {
+            const currentPair = wordPairs[currentWordIndex];
+            targetWord = currentPair.malay;
+            document.getElementById('chinese-word').textContent = currentPair.chinese;
+            document.getElementById('target-word').textContent = targetWord;
+            document.getElementById('level-display').textContent = currentWordIndex + 1;
+            document.getElementById('progress-display').textContent = currentWordIndex + '/' + wordPairs.length;
+            createStars();
+            updateDisplay();
+        }
+
+        // 创建星星背景
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            starsContainer.innerHTML = '';
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.textContent = '✨';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // 语音播放
+        function speakChinese(text) {
+            if ('speechSynthesis' in window) {
+                speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                utterance.rate = 0.7;
+                utterance.volume = 1.0;
+                
+                const voices = speechSynthesis.getVoices();
+                const chineseVoice = voices.find(voice => 
+                    voice.lang.includes('zh') || voice.name.includes('Chinese')
+                );
+                if (chineseVoice) {
+                    utterance.voice = chineseVoice;
+                }
+                
+                speechSynthesis.speak(utterance);
+                showMessage('🔊 正在播放中文发音...', 'success');
+            }
+        }
+
+        // 显示消息
+        function showMessage(text, type = '') {
+            const messageArea = document.getElementById('message-area');
+            messageArea.innerHTML = `<strong>${text}</strong>`;
+            messageArea.className = 'message-area';
+            if (type === 'success') {
+                messageArea.classList.add('message-success');
+            } else if (type === 'error') {
+                messageArea.classList.add('message-error');
+            }
+        }
+
+        // 开始游戏
+        function startGame() {
+            if (gameState === 'playing') return;
+            
+            gameState = 'playing';
+            builtWord = '';
+            fallingLetters = [];
+            document.getElementById('built-word').textContent = '';
+            
+            const currentPair = wordPairs[currentWordIndex];
+            speakChinese(currentPair.chinese);
+            
+            showMessage('点击掉落的字母来拼出马来文单词！', 'success');
+            
+            // 开始生成掉落字母
+            gameInterval = setInterval(generateFallingLetter, 1200);
+        }
+
+        // 生成掉落字母
+        function generateFallingLetter() {
+            if (gameState !== 'playing') return;
+            
+            const gameArea = document.getElementById('game-area');
+            const letter = getRandomLetter();
+            
+            const letterEl = document.createElement('div');
+            letterEl.className = 'falling-letter';
+            letterEl.textContent = letter;
+            letterEl.style.left = Math.random() * (gameArea.offsetWidth - 50) + 'px';
+            letterEl.style.top = '-50px';
+            letterEl.style.background = letterColors[Math.floor(Math.random() * letterColors.length)];
+            
+            // 添加点击事件
+            letterEl.onclick = () => handleLetterClick(letter, letterEl);
+            
+            gameArea.appendChild(letterEl);
+            fallingLetters.push(letterEl);
+            
+            // 动画掉落
+            animateLetter(letterEl);
+        }
+
+        // 获取随机字母
+        function getRandomLetter() {
+            const nextNeededLetter = targetWord[builtWord.length];
+            const allLetters = 'abcdefghijklmnopqrstuvwxyz ';
+            
+            // 85%几率给出正确字母
+            if (Math.random() < 0.85 && nextNeededLetter) {
+                return nextNeededLetter;
+            } else {
+                return allLetters[Math.floor(Math.random() * allLetters.length)];
+            }
+        }
+
+        // 字母掉落动画
+        function animateLetter(letterEl) {
+            let position = -50;
+            const speed = 2;
+            
+            const fall = setInterval(() => {
+                position += speed;
+                letterEl.style.top = position + 'px';
+                
+                if (position > 400) {
+                    letterEl.remove();
+                    clearInterval(fall);
+                }
+            }, 16);
+        }
+
+        // 处理字母点击
+        function handleLetterClick(letter, letterEl) {
+            const nextNeededLetter = targetWord[builtWord.length];
+            
+            if (letter === nextNeededLetter) {
+                // 正确字母
+                builtWord += letter;
+                score += 10;
+                letterEl.remove();
+                
+                // 创建彩带效果
+                createConfetti(letterEl.getBoundingClientRect().left, letterEl.getBoundingClientRect().top);
+                
+                showMessage('🎉 正确！Betul! 🎉', 'success');
+                updateDisplay();
+                
+                // 检查是否完成单词
+                if (builtWord === targetWord) {
+                    gameState = 'completed';
+                    clearInterval(gameInterval);
+                    showMessage('🎆 完成了！单词: ' + targetWord + ' 🎆', 'success');
+                    
+                    // 大爆发彩带
+                    setTimeout(() => createBigConfetti(), 500);
+                }
+            } else {
+                // 错误字母
+                score = Math.max(0, score - 3);
+                letterEl.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
+                setTimeout(() => letterEl.remove(), 500);
+                showMessage('☹️ 错误！Salah! ☹️', 'error');
+                updateDisplay();
+            }
+        }
+
+        // 创建彩带效果
+        function createConfetti(x, y) {
+            const confettiEmojis = ['🎉', '🎊', '✨', '🌟', '⭐', '💫', '🎈', '🎆', '🎇', '🎁', '🏆', '🥳'];
+            
+            for (let i = 0; i < 15; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                confetti.style.left = (x + Math.random() * 100 - 50) + 'px';
+                confetti.style.top = (y + Math.random() * 50 - 25) + 'px';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // 大爆发彩带
+        function createBigConfetti() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createConfetti(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 100);
+            }
+        }
+
+        // 更新显示
+        function updateDisplay() {
+            document.getElementById('score-display').textContent = score;
+            document.getElementById('built-word').textContent = builtWord || '等待开始...';
+        }
+
+        // 重置游戏
+        function resetGame() {
+            gameState = 'ready';
+            builtWord = '';
+            clearInterval(gameInterval);
+            
+            // 清除掉落的字母
+            const gameArea = document.getElementById('game-area');
+            const letters = gameArea.querySelectorAll('.falling-letter');
+            letters.forEach(letter => letter.remove());
+            
+            updateDisplay();
+            showMessage('点击开始按钮开始游戏！', '');
+        }
+
+        // 下一个单词
+        function nextWord() {
+            if (currentWordIndex < wordPairs.length - 1) {
+                currentWordIndex++;
+            } else {
+                currentWordIndex = 0; // 循环
+            }
+            
+            resetGame();
+            initGame();
+            showMessage(`第 ${currentWordIndex + 1} 关！点击开始！`, '');
+        }
+
+        // 重复中文发音
+        function repeatChinese() {
+            const currentPair = wordPairs[currentWordIndex];
+            speakChinese(currentPair.chinese);
+        }
+
+        // 初始化游戏
+        window.addEventListener('load', () => {
+            initGame();
+            
+            // 确保语音库加载
+            if ('speechSynthesis' in window) {
+                speechSynthesis.getVoices();
+                speechSynthesis.onvoiceschanged = () => {
+                    console.log('语音库加载完成');
+                };
+            }
+        });
+    </script>
+</body>
+</html>
