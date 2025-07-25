@@ -139,6 +139,47 @@
 
         console.log('游戏初始化...');
 
+        // 音效系统
+        function playSound(frequency, duration, type = 'sine') {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = frequency;
+                oscillator.type = type;
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration);
+            } catch (e) {
+                console.log('音效播放失败，但游戏继续');
+            }
+        }
+
+        // 成功音效
+        function playSuccessSound() {
+            playSound(523, 0.2); // C5
+            setTimeout(() => playSound(659, 0.2), 100); // E5
+            setTimeout(() => playSound(784, 0.3), 200); // G5
+        }
+
+        // 拍手音效
+        function playApplauseSound() {
+            // 模拟拍手声
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    playSound(200 + Math.random() * 100, 0.1, 'sawtooth');
+                    playSound(400 + Math.random() * 200, 0.1, 'square');
+                }, i * 150);
+            }
+        }
+
         // 显示消息
         function showMessage(text, type = '') {
             const messageEl = document.getElementById('message');
@@ -224,6 +265,16 @@
             
             // 手机优先显示游戏内容，语音可选
             showMessage('点击掉落的字母来拼出马来文单词！', 'success');
+            
+            // 初始化音频上下文（用户交互后才能播放音效）
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+            } catch (e) {
+                console.log('音频初始化失败');
+            }
             
             // 尝试播放语音（手机可能无效，但不影响游戏）
             try {
@@ -311,6 +362,10 @@
                 // 正确
                 builtWord += letter;
                 letterEl.remove();
+                
+                // 播放成功音效
+                playSuccessSound();
+                
                 showMessage('🎉 正确！', 'success');
                 updateDisplay();
                 
@@ -319,7 +374,11 @@
                     wordCompleted = true;
                     gameState = 'completed';
                     clearInterval(gameInterval);
-                    showMessage('🎆 完成了！单词: ' + targetWord, 'success');
+                    
+                    // 播放拍手音效
+                    playApplauseSound();
+                    
+                    showMessage('🎆 完成了！单词: ' + targetWord + ' 👏', 'success');
                     console.log('单词完成！');
                 }
             } else {
