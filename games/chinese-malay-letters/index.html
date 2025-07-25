@@ -234,20 +234,15 @@
             }, 18);
         }
 
-        // 获取随机字母 - 确保当前需要的字母有足够概率
+        // 获取随机字母 - 最终完美版本
         function getRandomLetter() {
             const nextNeededLetter = targetWord[builtWord.length];
             const allLetters = 'abcdefghijklmnopqrstuvwxyz ';
             
-            const rand = Math.random();
-            if (rand < 0.3 && nextNeededLetter) {
-                // 30%几率给出当前需要的字母（确保不会等太久）
+            // 简单有效：40%当前需要字母，60%随机字母
+            if (Math.random() < 0.4 && nextNeededLetter) {
                 return nextNeededLetter;
-            } else if (rand < 0.5) {
-                // 20%几率给出目标单词中的其他字母
-                return targetWord[Math.floor(Math.random() * targetWord.length)];
             } else {
-                // 50%是随机字母
                 return allLetters[Math.floor(Math.random() * allLetters.length)];
             }
         }
