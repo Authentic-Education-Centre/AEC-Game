@@ -388,7 +388,7 @@
         <div class="chinese-word-display">
             <div class="chinese-word" id="chinese-word">交通工具</div>
             <div style="font-size: 1.2rem; margin-top: 10px; opacity: 0.9;">
-                目标: <span id="target-word">kenderaan</span>
+                🎯 听发音，拼马来文单词！
             </div>
         </div>
 
@@ -547,7 +547,7 @@
             showMessage('点击掉落的字母来拼出马来文单词！', 'success');
             
             // 开始生成掉落字母
-            gameInterval = setInterval(generateFallingLetter, 1200);
+            gameInterval = setInterval(generateFallingLetter, 800);
         }
 
         // 生成掉落字母
@@ -579,8 +579,8 @@
             const nextNeededLetter = targetWord[builtWord.length];
             const allLetters = 'abcdefghijklmnopqrstuvwxyz ';
             
-            // 85%几率给出正确字母
-            if (Math.random() < 0.85 && nextNeededLetter) {
+            // 70%几率给出正确字母 - 增加挑战性
+            if (Math.random() < 0.7 && nextNeededLetter) {
                 return nextNeededLetter;
             } else {
                 return allLetters[Math.floor(Math.random() * allLetters.length)];
@@ -590,17 +590,25 @@
         // 字母掉落动画
         function animateLetter(letterEl) {
             let position = -50;
-            const speed = 2;
+            const speed = 3;
+            let rotation = 0;
             
             const fall = setInterval(() => {
                 position += speed;
+                rotation += 2;
                 letterEl.style.top = position + 'px';
+                letterEl.style.transform = `rotate(${rotation}deg)`;
                 
-                if (position > 400) {
+                if (position > 450) {
                     letterEl.remove();
                     clearInterval(fall);
+                    // 从数组中移除
+                    const index = fallingLetters.indexOf(letterEl);
+                    if (index > -1) {
+                        fallingLetters.splice(index, 1);
+                    }
                 }
-            }, 16);
+            }, 20);
         }
 
         // 处理字母点击
@@ -611,10 +619,19 @@
                 // 正确字母
                 builtWord += letter;
                 score += 10;
+                
+                // 获取位置后再移除
+                const rect = letterEl.getBoundingClientRect();
                 letterEl.remove();
                 
+                // 从数组中移除
+                const index = fallingLetters.indexOf(letterEl);
+                if (index > -1) {
+                    fallingLetters.splice(index, 1);
+                }
+                
                 // 创建彩带效果
-                createConfetti(letterEl.getBoundingClientRect().left, letterEl.getBoundingClientRect().top);
+                createConfetti(rect.left, rect.top);
                 
                 showMessage('🎉 正确！Betul! 🎉', 'success');
                 updateDisplay();
@@ -632,7 +649,14 @@
                 // 错误字母
                 score = Math.max(0, score - 3);
                 letterEl.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
-                setTimeout(() => letterEl.remove(), 500);
+                setTimeout(() => {
+                    letterEl.remove();
+                    // 从数组中移除
+                    const index = fallingLetters.indexOf(letterEl);
+                    if (index > -1) {
+                        fallingLetters.splice(index, 1);
+                    }
+                }, 500);
                 showMessage('☹️ 错误！Salah! ☹️', 'error');
                 updateDisplay();
             }
