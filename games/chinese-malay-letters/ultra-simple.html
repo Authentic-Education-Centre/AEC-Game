@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>🎯 中文马来文字母游戏 - AEC</title>
+    <title>🎯 中文马来文字母游戏 - 超简版</title>
     <style>
         body {
             margin: 0;
@@ -104,7 +104,7 @@
     <div>
         <button onclick="startGame()">🔊 开始游戏</button>
         <button onclick="resetGame()">🔄 重置</button>
-        <button onclick="nextWord()" id="next-btn" disabled>➡️ 下一关</button>
+        <button onclick="nextWord()">➡️ 下一关</button>
     </div>
 
     <script>
@@ -161,7 +161,6 @@
             builtWord = '';
             wordCompleted = false;
             document.getElementById('built-word').textContent = '';
-            document.getElementById('next-btn').disabled = true;
             
             const currentPair = wordPairs[currentWordIndex];
             targetWord = currentPair.malay;
@@ -247,7 +246,6 @@
                     wordCompleted = true;
                     gameState = 'completed';
                     clearInterval(gameInterval);
-                    document.getElementById('next-btn').disabled = false;
                     showMessage('🎆 完成了！单词: ' + targetWord, 'success');
                     console.log('单词完成！');
                 }
@@ -277,7 +275,6 @@
             }
             
             document.getElementById('game-area').innerHTML = '';
-            document.getElementById('next-btn').disabled = true;
             updateDisplay();
             showMessage('🎮 点击开始按钮开始游戏！');
         }
