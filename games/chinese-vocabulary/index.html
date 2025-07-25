@@ -260,6 +260,13 @@
             <div class="vocab-word" id="vocab-word">办法</div>
             <div class="vocab-pinyin" id="vocab-pinyin">bàn fǎ</div>
             
+            <!-- 读词语按钮 -->
+            <div style="margin: 20px 0;">
+                <button class="audio-btn" id="read-word-btn" onclick="readWord()">
+                    🔊 读词语 Read Word
+                </button>
+            </div>
+            
             <!-- 隐藏的意思区域 -->
             <div class="vocab-meaning chinese-meaning" id="chinese-meaning" style="display: none;">
                 处理事情或解决问题的方法
@@ -280,15 +287,7 @@
         </div>
         
         <div class="audio-controls">
-            <button class="audio-btn" id="read-word-btn" onclick="readWord()">
-                🔊 读词语 Read Word
-            </button>
-            <button class="audio-btn" id="read-chinese-btn" onclick="readChineseMeaning()">
-                🔊 读中文意思 Read Chinese Meaning
-            </button>
-            <button class="audio-btn" id="read-english-btn" onclick="readEnglishMeaning()">
-                🔊 读英文意思 Read English Meaning
-            </button>
+            <!-- 移除多余的朗读按钮，只保留读词语按钮 -->
         </div>
         
         <div class="navigation">
@@ -657,7 +656,7 @@
             });
         }
 
-        // 朗读功能（分开读，避免拼音问题）
+        // 朗读功能（只保留读词语）
         async function readWord() {
             const btn = document.getElementById('read-word-btn');
             btn.classList.add('playing');
@@ -665,26 +664,6 @@
             const vocab = vocabularyData[currentPage];
             // 只读中文词语，不读拼音
             await speak(vocab.word, 'zh-CN');
-            
-            btn.classList.remove('playing');
-        }
-
-        async function readChineseMeaning() {
-            const btn = document.getElementById('read-chinese-btn');
-            btn.classList.add('playing');
-            
-            const vocab = vocabularyData[currentPage];
-            await speak(vocab.chineseMeaning, 'zh-CN');
-            
-            btn.classList.remove('playing');
-        }
-
-        async function readEnglishMeaning() {
-            const btn = document.getElementById('read-english-btn');
-            btn.classList.add('playing');
-            
-            const vocab = vocabularyData[currentPage];
-            await speak(vocab.englishMeaning, 'en-US');
             
             btn.classList.remove('playing');
         }
