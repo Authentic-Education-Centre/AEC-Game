@@ -197,7 +197,7 @@
             }
             
             console.log('开始生成字母...');
-            gameInterval = setInterval(createLetter, 1200); // 从800ms改为1200ms，降低密集度
+            gameInterval = setInterval(createLetter, 600); // 从1200ms改为600ms，增加整体数量
         }
 
         // 创建掉落字母
@@ -239,8 +239,8 @@
             const nextNeededLetter = targetWord[builtWord.length];
             const allLetters = 'abcdefghijklmnopqrstuvwxyz ';
             
-            // 只有15%几率给出正确字母，85%是干扰字母
-            if (Math.random() < 0.15 && nextNeededLetter) {
+            // 只有10%几率给出正确字母，90%是干扰字母
+            if (Math.random() < 0.10 && nextNeededLetter) {
                 return nextNeededLetter;
             } else {
                 return allLetters[Math.floor(Math.random() * allLetters.length)];
