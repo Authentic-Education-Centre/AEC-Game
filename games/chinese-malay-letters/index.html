@@ -105,7 +105,7 @@
         <button onclick="startGame()" id="start-btn">🔊 开始游戏</button>
         <button onclick="repeatChinese()" id="repeat-btn" style="display: none;">🔊 重复发音</button>
         <button onclick="resetGame()">🔄 重置</button>
-        <button onclick="nextWord()" id="next-btn" disabled>➡️ 下一关</button>
+        <button onclick="nextWord()" id="next-btn">➡️ 下一关</button>
     </div>
 
     <script>
@@ -168,7 +168,6 @@
             builtWord = '';
             wordCompleted = false;
             document.getElementById('built-word').textContent = '';
-            document.getElementById('next-btn').disabled = true;
             
             const currentPair = wordPairs[currentWordIndex];
             targetWord = currentPair.malay;
@@ -254,7 +253,6 @@
                     wordCompleted = true;
                     gameState = 'completed';
                     clearInterval(gameInterval);
-                    document.getElementById('next-btn').disabled = false;
                     showMessage('🎆 完成了！单词: ' + targetWord, 'success');
                     console.log('单词完成！');
                 }
@@ -284,7 +282,6 @@
             }
             
             document.getElementById('game-area').innerHTML = '';
-            document.getElementById('next-btn').disabled = true;
             
             // 重置按钮显示状态
             if (currentWordIndex === 0) {
