@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Test</title>
+    <style>
+        body { margin: 0; background: #667eea; font-family: Arial; }
+        .game-area { width: 800px; height: 400px; background: lightblue; margin: 50px auto; position: relative; border: 2px solid white; }
+        .letter { position: absolute; width: 40px; height: 40px; background: red; color: white; text-align: center; line-height: 40px; font-weight: bold; }
+        button { padding: 10px 20px; margin: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1 style="color: white;">Basic Letter Drop Test</h1>
+        <button onclick="startTest()">Start Test</button>
+        <button onclick="stopTest()">Stop Test</button>
+        <div id="status" style="color: white; margin: 10px;">Ready to test</div>
+    </div>
+    
+    <div class="game-area" id="gameArea"></div>
+    
+    <script>
+        let testInterval;
+        let letterCount = 0;
+        
+        function updateStatus(msg) {
+            document.getElementById('status').textContent = msg;
+            console.log('Status:', msg);
+        }
+        
+        function startTest() {
+            console.log('Starting test...');
+            updateStatus('Test started - letters should be falling');
+            stopTest(); // Stop any existing test
+            testInterval = setInterval(createLetter, 1000);
+        }
+        
+        function stopTest() {
+            if (testInterval) {
+                clearInterval(testInterval);
+                testInterval = null;
+                console.log('Test stopped');
+                updateStatus('Test stopped');
+            }
+        }
+        
+        function createLetter() {
+            console.log('Creating letter...');
+            letterCount++;
+            updateStatus(`Created ${letterCount} letters`);
+            
+            const gameArea = document.getElementById('gameArea');
+            const letter = document.createElement('div');
+            letter.className = 'letter';
+            letter.textContent = 'A';
+            letter.style.left = Math.random() * (gameArea.offsetWidth - 40) + 'px';
+            letter.style.top = '0px';
+            
+            gameArea.appendChild(letter);
+            console.log('Letter added to DOM');
+            
+            // Animate the letter falling
+            let top = 0;
+            const fallInterval = setInterval(() => {
+                top += 3;
+                letter.style.top = top + 'px';
+                
+                if (top > 360) {
+                    letter.remove();
+                    clearInterval(fallInterval);
+                    console.log('Letter removed from bottom');
+                }
+            }, 20);
+        }
+        
+        // Test on page load
+        window.addEventListener('load', () => {
+            console.log('Page loaded, ready for testing');
+            updateStatus('Page loaded - click Start Test');
+        });
+    </script>
+</body>
+</html>
