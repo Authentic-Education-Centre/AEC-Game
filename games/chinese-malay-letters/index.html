@@ -476,11 +476,11 @@
             const currentPair = wordPairs[currentWordIndex];
             targetWord = currentPair.malay;
             document.getElementById('chinese-word').textContent = currentPair.chinese;
-            document.getElementById('target-word').textContent = targetWord;
             document.getElementById('level-display').textContent = currentWordIndex + 1;
             document.getElementById('progress-display').textContent = currentWordIndex + '/' + wordPairs.length;
             createStars();
             updateDisplay();
+            console.log('游戏初始化完成，目标单词:', targetWord);
         }
 
         // 创建星星背景
@@ -534,6 +534,7 @@
 
         // 开始游戏
         function startGame() {
+            console.log('点击开始游戏按钮，当前状态:', gameState);
             if (gameState === 'playing') return;
             
             gameState = 'playing';
@@ -546,16 +547,22 @@
             
             showMessage('点击掉落的字母来拼出马来文单词！', 'success');
             
+            console.log('准备开始生成字母，目标单词:', targetWord);
+            
             // 开始生成掉落字母
             gameInterval = setInterval(generateFallingLetter, 800);
+            console.log('字母生成定时器已启动');
         }
 
         // 生成掉落字母
         function generateFallingLetter() {
+            console.log('尝试生成字母，游戏状态:', gameState);
             if (gameState !== 'playing') return;
             
             const gameArea = document.getElementById('game-area');
             const letter = getRandomLetter();
+            
+            console.log('生成字母:', letter);
             
             const letterEl = document.createElement('div');
             letterEl.className = 'falling-letter';
@@ -569,6 +576,8 @@
             
             gameArea.appendChild(letterEl);
             fallingLetters.push(letterEl);
+            
+            console.log('字母已添加到游戏区域');
             
             // 动画掉落
             animateLetter(letterEl);

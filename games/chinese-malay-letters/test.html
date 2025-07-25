@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试字母掉落</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+        
+        .game-area {
+            width: 800px;
+            height: 400px;
+            background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 100%);
+            margin: 50px auto;
+            position: relative;
+            border: 3px solid white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .falling-letter {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        .info {
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h2>测试字母掉落</h2>
+        <p>点击开始测试，应该看到字母从上往下掉落</p>
+    </div>
+    
+    <div class="controls">
+        <button onclick="startTest()">开始测试</button>
+        <button onclick="stopTest()">停止测试</button>
+    </div>
+    
+    <div class="game-area" id="game-area">
+        <!-- 字母会在这里掉落 -->
+    </div>
+    
+    <div class="info">
+        <p>字母计数: <span id="count">0</span></p>
+    </div>
+
+    <script>
+        let gameInterval;
+        let letterCount = 0;
+        
+        function startTest() {
+            console.log('开始测试字母掉落');
+            stopTest(); // 先停止之前的
+            gameInterval = setInterval(createFallingLetter, 1000);
+        }
+        
+        function stopTest() {
+            if (gameInterval) {
+                clearInterval(gameInterval);
+                gameInterval = null;
+            }
+        }
+        
+        function createFallingLetter() {
+            const gameArea = document.getElementById('game-area');
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const letter = letters[Math.floor(Math.random() * letters.length)];
+            
+            const letterEl = document.createElement('div');
+            letterEl.className = 'falling-letter';
+            letterEl.textContent = letter;
+            letterEl.style.left = Math.random() * (gameArea.offsetWidth - 50) + 'px';
+            letterEl.style.top = '-50px';
+            
+            letterEl.onclick = () => {
+                letterEl.remove();
+                console.log('点击了字母:', letter);
+            };
+            
+            gameArea.appendChild(letterEl);
+            letterCount++;
+            document.getElementById('count').textContent = letterCount;
+            
+            console.log('创建了字母:', letter);
+            
+            // 开始掉落动画
+            animateLetter(letterEl);
+        }
+        
+        function animateLetter(letterEl) {
+            let position = -50;
+            const speed = 3;
+            
+            const fall = setInterval(() => {
+                position += speed;
+                letterEl.style.top = position + 'px';
+                
+                if (position > 450) {
+                    letterEl.remove();
+                    clearInterval(fall);
+                    console.log('字母掉出屏幕，已移除');
+                }
+            }, 20);
+        }
+    </script>
+</body>
+</html>
