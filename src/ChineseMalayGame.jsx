@@ -17,20 +17,20 @@ const ChineseMalayGame = () => {
   const [targetWord, setTargetWord] = useState('');
   const [builtWord, setBuiltWord] = useState('');
   const [fallingLetters, setFallingLetters] = useState([]);
-  const [catcher, setCatcher] = useState({ x: 350, y: 520 }); // 固定位置，不再移动
+  // 移除了接字器概念，现在是纯点击游戏
   const [score, setScore] = useState(0);
   const [level, setLevel] = useState(1);
   const [gameState, setGameState] = useState('ready'); // ready, playing, completed
   const [particles, setParticles] = useState([]);
   const [clouds, setClouds] = useState([]);
-  const [catcherEmotion, setCatcherEmotion] = useState('😊');
+  // 移除了表情符号状态，现在是纯点击游戏
   const [message, setMessage] = useState('点击开始按钮开始游戏！');
   const [messageType, setMessageType] = useState('');
   
   // 响应式游戏区域尺寸，适应手机和桌面
   const gameWidth = Math.min(Math.min(window.innerWidth * 0.95, 800), 800);
   const gameHeight = Math.max(Math.min(window.innerHeight - 280, 500), 250);
-  const catcherWidth = 100;
+  // 移除了接字器相关变量
 
   // 初始化游戏
   useEffect(() => {
@@ -132,33 +132,39 @@ const ChineseMalayGame = () => {
     }
   };
 
-  // 创建粒子效果
-  const createParticles = (x, y, isCorrect = true) => {
-    const newParticles = Array.from({ length: isCorrect ? 15 : 8 }, (_, i) => ({
+  // 创建华丽的彩带庆祝效果
+  const createConfetti = (x, y) => {
+    const confettiEmojis = ['🎉', '🎊', '✨', '🌟', '⭐', '💫', '🎈', '🎆', '🎇', '🎁', '🏆', '🥳'];
+    const newParticles = Array.from({ length: 30 }, (_, i) => ({
       id: Date.now() + i,
-      x: x + Math.random() * 20 - 10,
-      y: y + Math.random() * 20 - 10,
-      vx: (Math.random() - 0.5) * 8,
-      vy: (Math.random() - 0.5) * 8 - 2,
+      x: x + (Math.random() - 0.5) * 200,
+      y: y + (Math.random() - 0.5) * 100,
+      vx: (Math.random() - 0.5) * 20,
+      vy: (Math.random() - 0.5) * 20 - 8,
       life: 1,
-      color: isCorrect ? '✨' : '💥',
-      size: Math.random() * 10 + 5
+      color: confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)],
+      size: Math.random() * 20 + 15,
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() - 0.5) * 30
     }));
     
     setParticles(prev => [...prev, ...newParticles]);
   };
 
-  // 更新粒子
+  // 更新彩带动画
   useEffect(() => {
     const particleInterval = setInterval(() => {
       setParticles(prev => prev.map(particle => ({
         ...particle,
         x: particle.x + particle.vx,
         y: particle.y + particle.vy,
-        vy: particle.vy + 0.3,
-        life: particle.life - 0.02
+        vy: particle.vy + 0.8, // 更强的重力
+        vx: particle.vx * 0.95, // 空气阻力
+        rotation: particle.rotation + particle.rotationSpeed,
+        rotationSpeed: particle.rotationSpeed * 0.98,
+        life: particle.life - 0.012
       })).filter(particle => particle.life > 0));
-    }, 50);
+    }, 30); // 更流畅的动画
     return () => clearInterval(particleInterval);
   }, []);
 
@@ -220,15 +226,20 @@ const ChineseMalayGame = () => {
     }, 50);
 
     return () => clearInterval(gameLoop);
-  }, [gameState, catcher, builtWord, targetWord, score]);
+  }, [gameState, builtWord, targetWord, score]);
 
-  // 检查单词完成
+  // 检查单词完成 - 大爆发彩带！
   useEffect(() => {
     if (builtWord === targetWord && targetWord && gameState === 'playing') {
       setGameState('completed');
-      setCatcherEmotion('🎉');
-      createParticles(catcher.x + 50, catcher.y, true);
-      showMessage(`完成了！单词: ${targetWord}`, 'success');
+      
+      // 全屏幕大爆发彩带！
+      setTimeout(() => createConfetti(gameWidth / 2, gameHeight / 2), 100);
+      setTimeout(() => createConfetti(gameWidth / 4, gameHeight / 3), 300);
+      setTimeout(() => createConfetti((gameWidth * 3) / 4, gameHeight / 3), 500);
+      setTimeout(() => createConfetti(gameWidth / 2, gameHeight / 4), 700);
+      
+      showMessage(`🎆 完成了！单词: ${targetWord} 🎆`, 'success');
     }
   }, [builtWord, targetWord, gameState]);
 
@@ -237,8 +248,7 @@ const ChineseMalayGame = () => {
     setGameState('playing');
     setBuiltWord('');
     setFallingLetters([]);
-    setCatcher({ x: 350, y: 520 });
-    setCatcherEmotion('😊');
+    setParticles([]); // 清除之前的彩带
     
     const currentPair = wordPairs[currentWordIndex];
     speakChinese(currentPair.chinese);
@@ -249,7 +259,7 @@ const ChineseMalayGame = () => {
     setGameState('ready');
     setBuiltWord('');
     setFallingLetters([]);
-    setCatcherEmotion('😊');
+    setParticles([]); // 清除彩带
     showMessage('点击开始按钮开始游戏！', '');
   };
 
@@ -260,7 +270,7 @@ const ChineseMalayGame = () => {
     setGameState('ready');
     setBuiltWord('');
     setFallingLetters([]);
-    setCatcherEmotion('😊');
+    setParticles([]); // 清除彩带
     showMessage(`第 ${nextIndex + 1} 关！点击开始！`, '');
   };
 
@@ -329,17 +339,18 @@ const ChineseMalayGame = () => {
           </div>
         ))}
 
-        {/* 粒子效果 */}
+        {/* 华丽的彩带庆祝效果 */}
         {particles.map(particle => (
           <div
             key={particle.id}
-            className="absolute pointer-events-none"
+            className="absolute pointer-events-none z-20"
             style={{ 
               left: particle.x, 
               top: particle.y,
-              opacity: particle.life,
+              opacity: particle.life * 0.9 + 0.1,
               fontSize: particle.size,
-              transform: `scale(${particle.life})`
+              transform: `scale(${particle.life * 1.2}) rotate(${particle.rotation}deg)`,
+              filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.4)) brightness(1.2)'
             }}
           >
             {particle.color}
@@ -362,18 +373,13 @@ const ChineseMalayGame = () => {
               if (letter.letter === nextNeededLetter) {
                 setBuiltWord(prev => prev + letter.letter);
                 setScore(prev => prev + 10);
-                setCatcherEmotion('🤩');
-                createParticles(letter.x + 20, letter.y + 20, true);
-                showMessage('正确！Betul!', 'success');
                 
-                setTimeout(() => setCatcherEmotion('😊'), 1000);
+                // 爆发彩带庆祝！
+                createConfetti(letter.x + 25, letter.y + 25);
+                showMessage('🎉 正确！Betul! 🎉', 'success');
               } else {
                 setScore(prev => Math.max(0, prev - 3));
-                setCatcherEmotion('😵');
-                createParticles(letter.x + 20, letter.y + 20, false);
-                showMessage('错误！Salah!', 'error');
-                
-                setTimeout(() => setCatcherEmotion('😊'), 800);
+                showMessage('☹️ 错误！Salah! ☹️', 'error');
               }
               
               setFallingLetters(prev => prev.filter(l => l.id !== letter.id));
@@ -383,24 +389,6 @@ const ChineseMalayGame = () => {
           </div>
         ))}
 
-        {/* 接取器 */}
-        <div
-          className="absolute bg-gradient-to-br from-orange-400 to-red-500 border-4 border-white rounded-full shadow-lg"
-          style={{ 
-            left: catcher.x, 
-            top: catcher.y, 
-            width: catcherWidth, 
-            height: 50,
-            filter: 'drop-shadow(4px 4px 8px rgba(0,0,0,0.3))'
-          }}
-        >
-          <div className="w-full h-full flex items-center justify-center text-3xl">
-            {catcherEmotion}
-          </div>
-          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 text-yellow-400 text-2xl">
-            ⭐
-          </div>
-        </div>
       </div>
 
       {/* 已拼单词显示 */}
