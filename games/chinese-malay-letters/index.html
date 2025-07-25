@@ -204,17 +204,17 @@
             gameArea.appendChild(letterEl);
             console.log('字母已添加:', letter);
             
-            // 掉落动画
+            // 掉落动画 - 稍微慢一点
             let top = 0;
             const fall = setInterval(() => {
-                top += 2;
+                top += 1.5;
                 letterEl.style.top = top + 'px';
                 
                 if (top > 350) {
                     letterEl.remove();
                     clearInterval(fall);
                 }
-            }, 16);
+            }, 20);
         }
 
         // 获取随机字母
