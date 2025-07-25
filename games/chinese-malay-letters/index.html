@@ -296,13 +296,14 @@
                 currentWordIndex = 0;
             }
             
-            resetGame();
-            
             const currentPair = wordPairs[currentWordIndex];
             document.getElementById('chinese-word').textContent = currentPair.chinese;
             targetWord = currentPair.malay;
             
-            showMessage(`🎯 第 ${currentWordIndex + 1} 关！点击开始！`);
+            // 自动开始新一关
+            setTimeout(() => {
+                startGame();
+            }, 1000); // 1秒后自动开始
         }
 
         // 页面加载完成
