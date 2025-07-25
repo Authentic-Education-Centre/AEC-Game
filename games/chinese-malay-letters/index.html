@@ -239,8 +239,8 @@
             const nextNeededLetter = targetWord[builtWord.length];
             const allLetters = 'abcdefghijklmnopqrstuvwxyz ';
             
-            // 15%几率给出正确字母，85%是干扰字母
-            if (Math.random() < 0.15 && nextNeededLetter) {
+            // 20%几率给出正确字母，80%是干扰字母
+            if (Math.random() < 0.20 && nextNeededLetter) {
                 return nextNeededLetter;
             } else {
                 return allLetters[Math.floor(Math.random() * allLetters.length)];
