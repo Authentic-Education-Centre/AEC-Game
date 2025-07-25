@@ -152,11 +152,48 @@
             console.log('播放中文:', text);
             if ('speechSynthesis' in window) {
                 speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-CN';
-                utterance.rate = 0.7;
-                speechSynthesis.speak(utterance);
-                showMessage('🔊 正在播放中文发音...', 'success');
+                
+                // 等待语音加载完成后播放
+                const speak = () => {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'zh-CN';
+                    utterance.rate = 0.7;
+                    utterance.volume = 1.0;
+                    
+                    // 寻找中文语音
+                    const voices = speechSynthesis.getVoices();
+                    const chineseVoice = voices.find(voice => 
+                        voice.lang.includes('zh') || voice.name.includes('Chinese')
+                    );
+                    if (chineseVoice) {
+                        utterance.voice = chineseVoice;
+                    }
+                    
+                    utterance.onstart = () => {
+                        showMessage('🔊 正在播放中文发音...', 'success');
+                    };
+                    
+                    utterance.onerror = (e) => {
+                        console.log('语音播放错误:', e);
+                        showMessage('🔊 语音播放失败，请检查设备音量', 'error');
+                    };
+                    
+                    try {
+                        speechSynthesis.speak(utterance);
+                    } catch (error) {
+                        console.log('语音播放异常:', error);
+                        showMessage('🔊 语音不可用，请检查设备设置', 'error');
+                    }
+                };
+                
+                // 如果语音还没加载完，等待加载
+                if (speechSynthesis.getVoices().length === 0) {
+                    speechSynthesis.onvoiceschanged = speak;
+                } else {
+                    speak();
+                }
+            } else {
+                showMessage('🔊 设备不支持语音播放', 'error');
             }
         }
 
