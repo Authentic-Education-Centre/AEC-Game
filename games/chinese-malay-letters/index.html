@@ -238,8 +238,8 @@
         function getRandomLetter() {
             const allLetters = 'abcdefghijklmnopqrstuvwxyz ';
             
-            // 50%几率给出目标单词中的任意字母，50%是随机字母
-            if (Math.random() < 0.5) {
+            // 45%几率给出目标单词中的任意字母，55%是随机字母
+            if (Math.random() < 0.45) {
                 return targetWord[Math.floor(Math.random() * targetWord.length)];
             } else {
                 return allLetters[Math.floor(Math.random() * allLetters.length)];
