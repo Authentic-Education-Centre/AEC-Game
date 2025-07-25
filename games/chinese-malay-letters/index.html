@@ -240,14 +240,14 @@
             const allLetters = 'abcdefghijklmnopqrstuvwxyz ';
             
             const rand = Math.random();
-            if (rand < 0.12 && nextNeededLetter) {
-                // 12%几率给出当前需要的字母
+            if (rand < 0.35 && nextNeededLetter) {
+                // 35%几率给出当前需要的字母
                 return nextNeededLetter;
-            } else if (rand < 0.20) {
-                // 8%几率给出目标单词中的其他字母
+            } else if (rand < 0.45) {
+                // 10%几率给出目标单词中的其他字母
                 return targetWord[Math.floor(Math.random() * targetWord.length)];
             } else {
-                // 80%是干扰字母
+                // 55%是干扰字母
                 return allLetters[Math.floor(Math.random() * allLetters.length)];
             }
         }
