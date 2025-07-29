@@ -12,9 +12,212 @@
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
         }
         #root {
             min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .chapter-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+        .chapter-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .chapter-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .chapter-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .chapter-subtitle {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        .chapter-desc {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        .btn:hover {
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            transform: scale(1.05);
+        }
+        .btn-secondary {
+            background: #666;
+        }
+        .btn-secondary:hover {
+            background: #555;
+        }
+        .learning-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        .word-display {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #667eea;
+            margin: 1rem 0;
+        }
+        .pinyin {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .explanation {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+        .game-card {
+            padding: 2rem;
+        }
+        .question {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .question-english {
+            font-size: 1rem;
+            color: #666;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .option-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option-btn:hover {
+            background: #764ba2;
+            transform: scale(1.02);
+        }
+        .reading-card {
+            padding: 2rem;
+        }
+        .story-container {
+            background: #fffbf0;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+            margin: 2rem 0;
+        }
+        .sentence {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 1rem 0;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        .current-sentence {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            font-weight: bold;
+            color: #856404;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .back-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: #666;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .progress {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .title { font-size: 2rem; }
+            .word-display { font-size: 3rem; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -26,7 +229,7 @@
         const { BookOpen, Play, Volume2, RotateCcw, Gamepad2, Speaker, Home, ArrowLeft } = lucide;
 
         const ChineseLearningCompleteApp = () => {
-          const [currentChapter, setCurrentChapter] = useState('menu'); // 'menu', 'chapter1', 'chapter2', 'chapter3', 'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter9', 'chapter10', 'chapter11', 'chapter12'
+          const [currentChapter, setCurrentChapter] = useState('menu');
           const [currentPhase, setCurrentPhase] = useState('learning');
           const [currentWordIndex, setCurrentWordIndex] = useState(0);
           const [viewedChinese, setViewedChinese] = useState(false);
@@ -93,46 +296,6 @@
                 answerEnglish: 'solution',
                 options: ['情形', '脑筋', '浮', '办法'],
                 optionsEnglish: ['situation', 'brain', 'float', 'solution']
-              },
-              { 
-                text: '华国是个___的孩子。', 
-                english: 'Hua Guo was a ___ child.',
-                answer: '聪明', 
-                answerEnglish: 'clever',
-                options: ['小心', '聪明', '着急', '浮'],
-                optionsEnglish: ['careful', 'clever', 'anxious', 'float']
-              },
-              { 
-                text: '平时最爱动___。', 
-                english: 'He loved using his ___ .',
-                answer: '脑筋', 
-                answerEnglish: 'brain',
-                options: ['办法', '提', '脑筋', '树枝'],
-                optionsEnglish: ['method', 'carry', 'brain', 'tree branch']
-              },
-              { 
-                text: '他看到这种___，只见他眼珠子一转。', 
-                english: 'When he saw the ___, his eyes turned.',
-                answer: '情形', 
-                answerEnglish: 'situation',
-                options: ['情形', '树洞', '小心', '聪明'],
-                optionsEnglish: ['situation', 'tree hollow', 'careful', 'clever']
-              },
-              { 
-                text: '不久，___来了一桶水。', 
-                english: 'Soon he ___ a bucket of water.',
-                answer: '提', 
-                answerEnglish: 'carried',
-                options: ['浮', '提', '办法', '脑筋'],
-                optionsEnglish: ['float', 'carried', 'method', 'brain']
-              },
-              { 
-                text: '皮球___了上来。', 
-                english: 'The ball ___ up.',
-                answer: '浮', 
-                answerEnglish: 'floated',
-                options: ['着急', '树枝', '提', '浮'],
-                optionsEnglish: ['anxious', 'tree branch', 'carry', 'floated']
               }
             ],
             chineseSentences: [
@@ -215,46 +378,6 @@
                 answerEnglish: 'helps',
                 options: ['比赛', '参加', '学习', '帮助'],
                 optionsEnglish: ['competition', 'participate', 'study', 'helps']
-              },
-              { 
-                text: '他也时常___课外活动。', 
-                english: 'He often ___ in extracurricular activities.',
-                answer: '参加', 
-                answerEnglish: 'participates',
-                options: ['参加', '帮助', '回家', '骄傲'],
-                optionsEnglish: ['participates', 'helps', 'go home', 'arrogant']
-              },
-              { 
-                text: '他的___打得很好', 
-                english: 'He plays ___ very well',
-                answer: '篮球', 
-                answerEnglish: 'basketball',
-                options: ['比赛', '学习', '篮球', '高兴'],
-                optionsEnglish: ['competition', 'study', 'basketball', 'happy']
-              },
-              { 
-                text: '时常参加___。', 
-                english: 'He often joins ___.',
-                answer: '比赛', 
-                answerEnglish: 'competitions',
-                options: ['篮球', '同班', '要好', '比赛'],
-                optionsEnglish: ['basketball', 'same class', 'close', 'competitions']
-              },
-              { 
-                text: '我很___有文锦这么一个好朋友', 
-                english: 'I feel very ___ to have such a good friend like Wen Jin',
-                answer: '高兴', 
-                answerEnglish: 'happy',
-                options: ['骄傲', '帮助', '高兴', '参加'],
-                optionsEnglish: ['arrogant', 'help', 'happy', 'participate']
-              },
-              { 
-                text: '我也要向他多___。', 
-                english: 'I want to ___ from him more.',
-                answer: '学习', 
-                answerEnglish: 'learn',
-                options: ['回家', '学习', '比赛', '篮球'],
-                optionsEnglish: ['go home', 'learn', 'competition', 'basketball']
               }
             ],
             chineseSentences: [
@@ -451,172 +574,256 @@
             }
           };
 
-          // Render the complete app
-          return (
-            React.createElement('div', null,
-              currentChapter === 'menu' && React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-6" },
-                React.createElement('div', { className: "max-w-7xl mx-auto" },
-                  React.createElement('div', { className: "bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-12" },
-                    React.createElement('div', { className: "text-center mb-12" },
-                      React.createElement('h1', { className: "text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4" }, '🎓 中文学习天地 🎓'),
-                      React.createElement('h2', { className: "text-3xl font-semibold text-gray-600 mb-2" }, 'Chinese Learning Paradise'),
-                      React.createElement('p', { className: "text-xl text-gray-500 mb-8" }, '选择你想学习的篇章 / Choose Your Learning Chapter')
-                    ),
-                    React.createElement('div', { className: "grid md:grid-cols-2 gap-6 mb-8" },
-                      React.createElement('div', { className: "bg-gradient-to-br from-orange-50 to-red-100 p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 hover:shadow-lg" },
-                        React.createElement('div', { className: "text-center mb-6" },
-                          React.createElement('div', { className: "text-5xl mb-4" }, '⚽'),
-                          React.createElement('h3', { className: "text-xl font-bold text-orange-700 mb-2" }, '第一篇：华国的办法'),
-                          React.createElement('h4', { className: "text-lg font-semibold text-orange-600 mb-3" }, 'Chapter 1: Hua Guo\'s Solution'),
-                          React.createElement('p', { className: "text-gray-600 mb-3 text-sm" }, '学习关于解决问题的10个词汇', React.createElement('br'), 'Learn 10 problem-solving words')
-                        ),
-                        React.createElement('button', {
-                          onClick: () => handleChapterSelect('chapter1'),
-                          className: "w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                        }, React.createElement(BookOpen, { className: "w-5 h-5" }), '开始学习')
-                      ),
-                      React.createElement('div', { className: "bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-lg" },
-                        React.createElement('div', { className: "text-center mb-6" },
-                          React.createElement('div', { className: "text-5xl mb-4" }, '👫'),
-                          React.createElement('h3', { className: "text-xl font-bold text-blue-700 mb-2" }, '第二篇：好朋友'),
-                          React.createElement('h4', { className: "text-lg font-semibold text-blue-600 mb-3" }, 'Chapter 2: Good Friends'),
-                          React.createElement('p', { className: "text-gray-600 mb-3 text-sm" }, '学习关于友谊的10个词汇', React.createElement('br'), 'Learn 10 friendship words')
-                        ),
-                        React.createElement('button', {
-                          onClick: () => handleChapterSelect('chapter2'),
-                          className: "w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                        }, React.createElement(BookOpen, { className: "w-5 h-5" }), '开始学习')
-                      )
-                    )
-                  )
-                )
-              ),
-              currentPhase === 'learning' && currentChapter !== 'menu' && (() => {
-                const currentWord = getCurrentData().vocabulary[currentWordIndex];
-                return React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-6" },
-                  React.createElement('div', { className: "max-w-4xl mx-auto" },
-                    React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-8" },
-                      React.createElement('div', { className: "flex items-center justify-between mb-6" },
-                        React.createElement('h1', { className: "text-3xl font-bold text-purple-600 flex items-center gap-2" },
-                          React.createElement(BookOpen, { className: "w-8 h-8" }),
-                          `词汇学习 - ${chapterTitle}`
-                        ),
-                        React.createElement('div', { className: "flex items-center gap-4" },
-                          React.createElement('div', { className: "text-lg text-gray-600" }, `${currentWordIndex + 1} / ${getCurrentData().vocabulary.length}`),
-                          React.createElement('button', {
-                            onClick: backToMenu,
-                            className: "bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors"
-                          }, React.createElement(Home, { className: "w-5 h-5" }), '返回主页')
-                        )
-                      ),
-                      React.createElement('div', { className: "text-center mb-8" },
-                        React.createElement('div', { className: "text-6xl font-bold text-blue-600 mb-4" }, currentWord.word),
-                        React.createElement('div', { className: "text-2xl text-gray-500 mb-4" }, currentWord.pinyin),
-                        React.createElement('button', {
-                          onClick: () => speakText(currentWord.word),
-                          className: "bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold mb-6 transition-colors"
-                        }, '朗读词语'),
-                        React.createElement('div', { className: "space-y-4" },
-                          viewedChinese ? 
-                            React.createElement('div', { className: "bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-400" },
-                              React.createElement('p', { className: "text-lg" }, React.createElement('strong', null, '中文解释：'), currentWord.chinese)
-                            ) :
-                            React.createElement('button', {
-                              onClick: handleViewChinese,
-                              className: "bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors w-full"
-                            }, '查看华语解释'),
-                          viewedEnglish ?
-                            React.createElement('div', { className: "bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400" },
-                              React.createElement('p', { className: "text-lg" }, React.createElement('strong', null, 'English: '), currentWord.english)
-                            ) :
-                            React.createElement('button', {
-                              onClick: handleViewEnglish,
-                              className: "bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors w-full"
-                            }, '查看英文解释'),
-                          (viewedChinese && viewedEnglish) ?
-                            React.createElement('div', { className: "flex justify-center gap-4" },
-                              currentWordIndex > 0 && React.createElement('button', {
-                                onClick: handlePreviousWord,
-                                className: "bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-colors"
-                              }, '返回上一词汇'),
-                              React.createElement('button', {
-                                onClick: handleNextWord,
-                                className: "bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors"
-                              }, currentWordIndex < getCurrentData().vocabulary.length - 1 ? '下一个词汇' : '开始练习')
-                            ) :
-                            React.createElement('div', { className: "text-center py-4" },
-                              React.createElement('p', { className: "text-gray-500" }, '请先查看华语和英文解释')
-                            )
-                        )
-                      )
-                    )
-                  )
-                );
-              })(),
-              currentPhase === 'game' && (() => {
-                const currentQ = getCurrentData().gameQuestions[currentQuestion];
-                return React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-green-100 to-blue-100 p-6" },
-                  React.createElement('div', { className: "max-w-4xl mx-auto" },
-                    React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-8" },
-                      React.createElement('div', { className: "flex items-center justify-between mb-6" },
-                        React.createElement('h1', { className: "text-3xl font-bold text-green-600 flex items-center gap-2" },
-                          React.createElement(Gamepad2, { className: "w-8 h-8" }),
-                          `填空练习 - ${chapterTitle}`
-                        ),
-                        React.createElement('button', {
-                          onClick: backToMenu,
-                          className: "bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors"
-                        }, React.createElement(Home, { className: "w-5 h-5" }), '返回主页')
-                      ),
-                      React.createElement('div', { className: "text-center mb-8" },
-                        React.createElement('div', { className: "p-6 bg-gray-50 rounded-lg mb-8" },
-                          React.createElement('div', { className: "flex items-center justify-between mb-2" },
-                            React.createElement('span', { className: "text-xl text-gray-800" }, currentQ.text),
-                            React.createElement('button', {
-                              onClick: () => speakText(currentQ.text),
-                              className: "bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-full ml-4 transition-colors"
-                            }, React.createElement(Speaker, { className: "w-5 h-5" }))
-                          ),
-                          React.createElement('div', { className: "flex items-center justify-between" },
-                            React.createElement('span', { className: "text-lg text-gray-600" }, currentQ.english),
-                            React.createElement('button', {
-                              onClick: () => speakText(currentQ.english, 'en-US'),
-                              className: "bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full ml-4 transition-colors"
-                            }, React.createElement(Speaker, { className: "w-5 h-5" }))
-                          )
-                        ),
-                        React.createElement('div', { className: "grid grid-cols-1 gap-3 max-w-2xl mx-auto" },
-                          currentQ.options.map((option, index) =>
-                            React.createElement('button', {
-                              key: index,
-                              onClick: () => handleGameAnswer(option),
-                              className: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-3 rounded-lg text-lg font-semibold transition-colors"
-                            }, `${option} (${currentQ.optionsEnglish[index]})`)
-                          )
-                        )
-                      )
-                    )
-                  )
-                );
-              })(),
-              currentPhase === 'reading' && React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 p-6" },
-                React.createElement('div', { className: "max-w-4xl mx-auto" },
-                  React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-8 text-center" },
-                    React.createElement('h1', { className: "text-3xl font-bold text-purple-600 mb-8" }, '作文朗读完成！'),
-                    React.createElement('p', { className: "text-xl text-gray-700 mb-8" }, '恭喜完成所有练习！'),
-                    React.createElement('button', {
-                      onClick: backToMenu,
-                      className: "bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold"
-                    }, '返回主页')
-                  )
-                )
-              )
-            )
-          );
+          // Main render function
+          if (currentChapter === 'menu') {
+            return (
+              <div className="container">
+                <div className="header">
+                  <h1 className="title">🎓 中文学习天地</h1>
+                  <p className="subtitle">Chinese Learning Paradise - Complete Edition</p>
+                </div>
+                
+                <div className="card">
+                  <div className="grid">
+                    <div className="chapter-card" onClick={() => handleChapterSelect('chapter1')}>
+                      <div className="chapter-icon">⚽</div>
+                      <h3 className="chapter-title">第一篇：华国的办法</h3>
+                      <h4 className="chapter-subtitle">Chapter 1: Hua Guo's Solution</h4>
+                      <p className="chapter-desc">
+                        学习关于解决问题的10个词汇<br/>
+                        Learn 10 problem-solving words
+                      </p>
+                      <button className="btn">开始学习 Start Learning</button>
+                    </div>
+                    
+                    <div className="chapter-card" onClick={() => handleChapterSelect('chapter2')}>
+                      <div className="chapter-icon">👫</div>
+                      <h3 className="chapter-title">第二篇：好朋友</h3>
+                      <h4 className="chapter-subtitle">Chapter 2: Good Friends</h4>
+                      <p className="chapter-desc">
+                        学习关于友谊的10个词汇<br/>
+                        Learn 10 friendship words
+                      </p>
+                      <button className="btn">开始学习 Start Learning</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
+          // Learning phase
+          if (currentPhase === 'learning') {
+            const currentWord = getCurrentData().vocabulary[currentWordIndex];
+            return (
+              <div className="container">
+                <button className="back-btn" onClick={backToMenu}>🏠 返回主页</button>
+                
+                <div className="header">
+                  <h1 className="title">📚 词汇学习</h1>
+                  <p className="subtitle">{chapterTitle}</p>
+                </div>
+                
+                <div className="card learning-card">
+                  <div className="progress">
+                    第 {currentWordIndex + 1} 个词汇 / {getCurrentData().vocabulary.length} 个
+                  </div>
+                  
+                  <div className="word-display">{currentWord.word}</div>
+                  <div className="pinyin">{currentWord.pinyin}</div>
+                  
+                  <button className="btn" onClick={() => speakText(currentWord.word)}>
+                    🔊 朗读词语
+                  </button>
+                  
+                  <div style={{margin: '2rem 0'}}>
+                    {viewedChinese ? (
+                      <div className="explanation">
+                        <strong>中文解释：</strong>{currentWord.chinese}
+                      </div>
+                    ) : (
+                      <button className="btn" onClick={handleViewChinese}>
+                        查看华语解释
+                      </button>
+                    )}
+                    
+                    {viewedEnglish ? (
+                      <div className="explanation">
+                        <strong>English:</strong> {currentWord.english}
+                      </div>
+                    ) : (
+                      <button className="btn" onClick={handleViewEnglish}>
+                        查看英文解释
+                      </button>
+                    )}
+                  </div>
+                  
+                  {viewedChinese && viewedEnglish ? (
+                    <div className="controls">
+                      {currentWordIndex > 0 && (
+                        <button className="btn btn-secondary" onClick={handlePreviousWord}>
+                          ← 上一个词汇
+                        </button>
+                      )}
+                      <button className="btn" onClick={handleNextWord}>
+                        {currentWordIndex < getCurrentData().vocabulary.length - 1 ? '下一个词汇 →' : '开始练习 🎮'}
+                      </button>
+                    </div>
+                  ) : (
+                    <p style={{textAlign: 'center', color: '#666'}}>
+                      请先查看华语和英文解释
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          }
+
+          // Game phase
+          if (currentPhase === 'game') {
+            const currentQ = getCurrentData().gameQuestions[currentQuestion];
+            return (
+              <div className="container">
+                <button className="back-btn" onClick={backToMenu}>🏠 返回主页</button>
+                
+                <div className="header">
+                  <h1 className="title">🎮 填空练习</h1>
+                  <p className="subtitle">{chapterTitle}</p>
+                </div>
+                
+                <div className="card game-card">
+                  <div className="progress">
+                    第 {currentQuestion + 1} 题 / {getCurrentData().gameQuestions.length} 题
+                  </div>
+                  
+                  <div className="question">
+                    <div className="question-text">{currentQ.text}</div>
+                    <div className="question-english">{currentQ.english}</div>
+                    <button className="btn" onClick={() => speakText(currentQ.text)}>
+                      🔊 朗读题目
+                    </button>
+                  </div>
+                  
+                  <div className="options">
+                    {currentQ.options.map((option, index) => (
+                      <button 
+                        key={index}
+                        className="option-btn"
+                        onClick={() => handleGameAnswer(option)}
+                      >
+                        {option}<br/>
+                        <small>({currentQ.optionsEnglish[index]})</small>
+                      </button>
+                    ))}
+                  </div>
+                  
+                  {wrongCount > 0 && (
+                    <div style={{textAlign: 'center', color: 'red', fontWeight: 'bold'}}>
+                      错误次数: {wrongCount}/3
+                    </div>
+                  )}
+                  
+                  <div className="controls">
+                    <button className="btn btn-secondary" onClick={() => setCurrentPhase('learning')}>
+                      📚 返回词汇学习
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
+          // Reading phase
+          if (currentPhase === 'reading') {
+            if (!isReading) {
+              return (
+                <div className="container">
+                  <button className="back-btn" onClick={backToMenu}>🏠 返回主页</button>
+                  
+                  <div className="header">
+                    <h1 className="title">📖 作文朗读</h1>
+                    <p className="subtitle">{chapterTitle}</p>
+                  </div>
+                  
+                  <div className="card reading-card">
+                    <h2 style={{textAlign: 'center', marginBottom: '2rem'}}>
+                      🎉 恭喜完成所有练习！
+                    </h2>
+                    <p style={{textAlign: 'center', fontSize: '1.2rem', marginBottom: '2rem'}}>
+                      选择语言开始朗读故事：<br/>
+                      Choose a language to read the story:
+                    </p>
+                    
+                    <div className="controls">
+                      <button className="btn" onClick={() => handleReading('chinese')}>
+                        🇨🇳 中文朗读
+                      </button>
+                      <button className="btn" onClick={() => handleReading('english')}>
+                        🇺🇸 英文朗读
+                      </button>
+                    </div>
+                    
+                    <div className="controls">
+                      <button className="btn btn-secondary" onClick={() => resetChapterData()}>
+                        🔄 重新开始本章
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            } else {
+              const sentences = readingLanguage === 'chinese' ? getCurrentData().chineseSentences : getCurrentData().englishSentences;
+              
+              return (
+                <div className="container">
+                  <button className="back-btn" onClick={backToMenu}>🏠 返回主页</button>
+                  
+                  <div className="header">
+                    <h1 className="title">📖 {readingLanguage === 'chinese' ? '中文朗读' : 'English Reading'}</h1>
+                    <p className="subtitle">{chapterTitle}</p>
+                  </div>
+                  
+                  <div className="card reading-card">
+                    <div className="progress">
+                      第 {currentSentence + 1} 句 / {sentences.length} 句
+                    </div>
+                    
+                    <div className="story-container">
+                      {sentences.map((sentence, index) => (
+                        <div 
+                          key={index}
+                          className={`sentence ${index === currentSentence ? 'current-sentence' : ''}`}
+                        >
+                          {sentence}
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div className="controls">
+                      <button className="btn" onClick={() => speakText(sentences[currentSentence], readingLanguage === 'chinese' ? 'zh-CN' : 'en-US')}>
+                        🔊 重新朗读这句
+                      </button>
+                      <button className="btn" onClick={handleNextSentence}>
+                        {currentSentence < sentences.length - 1 ? '下一句 →' : '完成朗读 ✅'}
+                      </button>
+                    </div>
+                    
+                    <div className="controls">
+                      <button className="btn btn-secondary" onClick={() => {setIsReading(false); setReadingLanguage('');}}>
+                        ← 返回选择语言
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+          }
+
+          return null;
         };
 
         // Render the app
-        ReactDOM.render(React.createElement(ChineseLearningCompleteApp), document.getElementById('root'));
+        ReactDOM.render(<ChineseLearningCompleteApp />, document.getElementById('root'));
     </script>
 </body>
 </html>
