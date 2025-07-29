@@ -3,223 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chinese Learning Complete - AEC Games</title>
+    <title>Chinese Learning Complete - Comprehensive 12-Chapter Educational Game</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <style>
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
-        }
-        #root {
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 1rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 2rem;
-        }
-        .title {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .subtitle {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        .chapter-card {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #333;
-        }
-        .chapter-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-        .chapter-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .chapter-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .chapter-subtitle {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            opacity: 0.8;
-        }
-        .chapter-desc {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.4;
-        }
-        .btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0.5rem;
-        }
-        .btn:hover {
-            background: linear-gradient(45deg, #764ba2, #667eea);
-            transform: scale(1.05);
-        }
-        .btn-secondary {
-            background: #666;
-        }
-        .btn-secondary:hover {
-            background: #555;
-        }
-        .learning-card {
-            text-align: center;
-            padding: 2rem;
-        }
-        .word-display {
-            font-size: 4rem;
-            font-weight: bold;
-            color: #667eea;
-            margin: 1rem 0;
-        }
-        .pinyin {
-            font-size: 1.5rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-        .explanation {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-            border-left: 4px solid #667eea;
-        }
-        .game-card {
-            padding: 2rem;
-        }
-        .question {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-        .question-text {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        .question-english {
-            font-size: 1rem;
-            color: #666;
-        }
-        .options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .option-btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .option-btn:hover {
-            background: #764ba2;
-            transform: scale(1.02);
-        }
-        .reading-card {
-            padding: 2rem;
-        }
-        .story-container {
-            background: #fffbf0;
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 4px solid #ffd700;
-            margin: 2rem 0;
-        }
-        .sentence {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: 1rem 0;
-            padding: 0.5rem;
-            border-radius: 5px;
-        }
-        .current-sentence {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            font-weight: bold;
-            color: #856404;
-        }
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        .back-btn {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: #666;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .progress {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-        @media (max-width: 768px) {
-            .container { padding: 1rem; }
-            .title { font-size: 2rem; }
-            .word-display { font-size: 3rem; }
-            .grid { grid-template-columns: 1fr; }
-        }
-    </style>
 </head>
 <body>
     <div id="root"></div>
@@ -242,160 +30,878 @@
           const [currentSentence, setCurrentSentence] = useState(-1);
           const [isReading, setIsReading] = useState(false);
 
-          // 第一篇数据
-          const chapter1Data = {
-            vocabulary: [
-              { word: '办法', pinyin: 'bàn fǎ', chinese: '处理事情或解决问题的方法', english: 'way; method; solution' },
-              { word: '脑筋', pinyin: 'nǎo jīn', chinese: '思维和理解能力；想法', english: 'brain; mind; ideas' },
-              { word: '浮', pinyin: 'fú', chinese: '漂在水面上，不下沉', english: 'to float' },
-              { word: '树洞', pinyin: 'shù dòng', chinese: '树干上的空洞', english: 'tree hollow' },
-              { word: '着急', pinyin: 'zháo jí', chinese: '心里紧张，不安', english: 'anxious; worried' },
-              { word: '情形', pinyin: 'qíng xíng', chinese: '事情的状况或样子', english: 'situation; condition' },
-              { word: '小心', pinyin: 'xiǎo xīn', chinese: '注意，谨慎，不粗心', english: 'careful; cautious' },
-              { word: '树枝', pinyin: 'shù zhī', chinese: '树上的枝条', english: 'tree branch' },
-              { word: '聪明', pinyin: 'cōng míng', chinese: '头脑灵活，理解力强', english: 'clever; smart' },
-              { word: '提', pinyin: 'tí', chinese: '用手拿着（垂下的东西）', english: 'to carry (by hand); to lift' }
-            ],
-            gameQuestions: [
-              { 
-                text: '一个不___，皮球跳进一棵大树的树洞里去了。', 
-                english: 'One of them was not ___, and the ball bounced into a tree hollow.',
-                answer: '小心', 
-                answerEnglish: 'careful',
-                options: ['聪明', '小心', '着急', '办法'],
-                optionsEnglish: ['clever', 'careful', 'anxious', 'method']
-              },
-              { 
-                text: '皮球跳进一棵大树的___里去了。', 
-                english: 'The ball bounced into a ___ of a big tree.',
-                answer: '树洞', 
-                answerEnglish: 'tree hollow',
-                options: ['树枝', '情形', '树洞', '脑筋'],
-                optionsEnglish: ['tree branch', 'situation', 'tree hollow', 'brain']
-              },
-              { 
-                text: '大家很___，争着把手伸进树洞里去拿球。', 
-                english: 'Everyone became ___ and tried to reach into the hole to get the ball.',
-                answer: '着急', 
-                answerEnglish: 'anxious',
-                options: ['小心', '聪明', '浮', '着急'],
-                optionsEnglish: ['careful', 'clever', 'float', 'anxious']
-              },
-              { 
-                text: '有人找来一根___，伸进树洞里去拿球。', 
-                english: 'Someone brought a ___ and tried to reach the ball.',
-                answer: '树枝', 
-                answerEnglish: 'tree branch',
-                options: ['树枝', '树洞', '办法', '提'],
-                optionsEnglish: ['tree branch', 'tree hollow', 'method', 'carry']
-              },
-              { 
-                text: '也没有___把它拿上来。', 
-                english: 'They still had no ___ to get it out.',
-                answer: '办法', 
-                answerEnglish: 'solution',
-                options: ['情形', '脑筋', '浮', '办法'],
-                optionsEnglish: ['situation', 'brain', 'float', 'solution']
-              }
-            ],
-            chineseSentences: [
-              '几个孩子在一棵大树下拍球，一个不小心，皮球跳进一棵大树的树洞里去了。',
-              '大家很着急，争着把手伸进树洞里去拿球。',
-              '可是，他们的手太短了，没有人能把皮球拿上来。',
-              '有人找来一根树枝，伸进树洞里去拿球，可是球太滑了，也没有办法把它拿上来。',
-              '大家急得快哭出来了。',
-              '华国是个聪明的孩子，平时最爱动脑筋。',
-              '他看到这种情形，只见他眼珠子一转，就想到办法了。',
-              '他跑回家去，不久，提来了一桶水。',
-              '他把水倒进树洞里，皮球浮了上来。',
-              '他就轻易地拿到球了。'
-            ],
-            englishSentences: [
-              'A few children were playing with a ball under a big tree. One of them was not careful, and the ball bounced into a tree hollow.',
-              'Everyone became anxious and tried to reach into the hole to get the ball.',
-              'But their arms were too short—no one could get the ball out.',
-              'Someone brought a tree branch and tried to reach the ball, but it was too slippery, and they still had no solution.',
-              'The children were about to cry.',
-              'Hua Guo was a clever child who loved using his brain.',
-              'When he saw the situation, his eyes turned and he came up with an idea.',
-              'He ran home, and soon carried a bucket of water.',
-              'He poured the water into the tree hollow, and the ball floated up.',
-              'He easily picked it up.'
-            ]
-          };
-
-          // 第二篇数据
-          const chapter2Data = {
-            vocabulary: [
-              { word: '骄傲', pinyin: 'jiāo ào', chinese: '看不起别人；也可指感到自豪', english: 'arrogant / proud' },
-              { word: '学习', pinyin: 'xué xí', chinese: '通过读书或练习来获得知识或技能', english: 'to study / to learn' },
-              { word: '回家', pinyin: 'huí jiā', chinese: '从外面返回自己的家里', english: 'to go home' },
-              { word: '参加', pinyin: 'cān jiā', chinese: '参与活动或组织', english: 'to participate / to join' },
-              { word: '篮球', pinyin: 'lán qiú', chinese: '一种用手拍打球并投进篮筐的运动', english: 'basketball' },
-              { word: '帮助', pinyin: 'bāng zhù', chinese: '协助别人解决困难或完成任务', english: 'to help / to assist' },
-              { word: '比赛', pinyin: 'bǐ sài', chinese: '为争取胜利而进行的竞赛活动', english: 'competition / match' },
-              { word: '同班', pinyin: 'tóng bān', chinese: '在同一个班级', english: 'same class' },
-              { word: '高兴', pinyin: 'gāo xìng', chinese: '心情愉快，快乐', english: 'happy / glad' },
-              { word: '要好', pinyin: 'yào hǎo', chinese: '感情好，关系亲密', english: 'close (in relationship) / good friends' }
-            ],
-            gameQuestions: [
-              { 
-                text: '我有很多朋友,文锦和我最___。', 
-                english: 'I have many friends, and Wen Jin and I are the ___.',
-                answer: '要好', 
-                answerEnglish: 'closest',
-                options: ['骄傲', '要好', '高兴', '帮助'],
-                optionsEnglish: ['arrogant', 'closest', 'happy', 'help']
-              },
-              { 
-                text: '我们是___同学', 
-                english: 'We are ___ classmates',
-                answer: '同班', 
-                answerEnglish: 'same class',
-                options: ['比赛', '篮球', '同班', '参加'],
-                optionsEnglish: ['competition', 'basketball', 'same class', 'participate']
-              },
-              { 
-                text: '经常一起上学,一起___。', 
-                english: 'We often go to school and ___ together.',
-                answer: '回家', 
-                answerEnglish: 'go home',
-                options: ['学习', '骄傲', '帮助', '回家'],
-                optionsEnglish: ['study', 'arrogant', 'help', 'go home']
-              },
-              { 
-                text: '但他一点也不___', 
-                english: 'But he is not ___ at all',
-                answer: '骄傲', 
-                answerEnglish: 'arrogant',
-                options: ['高兴', '骄傲', '要好', '同班'],
-                optionsEnglish: ['happy', 'arrogant', 'close', 'same class']
-              },
-              { 
-                text: '还常常___功课差的同学。', 
-                english: 'He often ___ classmates who are weak in their schoolwork.',
-                answer: '帮助', 
-                answerEnglish: 'helps',
-                options: ['比赛', '参加', '学习', '帮助'],
-                optionsEnglish: ['competition', 'participate', 'study', 'helps']
-              }
-            ],
-            chineseSentences: [
-              '我有很多朋友，文锦和我最要好。',
-              '我们是同班同学，经常一起上学，一起回家。',
-              '文锦的功课很好，但他一点也不骄傲，还常常帮助功课差的同学。',
-              '此外，他也时常参加课外活动。',
-              '他的篮球打得很好，时常参加比赛。',
-              '我很高兴有文锦这么一个好朋友，我也要向他多学习。'
-            ],
-            englishSentences: [
-              'I have many friends, and Wen Jin and I are the closest.',
-              'We are in the same class, and we often go to school and go home together.',
-              'Wen Jin does well in his studies, but he is not proud at all. He often helps classmates who are weak in their schoolwork.',
-              'In addition, he often takes part in extracurricular activities.',
-              'He plays basketball very well and often joins competitions.',
-              'I feel very happy to have such a good friend like Wen Jin, and I want to learn from him more.'
-            ]
+          // All 12 chapters with complete data
+          const chaptersData = {
+            chapter1: {
+              vocabulary: [
+                { word: '办法', pinyin: 'bàn fǎ', chinese: '处理事情或解决问题的方法', english: 'way; method; solution' },
+                { word: '脑筋', pinyin: 'nǎo jīn', chinese: '思维和理解能力；想法', english: 'brain; mind; ideas' },
+                { word: '浮', pinyin: 'fú', chinese: '漂在水面上，不下沉', english: 'to float' },
+                { word: '树洞', pinyin: 'shù dòng', chinese: '树干上的空洞', english: 'tree hollow' },
+                { word: '着急', pinyin: 'zháo jí', chinese: '心里紧张，不安', english: 'anxious; worried' },
+                { word: '情形', pinyin: 'qíng xíng', chinese: '事情的状况或样子', english: 'situation; condition' },
+                { word: '小心', pinyin: 'xiǎo xīn', chinese: '注意，谨慎，不粗心', english: 'careful; cautious' },
+                { word: '树枝', pinyin: 'shù zhī', chinese: '树上的枝条', english: 'tree branch' },
+                { word: '聪明', pinyin: 'cōng míng', chinese: '头脑灵活，理解力强', english: 'clever; smart' },
+                { word: '提', pinyin: 'tí', chinese: '用手拿着（垂下的东西）', english: 'to carry (by hand); to lift' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '一个不___，皮球跳进一棵大树的树洞里去了。', 
+                  english: 'One of them was not ___, and the ball bounced into a tree hollow.',
+                  answer: '小心', 
+                  answerEnglish: 'careful',
+                  options: ['聪明', '小心', '着急', '办法'],
+                  optionsEnglish: ['clever', 'careful', 'anxious', 'method']
+                },
+                { 
+                  text: '皮球跳进一棵大树的___里去了。', 
+                  english: 'The ball bounced into a ___ of a big tree.',
+                  answer: '树洞', 
+                  answerEnglish: 'tree hollow',
+                  options: ['树枝', '情形', '树洞', '脑筋'],
+                  optionsEnglish: ['tree branch', 'situation', 'tree hollow', 'brain']
+                },
+                { 
+                  text: '大家很___，争着把手伸进树洞里去拿球。', 
+                  english: 'Everyone became ___ and tried to reach into the hole to get the ball.',
+                  answer: '着急', 
+                  answerEnglish: 'anxious',
+                  options: ['小心', '聪明', '浮', '着急'],
+                  optionsEnglish: ['careful', 'clever', 'float', 'anxious']
+                },
+                { 
+                  text: '有人找来一根___，伸进树洞里去拿球。', 
+                  english: 'Someone brought a ___ and tried to reach the ball.',
+                  answer: '树枝', 
+                  answerEnglish: 'tree branch',
+                  options: ['树枝', '树洞', '办法', '提'],
+                  optionsEnglish: ['tree branch', 'tree hollow', 'method', 'carry']
+                },
+                { 
+                  text: '也没有___把它拿上来。', 
+                  english: 'They still had no ___ to get it out.',
+                  answer: '办法', 
+                  answerEnglish: 'solution',
+                  options: ['情形', '脑筋', '浮', '办法'],
+                  optionsEnglish: ['situation', 'brain', 'float', 'solution']
+                }
+              ],
+              chineseSentences: [
+                '几个孩子在一棵大树下拍球，一个不小心，皮球跳进一棵大树的树洞里去了。',
+                '大家很着急，争着把手伸进树洞里去拿球。',
+                '可是，他们的手太短了，没有人能把皮球拿上来。',
+                '有人找来一根树枝，伸进树洞里去拿球，可是球太滑了，也没有办法把它拿上来。',
+                '大家急得快哭出来了。',
+                '华国是个聪明的孩子，平时最爱动脑筋。',
+                '他看到这种情形，只见他眼珠子一转，就想到办法了。',
+                '他跑回家去，不久，提来了一桶水。',
+                '他把水倒进树洞里，皮球浮了上来。',
+                '他就轻易地拿到球了。'
+              ],
+              englishSentences: [
+                'A few children were playing with a ball under a big tree. One of them was not careful, and the ball bounced into a tree hollow.',
+                'Everyone became anxious and tried to reach into the hole to get the ball.',
+                'But their arms were too short—no one could get the ball out.',
+                'Someone brought a tree branch and tried to reach the ball, but it was too slippery, and they still had no solution.',
+                'The children were about to cry.',
+                'Hua Guo was a clever child who loved using his brain.',
+                'When he saw the situation, his eyes turned and he came up with an idea.',
+                'He ran home, and soon carried a bucket of water.',
+                'He poured the water into the tree hollow, and the ball floated up.',
+                'He easily picked it up.'
+              ]
+            },
+            chapter2: {
+              vocabulary: [
+                { word: '骄傲', pinyin: 'jiāo ào', chinese: '看不起别人；也可指感到自豪', english: 'arrogant / proud' },
+                { word: '学习', pinyin: 'xué xí', chinese: '通过读书或练习来获得知识或技能', english: 'to study / to learn' },
+                { word: '回家', pinyin: 'huí jiā', chinese: '从外面返回自己的家里', english: 'to go home' },
+                { word: '参加', pinyin: 'cān jiā', chinese: '参与活动或组织', english: 'to participate / to join' },
+                { word: '篮球', pinyin: 'lán qiú', chinese: '一种用手拍打球并投进篮筐的运动', english: 'basketball' },
+                { word: '帮助', pinyin: 'bāng zhù', chinese: '协助别人解决困难或完成任务', english: 'to help / to assist' },
+                { word: '比赛', pinyin: 'bǐ sài', chinese: '为争取胜利而进行的竞赛活动', english: 'competition / match' },
+                { word: '同班', pinyin: 'tóng bān', chinese: '在同一个班级', english: 'same class' },
+                { word: '高兴', pinyin: 'gāo xìng', chinese: '心情愉快，快乐', english: 'happy / glad' },
+                { word: '要好', pinyin: 'yào hǎo', chinese: '感情好，关系亲密', english: 'close (in relationship) / good friends' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '我有很多朋友,文锦和我最___。', 
+                  english: 'I have many friends, and Wen Jin and I are the ___.',
+                  answer: '要好', 
+                  answerEnglish: 'closest',
+                  options: ['骄傲', '要好', '高兴', '帮助'],
+                  optionsEnglish: ['arrogant', 'closest', 'happy', 'help']
+                },
+                { 
+                  text: '我们是___同学', 
+                  english: 'We are ___ classmates',
+                  answer: '同班', 
+                  answerEnglish: 'same class',
+                  options: ['比赛', '篮球', '同班', '参加'],
+                  optionsEnglish: ['competition', 'basketball', 'same class', 'participate']
+                },
+                { 
+                  text: '经常一起上学,一起___。', 
+                  english: 'We often go to school and ___ together.',
+                  answer: '回家', 
+                  answerEnglish: 'go home',
+                  options: ['学习', '骄傲', '帮助', '回家'],
+                  optionsEnglish: ['study', 'arrogant', 'help', 'go home']
+                },
+                { 
+                  text: '但他一点也不___', 
+                  english: 'But he is not ___ at all',
+                  answer: '骄傲', 
+                  answerEnglish: 'arrogant',
+                  options: ['高兴', '骄傲', '要好', '同班'],
+                  optionsEnglish: ['happy', 'arrogant', 'close', 'same class']
+                },
+                { 
+                  text: '还常常___功课差的同学。', 
+                  english: 'He often ___ classmates who are weak in their schoolwork.',
+                  answer: '帮助', 
+                  answerEnglish: 'helps',
+                  options: ['比赛', '参加', '学习', '帮助'],
+                  optionsEnglish: ['competition', 'participate', 'study', 'helps']
+                }
+              ],
+              chineseSentences: [
+                '我有很多朋友，文锦和我最要好。',
+                '我们是同班同学，经常一起上学，一起回家。',
+                '文锦的功课很好，但他一点也不骄傲，还常常帮助功课差的同学。',
+                '此外，他也时常参加课外活动。',
+                '他的篮球打得很好，时常参加比赛。',
+                '我很高兴有文锦这么一个好朋友，我也要向他多学习。'
+              ],
+              englishSentences: [
+                'I have many friends, and Wen Jin and I are the closest.',
+                'We are in the same class, and we often go to school and go home together.',
+                'Wen Jin does well in his studies, but he is not proud at all. He often helps classmates who are weak in their schoolwork.',
+                'In addition, he often takes part in extracurricular activities.',
+                'He plays basketball very well and often joins competitions.',
+                'I feel very happy to have such a good friend like Wen Jin, and I want to learn from him more.'
+              ]
+            },
+            chapter3: {
+              vocabulary: [
+                { word: '舒服', pinyin: 'shū fu', chinese: '感到轻松自在，没有不适', english: 'comfortable' },
+                { word: '奔', pinyin: 'bēn', chinese: '快速地跑向某个方向', english: 'to rush; to run quickly' },
+                { word: '温暖', pinyin: 'wēn nuǎn', chinese: '温和暖和；也比喻令人感到关爱', english: 'warm; warmth' },
+                { word: '棉被', pinyin: 'mián bèi', chinese: '用棉花做的被子', english: 'quilt; cotton blanket' },
+                { word: '幸福', pinyin: 'xìng fú', chinese: '生活美好，心里满足', english: 'happy; blissful' },
+                { word: '照顾', pinyin: 'zhào gù', chinese: '关心、帮助他人生活起居', english: 'to take care of' },
+                { word: '连忙', pinyin: 'lián máng', chinese: '立刻，赶快做某事', english: 'promptly; at once' },
+                { word: '年幼', pinyin: 'nián yòu', chinese: '年纪小，年龄还小', english: 'young; little' },
+                { word: '未曾', pinyin: 'wèi céng', chinese: '以前从来没有', english: 'never before' },
+                { word: '软弱', pinyin: 'ruǎn ruò', chinese: '身体没有力气或性格不坚强', english: 'weak; frail' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '自从一个小主人收留了我，我就过着___的日子。', 
+                  english: 'Since a kind little boy took me in, I\\'ve been living a ___ life.',
+                  answer: '幸福', 
+                  answerEnglish: 'happy',
+                  options: ['温暖', '幸福', '舒服', '软弱'],
+                  optionsEnglish: ['warm', 'happy', 'comfortable', 'weak']
+                },
+                { 
+                  text: '在我___的时候，爸爸妈妈就被人捉走了。', 
+                  english: 'When I was still ___, my father and mother were taken away.',
+                  answer: '年幼', 
+                  answerEnglish: 'young',
+                  options: ['软弱', '舒服', '年幼', '温暖'],
+                  optionsEnglish: ['weak', 'comfortable', 'young', 'warm']
+                },
+                { 
+                  text: '我饿得___无力的时候，有一个小孩走了过来。', 
+                  english: 'When I was so hungry and ___ that I couldn\\'t move, a child came over.',
+                  answer: '软弱', 
+                  answerEnglish: 'weak',
+                  options: ['年幼', '未曾', '软弱', '连忙'],
+                  optionsEnglish: ['young', 'never before', 'weak', 'promptly']
+                },
+                { 
+                  text: '他轻轻地把我抱起，直往一所房子___去。', 
+                  english: 'He gently picked me up and ___ straight toward a house.',
+                  answer: '奔', 
+                  answerEnglish: 'ran',
+                  options: ['奔', '照顾', '连忙', '未曾'],
+                  optionsEnglish: ['ran', 'take care of', 'promptly', 'never before']
+                },
+                { 
+                  text: '小孩把我放进一个纸箱子里，又___给我盖上了一条棉被。', 
+                  english: 'The child put me in a cardboard box and ___ covered me with a cotton blanket.',
+                  answer: '连忙', 
+                  answerEnglish: 'promptly',
+                  options: ['照顾', '温暖', '连忙', '舒服'],
+                  optionsEnglish: ['take care of', 'warm', 'promptly', 'comfortable']
+                }
+              ],
+              chineseSentences: [
+                '我是一只小狗，自从一个小主人收留了我，我就过着幸福的日子。',
+                '我叫小汪，出生在一个角落里。',
+                '在我年幼的时候，爸爸妈妈就被人捉走了。',
+                '有一天，我饿得软弱无力的时候，有一个小孩走了过来，他轻轻地把我抱起，直往一所房子奔去。',
+                '小孩把我放进一个纸箱子里，又连忙给我盖上了一条棉被。'
+              ],
+              englishSentences: [
+                'I am a little puppy. Since a kind little boy took me in, I\\'ve been living a happy life.',
+                'My name is Little Woof. I was born in a corner.',
+                'When I was still young, my father and mother were taken away.',
+                'One day, when I was so hungry and weak that I couldn\\'t move, a child came over, gently picked me up, and ran straight toward a house.',
+                'The child put me in a cardboard box and promptly covered me with a cotton blanket.'
+              ]
+            },
+            chapter4: {
+              vocabulary: [
+                { word: '轻松', pinyin: 'qīng sōng', chinese: '没有压力，自在舒适', english: 'relaxed; easy' },
+                { word: '抄写', pinyin: 'chāo xiě', chinese: '照着原文把文字写下来', english: 'to copy; to transcribe' },
+                { word: '完成', pinyin: 'wán chéng', chinese: '做好，做完', english: 'to complete; to finish' },
+                { word: '努力', pinyin: 'nǔ lì', chinese: '用心用力去做', english: 'to work hard; effort' },
+                { word: '马虎', pinyin: 'mǎ hu', chinese: '做事不细心，草率', english: 'careless; casual' },
+                { word: '检查', pinyin: 'jiǎn chá', chinese: '为了发现问题而察看', english: 'to check; to examine' },
+                { word: '错误', pinyin: 'cuò wù', chinese: '不正确的事物或行为', english: 'mistake; error' },
+                { word: '细心', pinyin: 'xì xīn', chinese: '用心仔细，不粗心', english: 'careful; attentive' },
+                { word: '改正', pinyin: 'gǎi zhèng', chinese: '把错的改为对的', english: 'to correct; to rectify' },
+                { word: '习惯', pinyin: 'xí guàn', chinese: '经常做而形成的行为方式', english: 'habit; custom' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '明明做作业总是很___，从不认真检查。', 
+                  english: 'Ming Ming is always ___ when doing homework and never checks carefully.',
+                  answer: '马虎', 
+                  answerEnglish: 'careless',
+                  options: ['细心', '努力', '马虎', '轻松'],
+                  optionsEnglish: ['careful', 'hardworking', 'careless', 'relaxed']
+                },
+                { 
+                  text: '老师要求我们___课文。', 
+                  english: 'The teacher asked us to ___ the text.',
+                  answer: '抄写', 
+                  answerEnglish: 'copy',
+                  options: ['检查', '抄写', '改正', '完成'],
+                  optionsEnglish: ['check', 'copy', 'correct', 'complete']
+                },
+                { 
+                  text: '做完作业后要___一遍。', 
+                  english: 'After finishing homework, we should ___ it once.',
+                  answer: '检查', 
+                  answerEnglish: 'check',
+                  options: ['抄写', '完成', '检查', '努力'],
+                  optionsEnglish: ['copy', 'complete', 'check', 'work hard']
+                },
+                { 
+                  text: '发现___要及时改正。', 
+                  english: 'When we find ___, we should correct them in time.',
+                  answer: '错误', 
+                  answerEnglish: 'mistakes',
+                  options: ['习惯', '错误', '轻松', '细心'],
+                  optionsEnglish: ['habits', 'mistakes', 'relaxed', 'careful']
+                },
+                { 
+                  text: '养成___学习的好___。', 
+                  english: 'Develop good ___ of ___ study.',
+                  answer: '细心', 
+                  answerEnglish: 'careful',
+                  options: ['马虎', '细心', '轻松', '努力'],
+                  optionsEnglish: ['careless', 'careful', 'relaxed', 'hardworking']
+                }
+              ],
+              chineseSentences: [
+                '明明是个聪明的孩子，但是做作业总是很马虎。',
+                '今天老师布置抄写生词的作业，明明很快就完成了。',
+                '但是他没有检查，就交给了老师。',
+                '老师发现了很多错误，让他重新做。',
+                '明明意识到自己的问题，决定以后要细心一些。',
+                '从那以后，明明养成了认真检查作业的好习惯。'
+              ],
+              englishSentences: [
+                'Ming Ming is a clever child, but he is always careless when doing homework.',
+                'Today the teacher assigned copying vocabulary words, and Ming Ming finished quickly.',
+                'But he didn\\'t check his work before handing it to the teacher.',
+                'The teacher found many mistakes and asked him to redo it.',
+                'Ming Ming realized his problem and decided to be more careful in the future.',
+                'From then on, Ming Ming developed the good habit of carefully checking his homework.'
+              ]
+            },
+            chapter5: {
+              vocabulary: [
+                { word: '季节', pinyin: 'jì jié', chinese: '一年中的春、夏、秋、冬', english: 'season' },
+                { word: '炎热', pinyin: 'yán rè', chinese: '非常热', english: 'hot; sweltering' },
+                { word: '凉爽', pinyin: 'liáng shuǎng', chinese: '清凉而舒适', english: 'cool and refreshing' },
+                { word: '寒冷', pinyin: 'hán lěng', chinese: '温度很低，很冷', english: 'cold; freezing' },
+                { word: '温和', pinyin: 'wēn hé', chinese: '不热也不冷，适中', english: 'mild; temperate' },
+                { word: '绿叶', pinyin: 'lǜ yè', chinese: '绿色的叶子', english: 'green leaves' },
+                { word: '花朵', pinyin: 'huā duǒ', chinese: '花的总称', english: 'flowers; blossoms' },
+                { word: '果实', pinyin: 'guǒ shí', chinese: '植物的果子', english: 'fruit' },
+                { word: '雪花', pinyin: 'xuě huā', chinese: '雪的结晶体', english: 'snowflakes' },
+                { word: '变化', pinyin: 'biàn huà', chinese: '改变，不同', english: 'change; transformation' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '春天是___的季节，万物复苏。', 
+                  english: 'Spring is a ___ season when everything comes back to life.',
+                  answer: '温和', 
+                  answerEnglish: 'mild',
+                  options: ['炎热', '寒冷', '温和', '凉爽'],
+                  optionsEnglish: ['hot', 'cold', 'mild', 'cool']
+                },
+                { 
+                  text: '夏天很___，人们喜欢游泳。', 
+                  english: 'Summer is very ___, and people like swimming.',
+                  answer: '炎热', 
+                  answerEnglish: 'hot',
+                  options: ['凉爽', '炎热', '寒冷', '温和'],
+                  optionsEnglish: ['cool', 'hot', 'cold', 'mild']
+                },
+                { 
+                  text: '秋天___，是收获的季节。', 
+                  english: 'Autumn is ___ and is the harvest season.',
+                  answer: '凉爽', 
+                  answerEnglish: 'cool',
+                  options: ['炎热', '寒冷', '凉爽', '温和'],
+                  optionsEnglish: ['hot', 'cold', 'cool', 'mild']
+                },
+                { 
+                  text: '冬天___，经常下雪。', 
+                  english: 'Winter is ___ and it often snows.',
+                  answer: '寒冷', 
+                  answerEnglish: 'cold',
+                  options: ['温和', '炎热', '凉爽', '寒冷'],
+                  optionsEnglish: ['mild', 'hot', 'cool', 'cold']
+                },
+                { 
+                  text: '一年四季都有不同的___。', 
+                  english: 'The four seasons each have different ___.',
+                  answer: '变化', 
+                  answerEnglish: 'changes',
+                  options: ['花朵', '果实', '变化', '雪花'],
+                  optionsEnglish: ['flowers', 'fruits', 'changes', 'snowflakes']
+                }
+              ],
+              chineseSentences: [
+                '一年有四个季节：春、夏、秋、冬。',
+                '春天天气温和，树木长出绿叶，开出美丽的花朵。',
+                '夏天天气炎热，人们喜欢到海边游泳避暑。',
+                '秋天天气凉爽，是收获果实的季节。',
+                '冬天天气寒冷，天空中飘着雪花。',
+                '每个季节都有它独特的美丽和变化。'
+              ],
+              englishSentences: [
+                'There are four seasons in a year: spring, summer, autumn, and winter.',
+                'In spring, the weather is mild, trees grow green leaves and bloom beautiful flowers.',
+                'In summer, the weather is hot, and people like to go to the beach to swim and cool off.',
+                'In autumn, the weather is cool, and it\\'s the season for harvesting fruits.',
+                'In winter, the weather is cold, and snowflakes float in the sky.',
+                'Each season has its unique beauty and changes.'
+              ]
+            },
+            chapter6: {
+              vocabulary: [
+                { word: '交通', pinyin: 'jiāo tōng', chinese: '人和物的流动运输', english: 'traffic; transportation' },
+                { word: '安全', pinyin: 'ān quán', chinese: '没有危险，不受伤害', english: 'safe; safety' },
+                { word: '遵守', pinyin: 'zūn shǒu', chinese: '按照规定去做', english: 'to obey; to follow' },
+                { word: '规则', pinyin: 'guī zé', chinese: '规定的准则', english: 'rules; regulations' },
+                { word: '红灯', pinyin: 'hóng dēng', chinese: '红色的交通信号灯', english: 'red light' },
+                { word: '绿灯', pinyin: 'lǜ dēng', chinese: '绿色的交通信号灯', english: 'green light' },
+                { word: '人行道', pinyin: 'rén xíng dào', chinese: '专供行人走的道路', english: 'sidewalk; pedestrian path' },
+                { word: '斑马线', pinyin: 'bān mǎ xiàn', chinese: '人行横道的标志线', english: 'zebra crossing; crosswalk' },
+                { word: '小心', pinyin: 'xiǎo xīn', chinese: '注意，谨慎', english: 'careful; cautious' },
+                { word: '危险', pinyin: 'wēi xiǎn', chinese: '有可能发生灾难或不幸', english: 'dangerous; danger' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '过马路时一定要___交通规则。', 
+                  english: 'When crossing the road, we must ___ traffic rules.',
+                  answer: '遵守', 
+                  answerEnglish: 'obey',
+                  options: ['遵守', '危险', '小心', '安全'],
+                  optionsEnglish: ['obey', 'dangerous', 'careful', 'safe']
+                },
+                { 
+                  text: '___的时候不能过马路。', 
+                  english: 'We cannot cross the road when it\\'s a ___.',
+                  answer: '红灯', 
+                  answerEnglish: 'red light',
+                  options: ['绿灯', '红灯', '人行道', '斑马线'],
+                  optionsEnglish: ['green light', 'red light', 'sidewalk', 'crosswalk']
+                },
+                { 
+                  text: '___亮了才能过马路。', 
+                  english: 'We can only cross the road when the ___ is on.',
+                  answer: '绿灯', 
+                  answerEnglish: 'green light',
+                  options: ['红灯', '绿灯', '交通', '规则'],
+                  optionsEnglish: ['red light', 'green light', 'traffic', 'rules']
+                },
+                { 
+                  text: '要走___过马路。', 
+                  english: 'We should use the ___ to cross the road.',
+                  answer: '斑马线', 
+                  answerEnglish: 'crosswalk',
+                  options: ['人行道', '斑马线', '红灯', '绿灯'],
+                  optionsEnglish: ['sidewalk', 'crosswalk', 'red light', 'green light']
+                },
+                { 
+                  text: '不遵守交通规则是很___的。', 
+                  english: 'Not following traffic rules is very ___.',
+                  answer: '危险', 
+                  answerEnglish: 'dangerous',
+                  options: ['安全', '小心', '危险', '交通'],
+                  optionsEnglish: ['safe', 'careful', 'dangerous', 'traffic']
+                }
+              ],
+              chineseSentences: [
+                '交通安全对每个人都很重要。',
+                '我们必须遵守交通规则，这样才能保证安全。',
+                '红灯的时候不能过马路，要等绿灯亮了才能走。',
+                '过马路时要走人行道上的斑马线。',
+                '在路上要时刻小心，注意来往的车辆。',
+                '只有大家都遵守交通规则，道路才会更安全。'
+              ],
+              englishSentences: [
+                'Traffic safety is important for everyone.',
+                'We must obey traffic rules to ensure safety.',
+                'We cannot cross the road during a red light; we must wait for the green light.',
+                'When crossing the road, we should use the crosswalk on the sidewalk.',
+                'We should always be careful on the road and watch for passing vehicles.',
+                'Only when everyone follows traffic rules will the roads be safer.'
+              ]
+            },
+            chapter7: {
+              vocabulary: [
+                { word: '健康', pinyin: 'jiàn kāng', chinese: '身体和精神状况良好', english: 'healthy; health' },
+                { word: '锻炼', pinyin: 'duàn liàn', chinese: '通过体力活动增强体质', english: 'to exercise; to work out' },
+                { word: '营养', pinyin: 'yíng yǎng', chinese: '生物体吸收的有益物质', english: 'nutrition; nutritious' },
+                { word: '蔬菜', pinyin: 'shū cài', chinese: '可以食用的植物', english: 'vegetables' },
+                { word: '水果', pinyin: 'shuǐ guǒ', chinese: '植物的果实，可以食用', english: 'fruit' },
+                { word: '睡眠', pinyin: 'shuì mián', chinese: '生物的休息状态', english: 'sleep' },
+                { word: '充足', pinyin: 'chōng zú', chinese: '足够，不缺少', english: 'sufficient; adequate' },
+                { word: '疲劳', pinyin: 'pí láo', chinese: '身体或精神感到累', english: 'tired; fatigue' },
+                { word: '精神', pinyin: 'jīng shén', chinese: '人的意识和思维活动', english: 'spirit; energy' },
+                { word: '习惯', pinyin: 'xí guàn', chinese: '长期形成的行为方式', english: 'habit' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '要保持___，就要经常锻炼身体。', 
+                  english: 'To maintain ___, we need to exercise regularly.',
+                  answer: '健康', 
+                  answerEnglish: 'health',
+                  options: ['健康', '疲劳', '睡眠', '营养'],
+                  optionsEnglish: ['health', 'fatigue', 'sleep', 'nutrition']
+                },
+                { 
+                  text: '多吃___和水果对身体有好处。', 
+                  english: 'Eating more ___ and fruits is good for the body.',
+                  answer: '蔬菜', 
+                  answerEnglish: 'vegetables',
+                  options: ['蔬菜', '精神', '习惯', '锻炼'],
+                  optionsEnglish: ['vegetables', 'spirit', 'habit', 'exercise']
+                },
+                { 
+                  text: '___的睡眠可以消除疲劳。', 
+                  english: '___ sleep can eliminate fatigue.',
+                  answer: '充足', 
+                  answerEnglish: 'Sufficient',
+                  options: ['疲劳', '充足', '精神', '营养'],
+                  optionsEnglish: ['tired', 'sufficient', 'spirit', 'nutrition']
+                },
+                { 
+                  text: '好的生活___有利于健康。', 
+                  english: 'Good living ___ are beneficial to health.',
+                  answer: '习惯', 
+                  answerEnglish: 'habits',
+                  options: ['睡眠', '水果', '蔬菜', '习惯'],
+                  optionsEnglish: ['sleep', 'fruits', 'vegetables', 'habits']
+                },
+                { 
+                  text: '缺乏锻炼会让人感到___。', 
+                  english: 'Lack of exercise can make people feel ___.',
+                  answer: '疲劳', 
+                  answerEnglish: 'tired',
+                  options: ['健康', '充足', '疲劳', '精神'],
+                  optionsEnglish: ['healthy', 'sufficient', 'tired', 'energetic']
+                }
+              ],
+              chineseSentences: [
+                '健康的生活方式包括合理的饮食和充足的运动。',
+                '我们每天都应该锻炼身体，这样才能保持健康。',
+                '多吃蔬菜和水果，可以获得丰富的营养。',
+                '充足的睡眠可以帮助我们恢复精神，消除疲劳。',
+                '养成良好的生活习惯，对我们的健康很重要。',
+                '只有身体健康，我们才能更好地学习和工作。'
+              ],
+              englishSentences: [
+                'A healthy lifestyle includes a balanced diet and adequate exercise.',
+                'We should exercise every day to maintain our health.',
+                'Eating more vegetables and fruits can provide us with rich nutrition.',
+                'Adequate sleep can help us restore our energy and eliminate fatigue.',
+                'Developing good living habits is very important for our health.',
+                'Only with good health can we study and work better.'
+              ]
+            },
+            chapter8: {
+              vocabulary: [
+                { word: '环境', pinyin: 'huán jìng', chinese: '周围的条件和情况', english: 'environment' },
+                { word: '保护', pinyin: 'bǎo hù', chinese: '尽力照顾，使不受伤害', english: 'to protect' },
+                { word: '污染', pinyin: 'wū rǎn', chinese: '使变得不干净', english: 'pollution; to pollute' },
+                { word: '垃圾', pinyin: 'lā jī', chinese: '废弃的东西', english: 'garbage; trash' },
+                { word: '分类', pinyin: 'fēn lèi', chinese: '按照种类分开', english: 'to classify; classification' },
+                { word: '回收', pinyin: 'huí shōu', chinese: '重新收集利用', english: 'to recycle' },
+                { word: '节约', pinyin: 'jiē yuē', chinese: '节省，不浪费', english: 'to save; to economize' },
+                { word: '资源', pinyin: 'zī yuán', chinese: '可以利用的财富', english: 'resources' },
+                { word: '绿化', pinyin: 'lǜ huà', chinese: '种植花草树木', english: 'greening; landscaping' },
+                { word: '责任', pinyin: 'zé rèn', chinese: '应该承担的任务', english: 'responsibility; duty' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '保护___是每个人的责任。', 
+                  english: 'Protecting the ___ is everyone\\'s responsibility.',
+                  answer: '环境', 
+                  answerEnglish: 'environment',
+                  options: ['环境', '垃圾', '资源', '责任'],
+                  optionsEnglish: ['environment', 'garbage', 'resources', 'responsibility']
+                },
+                { 
+                  text: '___会破坏我们的生活环境。', 
+                  english: '___ can destroy our living environment.',
+                  answer: '污染', 
+                  answerEnglish: 'Pollution',
+                  options: ['保护', '污染', '节约', '绿化'],
+                  optionsEnglish: ['protection', 'pollution', 'saving', 'greening']
+                },
+                { 
+                  text: '我们要把___进行分类。', 
+                  english: 'We should ___ our garbage.',
+                  answer: '分类', 
+                  answerEnglish: 'classify',
+                  options: ['回收', '分类', '节约', '保护'],
+                  optionsEnglish: ['recycle', 'classify', 'save', 'protect']
+                },
+                { 
+                  text: '___利用可以减少浪费。', 
+                  english: '___ can reduce waste.',
+                  answer: '回收', 
+                  answerEnglish: 'Recycling',
+                  options: ['污染', '垃圾', '回收', '分类'],
+                  optionsEnglish: ['pollution', 'garbage', 'recycling', 'classification']
+                },
+                { 
+                  text: '多种树可以___我们的城市。', 
+                  english: 'Planting more trees can ___ our city.',
+                  answer: '绿化', 
+                  answerEnglish: 'green',
+                  options: ['污染', '绿化', '节约', '回收'],
+                  optionsEnglish: ['pollute', 'green', 'save', 'recycle']
+                }
+              ],
+              chineseSentences: [
+                '保护环境是我们每个人的责任。',
+                '工厂排放的废气会造成空气污染。',
+                '我们应该把垃圾分类投放，便于回收利用。',
+                '节约用水用电，可以保护自然资源。',
+                '多种花草树木，能够绿化我们的城市。',
+                '只有大家一起努力，才能创造美好的环境。'
+              ],
+              englishSentences: [
+                'Protecting the environment is everyone\\'s responsibility.',
+                'Waste gases from factories cause air pollution.',
+                'We should sort our garbage for easy recycling.',
+                'Saving water and electricity can protect natural resources.',
+                'Planting more flowers, grass, and trees can green our city.',
+                'Only by working together can we create a beautiful environment.'
+              ]
+            },
+            chapter9: {
+              vocabulary: [
+                { word: '科技', pinyin: 'kē jì', chinese: '科学技术', english: 'science and technology' },
+                { word: '发明', pinyin: 'fā míng', chinese: '创造出新的事物', english: 'to invent; invention' },
+                { word: '电脑', pinyin: 'diàn nǎo', chinese: '计算机', english: 'computer' },
+                { word: '网络', pinyin: 'wǎng luò', chinese: '互相连接的系统', english: 'network; internet' },
+                { word: '信息', pinyin: 'xìn xī', chinese: '消息和知识', english: 'information' },
+                { word: '方便', pinyin: 'fāng biàn', chinese: '便利，容易', english: 'convenient' },
+                { word: '快速', pinyin: 'kuài sù', chinese: '速度很快', english: 'fast; rapid' },
+                { word: '沟通', pinyin: 'gōu tōng', chinese: '交流思想和感情', english: 'to communicate' },
+                { word: '进步', pinyin: 'jìn bù', chinese: '向前发展', english: 'progress; to progress' },
+                { word: '未来', pinyin: 'wèi lái', chinese: '将来的时间', english: 'future' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '___的发展改变了我们的生活。', 
+                  english: 'The development of ___ has changed our lives.',
+                  answer: '科技', 
+                  answerEnglish: 'technology',
+                  options: ['科技', '信息', '沟通', '未来'],
+                  optionsEnglish: ['technology', 'information', 'communication', 'future']
+                },
+                { 
+                  text: '___是现代重要的发明之一。', 
+                  english: '___ is one of the important inventions of modern times.',
+                  answer: '电脑', 
+                  answerEnglish: 'Computer',
+                  options: ['电脑', '网络', '进步', '方便'],
+                  optionsEnglish: ['computer', 'network', 'progress', 'convenient']
+                },
+                { 
+                  text: '通过___我们可以获得各种信息。', 
+                  english: 'Through the ___ we can get various information.',
+                  answer: '网络', 
+                  answerEnglish: 'internet',
+                  options: ['发明', '网络', '快速', '沟通'],
+                  optionsEnglish: ['invention', 'internet', 'fast', 'communication']
+                },
+                { 
+                  text: '现代科技让___变得更加方便。', 
+                  english: 'Modern technology makes ___ more convenient.',
+                  answer: '沟通', 
+                  answerEnglish: 'communication',
+                  options: ['沟通', '未来', '进步', '信息'],
+                  optionsEnglish: ['communication', 'future', 'progress', 'information']
+                },
+                { 
+                  text: '科技的___让我们对未来充满希望。', 
+                  english: 'The ___ of technology fills us with hope for the future.',
+                  answer: '进步', 
+                  answerEnglish: 'progress',
+                  options: ['方便', '快速', '进步', '发明'],
+                  optionsEnglish: ['convenience', 'speed', 'progress', 'invention']
+                }
+              ],
+              chineseSentences: [
+                '科技的快速发展给我们的生活带来了巨大变化。',
+                '电脑是20世纪最重要的发明之一。',
+                '互联网让我们能够快速获得世界各地的信息。',
+                '手机让人们的沟通变得更加方便。',
+                '科技进步让我们对未来生活充满期待。',
+                '我们应该好好学习，为科技发展做出贡献。'
+              ],
+              englishSentences: [
+                'The rapid development of technology has brought great changes to our lives.',
+                'The computer is one of the most important inventions of the 20th century.',
+                'The internet allows us to quickly access information from around the world.',
+                'Mobile phones make communication more convenient for people.',
+                'Technological progress fills us with expectations for future life.',
+                'We should study hard to contribute to technological development.'
+              ]
+            },
+            chapter10: {
+              vocabulary: [
+                { word: '文化', pinyin: 'wén huà', chinese: '人类的精神财富', english: 'culture' },
+                { word: '传统', pinyin: 'chuán tǒng', chinese: '世代相传的思想、行为', english: 'tradition; traditional' },
+                { word: '节日', pinyin: 'jié rì', chinese: '纪念意义的日子', english: 'festival; holiday' },
+                { word: '庆祝', pinyin: 'qìng zhù', chinese: '为高兴的事举行活动', english: 'to celebrate' },
+                { word: '习俗', pinyin: 'xí sú', chinese: '传统的风俗习惯', english: 'custom; tradition' },
+                { word: '团圆', pinyin: 'tuán yuán', chinese: '全家人聚在一起', english: 'reunion; to reunite' },
+                { word: '祝福', pinyin: 'zhù fú', chinese: '表示良好的愿望', english: 'blessing; to bless' },
+                { word: '礼物', pinyin: 'lǐ wù', chinese: '表示心意的东西', english: 'gift; present' },
+                { word: '快乐', pinyin: 'kuài lè', chinese: '高兴，愉快', english: 'happy; joy' },
+                { word: '意义', pinyin: 'yì yì', chinese: '价值和作用', english: 'meaning; significance' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '春节是中国最重要的___节日。', 
+                  english: 'Spring Festival is China\\'s most important ___ festival.',
+                  answer: '传统', 
+                  answerEnglish: 'traditional',
+                  options: ['文化', '传统', '快乐', '意义'],
+                  optionsEnglish: ['cultural', 'traditional', 'happy', 'meaningful']
+                },
+                { 
+                  text: '春节时全家人___在一起很快乐。', 
+                  english: 'During Spring Festival, the whole family ___ together happily.',
+                  answer: '团圆', 
+                  answerEnglish: 'reunites',
+                  options: ['庆祝', '团圆', '祝福', '习俗'],
+                  optionsEnglish: ['celebrate', 'reunites', 'bless', 'custom']
+                },
+                { 
+                  text: '人们会互相送___表示关心。', 
+                  english: 'People give each other ___ to show care.',
+                  answer: '礼物', 
+                  answerEnglish: 'gifts',
+                  options: ['节日', '礼物', '文化', '意义'],
+                  optionsEnglish: ['festivals', 'gifts', 'culture', 'meaning']
+                },
+                { 
+                  text: '每个节日都有特殊的___。', 
+                  english: 'Each festival has special ___.',
+                  answer: '习俗', 
+                  answerEnglish: 'customs',
+                  options: ['习俗', '庆祝', '团圆', '祝福'],
+                  optionsEnglish: ['customs', 'celebration', 'reunion', 'blessing']
+                },
+                { 
+                  text: '节日的___在于传承文化。', 
+                  english: 'The ___ of festivals lies in passing on culture.',
+                  answer: '意义', 
+                  answerEnglish: 'significance',
+                  options: ['快乐', '礼物', '意义', '传统'],
+                  optionsEnglish: ['happiness', 'gifts', 'significance', 'tradition']
+                }
+              ],
+              chineseSentences: [
+                '中国有着悠久的文化传统，节日文化丰富多彩。',
+                '春节是中国最重要的传统节日，全家人会团圆庆祝。',
+                '中秋节时，人们会赏月、吃月饼，表达对家人的思念。',
+                '端午节有吃粽子、赛龙舟的习俗。',
+                '每个节日都有它特殊的意义和传统习俗。',
+                '这些节日让我们感受到文化的魅力和家庭的温暖。'
+              ],
+              englishSentences: [
+                'China has a long cultural tradition with rich and colorful festival culture.',
+                'Spring Festival is China\\'s most important traditional festival, when families reunite to celebrate.',
+                'During the Mid-Autumn Festival, people admire the moon and eat mooncakes to express longing for family.',
+                'The Dragon Boat Festival has customs of eating zongzi and dragon boat racing.',
+                'Each festival has its special meaning and traditional customs.',
+                'These festivals let us feel the charm of culture and the warmth of family.'
+              ]
+            },
+            chapter11: {
+              vocabulary: [
+                { word: '梦想', pinyin: 'mèng xiǎng', chinese: '渴望实现的愿望', english: 'dream; aspiration' },
+                { word: '努力', pinyin: 'nǔ lì', chinese: '用心用力去做', english: 'to work hard; effort' },
+                { word: '坚持', pinyin: 'jiān chí', chinese: '持续不断地做', english: 'to persist; to persevere' },
+                { word: '困难', pinyin: 'kùn nán', chinese: '不容易解决的问题', english: 'difficulty; difficult' },
+                { word: '挑战', pinyin: 'tiǎo zhàn', chinese: '有难度的任务', english: 'challenge; to challenge' },
+                { word: '成功', pinyin: 'chéng gōng', chinese: '达到预期的目标', english: 'success; to succeed' },
+                { word: '失败', pinyin: 'shī bài', chinese: '没有达到目标', english: 'failure; to fail' },
+                { word: '勇气', pinyin: 'yǒng qì', chinese: '面对困难的胆量', english: 'courage; bravery' },
+                { word: '信心', pinyin: 'xìn xīn', chinese: '对成功的把握', english: 'confidence' },
+                { word: '目标', pinyin: 'mù biāo', chinese: '想要达到的结果', english: 'goal; target' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '每个人都应该有自己的___。', 
+                  english: 'Everyone should have their own ___.',
+                  answer: '梦想', 
+                  answerEnglish: 'dreams',
+                  options: ['梦想', '困难', '失败', '挑战'],
+                  optionsEnglish: ['dreams', 'difficulties', 'failures', 'challenges']
+                },
+                { 
+                  text: '要实现梦想就必须___学习。', 
+                  english: 'To realize dreams, we must study ___.',
+                  answer: '努力', 
+                  answerEnglish: 'hard',
+                  options: ['困难', '努力', '失败', '挑战'],
+                  optionsEnglish: ['difficult', 'hard', 'fail', 'challenge']
+                },
+                { 
+                  text: '遇到___不要放弃。', 
+                  english: 'Don\\'t give up when encountering ___.',
+                  answer: '困难', 
+                  answerEnglish: 'difficulties',
+                  options: ['成功', '困难', '信心', '目标'],
+                  optionsEnglish: ['success', 'difficulties', 'confidence', 'goals']
+                },
+                { 
+                  text: '要有___面对挑战。', 
+                  english: 'We need ___ to face challenges.',
+                  answer: '勇气', 
+                  answerEnglish: 'courage',
+                  options: ['失败', '勇气', '困难', '挑战'],
+                  optionsEnglish: ['failure', 'courage', 'difficulty', 'challenge']
+                },
+                { 
+                  text: '___是成功的关键。', 
+                  english: '___ is the key to success.',
+                  answer: '坚持', 
+                  answerEnglish: 'Persistence',
+                  options: ['失败', '困难', '坚持', '挑战'],
+                  optionsEnglish: ['failure', 'difficulty', 'persistence', 'challenge']
+                }
+              ],
+              chineseSentences: [
+                '每个人心中都有自己的梦想和目标。',
+                '实现梦想需要付出努力和汗水。',
+                '在追求梦想的路上，我们会遇到各种困难和挑战。',
+                '即使失败了，也不要失去信心和勇气。',
+                '只要坚持不懈，梦想总会实现的。',
+                '成功属于那些永不放弃的人。'
+              ],
+              englishSentences: [
+                'Everyone has their own dreams and goals in their heart.',
+                'Realizing dreams requires effort and hard work.',
+                'On the path to pursuing dreams, we will encounter various difficulties and challenges.',
+                'Even if we fail, we should not lose confidence and courage.',
+                'As long as we persist, dreams will eventually come true.',
+                'Success belongs to those who never give up.'
+              ]
+            },
+            chapter12: {
+              vocabulary: [
+                { word: '世界', pinyin: 'shì jiè', chinese: '地球上所有的地方', english: 'world' },
+                { word: '和平', pinyin: 'hé píng', chinese: '没有战争，安宁', english: 'peace; peaceful' },
+                { word: '友谊', pinyin: 'yǒu yì', chinese: '朋友间的感情', english: 'friendship' },
+                { word: '合作', pinyin: 'hé zuò', chinese: '一起工作，共同努力', english: 'cooperation; to cooperate' },
+                { word: '理解', pinyin: 'lǐ jiě', chinese: '明白，懂得', english: 'to understand; understanding' },
+                { word: '尊重', pinyin: 'zūn zhòng', chinese: '敬重，重视', english: 'to respect; respect' },
+                { word: '差异', pinyin: 'chā yì', chinese: '不同之处', english: 'difference; distinction' },
+                { word: '包容', pinyin: 'bāo róng', chinese: '宽容，接纳', english: 'tolerance; to tolerate' },
+                { word: '沟通', pinyin: 'gōu tōng', chinese: '交流思想和感情', english: 'to communicate; communication' },
+                { word: '未来', pinyin: 'wèi lái', chinese: '将来的时间', english: 'future' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '我们都生活在同一个___里。', 
+                  english: 'We all live in the same ___.',
+                  answer: '世界', 
+                  answerEnglish: 'world',
+                  options: ['世界', '友谊', '合作', '未来'],
+                  optionsEnglish: ['world', 'friendship', 'cooperation', 'future']
+                },
+                { 
+                  text: '___让世界更加美好。', 
+                  english: '___ makes the world more beautiful.',
+                  answer: '和平', 
+                  answerEnglish: 'Peace',
+                  options: ['差异', '和平', '理解', '包容'],
+                  optionsEnglish: ['difference', 'peace', 'understanding', 'tolerance']
+                },
+                { 
+                  text: '不同文化之间需要相互___。', 
+                  english: 'Different cultures need to ___ each other.',
+                  answer: '理解', 
+                  answerEnglish: 'understand',
+                  options: ['理解', '差异', '沟通', '合作'],
+                  optionsEnglish: ['understand', 'difference', 'communicate', 'cooperate']
+                },
+                { 
+                  text: '我们应该___彼此的不同。', 
+                  english: 'We should ___ each other\\'s differences.',
+                  answer: '尊重', 
+                  answerEnglish: 'respect',
+                  options: ['包容', '尊重', '沟通', '合作'],
+                  optionsEnglish: ['tolerate', 'respect', 'communicate', 'cooperate']
+                },
+                { 
+                  text: '让我们一起创造美好的___。', 
+                  english: 'Let\\'s create a beautiful ___ together.',
+                  answer: '未来', 
+                  answerEnglish: 'future',
+                  options: ['世界', '友谊', '未来', '和平'],
+                  optionsEnglish: ['world', 'friendship', 'future', 'peace']
+                }
+              ],
+              chineseSentences: [
+                '我们生活在一个多元化的世界里。',
+                '不同的国家和民族应该和平相处。',
+                '友谊和合作能够促进世界的发展。',
+                '我们要学会理解和尊重不同的文化。',
+                '包容差异，加强沟通，是人类进步的基础。',
+                '让我们携手共创美好的未来！'
+              ],
+              englishSentences: [
+                'We live in a diverse world.',
+                'Different countries and peoples should coexist peacefully.',
+                'Friendship and cooperation can promote world development.',
+                'We must learn to understand and respect different cultures.',
+                'Embracing differences and strengthening communication is the foundation of human progress.',
+                'Let us work together to create a beautiful future!'
+              ]
+            }
           };
 
           const encouragementWords = [
@@ -403,6 +909,38 @@
             '继续加油！', '你真聪明！', '做得很好！', '真厉害！',
             '超级棒！', '你太厉害了！'
           ];
+
+          // Chapter titles mapping
+          const chapterTitles = {
+            chapter1: '第一篇：华国的办法',
+            chapter2: '第二篇：好朋友', 
+            chapter3: '第三篇：小汪的故事',
+            chapter4: '第四篇：认真的明明',
+            chapter5: '第五篇：美丽的四季',
+            chapter6: '第六篇：交通安全',
+            chapter7: '第七篇：健康生活',
+            chapter8: '第八篇：爱护环境', 
+            chapter9: '第九篇：科技时代',
+            chapter10: '第十篇：传统节日',
+            chapter11: '第十一篇：追求梦想',
+            chapter12: '第十二篇：和谐世界'
+          };
+
+          // Chapter descriptions and icons
+          const chapterInfo = {
+            chapter1: { icon: '⚽', desc: '学习关于解决问题的10个词汇', engDesc: 'Learn 10 problem-solving words' },
+            chapter2: { icon: '👫', desc: '学习关于友谊的10个词汇', engDesc: 'Learn 10 friendship words' },
+            chapter3: { icon: '🐕', desc: '学习关于动物和关爱的10个词汇', engDesc: 'Learn 10 words about animals and care' },
+            chapter4: { icon: '📚', desc: '学习关于学习态度的10个词汇', engDesc: 'Learn 10 words about study attitude' },
+            chapter5: { icon: '🌸', desc: '学习关于四季变化的10个词汇', engDesc: 'Learn 10 words about seasons' },
+            chapter6: { icon: '🚦', desc: '学习关于交通安全的10个词汇', engDesc: 'Learn 10 traffic safety words' },
+            chapter7: { icon: '💪', desc: '学习关于健康生活的10个词汇', engDesc: 'Learn 10 healthy living words' },
+            chapter8: { icon: '🌱', desc: '学习关于环境保护的10个词汇', engDesc: 'Learn 10 environmental words' },
+            chapter9: { icon: '💻', desc: '学习关于科学技术的10个词汇', engDesc: 'Learn 10 technology words' },
+            chapter10: { icon: '🎉', desc: '学习关于传统文化的10个词汇', engDesc: 'Learn 10 cultural tradition words' },
+            chapter11: { icon: '⭐', desc: '学习关于理想抱负的10个词汇', engDesc: 'Learn 10 words about dreams and goals' },
+            chapter12: { icon: '🌍', desc: '学习关于世界和谐的10个词汇', engDesc: 'Learn 10 words about world harmony' }
+          };
 
           // 检测Apple设备
           const isAppleDevice = /iPad|iPhone|iPod|Mac/.test(navigator.userAgent);
@@ -415,15 +953,15 @@
               let cleanText = text;
               
               if (language === 'zh-CN') {
-                cleanText = cleanText.replace(/\s*[\/\|]\s*[a-zA-Z].*/g, '');
+                cleanText = cleanText.replace(/\\s*[\\/\\|]\\s*[a-zA-Z].*/g, '');
               } else {
-                cleanText = cleanText.replace(/[\/\|]/g, ' ');
+                cleanText = cleanText.replace(/[\\/\\|]/g, ' ');
               }
               
               cleanText = cleanText.replace(/_/g, ' ')
                                   .replace(/underscore/gi, '')
-                                  .replace(/\bslash\b/gi, '')
-                                  .replace(/\s+/g, ' ')
+                                  .replace(/\\bslash\\b/gi, '')
+                                  .replace(/\\s+/g, ' ')
                                   .trim();
               
               const utterance = new SpeechSynthesisUtterance(cleanText);
@@ -441,7 +979,7 @@
               return utterance;
             } else {
               if (isAppleDevice) {
-                alert('Apple设备语音功能受限，请：\n1. 检查静音开关\n2. 调高音量\n3. 尝试多次点击\n4. 建议使用Chrome浏览器');
+                alert('Apple设备语音功能受限，请：\\n1. 检查静音开关\\n2. 调高音量\\n3. 尝试多次点击\\n4. 建议使用Chrome浏览器');
               } else {
                 alert('您的浏览器不支持语音功能');
               }
@@ -450,9 +988,7 @@
           };
 
           const getCurrentData = () => {
-            if (currentChapter === 'chapter1') return chapter1Data;
-            if (currentChapter === 'chapter2') return chapter2Data;
-            return chapter1Data; // 默认返回第一章
+            return chaptersData[currentChapter] || chaptersData.chapter1;
           };
 
           const resetChapterData = () => {
@@ -481,9 +1017,6 @@
             setCurrentChapter('menu');
             resetChapterData();
           };
-
-          const chapterTitle = currentChapter === 'chapter1' ? '第一篇：华国的办法' : 
-                              currentChapter === 'chapter2' ? '第二篇：好朋友' : '第一篇：华国的办法';
 
           const handleViewChinese = () => {
             setViewedChinese(true);
@@ -577,36 +1110,83 @@
           // Main render function
           if (currentChapter === 'menu') {
             return (
-              <div className="container">
-                <div className="header">
-                  <h1 className="title">🎓 中文学习天地</h1>
-                  <p className="subtitle">Chinese Learning Paradise - Complete Edition</p>
+              <div style={{ 
+                maxWidth: '1200px', 
+                margin: '0 auto', 
+                padding: '2rem', 
+                backgroundColor: '#f8f9fa',
+                minHeight: '100vh',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif'
+              }}>
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                  <h1 style={{ 
+                    fontSize: '3rem', 
+                    color: '#2c3e50', 
+                    marginBottom: '1rem' 
+                  }}>🎓 中文学习天地</h1>
+                  <p style={{ 
+                    fontSize: '1.5rem', 
+                    color: '#7f8c8d', 
+                    marginBottom: '2rem' 
+                  }}>Chinese Learning Paradise - Complete 12-Chapter Edition</p>
                 </div>
                 
-                <div className="card">
-                  <div className="grid">
-                    <div className="chapter-card" onClick={() => handleChapterSelect('chapter1')}>
-                      <div className="chapter-icon">⚽</div>
-                      <h3 className="chapter-title">第一篇：华国的办法</h3>
-                      <h4 className="chapter-subtitle">Chapter 1: Hua Guo's Solution</h4>
-                      <p className="chapter-desc">
-                        学习关于解决问题的10个词汇<br/>
-                        Learn 10 problem-solving words
-                      </p>
-                      <button className="btn">开始学习 Start Learning</button>
-                    </div>
-                    
-                    <div className="chapter-card" onClick={() => handleChapterSelect('chapter2')}>
-                      <div className="chapter-icon">👫</div>
-                      <h3 className="chapter-title">第二篇：好朋友</h3>
-                      <h4 className="chapter-subtitle">Chapter 2: Good Friends</h4>
-                      <p className="chapter-desc">
-                        学习关于友谊的10个词汇<br/>
-                        Learn 10 friendship words
-                      </p>
-                      <button className="btn">开始学习 Start Learning</button>
-                    </div>
-                  </div>
+                <div style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+                  gap: '2rem',
+                  margin: '2rem 0'
+                }}>
+                  {Object.keys(chaptersData).map((chapterKey, index) => {
+                    const info = chapterInfo[chapterKey];
+                    return (
+                      <div 
+                        key={chapterKey} 
+                        onClick={() => handleChapterSelect(chapterKey)}
+                        style={{
+                          background: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)',
+                          borderRadius: '15px',
+                          padding: '1.5rem',
+                          textAlign: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          color: '#333',
+                          boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+                        }}
+                      >
+                        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{info.icon}</div>
+                        <h3 style={{ 
+                          fontSize: '1.3rem', 
+                          fontWeight: 'bold', 
+                          marginBottom: '0.5rem' 
+                        }}>{chapterTitles[chapterKey]}</h3>
+                        <h4 style={{ 
+                          fontSize: '1rem', 
+                          marginBottom: '1rem',
+                          opacity: 0.8 
+                        }}>Chapter {index + 1}</h4>
+                        <p style={{ 
+                          fontSize: '0.9rem', 
+                          marginBottom: '1.5rem',
+                          lineHeight: 1.4 
+                        }}>
+                          {info.desc}<br/>
+                          {info.engDesc}
+                        </p>
+                        <button style={{
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease'
+                        }}>开始学习 Start Learning</button>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             );
@@ -616,56 +1196,175 @@
           if (currentPhase === 'learning') {
             const currentWord = getCurrentData().vocabulary[currentWordIndex];
             return (
-              <div className="container">
-                <button className="back-btn" onClick={backToMenu}>🏠 返回主页</button>
+              <div style={{ 
+                maxWidth: '800px', 
+                margin: '0 auto', 
+                padding: '2rem',
+                minHeight: '100vh',
+                backgroundColor: '#f8f9fa'
+              }}>
+                <button 
+                  onClick={backToMenu}
+                  style={{
+                    position: 'absolute',
+                    top: '2rem',
+                    right: '2rem',
+                    background: '#666',
+                    color: 'white',
+                    border: 'none',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '5px',
+                    cursor: 'pointer'
+                  }}
+                >🏠 返回主页</button>
                 
-                <div className="header">
-                  <h1 className="title">📚 词汇学习</h1>
-                  <p className="subtitle">{chapterTitle}</p>
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                  <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>📚 词汇学习</h1>
+                  <p style={{ fontSize: '1.2rem', color: '#7f8c8d' }}>{chapterTitles[currentChapter]}</p>
                 </div>
                 
-                <div className="card learning-card">
-                  <div className="progress">
+                <div style={{
+                  background: 'white',
+                  borderRadius: '20px',
+                  padding: '2rem',
+                  textAlign: 'center',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                }}>
+                  <div style={{ 
+                    fontSize: '1.2rem', 
+                    color: '#666', 
+                    marginBottom: '2rem' 
+                  }}>
                     第 {currentWordIndex + 1} 个词汇 / {getCurrentData().vocabulary.length} 个
                   </div>
                   
-                  <div className="word-display">{currentWord.word}</div>
-                  <div className="pinyin">{currentWord.pinyin}</div>
+                  <div style={{ 
+                    fontSize: '4rem', 
+                    fontWeight: 'bold', 
+                    color: '#667eea', 
+                    margin: '1rem 0' 
+                  }}>{currentWord.word}</div>
+                  <div style={{ 
+                    fontSize: '1.5rem', 
+                    color: '#666', 
+                    marginBottom: '2rem' 
+                  }}>{currentWord.pinyin}</div>
                   
-                  <button className="btn" onClick={() => speakText(currentWord.word)}>
+                  <button 
+                    onClick={() => speakText(currentWord.word)}
+                    style={{
+                      background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                      color: 'white',
+                      border: 'none',
+                      padding: '0.8rem 1.5rem',
+                      borderRadius: '25px',
+                      fontSize: '1rem',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      margin: '0.5rem'
+                    }}
+                  >
                     🔊 朗读词语
                   </button>
                   
                   <div style={{margin: '2rem 0'}}>
                     {viewedChinese ? (
-                      <div className="explanation">
+                      <div style={{
+                        background: '#f8f9fa',
+                        padding: '1.5rem',
+                        borderRadius: '10px',
+                        margin: '1rem 0',
+                        borderLeft: '4px solid #667eea'
+                      }}>
                         <strong>中文解释：</strong>{currentWord.chinese}
                       </div>
                     ) : (
-                      <button className="btn" onClick={handleViewChinese}>
+                      <button 
+                        onClick={handleViewChinese}
+                        style={{
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer',
+                          margin: '0.5rem'
+                        }}
+                      >
                         查看华语解释
                       </button>
                     )}
                     
                     {viewedEnglish ? (
-                      <div className="explanation">
+                      <div style={{
+                        background: '#f8f9fa',
+                        padding: '1.5rem',
+                        borderRadius: '10px',
+                        margin: '1rem 0',
+                        borderLeft: '4px solid #667eea'
+                      }}>
                         <strong>English:</strong> {currentWord.english}
                       </div>
                     ) : (
-                      <button className="btn" onClick={handleViewEnglish}>
+                      <button 
+                        onClick={handleViewEnglish}
+                        style={{
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer',
+                          margin: '0.5rem'
+                        }}
+                      >
                         查看英文解释
                       </button>
                     )}
                   </div>
                   
                   {viewedChinese && viewedEnglish ? (
-                    <div className="controls">
+                    <div style={{ 
+                      display: 'flex', 
+                      justifyContent: 'center', 
+                      gap: '1rem',
+                      margin: '2rem 0',
+                      flexWrap: 'wrap'
+                    }}>
                       {currentWordIndex > 0 && (
-                        <button className="btn btn-secondary" onClick={handlePreviousWord}>
+                        <button 
+                          onClick={handlePreviousWord}
+                          style={{
+                            background: '#666',
+                            color: 'white',
+                            border: 'none',
+                            padding: '0.8rem 1.5rem',
+                            borderRadius: '25px',
+                            fontSize: '1rem',
+                            fontWeight: 'bold',
+                            cursor: 'pointer'
+                          }}
+                        >
                           ← 上一个词汇
                         </button>
                       )}
-                      <button className="btn" onClick={handleNextWord}>
+                      <button 
+                        onClick={handleNextWord}
+                        style={{
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer'
+                        }}
+                      >
                         {currentWordIndex < getCurrentData().vocabulary.length - 1 ? '下一个词汇 →' : '开始练习 🎮'}
                       </button>
                     </div>
@@ -683,33 +1382,101 @@
           if (currentPhase === 'game') {
             const currentQ = getCurrentData().gameQuestions[currentQuestion];
             return (
-              <div className="container">
-                <button className="back-btn" onClick={backToMenu}>🏠 返回主页</button>
+              <div style={{ 
+                maxWidth: '800px', 
+                margin: '0 auto', 
+                padding: '2rem',
+                minHeight: '100vh',
+                backgroundColor: '#f8f9fa'
+              }}>
+                <button 
+                  onClick={backToMenu}
+                  style={{
+                    position: 'absolute',
+                    top: '2rem',
+                    right: '2rem',
+                    background: '#666',
+                    color: 'white',
+                    border: 'none',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '5px',
+                    cursor: 'pointer'
+                  }}
+                >🏠 返回主页</button>
                 
-                <div className="header">
-                  <h1 className="title">🎮 填空练习</h1>
-                  <p className="subtitle">{chapterTitle}</p>
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                  <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>🎮 填空练习</h1>
+                  <p style={{ fontSize: '1.2rem', color: '#7f8c8d' }}>{chapterTitles[currentChapter]}</p>
                 </div>
                 
-                <div className="card game-card">
-                  <div className="progress">
+                <div style={{
+                  background: 'white',
+                  borderRadius: '20px',
+                  padding: '2rem',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                }}>
+                  <div style={{ 
+                    textAlign: 'center',
+                    fontSize: '1.2rem', 
+                    color: '#666', 
+                    marginBottom: '2rem' 
+                  }}>
                     第 {currentQuestion + 1} 题 / {getCurrentData().gameQuestions.length} 题
                   </div>
                   
-                  <div className="question">
-                    <div className="question-text">{currentQ.text}</div>
-                    <div className="question-english">{currentQ.english}</div>
-                    <button className="btn" onClick={() => speakText(currentQ.text)}>
+                  <div style={{
+                    background: '#f8f9fa',
+                    padding: '1.5rem',
+                    borderRadius: '10px',
+                    marginBottom: '2rem'
+                  }}>
+                    <div style={{ 
+                      fontSize: '1.2rem', 
+                      marginBottom: '0.5rem',
+                      color: '#333' 
+                    }}>{currentQ.text}</div>
+                    <div style={{ 
+                      fontSize: '1rem', 
+                      color: '#666' 
+                    }}>{currentQ.english}</div>
+                    <button 
+                      onClick={() => speakText(currentQ.text)}
+                      style={{
+                        background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                        color: 'white',
+                        border: 'none',
+                        padding: '0.8rem 1.5rem',
+                        borderRadius: '25px',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                        cursor: 'pointer',
+                        marginTop: '1rem'
+                      }}
+                    >
                       🔊 朗读题目
                     </button>
                   </div>
                   
-                  <div className="options">
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '1rem',
+                    margin: '2rem 0'
+                  }}>
                     {currentQ.options.map((option, index) => (
                       <button 
                         key={index}
-                        className="option-btn"
                         onClick={() => handleGameAnswer(option)}
+                        style={{
+                          background: '#667eea',
+                          color: 'white',
+                          border: 'none',
+                          padding: '1rem',
+                          borderRadius: '10px',
+                          fontSize: '1rem',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease'
+                        }}
                       >
                         {option}<br/>
                         <small>({currentQ.optionsEnglish[index]})</small>
@@ -723,8 +1490,24 @@
                     </div>
                   )}
                   
-                  <div className="controls">
-                    <button className="btn btn-secondary" onClick={() => setCurrentPhase('learning')}>
+                  <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    margin: '2rem 0'
+                  }}>
+                    <button 
+                      onClick={() => setCurrentPhase('learning')}
+                      style={{
+                        background: '#666',
+                        color: 'white',
+                        border: 'none',
+                        padding: '0.8rem 1.5rem',
+                        borderRadius: '25px',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                        cursor: 'pointer'
+                      }}
+                    >
                       📚 返回词汇学习
                     </button>
                   </div>
@@ -737,15 +1520,40 @@
           if (currentPhase === 'reading') {
             if (!isReading) {
               return (
-                <div className="container">
-                  <button className="back-btn" onClick={backToMenu}>🏠 返回主页</button>
+                <div style={{ 
+                  maxWidth: '800px', 
+                  margin: '0 auto', 
+                  padding: '2rem',
+                  minHeight: '100vh',
+                  backgroundColor: '#f8f9fa'
+                }}>
+                  <button 
+                    onClick={backToMenu}
+                    style={{
+                      position: 'absolute',
+                      top: '2rem',
+                      right: '2rem',
+                      background: '#666',
+                      color: 'white',
+                      border: 'none',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '5px',
+                      cursor: 'pointer'
+                    }}
+                  >🏠 返回主页</button>
                   
-                  <div className="header">
-                    <h1 className="title">📖 作文朗读</h1>
-                    <p className="subtitle">{chapterTitle}</p>
+                  <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>📖 作文朗读</h1>
+                    <p style={{ fontSize: '1.2rem', color: '#7f8c8d' }}>{chapterTitles[currentChapter]}</p>
                   </div>
                   
-                  <div className="card reading-card">
+                  <div style={{
+                    background: 'white',
+                    borderRadius: '20px',
+                    padding: '2rem',
+                    textAlign: 'center',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                  }}>
                     <h2 style={{textAlign: 'center', marginBottom: '2rem'}}>
                       🎉 恭喜完成所有练习！
                     </h2>
@@ -754,17 +1562,63 @@
                       Choose a language to read the story:
                     </p>
                     
-                    <div className="controls">
-                      <button className="btn" onClick={() => handleReading('chinese')}>
+                    <div style={{ 
+                      display: 'flex', 
+                      justifyContent: 'center',
+                      gap: '1rem',
+                      margin: '2rem 0',
+                      flexWrap: 'wrap'
+                    }}>
+                      <button 
+                        onClick={() => handleReading('chinese')}
+                        style={{
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer'
+                        }}
+                      >
                         🇨🇳 中文朗读
                       </button>
-                      <button className="btn" onClick={() => handleReading('english')}>
+                      <button 
+                        onClick={() => handleReading('english')}
+                        style={{
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer'
+                        }}
+                      >
                         🇺🇸 英文朗读
                       </button>
                     </div>
                     
-                    <div className="controls">
-                      <button className="btn btn-secondary" onClick={() => resetChapterData()}>
+                    <div style={{ 
+                      display: 'flex', 
+                      justifyContent: 'center',
+                      margin: '2rem 0'
+                    }}>
+                      <button 
+                        onClick={() => resetChapterData()}
+                        style={{
+                          background: '#666',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer'
+                        }}
+                      >
                         🔄 重新开始本章
                       </button>
                     </div>
@@ -775,41 +1629,134 @@
               const sentences = readingLanguage === 'chinese' ? getCurrentData().chineseSentences : getCurrentData().englishSentences;
               
               return (
-                <div className="container">
-                  <button className="back-btn" onClick={backToMenu}>🏠 返回主页</button>
+                <div style={{ 
+                  maxWidth: '800px', 
+                  margin: '0 auto', 
+                  padding: '2rem',
+                  minHeight: '100vh',
+                  backgroundColor: '#f8f9fa'
+                }}>
+                  <button 
+                    onClick={backToMenu}
+                    style={{
+                      position: 'absolute',
+                      top: '2rem',
+                      right: '2rem',
+                      background: '#666',
+                      color: 'white',
+                      border: 'none',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '5px',
+                      cursor: 'pointer'
+                    }}
+                  >🏠 返回主页</button>
                   
-                  <div className="header">
-                    <h1 className="title">📖 {readingLanguage === 'chinese' ? '中文朗读' : 'English Reading'}</h1>
-                    <p className="subtitle">{chapterTitle}</p>
+                  <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>📖 {readingLanguage === 'chinese' ? '中文朗读' : 'English Reading'}</h1>
+                    <p style={{ fontSize: '1.2rem', color: '#7f8c8d' }}>{chapterTitles[currentChapter]}</p>
                   </div>
                   
-                  <div className="card reading-card">
-                    <div className="progress">
+                  <div style={{
+                    background: 'white',
+                    borderRadius: '20px',
+                    padding: '2rem',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                  }}>
+                    <div style={{ 
+                      textAlign: 'center',
+                      fontSize: '1.2rem', 
+                      color: '#666', 
+                      marginBottom: '2rem' 
+                    }}>
                       第 {currentSentence + 1} 句 / {sentences.length} 句
                     </div>
                     
-                    <div className="story-container">
+                    <div style={{
+                      background: '#fffbf0',
+                      padding: '2rem',
+                      borderRadius: '15px',
+                      borderLeft: '4px solid #ffd700',
+                      margin: '2rem 0'
+                    }}>
                       {sentences.map((sentence, index) => (
                         <div 
                           key={index}
-                          className={`sentence ${index === currentSentence ? 'current-sentence' : ''}`}
+                          style={{
+                            fontSize: '1.1rem',
+                            lineHeight: 1.8,
+                            margin: '1rem 0',
+                            padding: '0.5rem',
+                            borderRadius: '5px',
+                            ...(index === currentSentence ? {
+                              background: '#fff3cd',
+                              border: '2px solid #ffc107',
+                              fontWeight: 'bold',
+                              color: '#856404'
+                            } : {})
+                          }}
                         >
                           {sentence}
                         </div>
                       ))}
                     </div>
                     
-                    <div className="controls">
-                      <button className="btn" onClick={() => speakText(sentences[currentSentence], readingLanguage === 'chinese' ? 'zh-CN' : 'en-US')}>
+                    <div style={{ 
+                      display: 'flex', 
+                      justifyContent: 'center',
+                      gap: '1rem',
+                      margin: '2rem 0',
+                      flexWrap: 'wrap'
+                    }}>
+                      <button 
+                        onClick={() => speakText(sentences[currentSentence], readingLanguage === 'chinese' ? 'zh-CN' : 'en-US')}
+                        style={{
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer'
+                        }}
+                      >
                         🔊 重新朗读这句
                       </button>
-                      <button className="btn" onClick={handleNextSentence}>
+                      <button 
+                        onClick={handleNextSentence}
+                        style={{
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer'
+                        }}
+                      >
                         {currentSentence < sentences.length - 1 ? '下一句 →' : '完成朗读 ✅'}
                       </button>
                     </div>
                     
-                    <div className="controls">
-                      <button className="btn btn-secondary" onClick={() => {setIsReading(false); setReadingLanguage('');}}>
+                    <div style={{ 
+                      display: 'flex', 
+                      justifyContent: 'center',
+                      margin: '2rem 0'
+                    }}>
+                      <button 
+                        onClick={() => {setIsReading(false); setReadingLanguage('');}}
+                        style={{
+                          background: '#666',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.8rem 1.5rem',
+                          borderRadius: '25px',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          cursor: 'pointer'
+                        }}
+                      >
                         ← 返回选择语言
                       </button>
                     </div>
