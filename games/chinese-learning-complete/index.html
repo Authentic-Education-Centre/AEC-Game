@@ -3,89 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chinese Learning Complete - Comprehensive 12-Chapter Educational Game</title>
+    <title>Chinese Learning Complete</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
             min-height: 100vh;
-            color: #333;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .menu {
             background: white;
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
-        .menu h2 {
+        h1 {
             text-align: center;
-            margin-bottom: 30px;
             color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
         }
         
-        .chapters-grid {
+        .chapter-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
         
-        .chapter-btn {
+        .chapter-card {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            border: none;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
             cursor: pointer;
             transition: transform 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
         }
         
-        .chapter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         
-        .game-screen {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .vocabulary {
             display: none;
+            margin-top: 30px;
+        }
+        
+        .vocab-item {
+            background: #f8f9fa;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .chinese {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .pinyin {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        
+        .meaning {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.4;
         }
         
         .back-btn {
             background: #95a5a6;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 1rem;
             margin-bottom: 20px;
         }
         
@@ -93,38 +102,14 @@
             background: #7f8c8d;
         }
         
-        .vocabulary-item {
-            background: #f8f9fa;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .chinese-word {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .pinyin {
-            color: #666;
-            font-style: italic;
-            margin: 5px 0;
-        }
-        
-        .english {
-            color: #555;
-        }
-        
         .speak-btn {
             background: #3498db;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
+            padding: 8px 15px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-left: 10px;
+            margin-left: 15px;
             font-size: 0.9rem;
         }
         
@@ -135,97 +120,137 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🎓 Chinese Learning Complete</h1>
-            <p>Comprehensive 12-Chapter Educational Game</p>
-        </div>
+        <h1>🎓 Chinese Learning Complete</h1>
         
-        <!-- Main Menu -->
-        <div id="menu" class="menu">
-            <h2>选择章节 (Choose Chapter)</h2>
-            <div class="chapters-grid">
-                <button class="chapter-btn" onclick="loadChapter(1)">第一章 Chapter 1</button>
-                <button class="chapter-btn" onclick="loadChapter(2)">第二章 Chapter 2</button>
-                <button class="chapter-btn" onclick="loadChapter(3)">第三章 Chapter 3</button>
-                <button class="chapter-btn" onclick="loadChapter(4)">第四章 Chapter 4</button>
-                <button class="chapter-btn" onclick="loadChapter(5)">第五章 Chapter 5</button>
-                <button class="chapter-btn" onclick="loadChapter(6)">第六章 Chapter 6</button>
-                <button class="chapter-btn" onclick="loadChapter(7)">第七章 Chapter 7</button>
-                <button class="chapter-btn" onclick="loadChapter(8)">第八章 Chapter 8</button>
-                <button class="chapter-btn" onclick="loadChapter(9)">第九章 Chapter 9</button>
-                <button class="chapter-btn" onclick="loadChapter(10)">第十章 Chapter 10</button>
-                <button class="chapter-btn" onclick="loadChapter(11)">第十一章 Chapter 11</button>
-                <button class="chapter-btn" onclick="loadChapter(12)">第十二章 Chapter 12</button>
+        <!-- Chapter Selection -->
+        <div id="chapters">
+            <div class="chapter-grid">
+                <button class="chapter-card" onclick="showChapter(1)">
+                    第一章<br>Chapter 1<br>Basic Vocabulary
+                </button>
+                <button class="chapter-card" onclick="showChapter(2)">
+                    第二章<br>Chapter 2<br>Daily Life
+                </button>
+                <button class="chapter-card" onclick="showChapter(3)">
+                    第三章<br>Chapter 3<br>Family & Friends
+                </button>
+                <button class="chapter-card" onclick="showChapter(4)">
+                    第四章<br>Chapter 4<br>School & Work
+                </button>
+                <button class="chapter-card" onclick="showChapter(5)">
+                    第五章<br>Chapter 5<br>Food & Dining
+                </button>
+                <button class="chapter-card" onclick="showChapter(6)">
+                    第六章<br>Chapter 6<br>Travel & Transport
+                </button>
+                <button class="chapter-card" onclick="showChapter(7)">
+                    第七章<br>Chapter 7<br>Shopping
+                </button>
+                <button class="chapter-card" onclick="showChapter(8)">
+                    第八章<br>Chapter 8<br>Health & Body
+                </button>
+                <button class="chapter-card" onclick="showChapter(9)">
+                    第九章<br>Chapter 9<br>Weather & Nature
+                </button>
+                <button class="chapter-card" onclick="showChapter(10)">
+                    第十章<br>Chapter 10<br>Hobbies & Sports
+                </button>
+                <button class="chapter-card" onclick="showChapter(11)">
+                    第十一章<br>Chapter 11<br>Technology
+                </button>
+                <button class="chapter-card" onclick="showChapter(12)">
+                    第十二章<br>Chapter 12<br>Culture & Traditions
+                </button>
             </div>
         </div>
         
-        <!-- Game Screen -->
-        <div id="gameScreen" class="game-screen">
-            <button class="back-btn" onclick="backToMenu()">← 返回菜单 Back to Menu</button>
-            <div id="chapterContent"></div>
+        <!-- Vocabulary Display -->
+        <div id="vocabulary" class="vocabulary">
+            <button class="back-btn" onclick="backToMenu()">← Back to Chapters</button>
+            <h2 id="chapterTitle"></h2>
+            <div id="vocabList"></div>
         </div>
     </div>
-    
+
     <script>
-        // Sample vocabulary data for Chapter 1
-        const chaptersData = {
+        // Vocabulary data
+        const chapters = {
             1: {
                 title: "第一章：基本词汇 (Chapter 1: Basic Vocabulary)",
-                vocabulary: [
-                    { word: '办法', pinyin: 'bàn fǎ', chinese: '处理事情或解决问题的方法', english: 'way; method; solution' },
-                    { word: '脑筋', pinyin: 'nǎo jīn', chinese: '思维和理解能力；想法', english: 'brain; mind; ideas' },
-                    { word: '浮', pinyin: 'fú', chinese: '漂在水面上，不下沉', english: 'to float' },
-                    { word: '树洞', pinyin: 'shù dòng', chinese: '树干上的空洞', english: 'tree hollow' },
-                    { word: '着急', pinyin: 'zháo jí', chinese: '心里紧张，不安', english: 'anxious; worried' },
-                    { word: '情形', pinyin: 'qíng xíng', chinese: '事情的状况或样子', english: 'situation; condition' },
-                    { word: '小心', pinyin: 'xiǎo xīn', chinese: '注意，谨慎，不粗心', english: 'careful; cautious' },
-                    { word: '树枝', pinyin: 'shù zhī', chinese: '树上的枝条', english: 'tree branch' },
-                    { word: '聪明', pinyin: 'cōng míng', chinese: '头脑灵活，理解力强', english: 'clever; smart' },
-                    { word: '提', pinyin: 'tí', chinese: '用手拿着（垂下的东西）', english: 'to carry (by hand); to lift' }
+                words: [
+                    { chinese: "你好", pinyin: "nǐ hǎo", english: "Hello" },
+                    { chinese: "谢谢", pinyin: "xièxie", english: "Thank you" },
+                    { chinese: "再见", pinyin: "zàijiàn", english: "Goodbye" },
+                    { chinese: "是", pinyin: "shì", english: "Yes/To be" },
+                    { chinese: "不", pinyin: "bù", english: "No/Not" },
+                    { chinese: "好", pinyin: "hǎo", english: "Good" },
+                    { chinese: "我", pinyin: "wǒ", english: "I/Me" },
+                    { chinese: "你", pinyin: "nǐ", english: "You" },
+                    { chinese: "他", pinyin: "tā", english: "He/Him" },
+                    { chinese: "她", pinyin: "tā", english: "She/Her" }
+                ]
+            },
+            2: {
+                title: "第二章：日常生活 (Chapter 2: Daily Life)",
+                words: [
+                    { chinese: "吃", pinyin: "chī", english: "To eat" },
+                    { chinese: "喝", pinyin: "hē", english: "To drink" },
+                    { chinese: "睡觉", pinyin: "shuìjiào", english: "To sleep" },
+                    { chinese: "起床", pinyin: "qǐchuáng", english: "To get up" },
+                    { chinese: "工作", pinyin: "gōngzuò", english: "To work" },
+                    { chinese: "学习", pinyin: "xuéxí", english: "To study" },
+                    { chinese: "看", pinyin: "kàn", english: "To look/watch" },
+                    { chinese: "听", pinyin: "tīng", english: "To listen" },
+                    { chinese: "说", pinyin: "shuō", english: "To speak" },
+                    { chinese: "走", pinyin: "zǒu", english: "To walk" }
                 ]
             }
         };
-        
-        function loadChapter(chapterNum) {
-            document.getElementById('menu').style.display = 'none';
-            document.getElementById('gameScreen').style.display = 'block';
+
+        function showChapter(chapterNum) {
+            document.getElementById('chapters').style.display = 'none';
+            document.getElementById('vocabulary').style.display = 'block';
             
-            const chapter = chaptersData[chapterNum] || chaptersData[1];
-            const contentDiv = document.getElementById('chapterContent');
+            const chapter = chapters[chapterNum];
+            if (!chapter) {
+                document.getElementById('vocabList').innerHTML = '<p>Chapter content coming soon!</p>';
+                return;
+            }
             
-            let html = `<h2>${chapter.title}</h2><br>`;
+            document.getElementById('chapterTitle').textContent = chapter.title;
             
-            chapter.vocabulary.forEach((item, index) => {
+            let html = '';
+            chapter.words.forEach(word => {
                 html += `
-                    <div class="vocabulary-item">
-                        <div class="chinese-word">${item.word} <button class="speak-btn" onclick="speak('${item.word}')">🔊</button></div>
-                        <div class="pinyin">${item.pinyin}</div>
-                        <div style="margin: 5px 0;"><strong>中文:</strong> ${item.chinese}</div>
-                        <div class="english"><strong>English:</strong> ${item.english}</div>
+                    <div class="vocab-item">
+                        <div class="chinese">
+                            ${word.chinese}
+                            <button class="speak-btn" onclick="speak('${word.chinese}')">🔊 Listen</button>
+                        </div>
+                        <div class="pinyin">${word.pinyin}</div>
+                        <div class="meaning"><strong>English:</strong> ${word.english}</div>
                     </div>
                 `;
             });
             
-            contentDiv.innerHTML = html;
+            document.getElementById('vocabList').innerHTML = html;
         }
-        
+
         function backToMenu() {
-            document.getElementById('gameScreen').style.display = 'none';
-            document.getElementById('menu').style.display = 'block';
+            document.getElementById('vocabulary').style.display = 'none';
+            document.getElementById('chapters').style.display = 'block';
         }
-        
+
         function speak(text) {
             if ('speechSynthesis' in window) {
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'zh-CN';
                 speechSynthesis.speak(utterance);
-            } else {
-                alert('Speech synthesis not supported in your browser');
             }
         }
-        
-        // Show welcome message when page loads
-        console.log('Chinese Learning Complete game loaded successfully!');
+
+        // Test message
+        console.log('Game loaded successfully!');
     </script>
 </body>
 </html>
