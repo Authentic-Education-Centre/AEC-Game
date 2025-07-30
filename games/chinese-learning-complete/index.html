@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinese Learning Complete - Comprehensive 12-Chapter Educational Game</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif;">
+            <div style="text-align: center;">
+                <div style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 2s linear infinite; margin: 0 auto 20px;"></div>
+                <p>Loading Chinese Learning Complete...</p>
+            </div>
+        </div>
+        <style>
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </div>
 
     <script type="text/babel">
         const { useState } = React;
-        const { BookOpen, Play, Volume2, RotateCcw, Gamepad2, Speaker, Home, ArrowLeft } = lucide;
 
         const ChineseLearningCompleteApp = () => {
           const [currentChapter, setCurrentChapter] = useState('menu');
@@ -147,41 +158,41 @@
                   english: 'We often go to school and ___ together.',
                   answer: '回家', 
                   answerEnglish: 'go home',
-                  options: ['学习', '骄傲', '帮助', '回家'],
-                  optionsEnglish: ['study', 'arrogant', 'help', 'go home']
+                  options: ['学习', '回家', '参加', '篮球'],
+                  optionsEnglish: ['study', 'go home', 'participate', 'basketball']
                 },
                 { 
-                  text: '但他一点也不___', 
-                  english: 'But he is not ___ at all',
-                  answer: '骄傲', 
-                  answerEnglish: 'arrogant',
-                  options: ['高兴', '骄傲', '要好', '同班'],
-                  optionsEnglish: ['happy', 'arrogant', 'close', 'same class']
-                },
-                { 
-                  text: '还常常___功课差的同学。', 
-                  english: 'He often ___ classmates who are weak in their schoolwork.',
+                  text: '文锦常常___我做功课。', 
+                  english: 'Wen Jin often ___ me with homework.',
                   answer: '帮助', 
                   answerEnglish: 'helps',
-                  options: ['比赛', '参加', '学习', '帮助'],
-                  optionsEnglish: ['competition', 'participate', 'study', 'helps']
+                  options: ['骄傲', '高兴', '帮助', '比赛'],
+                  optionsEnglish: ['proud', 'happy', 'helps', 'compete']
+                },
+                { 
+                  text: '我们一起___篮球比赛。', 
+                  english: 'We ___ in basketball competitions together.',
+                  answer: '参加', 
+                  answerEnglish: 'participate',
+                  options: ['学习', '回家', '参加', '骄傲'],
+                  optionsEnglish: ['study', 'go home', 'participate', 'proud']
                 }
               ],
               chineseSentences: [
                 '我有很多朋友，文锦和我最要好。',
                 '我们是同班同学，经常一起上学，一起回家。',
-                '文锦的功课很好，但他一点也不骄傲，还常常帮助功课差的同学。',
-                '此外，他也时常参加课外活动。',
-                '他的篮球打得很好，时常参加比赛。',
-                '我很高兴有文锦这么一个好朋友，我也要向他多学习。'
+                '文锦常常帮助我做功课，我也帮助他学习。',
+                '我们都很喜欢打篮球，经常一起参加比赛。',
+                '虽然有时会输，但我们从不骄傲，也不灰心。',
+                '有这样的好朋友，我感到很高兴。'
               ],
               englishSentences: [
                 'I have many friends, and Wen Jin and I are the closest.',
-                'We are in the same class, and we often go to school and go home together.',
-                'Wen Jin does well in his studies, but he is not proud at all. He often helps classmates who are weak in their schoolwork.',
-                'In addition, he often takes part in extracurricular activities.',
-                'He plays basketball very well and often joins competitions.',
-                'I feel very happy to have such a good friend like Wen Jin, and I want to learn from him more.'
+                'We are classmates in the same class, often going to school and going home together.',
+                'Wen Jin often helps me with homework, and I also help him study.',
+                'We both love playing basketball and often participate in competitions together.',
+                'Although we sometimes lose, we are never arrogant, nor do we get discouraged.',
+                'Having such a good friend makes me very happy.'
               ]
             },
             chapter3: {
@@ -199,59 +210,61 @@
               ],
               gameQuestions: [
                 { 
-                  text: '自从一个小主人收留了我，我就过着___的日子。', 
-                  english: 'Since a kind little boy took me in, I\\'ve been living a ___ life.',
-                  answer: '幸福', 
-                  answerEnglish: 'happy',
-                  options: ['温暖', '幸福', '舒服', '软弱'],
-                  optionsEnglish: ['warm', 'happy', 'comfortable', 'weak']
+                  text: '小汪躺在软软的草地上觉得很___。', 
+                  english: 'Little Wang lying on the soft grass felt very ___.',
+                  answer: '舒服', 
+                  answerEnglish: 'comfortable',
+                  options: ['舒服', '温暖', '幸福', '软弱'],
+                  optionsEnglish: ['comfortable', 'warm', 'happy', 'weak']
                 },
                 { 
-                  text: '在我___的时候，爸爸妈妈就被人捉走了。', 
-                  english: 'When I was still ___, my father and mother were taken away.',
-                  answer: '年幼', 
-                  answerEnglish: 'young',
-                  options: ['软弱', '舒服', '年幼', '温暖'],
-                  optionsEnglish: ['weak', 'comfortable', 'young', 'warm']
-                },
-                { 
-                  text: '我饿得___无力的时候，有一个小孩走了过来。', 
-                  english: 'When I was so hungry and ___ that I couldn\\'t move, a child came over.',
-                  answer: '软弱', 
-                  answerEnglish: 'weak',
-                  options: ['年幼', '未曾', '软弱', '连忙'],
-                  optionsEnglish: ['young', 'never before', 'weak', 'promptly']
-                },
-                { 
-                  text: '他轻轻地把我抱起，直往一所房子___去。', 
-                  english: 'He gently picked me up and ___ straight toward a house.',
+                  text: '小汪看到主人回来，___过去迎接。', 
+                  english: 'When Little Wang saw his owner return, he ___ over to greet them.',
                   answer: '奔', 
-                  answerEnglish: 'ran',
+                  answerEnglish: 'rushed',
                   options: ['奔', '照顾', '连忙', '未曾'],
-                  optionsEnglish: ['ran', 'take care of', 'promptly', 'never before']
+                  optionsEnglish: ['rushed', 'took care', 'promptly', 'never']
                 },
                 { 
-                  text: '小孩把我放进一个纸箱子里，又___给我盖上了一条棉被。', 
-                  english: 'The child put me in a cardboard box and ___ covered me with a cotton blanket.',
-                  answer: '连忙', 
-                  answerEnglish: 'promptly',
-                  options: ['照顾', '温暖', '连忙', '舒服'],
-                  optionsEnglish: ['take care of', 'warm', 'promptly', 'comfortable']
+                  text: '主人给小汪盖上___，让它感到温暖。', 
+                  english: 'The owner covered Little Wang with a ___, making it feel warm.',
+                  answer: '棉被', 
+                  answerEnglish: 'quilt',
+                  options: ['棉被', '温暖', '舒服', '幸福'],
+                  optionsEnglish: ['quilt', 'warmth', 'comfort', 'happiness']
+                },
+                { 
+                  text: '小汪___没有这样幸福过。', 
+                  english: 'Little Wang had ___ been this happy before.',
+                  answer: '未曾', 
+                  answerEnglish: 'never',
+                  options: ['连忙', '未曾', '年幼', '软弱'],
+                  optionsEnglish: ['promptly', 'never', 'young', 'weak']
+                },
+                { 
+                  text: '主人很用心地___小汪。', 
+                  english: 'The owner very carefully ___ Little Wang.',
+                  answer: '照顾', 
+                  answerEnglish: 'took care of',
+                  options: ['照顾', '奔', '连忙', '温暖'],
+                  optionsEnglish: ['took care of', 'rushed', 'promptly', 'warmed']
                 }
               ],
               chineseSentences: [
-                '我是一只小狗，自从一个小主人收留了我，我就过着幸福的日子。',
-                '我叫小汪，出生在一个角落里。',
-                '在我年幼的时候，爸爸妈妈就被人捉走了。',
-                '有一天，我饿得软弱无力的时候，有一个小孩走了过来，他轻轻地把我抱起，直往一所房子奔去。',
-                '小孩把我放进一个纸箱子里，又连忙给我盖上了一条棉被。'
+                '小汪是一只年幼的小狗，身体软弱，需要人照顾。',
+                '以前它未曾有过温暖的家，总是在街上流浪。',
+                '现在它有了一个好主人，连忙奔过去表达感谢。',
+                '主人给它准备了舒服的小床和温暖的棉被。',
+                '小汪躺在软软的床上，感到前所未有的幸福。',
+                '有人关心和照顾的感觉真是太好了。'
               ],
               englishSentences: [
-                'I am a little puppy. Since a kind little boy took me in, I\\'ve been living a happy life.',
-                'My name is Little Woof. I was born in a corner.',
-                'When I was still young, my father and mother were taken away.',
-                'One day, when I was so hungry and weak that I couldn\\'t move, a child came over, gently picked me up, and ran straight toward a house.',
-                'The child put me in a cardboard box and promptly covered me with a cotton blanket.'
+                'Little Wang is a young puppy, physically weak and needing care.',
+                'Before, it had never had a warm home and was always wandering the streets.',
+                'Now it has a good owner and promptly rushes over to express gratitude.',
+                'The owner prepared a comfortable little bed and warm quilt for it.',
+                'Little Wang lying on the soft bed felt unprecedented happiness.',
+                'The feeling of having someone care for and look after you is wonderful.'
               ]
             },
             chapter4: {
@@ -269,61 +282,61 @@
               ],
               gameQuestions: [
                 { 
-                  text: '明明做作业总是很___，从不认真检查。', 
-                  english: 'Ming Ming is always ___ when doing homework and never checks carefully.',
+                  text: '明明总是很___地完成作业。', 
+                  english: 'Ming Ming always completes homework very ___.',
+                  answer: '细心', 
+                  answerEnglish: 'carefully',
+                  options: ['马虎', '轻松', '细心', '错误'],
+                  optionsEnglish: ['carelessly', 'easily', 'carefully', 'wrongly']
+                },
+                { 
+                  text: '他从不___地对待学习。', 
+                  english: 'He never treats studying ___.',
                   answer: '马虎', 
-                  answerEnglish: 'careless',
-                  options: ['细心', '努力', '马虎', '轻松'],
-                  optionsEnglish: ['careful', 'hardworking', 'careless', 'relaxed']
+                  answerEnglish: 'carelessly',
+                  options: ['努力', '细心', '马虎', '完成'],
+                  optionsEnglish: ['hard', 'carefully', 'carelessly', 'completely']
                 },
                 { 
-                  text: '老师要求我们___课文。', 
-                  english: 'The teacher asked us to ___ the text.',
-                  answer: '抄写', 
-                  answerEnglish: 'copy',
-                  options: ['检查', '抄写', '改正', '完成'],
-                  optionsEnglish: ['check', 'copy', 'correct', 'complete']
-                },
-                { 
-                  text: '做完作业后要___一遍。', 
-                  english: 'After finishing homework, we should ___ it once.',
+                  text: '写完作业后，明明会___一遍。', 
+                  english: 'After finishing homework, Ming Ming will ___ it once.',
                   answer: '检查', 
                   answerEnglish: 'check',
-                  options: ['抄写', '完成', '检查', '努力'],
-                  optionsEnglish: ['copy', 'complete', 'check', 'work hard']
+                  options: ['抄写', '检查', '改正', '轻松'],
+                  optionsEnglish: ['copy', 'check', 'correct', 'relax']
                 },
                 { 
-                  text: '发现___要及时改正。', 
-                  english: 'When we find ___, we should correct them in time.',
+                  text: '发现___后，他会立刻改正。', 
+                  english: 'After discovering ___, he will correct them immediately.',
                   answer: '错误', 
                   answerEnglish: 'mistakes',
-                  options: ['习惯', '错误', '轻松', '细心'],
-                  optionsEnglish: ['habits', 'mistakes', 'relaxed', 'careful']
+                  options: ['习惯', '努力', '错误', '完成'],
+                  optionsEnglish: ['habits', 'effort', 'mistakes', 'completion']
                 },
                 { 
-                  text: '养成___学习的好___。', 
-                  english: 'Develop good ___ of ___ study.',
-                  answer: '细心', 
-                  answerEnglish: 'careful',
-                  options: ['马虎', '细心', '轻松', '努力'],
-                  optionsEnglish: ['careless', 'careful', 'relaxed', 'hardworking']
+                  text: '认真学习已经成为明明的___。', 
+                  english: 'Studying seriously has become Ming Ming\'s ___.',
+                  answer: '习惯', 
+                  answerEnglish: 'habit',
+                  options: ['错误', '习惯', '轻松', '抄写'],
+                  optionsEnglish: ['mistake', 'habit', 'ease', 'copying']
                 }
               ],
               chineseSentences: [
-                '明明是个聪明的孩子，但是做作业总是很马虎。',
-                '今天老师布置抄写生词的作业，明明很快就完成了。',
-                '但是他没有检查，就交给了老师。',
-                '老师发现了很多错误，让他重新做。',
-                '明明意识到自己的问题，决定以后要细心一些。',
-                '从那以后，明明养成了认真检查作业的好习惯。'
+                '明明是个认真的学生，从不马虎对待学习。',
+                '每天放学后，他都会努力完成所有作业。',
+                '写字时，他总是很细心，一笔一画都不马虎。',
+                '完成作业后，明明还会仔细检查一遍。',
+                '发现错误时，他会立刻改正，从不觉得轻松了事。',
+                '这种认真的态度已经成为明明的好习惯。'
               ],
               englishSentences: [
-                'Ming Ming is a clever child, but he is always careless when doing homework.',
-                'Today the teacher assigned copying vocabulary words, and Ming Ming finished quickly.',
-                'But he didn\\'t check his work before handing it to the teacher.',
-                'The teacher found many mistakes and asked him to redo it.',
-                'Ming Ming realized his problem and decided to be more careful in the future.',
-                'From then on, Ming Ming developed the good habit of carefully checking his homework.'
+                'Ming Ming is a serious student who never treats studying carelessly.',
+                'Every day after school, he works hard to complete all his homework.',
+                'When writing, he is always very careful, not being careless with any stroke.',
+                'After completing homework, Ming Ming will carefully check it once more.',
+                'When he finds mistakes, he corrects them immediately, never taking it lightly.',
+                'This serious attitude has become Ming Ming\'s good habit.'
               ]
             },
             chapter5: {
@@ -341,61 +354,61 @@
               ],
               gameQuestions: [
                 { 
-                  text: '春天是___的季节，万物复苏。', 
-                  english: 'Spring is a ___ season when everything comes back to life.',
+                  text: '一年有四个___：春、夏、秋、冬。', 
+                  english: 'A year has four ___: spring, summer, autumn, winter.',
+                  answer: '季节', 
+                  answerEnglish: 'seasons',
+                  options: ['季节', '变化', '花朵', '果实'],
+                  optionsEnglish: ['seasons', 'changes', 'flowers', 'fruits']
+                },
+                { 
+                  text: '春天气候___，很舒服。', 
+                  english: 'Spring weather is ___, very comfortable.',
                   answer: '温和', 
                   answerEnglish: 'mild',
                   options: ['炎热', '寒冷', '温和', '凉爽'],
                   optionsEnglish: ['hot', 'cold', 'mild', 'cool']
                 },
                 { 
-                  text: '夏天很___，人们喜欢游泳。', 
-                  english: 'Summer is very ___, and people like swimming.',
+                  text: '夏天天气___，需要多喝水。', 
+                  english: 'Summer weather is ___, need to drink more water.',
                   answer: '炎热', 
                   answerEnglish: 'hot',
-                  options: ['凉爽', '炎热', '寒冷', '温和'],
-                  optionsEnglish: ['cool', 'hot', 'cold', 'mild']
+                  options: ['温和', '凉爽', '炎热', '寒冷'],
+                  optionsEnglish: ['mild', 'cool', 'hot', 'cold']
                 },
                 { 
-                  text: '秋天___，是收获的季节。', 
-                  english: 'Autumn is ___ and is the harvest season.',
+                  text: '秋天天气___，很适合外出。', 
+                  english: 'Autumn weather is ___, very suitable for going out.',
                   answer: '凉爽', 
                   answerEnglish: 'cool',
-                  options: ['炎热', '寒冷', '凉爽', '温和'],
-                  optionsEnglish: ['hot', 'cold', 'cool', 'mild']
+                  options: ['炎热', '凉爽', '寒冷', '温和'],
+                  optionsEnglish: ['hot', 'cool', 'cold', 'mild']
                 },
                 { 
-                  text: '冬天___，经常下雪。', 
-                  english: 'Winter is ___ and it often snows.',
-                  answer: '寒冷', 
-                  answerEnglish: 'cold',
-                  options: ['温和', '炎热', '凉爽', '寒冷'],
-                  optionsEnglish: ['mild', 'hot', 'cool', 'cold']
-                },
-                { 
-                  text: '一年四季都有不同的___。', 
-                  english: 'The four seasons each have different ___.',
-                  answer: '变化', 
-                  answerEnglish: 'changes',
-                  options: ['花朵', '果实', '变化', '雪花'],
-                  optionsEnglish: ['flowers', 'fruits', 'changes', 'snowflakes']
+                  text: '冬天会下___，很美丽。', 
+                  english: 'In winter ___ fall, very beautiful.',
+                  answer: '雪花', 
+                  answerEnglish: 'snowflakes',
+                  options: ['花朵', '绿叶', '果实', '雪花'],
+                  optionsEnglish: ['flowers', 'green leaves', 'fruits', 'snowflakes']
                 }
               ],
               chineseSentences: [
-                '一年有四个季节：春、夏、秋、冬。',
-                '春天天气温和，树木长出绿叶，开出美丽的花朵。',
-                '夏天天气炎热，人们喜欢到海边游泳避暑。',
-                '秋天天气凉爽，是收获果实的季节。',
-                '冬天天气寒冷，天空中飘着雪花。',
-                '每个季节都有它独特的美丽和变化。'
+                '一年有四个美丽的季节，每个季节都有不同的特色。',
+                '春天气候温和，到处开满了美丽的花朵。',
+                '夏天天气炎热，树木长满了茂密的绿叶。',
+                '秋天天气凉爽，树上结满了香甜的果实。',
+                '冬天天气寒冷，天空飘洒着洁白的雪花。',
+                '四季的变化让大自然更加美丽动人。'
               ],
               englishSentences: [
-                'There are four seasons in a year: spring, summer, autumn, and winter.',
-                'In spring, the weather is mild, trees grow green leaves and bloom beautiful flowers.',
-                'In summer, the weather is hot, and people like to go to the beach to swim and cool off.',
-                'In autumn, the weather is cool, and it\\'s the season for harvesting fruits.',
-                'In winter, the weather is cold, and snowflakes float in the sky.',
-                'Each season has its unique beauty and changes.'
+                'A year has four beautiful seasons, each with different characteristics.',
+                'Spring has mild weather, with beautiful flowers blooming everywhere.',
+                'Summer is hot, with trees full of lush green leaves.',
+                'Autumn is cool and refreshing, with trees bearing sweet fruits.',
+                'Winter is cold, with white snowflakes falling from the sky.',
+                'The changes of the four seasons make nature even more beautiful.'
               ]
             },
             chapter6: {
@@ -413,61 +426,61 @@
               ],
               gameQuestions: [
                 { 
-                  text: '过马路时一定要___交通规则。', 
-                  english: 'When crossing the road, we must ___ traffic rules.',
-                  answer: '遵守', 
-                  answerEnglish: 'obey',
-                  options: ['遵守', '危险', '小心', '安全'],
-                  optionsEnglish: ['obey', 'dangerous', 'careful', 'safe']
+                  text: '过马路时要遵守___规则。', 
+                  english: 'When crossing the road, we must follow ___ rules.',
+                  answer: '交通', 
+                  answerEnglish: 'traffic',
+                  options: ['交通', '危险', '安全', '小心'],
+                  optionsEnglish: ['traffic', 'danger', 'safety', 'careful']
                 },
                 { 
-                  text: '___的时候不能过马路。', 
-                  english: 'We cannot cross the road when it\\'s a ___.',
+                  text: '看到___不能过马路。', 
+                  english: 'When seeing ___, we cannot cross the road.',
                   answer: '红灯', 
                   answerEnglish: 'red light',
-                  options: ['绿灯', '红灯', '人行道', '斑马线'],
-                  optionsEnglish: ['green light', 'red light', 'sidewalk', 'crosswalk']
+                  options: ['绿灯', '红灯', '斑马线', '人行道'],
+                  optionsEnglish: ['green light', 'red light', 'crosswalk', 'sidewalk']
                 },
                 { 
-                  text: '___亮了才能过马路。', 
-                  english: 'We can only cross the road when the ___ is on.',
-                  answer: '绿灯', 
-                  answerEnglish: 'green light',
-                  options: ['红灯', '绿灯', '交通', '规则'],
-                  optionsEnglish: ['red light', 'green light', 'traffic', 'rules']
+                  text: '行人应该走___。', 
+                  english: 'Pedestrians should walk on the ___.',
+                  answer: '人行道', 
+                  answerEnglish: 'sidewalk',
+                  options: ['斑马线', '人行道', '规则', '绿灯'],
+                  optionsEnglish: ['crosswalk', 'sidewalk', 'rules', 'green light']
                 },
                 { 
-                  text: '要走___过马路。', 
-                  english: 'We should use the ___ to cross the road.',
+                  text: '过马路要走___。', 
+                  english: 'When crossing the road, use the ___.',
                   answer: '斑马线', 
                   answerEnglish: 'crosswalk',
-                  options: ['人行道', '斑马线', '红灯', '绿灯'],
-                  optionsEnglish: ['sidewalk', 'crosswalk', 'red light', 'green light']
+                  options: ['人行道', '红灯', '斑马线', '交通'],
+                  optionsEnglish: ['sidewalk', 'red light', 'crosswalk', 'traffic']
                 },
                 { 
-                  text: '不遵守交通规则是很___的。', 
-                  english: 'Not following traffic rules is very ___.',
-                  answer: '危险', 
-                  answerEnglish: 'dangerous',
-                  options: ['安全', '小心', '危险', '交通'],
-                  optionsEnglish: ['safe', 'careful', 'dangerous', 'traffic']
+                  text: '遵守交通规则是为了___。', 
+                  english: 'Following traffic rules is for ___.',
+                  answer: '安全', 
+                  answerEnglish: 'safety',
+                  options: ['危险', '小心', '安全', '遵守'],
+                  optionsEnglish: ['danger', 'caution', 'safety', 'obedience']
                 }
               ],
               chineseSentences: [
-                '交通安全对每个人都很重要。',
-                '我们必须遵守交通规则，这样才能保证安全。',
-                '红灯的时候不能过马路，要等绿灯亮了才能走。',
-                '过马路时要走人行道上的斑马线。',
-                '在路上要时刻小心，注意来往的车辆。',
-                '只有大家都遵守交通规则，道路才会更安全。'
+                '交通安全非常重要，每个人都要遵守交通规则。',
+                '红灯停，绿灯行，这是最基本的交通规则。',
+                '行人要走人行道，不能在马路上乱跑。',
+                '过马路时要走斑马线，还要小心看左右。',
+                '开车的叔叔阿姨也要小心驾驶，避免危险。',
+                '只有大家都遵守规则，道路才会更安全。'
               ],
               englishSentences: [
-                'Traffic safety is important for everyone.',
-                'We must obey traffic rules to ensure safety.',
-                'We cannot cross the road during a red light; we must wait for the green light.',
-                'When crossing the road, we should use the crosswalk on the sidewalk.',
-                'We should always be careful on the road and watch for passing vehicles.',
-                'Only when everyone follows traffic rules will the roads be safer.'
+                'Traffic safety is very important, everyone must follow traffic rules.',
+                'Red light stop, green light go - these are the most basic traffic rules.',
+                'Pedestrians should walk on sidewalks, not run around on the road.',
+                'When crossing the road, use crosswalks and carefully look left and right.',
+                'Drivers should also drive carefully to avoid danger.',
+                'Only when everyone follows the rules will roads be safer.'
               ]
             },
             chapter7: {
@@ -485,61 +498,61 @@
               ],
               gameQuestions: [
                 { 
-                  text: '要保持___，就要经常锻炼身体。', 
-                  english: 'To maintain ___, we need to exercise regularly.',
-                  answer: '健康', 
-                  answerEnglish: 'health',
-                  options: ['健康', '疲劳', '睡眠', '营养'],
-                  optionsEnglish: ['health', 'fatigue', 'sleep', 'nutrition']
+                  text: '每天要适当___，保持身体健康。', 
+                  english: 'Exercise appropriately every day to maintain ___.',
+                  answer: '锻炼', 
+                  answerEnglish: 'exercise',
+                  options: ['睡眠', '锻炼', '疲劳', '精神'],
+                  optionsEnglish: ['sleep', 'exercise', 'fatigue', 'spirit']
                 },
                 { 
-                  text: '多吃___和水果对身体有好处。', 
-                  english: 'Eating more ___ and fruits is good for the body.',
+                  text: '要多吃___和水果。', 
+                  english: 'Eat more ___ and fruits.',
                   answer: '蔬菜', 
                   answerEnglish: 'vegetables',
-                  options: ['蔬菜', '精神', '习惯', '锻炼'],
-                  optionsEnglish: ['vegetables', 'spirit', 'habit', 'exercise']
+                  options: ['蔬菜', '营养', '习惯', '健康'],
+                  optionsEnglish: ['vegetables', 'nutrition', 'habits', 'health']
                 },
                 { 
-                  text: '___的睡眠可以消除疲劳。', 
-                  english: '___ sleep can eliminate fatigue.',
+                  text: '___的睡眠对身体很重要。', 
+                  english: '___ sleep is very important for the body.',
                   answer: '充足', 
                   answerEnglish: 'Sufficient',
                   options: ['疲劳', '充足', '精神', '营养'],
-                  optionsEnglish: ['tired', 'sufficient', 'spirit', 'nutrition']
+                  optionsEnglish: ['tired', 'sufficient', 'energetic', 'nutritious']
                 },
                 { 
-                  text: '好的生活___有利于健康。', 
+                  text: '良好的生活___有益健康。', 
                   english: 'Good living ___ are beneficial to health.',
                   answer: '习惯', 
                   answerEnglish: 'habits',
-                  options: ['睡眠', '水果', '蔬菜', '习惯'],
-                  optionsEnglish: ['sleep', 'fruits', 'vegetables', 'habits']
+                  options: ['睡眠', '锻炼', '习惯', '水果'],
+                  optionsEnglish: ['sleep', 'exercise', 'habits', 'fruits']
                 },
                 { 
-                  text: '缺乏锻炼会让人感到___。', 
-                  english: 'Lack of exercise can make people feel ___.',
-                  answer: '疲劳', 
-                  answerEnglish: 'tired',
-                  options: ['健康', '充足', '疲劳', '精神'],
-                  optionsEnglish: ['healthy', 'sufficient', 'tired', 'energetic']
+                  text: '均衡的___能让身体更强壮。', 
+                  english: 'Balanced ___ can make the body stronger.',
+                  answer: '营养', 
+                  answerEnglish: 'nutrition',
+                  options: ['疲劳', '营养', '精神', '蔬菜'],
+                  optionsEnglish: ['fatigue', 'nutrition', 'spirit', 'vegetables']
                 }
               ],
               chineseSentences: [
-                '健康的生活方式包括合理的饮食和充足的运动。',
-                '我们每天都应该锻炼身体，这样才能保持健康。',
-                '多吃蔬菜和水果，可以获得丰富的营养。',
-                '充足的睡眠可以帮助我们恢复精神，消除疲劳。',
-                '养成良好的生活习惯，对我们的健康很重要。',
-                '只有身体健康，我们才能更好地学习和工作。'
+                '健康的生活方式对每个人都很重要。',
+                '我们要每天适当锻炼，增强身体素质。',
+                '饮食要均衡，多吃蔬菜和水果补充营养。',
+                '充足的睡眠能让我们精神饱满，不会疲劳。',
+                '早睡早起，规律作息是好习惯。',
+                '只有身体健康，我们才能更好地学习和生活。'
               ],
               englishSentences: [
-                'A healthy lifestyle includes a balanced diet and adequate exercise.',
-                'We should exercise every day to maintain our health.',
-                'Eating more vegetables and fruits can provide us with rich nutrition.',
-                'Adequate sleep can help us restore our energy and eliminate fatigue.',
-                'Developing good living habits is very important for our health.',
-                'Only with good health can we study and work better.'
+                'A healthy lifestyle is important for everyone.',
+                'We should exercise appropriately every day to strengthen our physical fitness.',
+                'Diet should be balanced, eating more vegetables and fruits for nutrition.',
+                'Sufficient sleep keeps us energetic and prevents fatigue.',
+                'Going to bed early and getting up early with regular schedules are good habits.',
+                'Only with good health can we better study and live.'
               ]
             },
             chapter8: {
@@ -557,61 +570,61 @@
               ],
               gameQuestions: [
                 { 
-                  text: '保护___是每个人的责任。', 
-                  english: 'Protecting the ___ is everyone\\'s responsibility.',
-                  answer: '环境', 
-                  answerEnglish: 'environment',
-                  options: ['环境', '垃圾', '资源', '责任'],
-                  optionsEnglish: ['environment', 'garbage', 'resources', 'responsibility']
+                  text: '我们要___地球环境。', 
+                  english: 'We must ___ the Earth\'s environment.',
+                  answer: '保护', 
+                  answerEnglish: 'protect',
+                  options: ['污染', '保护', '分类', '回收'],
+                  optionsEnglish: ['pollute', 'protect', 'classify', 'recycle']
                 },
                 { 
-                  text: '___会破坏我们的生活环境。', 
-                  english: '___ can destroy our living environment.',
-                  answer: '污染', 
-                  answerEnglish: 'Pollution',
-                  options: ['保护', '污染', '节约', '绿化'],
-                  optionsEnglish: ['protection', 'pollution', 'saving', 'greening']
+                  text: '___要按类别分开放置。', 
+                  english: '___ should be separated by category.',
+                  answer: '垃圾', 
+                  answerEnglish: 'Garbage',
+                  options: ['垃圾', '资源', '绿化', '责任'],
+                  optionsEnglish: ['garbage', 'resources', 'greening', 'responsibility']
                 },
                 { 
-                  text: '我们要把___进行分类。', 
-                  english: 'We should ___ our garbage.',
-                  answer: '分类', 
-                  answerEnglish: 'classify',
-                  options: ['回收', '分类', '节约', '保护'],
-                  optionsEnglish: ['recycle', 'classify', 'save', 'protect']
-                },
-                { 
-                  text: '___利用可以减少浪费。', 
-                  english: '___ can reduce waste.',
+                  text: '可以___的物品不要扔掉。', 
+                  english: 'Items that can be ___ should not be thrown away.',
                   answer: '回收', 
-                  answerEnglish: 'Recycling',
-                  options: ['污染', '垃圾', '回收', '分类'],
-                  optionsEnglish: ['pollution', 'garbage', 'recycling', 'classification']
+                  answerEnglish: 'recycled',
+                  options: ['污染', '分类', '回收', '节约'],
+                  optionsEnglish: ['polluted', 'classified', 'recycled', 'saved']
                 },
                 { 
-                  text: '多种树可以___我们的城市。', 
-                  english: 'Planting more trees can ___ our city.',
-                  answer: '绿化', 
-                  answerEnglish: 'green',
-                  options: ['污染', '绿化', '节约', '回收'],
-                  optionsEnglish: ['pollute', 'green', 'save', 'recycle']
+                  text: '我们要___用水用电。', 
+                  english: 'We should ___ water and electricity.',
+                  answer: '节约', 
+                  answerEnglish: 'save',
+                  options: ['节约', '污染', '浪费', '保护'],
+                  optionsEnglish: ['save', 'pollute', 'waste', 'protect']
+                },
+                { 
+                  text: '爱护环境是每个人的___。', 
+                  english: 'Caring for the environment is everyone\'s ___.',
+                  answer: '责任', 
+                  answerEnglish: 'responsibility',
+                  options: ['绿化', '资源', '责任', '分类'],
+                  optionsEnglish: ['greening', 'resources', 'responsibility', 'classification']
                 }
               ],
               chineseSentences: [
-                '保护环境是我们每个人的责任。',
-                '工厂排放的废气会造成空气污染。',
-                '我们应该把垃圾分类投放，便于回收利用。',
-                '节约用水用电，可以保护自然资源。',
-                '多种花草树木，能够绿化我们的城市。',
-                '只有大家一起努力，才能创造美好的环境。'
+                '保护环境是每个人的责任，我们要从小事做起。',
+                '不要随便扔垃圾，要做好垃圾分类。',
+                '可以回收的物品要分开放置，重复利用。',
+                '我们要节约用水用电，不浪费资源。',
+                '多参与绿化活动，种植花草树木。',
+                '只有大家一起努力，环境才会变得更美好。'
               ],
               englishSentences: [
-                'Protecting the environment is everyone\\'s responsibility.',
-                'Waste gases from factories cause air pollution.',
-                'We should sort our garbage for easy recycling.',
-                'Saving water and electricity can protect natural resources.',
-                'Planting more flowers, grass, and trees can green our city.',
-                'Only by working together can we create a beautiful environment.'
+                'Protecting the environment is everyone\'s responsibility, we should start with small things.',
+                'Don\'t litter randomly, we should properly sort garbage.',
+                'Recyclable items should be separated for reuse.',
+                'We should save water and electricity, not waste resources.',
+                'Participate more in greening activities, planting flowers, grass and trees.',
+                'Only when everyone works together will the environment become better.'
               ]
             },
             chapter9: {
@@ -629,61 +642,61 @@
               ],
               gameQuestions: [
                 { 
-                  text: '___的发展改变了我们的生活。', 
-                  english: 'The development of ___ has changed our lives.',
+                  text: '现代___让生活更方便。', 
+                  english: 'Modern ___ makes life more convenient.',
                   answer: '科技', 
                   answerEnglish: 'technology',
-                  options: ['科技', '信息', '沟通', '未来'],
-                  optionsEnglish: ['technology', 'information', 'communication', 'future']
+                  options: ['科技', '发明', '信息', '未来'],
+                  optionsEnglish: ['technology', 'invention', 'information', 'future']
                 },
                 { 
-                  text: '___是现代重要的发明之一。', 
-                  english: '___ is one of the important inventions of modern times.',
+                  text: '___是现代重要的学习工具。', 
+                  english: '___ is an important learning tool in modern times.',
                   answer: '电脑', 
                   answerEnglish: 'Computer',
-                  options: ['电脑', '网络', '进步', '方便'],
-                  optionsEnglish: ['computer', 'network', 'progress', 'convenient']
+                  options: ['网络', '电脑', '信息', '沟通'],
+                  optionsEnglish: ['network', 'computer', 'information', 'communication']
                 },
                 { 
                   text: '通过___我们可以获得各种信息。', 
                   english: 'Through the ___ we can get various information.',
                   answer: '网络', 
                   answerEnglish: 'internet',
-                  options: ['发明', '网络', '快速', '沟通'],
-                  optionsEnglish: ['invention', 'internet', 'fast', 'communication']
+                  options: ['电脑', '网络', '方便', '快速'],
+                  optionsEnglish: ['computer', 'internet', 'convenience', 'speed']
                 },
                 { 
-                  text: '现代科技让___变得更加方便。', 
-                  english: 'Modern technology makes ___ more convenient.',
-                  answer: '沟通', 
-                  answerEnglish: 'communication',
-                  options: ['沟通', '未来', '进步', '信息'],
-                  optionsEnglish: ['communication', 'future', 'progress', 'information']
+                  text: '科技让人们___地交流。', 
+                  english: 'Technology allows people to communicate ___.',
+                  answer: '方便', 
+                  answerEnglish: 'conveniently',
+                  options: ['快速', '方便', '进步', '未来'],
+                  optionsEnglish: ['quickly', 'conveniently', 'progressively', 'futuristically']
                 },
                 { 
-                  text: '科技的___让我们对未来充满希望。', 
-                  english: 'The ___ of technology fills us with hope for the future.',
+                  text: '人类的___离不开科技发展。', 
+                  english: 'Human ___ cannot be separated from technological development.',
                   answer: '进步', 
                   answerEnglish: 'progress',
-                  options: ['方便', '快速', '进步', '发明'],
-                  optionsEnglish: ['convenience', 'speed', 'progress', 'invention']
+                  options: ['发明', '沟通', '进步', '信息'],
+                  optionsEnglish: ['invention', 'communication', 'progress', 'information']
                 }
               ],
               chineseSentences: [
-                '科技的快速发展给我们的生活带来了巨大变化。',
-                '电脑是20世纪最重要的发明之一。',
-                '互联网让我们能够快速获得世界各地的信息。',
-                '手机让人们的沟通变得更加方便。',
-                '科技进步让我们对未来生活充满期待。',
-                '我们应该好好学习，为科技发展做出贡献。'
+                '科技的发展改变了我们的生活方式。',
+                '许多有用的发明让我们的生活更方便。',
+                '电脑和网络帮助我们快速获得信息。',
+                '现代科技让人们的沟通变得简单快速。',
+                '科学技术的进步推动着社会发展。',
+                '未来的科技发展将带来更多惊喜。'
               ],
               englishSentences: [
-                'The rapid development of technology has brought great changes to our lives.',
-                'The computer is one of the most important inventions of the 20th century.',
-                'The internet allows us to quickly access information from around the world.',
-                'Mobile phones make communication more convenient for people.',
-                'Technological progress fills us with expectations for future life.',
-                'We should study hard to contribute to technological development.'
+                'The development of technology has changed our way of life.',
+                'Many useful inventions make our lives more convenient.',
+                'Computers and networks help us get information quickly.',
+                'Modern technology makes communication simple and fast.',
+                'Progress in science and technology drives social development.',
+                'Future technological development will bring more surprises.'
               ]
             },
             chapter10: {
@@ -702,7 +715,7 @@
               gameQuestions: [
                 { 
                   text: '春节是中国最重要的___节日。', 
-                  english: 'Spring Festival is China\\'s most important ___ festival.',
+                  english: 'Spring Festival is China\'s most important ___ festival.',
                   answer: '传统', 
                   answerEnglish: 'traditional',
                   options: ['文化', '传统', '快乐', '意义'],
@@ -751,7 +764,7 @@
               ],
               englishSentences: [
                 'China has a long cultural tradition with rich and colorful festival culture.',
-                'Spring Festival is China\\'s most important traditional festival, when families reunite to celebrate.',
+                'Spring Festival is China\'s most important traditional festival, when families reunite to celebrate.',
                 'During the Mid-Autumn Festival, people admire the moon and eat mooncakes to express longing for family.',
                 'The Dragon Boat Festival has customs of eating zongzi and dragon boat racing.',
                 'Each festival has its special meaning and traditional customs.',
@@ -790,7 +803,7 @@
                 },
                 { 
                   text: '遇到___不要放弃。', 
-                  english: 'Don\\'t give up when encountering ___.',
+                  english: 'Don\'t give up when encountering ___.',
                   answer: '困难', 
                   answerEnglish: 'difficulties',
                   options: ['成功', '困难', '信心', '目标'],
@@ -870,7 +883,7 @@
                 },
                 { 
                   text: '我们应该___彼此的不同。', 
-                  english: 'We should ___ each other\\'s differences.',
+                  english: 'We should ___ each other\'s differences.',
                   answer: '尊重', 
                   answerEnglish: 'respect',
                   options: ['包容', '尊重', '沟通', '合作'],
@@ -878,7 +891,7 @@
                 },
                 { 
                   text: '让我们一起创造美好的___。', 
-                  english: 'Let\\'s create a beautiful ___ together.',
+                  english: 'Let\'s create a beautiful ___ together.',
                   answer: '未来', 
                   answerEnglish: 'future',
                   options: ['世界', '友谊', '未来', '和平'],
@@ -953,15 +966,15 @@
               let cleanText = text;
               
               if (language === 'zh-CN') {
-                cleanText = cleanText.replace(/\\s*[\\/\\|]\\s*[a-zA-Z].*/g, '');
+                cleanText = cleanText.replace(/\s*[\/\|]\s*[a-zA-Z].*/g, '');
               } else {
-                cleanText = cleanText.replace(/[\\/\\|]/g, ' ');
+                cleanText = cleanText.replace(/[\/\|]/g, ' ');
               }
               
               cleanText = cleanText.replace(/_/g, ' ')
                                   .replace(/underscore/gi, '')
-                                  .replace(/\\bslash\\b/gi, '')
-                                  .replace(/\\s+/g, ' ')
+                                  .replace(/\bslash\b/gi, '')
+                                  .replace(/\s+/g, ' ')
                                   .trim();
               
               const utterance = new SpeechSynthesisUtterance(cleanText);
@@ -979,7 +992,7 @@
               return utterance;
             } else {
               if (isAppleDevice) {
-                alert('Apple设备语音功能受限，请：\\n1. 检查静音开关\\n2. 调高音量\\n3. 尝试多次点击\\n4. 建议使用Chrome浏览器');
+                alert('Apple设备语音功能受限，请：\n1. 检查静音开关\n2. 调高音量\n3. 尝试多次点击\n4. 建议使用Chrome浏览器');
               } else {
                 alert('您的浏览器不支持语音功能');
               }
@@ -1219,7 +1232,7 @@
                 >🏠 返回主页</button>
                 
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                  <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>📚 词汇学习</h1>
+                  <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>📖 词汇学习</h1>
                   <p style={{ fontSize: '1.2rem', color: '#7f8c8d' }}>{chapterTitles[currentChapter]}</p>
                 </div>
                 
@@ -1227,10 +1240,10 @@
                   background: 'white',
                   borderRadius: '20px',
                   padding: '2rem',
-                  textAlign: 'center',
                   boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
                 }}>
                   <div style={{ 
+                    textAlign: 'center', 
                     fontSize: '1.2rem', 
                     color: '#666', 
                     marginBottom: '2rem' 
@@ -1238,141 +1251,134 @@
                     第 {currentWordIndex + 1} 个词汇 / {getCurrentData().vocabulary.length} 个
                   </div>
                   
-                  <div style={{ 
-                    fontSize: '4rem', 
-                    fontWeight: 'bold', 
-                    color: '#667eea', 
-                    margin: '1rem 0' 
-                  }}>{currentWord.word}</div>
-                  <div style={{ 
-                    fontSize: '1.5rem', 
-                    color: '#666', 
-                    marginBottom: '2rem' 
-                  }}>{currentWord.pinyin}</div>
-                  
-                  <button 
-                    onClick={() => speakText(currentWord.word)}
-                    style={{
-                      background: 'linear-gradient(45deg, #667eea, #764ba2)',
-                      color: 'white',
-                      border: 'none',
-                      padding: '0.8rem 1.5rem',
-                      borderRadius: '25px',
-                      fontSize: '1rem',
+                  <div style={{
+                    background: '#fff3cd',
+                    padding: '2rem',
+                    borderRadius: '15px',
+                    textAlign: 'center',
+                    marginBottom: '2rem',
+                    border: '2px solid #ffc107'
+                  }}>
+                    <div style={{ 
+                      fontSize: '3rem', 
                       fontWeight: 'bold',
-                      cursor: 'pointer',
-                      margin: '0.5rem'
-                    }}
-                  >
-                    🔊 朗读词语
-                  </button>
-                  
-                  <div style={{margin: '2rem 0'}}>
-                    {viewedChinese ? (
-                      <div style={{
-                        background: '#f8f9fa',
-                        padding: '1.5rem',
-                        borderRadius: '10px',
-                        margin: '1rem 0',
-                        borderLeft: '4px solid #667eea'
-                      }}>
-                        <strong>中文解释：</strong>{currentWord.chinese}
-                      </div>
-                    ) : (
-                      <button 
-                        onClick={handleViewChinese}
-                        style={{
-                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
-                          color: 'white',
-                          border: 'none',
-                          padding: '0.8rem 1.5rem',
-                          borderRadius: '25px',
-                          fontSize: '1rem',
-                          fontWeight: 'bold',
-                          cursor: 'pointer',
-                          margin: '0.5rem'
-                        }}
-                      >
-                        查看华语解释
-                      </button>
-                    )}
-                    
-                    {viewedEnglish ? (
-                      <div style={{
-                        background: '#f8f9fa',
-                        padding: '1.5rem',
-                        borderRadius: '10px',
-                        margin: '1rem 0',
-                        borderLeft: '4px solid #667eea'
-                      }}>
-                        <strong>English:</strong> {currentWord.english}
-                      </div>
-                    ) : (
-                      <button 
-                        onClick={handleViewEnglish}
-                        style={{
-                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
-                          color: 'white',
-                          border: 'none',
-                          padding: '0.8rem 1.5rem',
-                          borderRadius: '25px',
-                          fontSize: '1rem',
-                          fontWeight: 'bold',
-                          cursor: 'pointer',
-                          margin: '0.5rem'
-                        }}
-                      >
-                        查看英文解释
-                      </button>
-                    )}
+                      color: '#d63384',
+                      marginBottom: '1rem'
+                    }}>
+                      {currentWord.word}
+                    </div>
+                    <div style={{ 
+                      fontSize: '1.5rem', 
+                      color: '#6f42c1',
+                      marginBottom: '1rem'
+                    }}>
+                      {currentWord.pinyin}
+                    </div>
                   </div>
                   
-                  {viewedChinese && viewedEnglish ? (
-                    <div style={{ 
-                      display: 'flex', 
-                      justifyContent: 'center', 
-                      gap: '1rem',
-                      margin: '2rem 0',
-                      flexWrap: 'wrap'
+                  <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    gap: '1rem',
+                    margin: '2rem 0',
+                    flexWrap: 'wrap'
+                  }}>
+                    <button 
+                      onClick={handleViewChinese}
+                      style={{
+                        background: viewedChinese ? '#28a745' : 'linear-gradient(45deg, #667eea, #764ba2)',
+                        color: 'white',
+                        border: 'none',
+                        padding: '0.8rem 1.5rem',
+                        borderRadius: '25px',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      🇨🇳 中文解释
+                    </button>
+                    <button 
+                      onClick={handleViewEnglish}
+                      style={{
+                        background: viewedEnglish ? '#28a745' : 'linear-gradient(45deg, #667eea, #764ba2)',
+                        color: 'white',
+                        border: 'none',
+                        padding: '0.8rem 1.5rem',
+                        borderRadius: '25px',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      🇺🇸 英文解释
+                    </button>
+                  </div>
+                  
+                  {viewedChinese && (
+                    <div style={{
+                      background: '#d1ecf1',
+                      padding: '1.5rem',
+                      borderRadius: '10px',
+                      margin: '1rem 0',
+                      border: '1px solid #b6d4fe'
                     }}>
-                      {currentWordIndex > 0 && (
-                        <button 
-                          onClick={handlePreviousWord}
-                          style={{
-                            background: '#666',
-                            color: 'white',
-                            border: 'none',
-                            padding: '0.8rem 1.5rem',
-                            borderRadius: '25px',
-                            fontSize: '1rem',
-                            fontWeight: 'bold',
-                            cursor: 'pointer'
-                          }}
-                        >
-                          ← 上一个词汇
-                        </button>
-                      )}
-                      <button 
-                        onClick={handleNextWord}
-                        style={{
-                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
-                          color: 'white',
-                          border: 'none',
-                          padding: '0.8rem 1.5rem',
-                          borderRadius: '25px',
-                          fontSize: '1rem',
-                          fontWeight: 'bold',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        {currentWordIndex < getCurrentData().vocabulary.length - 1 ? '下一个词汇 →' : '开始练习 🎮'}
-                      </button>
+                      <strong>中文解释：</strong><br/>
+                      {currentWord.chinese}
                     </div>
-                  ) : (
-                    <p style={{textAlign: 'center', color: '#666'}}>
-                      请先查看华语和英文解释
-                    </p>
                   )}
+                  
+                  {viewedEnglish && (
+                    <div style={{
+                      background: '#d4edda',
+                      padding: '1.5rem',
+                      borderRadius: '10px',
+                      margin: '1rem 0',
+                      border: '1px solid #c3e6cb'
+                    }}>
+                      <strong>English Definition:</strong><br/>
+                      {currentWord.english}
+                    </div>
+                  )}
+                  
+                  <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'space-between',
+                    margin: '2rem 0'
+                  }}>
+                    <button 
+                      onClick={handlePreviousWord}
+                      disabled={currentWordIndex === 0}
+                      style={{
+                        background: currentWordIndex === 0 ? '#ccc' : '#666',
+                        color: 'white',
+                        border: 'none',
+                        padding: '0.8rem 1.5rem',
+                        borderRadius: '25px',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                        cursor: currentWordIndex === 0 ? 'not-allowed' : 'pointer'
+                      }}
+                    >
+                      ← 上一个词汇
+                    </button>
+                    <button 
+                      onClick={handleNextWord}
+                      disabled={!viewedChinese || !viewedEnglish}
+                      style={{
+                        background: (!viewedChinese || !viewedEnglish) ? '#ccc' : 'linear-gradient(45deg, #28a745, #20c997)',
+                        color: 'white',
+                        border: 'none',
+                        padding: '0.8rem 1.5rem',
+                        borderRadius: '25px',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                        cursor: (!viewedChinese || !viewedEnglish) ? 'not-allowed' : 'pointer'
+                      }}
+                    >
+                      {currentWordIndex === getCurrentData().vocabulary.length - 1 ? '开始游戏 →' : '下一个词汇 →'}
+                    </button>
+                  </div>
                 </div>
               </div>
             );
@@ -1405,7 +1411,7 @@
                 >🏠 返回主页</button>
                 
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                  <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>🎮 填空练习</h1>
+                  <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>🎮 填空游戏</h1>
                   <p style={{ fontSize: '1.2rem', color: '#7f8c8d' }}>{chapterTitles[currentChapter]}</p>
                 </div>
                 
@@ -1416,7 +1422,7 @@
                   boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
                 }}>
                   <div style={{ 
-                    textAlign: 'center',
+                    textAlign: 'center', 
                     fontSize: '1.2rem', 
                     color: '#666', 
                     marginBottom: '2rem' 
@@ -1425,41 +1431,33 @@
                   </div>
                   
                   <div style={{
-                    background: '#f8f9fa',
-                    padding: '1.5rem',
-                    borderRadius: '10px',
-                    marginBottom: '2rem'
+                    background: '#fff3cd',
+                    padding: '2rem',
+                    borderRadius: '15px',
+                    textAlign: 'center',
+                    marginBottom: '2rem',
+                    border: '2px solid #ffc107'
                   }}>
                     <div style={{ 
-                      fontSize: '1.2rem', 
-                      marginBottom: '0.5rem',
-                      color: '#333' 
-                    }}>{currentQ.text}</div>
+                      fontSize: '1.3rem', 
+                      lineHeight: 1.6,
+                      marginBottom: '1rem',
+                      color: '#333'
+                    }}>
+                      {currentQ.text}
+                    </div>
                     <div style={{ 
-                      fontSize: '1rem', 
-                      color: '#666' 
-                    }}>{currentQ.english}</div>
-                    <button 
-                      onClick={() => speakText(currentQ.text)}
-                      style={{
-                        background: 'linear-gradient(45deg, #667eea, #764ba2)',
-                        color: 'white',
-                        border: 'none',
-                        padding: '0.8rem 1.5rem',
-                        borderRadius: '25px',
-                        fontSize: '1rem',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        marginTop: '1rem'
-                      }}
-                    >
-                      🔊 朗读题目
-                    </button>
+                      fontSize: '1.1rem', 
+                      color: '#666',
+                      fontStyle: 'italic'
+                    }}>
+                      {currentQ.english}
+                    </div>
                   </div>
                   
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                  <div style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
                     gap: '1rem',
                     margin: '2rem 0'
                   }}>
@@ -1468,25 +1466,33 @@
                         key={index}
                         onClick={() => handleGameAnswer(option)}
                         style={{
-                          background: '#667eea',
+                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
                           color: 'white',
                           border: 'none',
                           padding: '1rem',
-                          borderRadius: '10px',
-                          fontSize: '1rem',
+                          borderRadius: '15px',
+                          fontSize: '1.1rem',
+                          fontWeight: 'bold',
                           cursor: 'pointer',
                           transition: 'all 0.3s ease'
                         }}
                       >
                         {option}<br/>
-                        <small>({currentQ.optionsEnglish[index]})</small>
+                        <small style={{ opacity: 0.8 }}>{currentQ.optionsEnglish[index]}</small>
                       </button>
                     ))}
                   </div>
                   
                   {wrongCount > 0 && (
-                    <div style={{textAlign: 'center', color: 'red', fontWeight: 'bold'}}>
-                      错误次数: {wrongCount}/3
+                    <div style={{
+                      background: '#f8d7da',
+                      color: '#721c24',
+                      padding: '1rem',
+                      borderRadius: '10px',
+                      textAlign: 'center',
+                      margin: '1rem 0'
+                    }}>
+                      已答错 {wrongCount} 次，再错 {3 - wrongCount} 次将重新开始！
                     </div>
                   )}
                   
@@ -1508,7 +1514,7 @@
                         cursor: 'pointer'
                       }}
                     >
-                      📚 返回词汇学习
+                      ← 返回词汇学习
                     </button>
                   </div>
                 </div>
@@ -1543,7 +1549,7 @@
                   >🏠 返回主页</button>
                   
                   <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>📖 作文朗读</h1>
+                    <h1 style={{ fontSize: '2.5rem', color: '#2c3e50' }}>🎉 游戏完成！</h1>
                     <p style={{ fontSize: '1.2rem', color: '#7f8c8d' }}>{chapterTitles[currentChapter]}</p>
                   </div>
                   
@@ -1551,35 +1557,47 @@
                     background: 'white',
                     borderRadius: '20px',
                     padding: '2rem',
-                    textAlign: 'center',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
                   }}>
-                    <h2 style={{textAlign: 'center', marginBottom: '2rem'}}>
-                      🎉 恭喜完成所有练习！
-                    </h2>
-                    <p style={{textAlign: 'center', fontSize: '1.2rem', marginBottom: '2rem'}}>
-                      选择语言开始朗读故事：<br/>
-                      Choose a language to read the story:
-                    </p>
+                    <div style={{ 
+                      textAlign: 'center',
+                      marginBottom: '2rem'
+                    }}>
+                      <div style={{ 
+                        fontSize: '4rem',
+                        marginBottom: '1rem'
+                      }}>🏆</div>
+                      <h2 style={{ 
+                        fontSize: '2rem', 
+                        color: '#28a745',
+                        marginBottom: '1rem'
+                      }}>恭喜完成学习！</h2>
+                      <p style={{ 
+                        fontSize: '1.2rem', 
+                        color: '#666',
+                        marginBottom: '2rem'
+                      }}>选择你想要的朗读方式：</p>
+                    </div>
                     
                     <div style={{ 
                       display: 'flex', 
                       justifyContent: 'center',
-                      gap: '1rem',
+                      gap: '2rem',
                       margin: '2rem 0',
                       flexWrap: 'wrap'
                     }}>
                       <button 
                         onClick={() => handleReading('chinese')}
                         style={{
-                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          background: 'linear-gradient(45deg, #dc3545, #c82333)',
                           color: 'white',
                           border: 'none',
-                          padding: '0.8rem 1.5rem',
+                          padding: '1.5rem 2rem',
                           borderRadius: '25px',
-                          fontSize: '1rem',
+                          fontSize: '1.2rem',
                           fontWeight: 'bold',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          minWidth: '200px'
                         }}
                       >
                         🇨🇳 中文朗读
@@ -1587,14 +1605,15 @@
                       <button 
                         onClick={() => handleReading('english')}
                         style={{
-                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                          background: 'linear-gradient(45deg, #007bff, #0056b3)',
                           color: 'white',
                           border: 'none',
-                          padding: '0.8rem 1.5rem',
+                          padding: '1.5rem 2rem',
                           borderRadius: '25px',
-                          fontSize: '1rem',
+                          fontSize: '1.2rem',
                           fontWeight: 'bold',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          minWidth: '200px'
                         }}
                       >
                         🇺🇸 英文朗读
@@ -1720,7 +1739,7 @@
                           cursor: 'pointer'
                         }}
                       >
-                        🔊 重新朗读这句
+                        🔊 重new朗读这句
                       </button>
                       <button 
                         onClick={handleNextSentence}
@@ -1769,8 +1788,57 @@
           return null;
         };
 
-        // Render the app
-        ReactDOM.render(<ChineseLearningCompleteApp />, document.getElementById('root'));
+        // Render the app with error handling
+        try {
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(<ChineseLearningCompleteApp />);
+        } catch (error) {
+            console.error('Error rendering app:', error);
+            document.getElementById('root').innerHTML = `
+                <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif;">
+                    <div style="text-align: center; max-width: 500px; padding: 20px;">
+                        <h2 style="color: #e74c3c;">Game Loading Error</h2>
+                        <p>The Chinese Learning Complete game failed to load. Please try:</p>
+                        <ul style="text-align: left; margin: 20px 0;">
+                            <li>Refreshing the page</li>
+                            <li>Checking your internet connection</li>
+                            <li>Using a different browser</li>
+                        </ul>
+                        <button onclick="location.reload()" style="background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                            Refresh Page
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+    
+    <!-- Fallback script for when React/Babel fails to load -->
+    <script>
+        // Check if React loaded properly after a short delay
+        setTimeout(function() {
+            if (typeof React === 'undefined' || typeof ReactDOM === 'undefined' || typeof Babel === 'undefined') {
+                document.getElementById('root').innerHTML = `
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif;">
+                        <div style="text-align: center; max-width: 500px; padding: 20px;">
+                            <h2 style="color: #e74c3c;">Resource Loading Error</h2>
+                            <p>Required resources failed to load. This might be due to:</p>
+                            <ul style="text-align: left; margin: 20px 0;">
+                                <li>Poor internet connection</li>
+                                <li>CDN service unavailable</li>
+                                <li>Browser security settings</li>
+                            </ul>
+                            <button onclick="location.reload()" style="background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">
+                                Try Again
+                            </button>
+                            <button onclick="window.history.back()" style="background: #95a5a6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                                Go Back
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }, 3000);
     </script>
 </body>
 </html>
