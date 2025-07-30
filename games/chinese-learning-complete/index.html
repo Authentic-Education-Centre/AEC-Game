@@ -1782,7 +1782,8 @@
         };
 
         // Render the app
-        ReactDOM.render(<ChineseLearningCompleteApp />, document.getElementById('root'));
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<ChineseLearningCompleteApp />);
     </script>
 </body>
 </html>
