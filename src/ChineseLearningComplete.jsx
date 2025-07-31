@@ -1031,243 +1031,243 @@ const ChineseLearningCompleteApp = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {/* Chapter 1 */}
-              <div className="bg-gradient-to-br from-orange-50 to-red-100 p-4 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">⚽</div>
-                  <h3 className="text-lg font-bold text-orange-700 mb-1">第一篇：华国的办法</h3>
-                  <h4 className="text-sm font-semibold text-orange-600 mb-2">Chapter 1: Hua Guo's Solution</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-orange-50 to-red-100 p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">⚽</div>
+                  <h3 className="text-xl font-bold text-orange-700 mb-2">第一篇：华国的办法</h3>
+                  <h4 className="text-lg font-semibold text-orange-600 mb-3">Chapter 1: Hua Guo's Solution</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于解决问题的10个词汇<br/>
                     Learn 10 problem-solving words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter1')}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 2 */}
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-4 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">👫</div>
-                  <h3 className="text-lg font-bold text-blue-700 mb-1">第二篇：好朋友</h3>
-                  <h4 className="text-sm font-semibold text-blue-600 mb-2">Chapter 2: Good Friends</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">👫</div>
+                  <h3 className="text-xl font-bold text-blue-700 mb-2">第二篇：好朋友</h3>
+                  <h4 className="text-lg font-semibold text-blue-600 mb-3">Chapter 2: Good Friends</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于友谊的10个词汇<br/>
                     Learn 10 friendship words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter2')}
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 3 */}
-              <div className="bg-gradient-to-br from-green-50 to-emerald-100 p-4 rounded-xl border-2 border-green-200 hover:border-green-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">🐕</div>
-                  <h3 className="text-lg font-bold text-green-700 mb-1">第三篇：小狗的家</h3>
-                  <h4 className="text-sm font-semibold text-green-600 mb-2">Chapter 3: Puppy's Home</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-xl border-2 border-green-200 hover:border-green-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">🐕</div>
+                  <h3 className="text-xl font-bold text-green-700 mb-2">第三篇：小狗的家</h3>
+                  <h4 className="text-lg font-semibold text-green-600 mb-3">Chapter 3: Puppy's Home</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于温暖和关爱的10个词汇<br/>
                     Learn 10 warmth and care words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter3')}
-                  className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 4 */}
-              <div className="bg-gradient-to-br from-purple-50 to-violet-100 p-4 rounded-xl border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">✈️</div>
-                  <h3 className="text-lg font-bold text-purple-700 mb-1">第四篇：旅行记</h3>
-                  <h4 className="text-sm font-semibold text-purple-600 mb-2">Chapter 4: Travel Story</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-purple-50 to-violet-100 p-6 rounded-xl border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">✈️</div>
+                  <h3 className="text-xl font-bold text-purple-700 mb-2">第四篇：旅行记</h3>
+                  <h4 className="text-lg font-semibold text-purple-600 mb-3">Chapter 4: Travel Story</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于旅行的10个词汇<br/>
                     Learn 10 travel words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter4')}
-                  className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 5 */}
-              <div className="bg-gradient-to-br from-yellow-50 to-amber-100 p-4 rounded-xl border-2 border-yellow-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">👩‍🍳</div>
-                  <h3 className="text-lg font-bold text-yellow-700 mb-1">第五篇：厨房小帮手</h3>
-                  <h4 className="text-sm font-semibold text-yellow-600 mb-2">Chapter 5: Kitchen Helper</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-yellow-50 to-amber-100 p-6 rounded-xl border-2 border-yellow-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">👩‍🍳</div>
+                  <h3 className="text-xl font-bold text-yellow-700 mb-2">第五篇：厨房小帮手</h3>
+                  <h4 className="text-lg font-semibold text-yellow-600 mb-3">Chapter 5: Kitchen Helper</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于厨房的10个词汇<br/>
                     Learn 10 kitchen words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter5')}
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 6 */}
-              <div className="bg-gradient-to-br from-indigo-50 to-blue-100 p-4 rounded-xl border-2 border-indigo-200 hover:border-indigo-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">📚</div>
-                  <h3 className="text-lg font-bold text-indigo-700 mb-1">第六篇：图书馆之行</h3>
-                  <h4 className="text-sm font-semibold text-indigo-600 mb-2">Chapter 6: Library Visit</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-indigo-50 to-blue-100 p-6 rounded-xl border-2 border-indigo-200 hover:border-indigo-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">📚</div>
+                  <h3 className="text-xl font-bold text-indigo-700 mb-2">第六篇：图书馆之行</h3>
+                  <h4 className="text-lg font-semibold text-indigo-600 mb-3">Chapter 6: Library Visit</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于图书馆的10个词汇<br/>
                     Learn 10 library words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter6')}
-                  className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 7 */}
-              <div className="bg-gradient-to-br from-red-50 to-pink-100 p-4 rounded-xl border-2 border-red-200 hover:border-red-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">⚽</div>
-                  <h3 className="text-lg font-bold text-red-700 mb-1">第七篇：运动健将</h3>
-                  <h4 className="text-sm font-semibold text-red-600 mb-2">Chapter 7: Sports Champion</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-red-50 to-pink-100 p-6 rounded-xl border-2 border-red-200 hover:border-red-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">⚽</div>
+                  <h3 className="text-xl font-bold text-red-700 mb-2">第七篇：运动健将</h3>
+                  <h4 className="text-lg font-semibold text-red-600 mb-3">Chapter 7: Sports Champion</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于运动的10个词汇<br/>
                     Learn 10 sports words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter7')}
-                  className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 8 */}
-              <div className="bg-gradient-to-br from-emerald-50 to-green-100 p-4 rounded-xl border-2 border-emerald-200 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">🌸</div>
-                  <h3 className="text-lg font-bold text-emerald-700 mb-1">第八篇：春天来了</h3>
-                  <h4 className="text-sm font-semibold text-emerald-600 mb-2">Chapter 8: Spring Arrives</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-emerald-50 to-green-100 p-6 rounded-xl border-2 border-emerald-200 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">🌸</div>
+                  <h3 className="text-xl font-bold text-emerald-700 mb-2">第八篇：春天来了</h3>
+                  <h4 className="text-lg font-semibold text-emerald-600 mb-3">Chapter 8: Spring Arrives</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于春天的10个词汇<br/>
                     Learn 10 spring words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter8')}
-                  className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 9 */}
-              <div className="bg-gradient-to-br from-pink-50 to-rose-100 p-4 rounded-xl border-2 border-pink-200 hover:border-pink-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">🎂</div>
-                  <h3 className="text-lg font-bold text-pink-700 mb-1">第九篇：生日快乐</h3>
-                  <h4 className="text-sm font-semibold text-pink-600 mb-2">Chapter 9: Happy Birthday</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-pink-50 to-rose-100 p-6 rounded-xl border-2 border-pink-200 hover:border-pink-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">🎂</div>
+                  <h3 className="text-xl font-bold text-pink-700 mb-2">第九篇：生日快乐</h3>
+                  <h4 className="text-lg font-semibold text-pink-600 mb-3">Chapter 9: Happy Birthday</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于生日的10个词汇<br/>
                     Learn 10 birthday words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter9')}
-                  className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 10 */}
-              <div className="bg-gradient-to-br from-cyan-50 to-blue-100 p-4 rounded-xl border-2 border-cyan-200 hover:border-cyan-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">🛒</div>
-                  <h3 className="text-lg font-bold text-cyan-700 mb-1">第十篇：超市购物</h3>
-                  <h4 className="text-sm font-semibold text-cyan-600 mb-2">Chapter 10: Supermarket Shopping</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-cyan-50 to-blue-100 p-6 rounded-xl border-2 border-cyan-200 hover:border-cyan-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">🛒</div>
+                  <h3 className="text-xl font-bold text-cyan-700 mb-2">第十篇：超市购物</h3>
+                  <h4 className="text-lg font-semibold text-cyan-600 mb-3">Chapter 10: Supermarket Shopping</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于购物的10个词汇<br/>
                     Learn 10 shopping words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter10')}
-                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 11 */}
-              <div className="bg-gradient-to-br from-teal-50 to-cyan-100 p-4 rounded-xl border-2 border-teal-200 hover:border-teal-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">👩‍⚕️</div>
-                  <h3 className="text-lg font-bold text-teal-700 mb-1">第十一篇：看医生</h3>
-                  <h4 className="text-sm font-semibold text-teal-600 mb-2">Chapter 11: Seeing the Doctor</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-teal-50 to-cyan-100 p-6 rounded-xl border-2 border-teal-200 hover:border-teal-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">👩‍⚕️</div>
+                  <h3 className="text-xl font-bold text-teal-700 mb-2">第十一篇：看医生</h3>
+                  <h4 className="text-lg font-semibold text-teal-600 mb-3">Chapter 11: Seeing the Doctor</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于医院的10个词汇<br/>
                     Learn 10 hospital words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter11')}
-                  className="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
 
               {/* Chapter 12 */}
-              <div className="bg-gradient-to-br from-lime-50 to-green-100 p-4 rounded-xl border-2 border-lime-200 hover:border-lime-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-4">
-                  <div className="text-4xl mb-3">🌍</div>
-                  <h3 className="text-lg font-bold text-lime-700 mb-1">第十二篇：环保小卫士</h3>
-                  <h4 className="text-sm font-semibold text-lime-600 mb-2">Chapter 12: Eco Guardian</h4>
-                  <p className="text-gray-600 mb-3 text-xs">
+              <div className="bg-gradient-to-br from-lime-50 to-green-100 p-6 rounded-xl border-2 border-lime-200 hover:border-lime-400 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">🌍</div>
+                  <h3 className="text-xl font-bold text-lime-700 mb-2">第十二篇：环保小卫士</h3>
+                  <h4 className="text-lg font-semibold text-lime-600 mb-3">Chapter 12: Eco Guardian</h4>
+                  <p className="text-gray-600 mb-3 text-sm">
                     学习关于环保的10个词汇<br/>
                     Learn 10 environmental words
                   </p>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter12')}
-                  className="w-full bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-5 h-5" />
                   开始学习
                 </button>
               </div>
