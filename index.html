@@ -353,7 +353,11 @@
 
     <script>
         function playGame(gameName) {
-            window.location.href = `games/${gameName}/index.html`;
+            if (gameName === 'ChineseLearningComplete') {
+                window.location.href = `games/${gameName}/test.html`;
+            } else {
+                window.location.href = `games/${gameName}/index.html`;
+            }
         }
 
         // Add some interactive effects
