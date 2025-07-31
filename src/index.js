@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ChineseLearningComplete from './ChineseLearningComplete';
+import ChineseLearningCompleteApp from './ChineseLearningComplete';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ChineseLearningComplete />
+    <ChineseLearningCompleteApp />
   </React.StrictMode>
 );
