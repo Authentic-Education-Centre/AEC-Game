@@ -233,7 +233,7 @@
         <h3>🎮 Learning Statistics</h3>
         <div class="stats-grid">
             <div class="stat-item">
-                <span class="stat-number">3</span>
+                <span class="stat-number">2</span>
                 <span class="stat-label">Active Games</span>
             </div>
             <div class="stat-item">
@@ -278,20 +278,6 @@
                 <li>📑 Story reading</li>
             </ul>
             <button class="play-button">🎮 Play Now</button>
-        </div>
-
-        <!-- Game 3: Chinese Learning Complete -->
-        <div class="game-card floating" style="animation-delay: 0.3s;">
-            <span class="game-icon">🎓</span>
-            <h2 class="game-title">Chinese Learning Complete</h2>
-            <p class="game-description">Complete Chinese learning program with 12 comprehensive chapters!</p>
-            <ul class="game-features">
-                <li>🎵 Text-to-speech support</li>
-                <li>📖 12 story chapters</li>
-                <li>🎮 Fill-in-the-blank games</li>
-                <li>🌍 Bilingual content</li>
-            </ul>
-            <button class="play-button" onclick="window.location.href='games/ChineseLearningComplete/test.html'">🎮 Play Now</button>
         </div>
 
         <!-- Game 4: English Vocabulary -->
@@ -353,11 +339,7 @@
 
     <script>
         function playGame(gameName) {
-            if (gameName === 'ChineseLearningComplete') {
-                window.location.href = `games/${gameName}/test.html`;
-            } else {
-                window.location.href = `games/${gameName}/index.html`;
-            }
+            window.location.href = `games/${gameName}/index.html`;
         }
 
         // Add some interactive effects
