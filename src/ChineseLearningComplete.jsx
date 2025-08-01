@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BookOpen, Play, Volume2, RotateCcw, Gamepad2, Speaker, Home, ArrowLeft } from 'lucide-react';
 
-const ChineseLearningCompleteApp = () => {
-  const [currentChapter, setCurrentChapter] = useState('menu'); // 'menu', 'chapter1', 'chapter2', 'chapter3', 'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter9', 'chapter10', 'chapter11', 'chapter12'
+const ChineseLearningSet1 = () => {
+  const [currentChapter, setCurrentChapter] = useState('menu'); // 'menu', 'chapter1', 'chapter2', 'chapter3', 'chapter4'
   const [currentPhase, setCurrentPhase] = useState('learning');
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [viewedChinese, setViewedChinese] = useState(false);
@@ -378,468 +378,120 @@ const ChineseLearningCompleteApp = () => {
   // 第四篇数据
   const chapter4Data = {
     vocabulary: [
-      { word: '旅行', pinyin: 'lǚ xíng', chinese: '外出游览，到不同的地方参观', english: 'travel; journey' },
-      { word: '景色', pinyin: 'jǐng sè', chinese: '风景的色彩，美丽的自然景观', english: 'scenery; landscape' },
-      { word: '拍照', pinyin: 'pāi zhào', chinese: '用照相机记录景象', english: 'take photos' },
-      { word: '博物馆', pinyin: 'bó wù guǎn', chinese: '收藏和展示文物的地方', english: 'museum' },
-      { word: '导游', pinyin: 'dǎo yóu', chinese: '带领游客参观的人', english: 'tour guide' },
-      { word: '纪念品', pinyin: 'jì niàn pǐn', chinese: '为了纪念而购买的物品', english: 'souvenir' },
-      { word: '登山', pinyin: 'dēng shān', chinese: '爬山，攀登高山', english: 'mountain climbing' },
-      { word: '海滩', pinyin: 'hǎi tān', chinese: '靠近海边的沙滩', english: 'beach' },
-      { word: '酒店', pinyin: 'jiǔ diàn', chinese: '为旅客提供住宿的地方', english: 'hotel' },
-      { word: '背包', pinyin: 'bēi bāo', chinese: '背在背上的行李包', english: 'backpack' }
+      { word: '答应', pinyin: 'dā yìng', chinese: '同意别人的请求或要求', english: 'to agree; to promise' },
+      { word: '茁壮', pinyin: 'zhuó zhuàng', chinese: '健康强壮地成长', english: 'strong and healthy; vigorous' },
+      { word: '栽培', pinyin: 'zāi péi', chinese: '种植并细心照料植物；也指培养人才', english: 'to plant and nurture; to cultivate' },
+      { word: '泥土', pinyin: 'ní tǔ', chinese: '潮湿的土；泥巴', english: 'soil; earth; dirt' },
+      { word: '培植', pinyin: 'péi zhí', chinese: '培养种植植物或培养人才', english: 'to cultivate; to foster' },
+      { word: '关怀', pinyin: 'guān huái', chinese: '关心并照顾', english: 'care and concern' },
+      { word: '花盆', pinyin: 'huā pén', chinese: '种花用的器皿', english: 'flower pot' },
+      { word: '庭院', pinyin: 'tíng yuàn', chinese: '房屋前或屋内的小院子', english: 'courtyard; yard' },
+      { word: '听话', pinyin: 'tīng huà', chinese: '听从教导，不顶嘴', english: 'obedient' },
+      { word: '种花', pinyin: 'zhòng huā', chinese: '把花种下并照顾它生长', english: 'to plant flowers' }
     ],
     gameQuestions: [
-      { text: '我们计划下个月去___。', english: 'We plan to ___ next month.', answer: '旅行', answerEnglish: 'travel', options: ['旅行', '拍照', '登山', '酒店'], optionsEnglish: ['travel', 'take photos', 'climb mountain', 'hotel'] },
-      { text: '山上的___很美丽。', english: 'The ___ on the mountain is beautiful.', answer: '景色', answerEnglish: 'scenery', options: ['景色', '博物馆', '海滩', '纪念品'], optionsEnglish: ['scenery', 'museum', 'beach', 'souvenir'] },
-      { text: '游客喜欢在这里___。', english: 'Tourists like to ___ here.', answer: '拍照', answerEnglish: 'take photos', options: ['导游', '拍照', '背包', '酒店'], optionsEnglish: ['tour guide', 'take photos', 'backpack', 'hotel'] },
-      { text: '我们参观了历史___。', english: 'We visited the history ___.', answer: '博物馆', answerEnglish: 'museum', options: ['海滩', '博物馆', '登山', '景色'], optionsEnglish: ['beach', 'museum', 'climb mountain', 'scenery'] },
-      { text: '___为我们介绍了当地文化。', english: 'The ___ introduced local culture to us.', answer: '导游', answerEnglish: 'tour guide', options: ['导游', '纪念品', '旅行', '拍照'], optionsEnglish: ['tour guide', 'souvenir', 'travel', 'take photos'] },
-      { text: '她买了一些___给朋友。', english: 'She bought some ___ for friends.', answer: '纪念品', answerEnglish: 'souvenirs', options: ['背包', '酒店', '纪念品', '博物馆'], optionsEnglish: ['backpack', 'hotel', 'souvenirs', 'museum'] },
-      { text: '我们明天要去___。', english: 'We are going ___ tomorrow.', answer: '登山', answerEnglish: 'mountain climbing', options: ['登山', '海滩', '导游', '景色'], optionsEnglish: ['mountain climbing', 'beach', 'tour guide', 'scenery'] },
-      { text: '孩子们在___上玩耍。', english: 'Children are playing on the ___.', answer: '海滩', answerEnglish: 'beach', options: ['拍照', '海滩', '旅行', '博物馆'], optionsEnglish: ['take photos', 'beach', 'travel', 'museum'] },
-      { text: '我们住在海边的___里。', english: 'We stayed in a ___ by the sea.', answer: '酒店', answerEnglish: 'hotel', options: ['酒店', '纪念品', '背包', '导游'], optionsEnglish: ['hotel', 'souvenir', 'backpack', 'tour guide'] },
-      { text: '他的___里装满了衣服。', english: 'His ___ is full of clothes.', answer: '背包', answerEnglish: 'backpack', options: ['景色', '登山', '背包', '拍照'], optionsEnglish: ['scenery', 'climb mountain', 'backpack', 'take photos'] }
+      { 
+        text: '我家的屋前有一个小___。', 
+        english: 'In front of our house is a small ___.',
+        answer: '庭院', 
+        answerEnglish: 'courtyard',
+        options: ['花盆', '庭院', '泥土', '栽培'],
+        optionsEnglish: ['flower pot', 'courtyard', 'soil', 'cultivate']
+      },
+      { 
+        text: '我请婆婆教我___。', 
+        english: 'I asked Grandma to teach me how to ___.',
+        answer: '种花', 
+        answerEnglish: 'plant flowers',
+        options: ['答应', '种花', '关怀', '培植'],
+        optionsEnglish: ['agree', 'plant flowers', 'care', 'foster']
+      },
+      { 
+        text: '婆婆高兴地一口___了。', 
+        english: 'She happily ___ right away.',
+        answer: '答应', 
+        answerEnglish: 'agreed',
+        options: ['茁壮', '听话', '答应', '栽培'],
+        optionsEnglish: ['vigorous', 'obedient', 'agreed', 'cultivate']
+      },
+      { 
+        text: '她先送给我一个小___。', 
+        english: 'First, she gave me a small ___.',
+        answer: '花盆', 
+        answerEnglish: 'flower pot',
+        options: ['花盆', '庭院', '种花', '泥土'],
+        optionsEnglish: ['flower pot', 'courtyard', 'plant flowers', 'soil']
+      },
+      { 
+        text: '她要我自己去找来一些___。', 
+        english: 'She told me to find some ___.',
+        answer: '泥土', 
+        answerEnglish: 'soil',
+        options: ['关怀', '培植', '听话', '泥土'],
+        optionsEnglish: ['care', 'foster', 'obedient', 'soil']
+      },
+      { 
+        text: '我细心地___我的花苗。', 
+        english: 'I carefully ___ my flower sprout.',
+        answer: '栽培', 
+        answerEnglish: 'nurtured',
+        options: ['茁壮', '栽培', '答应', '庭院'],
+        optionsEnglish: ['vigorous', 'nurtured', 'agree', 'courtyard']
+      },
+      { 
+        text: '父母就是那___花苗的园丁。', 
+        english: 'Parents are the gardeners who ___ us.',
+        answer: '培植', 
+        answerEnglish: 'cultivate',
+        options: ['种花', '花盆', '培植', '泥土'],
+        optionsEnglish: ['plant flowers', 'flower pot', 'cultivate', 'soil']
+      },
+      { 
+        text: '没有园丁的付出及___。', 
+        english: 'Without their effort and ___.',
+        answer: '关怀', 
+        answerEnglish: 'care',
+        options: ['关怀', '茁壮', '栽培', '听话'],
+        optionsEnglish: ['care', 'vigorous', 'cultivate', 'obedient']
+      },
+      { 
+        text: '花苗怎能___长大呢？', 
+        english: 'How could a seedling ___ ?',
+        answer: '茁壮', 
+        answerEnglish: 'grow strong and healthy',
+        options: ['答应', '培植', '茁壮', '庭院'],
+        optionsEnglish: ['agree', 'foster', 'grow strong and healthy', 'courtyard']
+      },
+      { 
+        text: '我要做个___上进的好孩子。', 
+        english: 'I want to be an ___ and motivated child.',
+        answer: '听话', 
+        answerEnglish: 'obedient',
+        options: ['种花', '关怀', '花盆', '听话'],
+        optionsEnglish: ['plant flowers', 'care', 'flower pot', 'obedient']
+      }
     ],
     chineseSentences: [
-      '暑假到了，小明一家决定去海南岛旅行。',
-      '他们坐飞机到了三亚，住在海边的酒店里。',
-      '第一天，他们在海滩上玩耍，拍了很多照片。',
-      '第二天，导游带他们参观了当地的博物馆。',
-      '博物馆里有很多有趣的文物和历史资料。',
-      '第三天，他们去登山，山上的景色非常美丽。',
-      '小明用相机拍了很多美丽的风景照。',
-      '在纪念品店，妈妈买了一些纪念品给朋友。',
-      '小明背着背包，里面装着水和零食。',
-      '这次旅行让全家人都很开心，留下了美好的回忆。'
+      '我家的屋前有一个小庭院，婆婆在那儿种了许多盆美丽的花。',
+      '有一天，我请婆婆教我种花，婆婆高兴地一口答应了。',
+      '首先，她先送给我一个小花盆，她要我自己去找来一些泥土，然后填入盆里。',
+      '她再送我一些花种子，我学着婆婆的手法把小种子埋入泥中。',
+      '日子一天天过去了，终于，我的小花苗冒出泥土了，我开心极了。',
+      '我细心地栽培我的花苗，它终于长大了。',
+      '婆婆告诉我，我就好比这花苗，父母就是那培植花苗的园丁。',
+      '没有园丁的付出及关怀，花苗怎能茁壮长大呢？',
+      '我知道父母的用心良苦，我要做个听话上进的好孩子。'
     ],
     englishSentences: [
-      'Summer vacation arrived, and Xiao Ming\'s family decided to travel to Hainan Island.',
-      'They took a plane to Sanya and stayed in a hotel by the sea.',
-      'On the first day, they played on the beach and took many photos.',
-      'On the second day, a tour guide took them to visit the local museum.',
-      'The museum had many interesting artifacts and historical materials.',
-      'On the third day, they went mountain climbing, and the scenery on the mountain was very beautiful.',
-      'Xiao Ming used his camera to take many beautiful landscape photos.',
-      'At the souvenir shop, mom bought some souvenirs for friends.',
-      'Xiao Ming carried a backpack filled with water and snacks.',
-      'This trip made the whole family very happy and left them with wonderful memories.'
-    ]
-  };
-
-  // 第五篇数据
-  const chapter5Data = {
-    vocabulary: [
-      { word: '厨房', pinyin: 'chú fáng', chinese: '做饭的房间', english: 'kitchen' },
-      { word: '菜谱', pinyin: 'cài pǔ', chinese: '记录做菜方法的书或资料', english: 'recipe; cookbook' },
-      { word: '炒菜', pinyin: 'chǎo cài', chinese: '用锅和油快速烹饪蔬菜或肉类', english: 'stir-fry' },
-      { word: '调料', pinyin: 'tiáo liào', chinese: '用来调味的配料', english: 'seasoning; condiment' },
-      { word: '蒸饭', pinyin: 'zhēng fàn', chinese: '用蒸汽把米煮成饭', english: 'steam rice' },
-      { word: '切菜', pinyin: 'qiē cài', chinese: '用刀把蔬菜切成小块', english: 'chop vegetables' },
-      { word: '汤勺', pinyin: 'tāng sháo', chinese: '喝汤用的勺子', english: 'soup spoon' },
-      { word: '平底锅', pinyin: 'píng dǐ guō', chinese: '底部平坦的锅子', english: 'frying pan' },
-      { word: '洗碗', pinyin: 'xǐ wǎn', chinese: '清洗碗碟等餐具', english: 'wash dishes' },
-      { word: '美味', pinyin: 'měi wèi', chinese: '味道很好，很好吃', english: 'delicious; tasty' }
-    ],
-    gameQuestions: [
-      { text: '妈妈在___里做饭。', english: 'Mom is cooking in the ___.', answer: '厨房', answerEnglish: 'kitchen', options: ['厨房', '菜谱', '汤勺', '调料'], optionsEnglish: ['kitchen', 'recipe', 'soup spoon', 'seasoning'] },
-      { text: '她按照___的步骤做菜。', english: 'She follows the steps in the ___.', answer: '菜谱', answerEnglish: 'recipe', options: ['平底锅', '菜谱', '蒸饭', '切菜'], optionsEnglish: ['frying pan', 'recipe', 'steam rice', 'chop vegetables'] },
-      { text: '爸爸用平底锅___。', english: 'Dad uses a frying pan to ___.', answer: '炒菜', answerEnglish: 'stir-fry', options: ['洗碗', '炒菜', '汤勺', '美味'], optionsEnglish: ['wash dishes', 'stir-fry', 'soup spoon', 'delicious'] },
-      { text: '做菜时需要加一些___。', english: 'When cooking, you need to add some ___.', answer: '调料', answerEnglish: 'seasoning', options: ['调料', '厨房', '菜谱', '平底锅'], optionsEnglish: ['seasoning', 'kitchen', 'recipe', 'frying pan'] },
-      { text: '我们用电饭锅___。', english: 'We use a rice cooker to ___.', answer: '蒸饭', answerEnglish: 'steam rice', options: ['切菜', '蒸饭', '洗碗', '炒菜'], optionsEnglish: ['chop vegetables', 'steam rice', 'wash dishes', 'stir-fry'] },
-      { text: '奶奶教我如何___。', english: 'Grandma taught me how to ___.', answer: '切菜', answerEnglish: 'chop vegetables', options: ['美味', '切菜', '汤勺', '调料'], optionsEnglish: ['delicious', 'chop vegetables', 'soup spoon', 'seasoning'] },
-      { text: '我用___喝汤。', english: 'I use a ___ to drink soup.', answer: '汤勺', answerEnglish: 'soup spoon', options: ['汤勺', '菜谱', '厨房', '蒸饭'], optionsEnglish: ['soup spoon', 'recipe', 'kitchen', 'steam rice'] },
-      { text: '___很适合煎鸡蛋。', english: 'A ___ is perfect for frying eggs.', answer: '平底锅', answerEnglish: 'frying pan', options: ['平底锅', '洗碗', '炒菜', '切菜'], optionsEnglish: ['frying pan', 'wash dishes', 'stir-fry', 'chop vegetables'] },
-      { text: '吃完饭后要___。', english: 'After eating, we need to ___.', answer: '洗碗', answerEnglish: 'wash dishes', options: ['调料', '美味', '洗碗', '汤勺'], optionsEnglish: ['seasoning', 'delicious', 'wash dishes', 'soup spoon'] },
-      { text: '这道菜真___！', english: 'This dish is really ___!', answer: '美味', answerEnglish: 'delicious', options: ['厨房', '菜谱', '平底锅', '美味'], optionsEnglish: ['kitchen', 'recipe', 'frying pan', 'delicious'] }
-    ],
-    chineseSentences: [
-      '小丽很喜欢在厨房里帮妈妈做饭。',
-      '今天她们要按照菜谱做一道新菜。',
-      '首先，小丽学会了如何切菜。',
-      '妈妈教她用平底锅炒菜的技巧。',
-      '做菜时要加适当的调料才会好吃。',
-      '他们还用电饭锅蒸了香喷喷的米饭。',
-      '小丽用汤勺尝了尝汤的味道。',
-      '这顿饭做得很美味，全家人都很满意。',
-      '吃完饭后，小丽主动帮忙洗碗。',
-      '通过这次经历，小丽学会了很多厨房技能。'
-    ],
-    englishSentences: [
-      'Xiao Li loves helping her mom cook in the kitchen.',
-      'Today they want to make a new dish following a recipe.',
-      'First, Xiao Li learned how to chop vegetables.',
-      'Mom taught her the technique of stir-frying with a frying pan.',
-      'When cooking, you need to add proper seasoning to make it tasty.',
-      'They also used a rice cooker to steam fragrant rice.',
-      'Xiao Li used a soup spoon to taste the soup.',
-      'This meal was very delicious, and the whole family was satisfied.',
-      'After eating, Xiao Li volunteered to wash the dishes.',
-      'Through this experience, Xiao Li learned many kitchen skills.'
-    ]
-  };
-
-  // 第六篇数据
-  const chapter6Data = {
-    vocabulary: [
-      { word: '图书馆', pinyin: 'tú shū guǎn', chinese: '收藏和借阅书籍的地方', english: 'library' },
-      { word: '借书', pinyin: 'jiè shū', chinese: '从图书馆临时取书阅读', english: 'borrow books' },
-      { word: '还书', pinyin: 'huán shū', chinese: '把借来的书归还给图书馆', english: 'return books' },
-      { word: '阅读', pinyin: 'yuè dú', chinese: '看书并理解内容', english: 'reading' },
-      { word: '小说', pinyin: 'xiǎo shuō', chinese: '虚构的长篇故事', english: 'novel' },
-      { word: '杂志', pinyin: 'zá zhì', chinese: '定期出版的期刊', english: 'magazine' },
-      { word: '安静', pinyin: 'ān jìng', chinese: '没有声音，很宁静', english: 'quiet; peaceful' },
-      { word: '书架', pinyin: 'shū jià', chinese: '放书的架子', english: 'bookshelf' },
-      { word: '知识', pinyin: 'zhī shi', chinese: '通过学习获得的信息和理解', english: 'knowledge' },
-      { word: '作业', pinyin: 'zuò yè', chinese: '老师布置的学习任务', english: 'homework' }
-    ],
-    gameQuestions: [
-      { text: '学生们经常去___学习。', english: 'Students often go to the ___ to study.', answer: '图书馆', answerEnglish: 'library', options: ['图书馆', '借书', '杂志', '书架'], optionsEnglish: ['library', 'borrow books', 'magazine', 'bookshelf'] },
-      { text: '我想___这本小说。', english: 'I want to ___ this novel.', answer: '借书', answerEnglish: 'borrow books', options: ['还书', '借书', '阅读', '作业'], optionsEnglish: ['return books', 'borrow books', 'reading', 'homework'] },
-      { text: '看完书后要记得___。', english: 'Remember to ___ after reading.', answer: '还书', answerEnglish: 'return books', options: ['安静', '知识', '还书', '小说'], optionsEnglish: ['quiet', 'knowledge', 'return books', 'novel'] },
-      { text: '___是一种很好的习惯。', english: '___ is a good habit.', answer: '阅读', answerEnglish: 'Reading', options: ['阅读', '杂志', '书架', '借书'], optionsEnglish: ['Reading', 'magazine', 'bookshelf', 'borrow books'] },
-      { text: '她喜欢看爱情___。', english: 'She likes reading romance ___.', answer: '小说', answerEnglish: 'novels', options: ['图书馆', '小说', '还书', '作业'], optionsEnglish: ['library', 'novels', 'return books', 'homework'] },
-      { text: '这本___有很多有趣的文章。', english: 'This ___ has many interesting articles.', answer: '杂志', answerEnglish: 'magazine', options: ['杂志', '安静', '知识', '阅读'], optionsEnglish: ['magazine', 'quiet', 'knowledge', 'reading'] },
-      { text: '图书馆里要保持___。', english: 'You must keep ___ in the library.', answer: '安静', answerEnglish: 'quiet', options: ['书架', '安静', '借书', '小说'], optionsEnglish: ['bookshelf', 'quiet', 'borrow books', 'novel'] },
-      { text: '所有的书都整齐地放在___上。', english: 'All books are neatly placed on the ___.', answer: '书架', answerEnglish: 'bookshelf', options: ['还书', '杂志', '书架', '图书馆'], optionsEnglish: ['return books', 'magazine', 'bookshelf', 'library'] },
-      { text: '读书可以增长___。', english: 'Reading can increase ___.', answer: '知识', answerEnglish: 'knowledge', options: ['作业', '知识', '安静', '阅读'], optionsEnglish: ['homework', 'knowledge', 'quiet', 'reading'] },
-      { text: '我在图书馆做___。', english: 'I do my ___ in the library.', answer: '作业', answerEnglish: 'homework', options: ['小说', '书架', '借书', '作业'], optionsEnglish: ['novel', 'bookshelf', 'borrow books', 'homework'] }
-    ],
-    chineseSentences: [
-      '小王每天放学后都会去图书馆。',
-      '他喜欢在安静的环境中阅读。',
-      '今天他要借一本新的小说。',
-      '书架上有很多不同类型的书籍。',
-      '除了小说，他还喜欢看科学杂志。',
-      '阅读让他获得了很多知识。',
-      '有时候他也在图书馆做作业。',
-      '图书馆的工作人员很友善。',
-      '看完书后，小王总是记得还书。',
-      '图书馆成了他最喜欢的地方之一。'
-    ],
-    englishSentences: [
-      'Xiao Wang goes to the library every day after school.',
-      'He likes reading in a quiet environment.',
-      'Today he wants to borrow a new novel.',
-      'There are many different types of books on the bookshelves.',
-      'Besides novels, he also likes reading science magazines.',
-      'Reading has given him a lot of knowledge.',
-      'Sometimes he also does his homework in the library.',
-      'The library staff are very friendly.',
-      'After reading, Xiao Wang always remembers to return books.',
-      'The library has become one of his favorite places.'
-    ]
-  };
-
-  // 第七篇数据
-  const chapter7Data = {
-    vocabulary: [
-      { word: '运动', pinyin: 'yùn dòng', chinese: '身体活动，锻炼身体', english: 'exercise; sports' },
-      { word: '足球', pinyin: 'zú qiú', chinese: '用足踢的球类运动', english: 'soccer; football' },
-      { word: '游泳', pinyin: 'yóu yǒng', chinese: '在水中用四肢划水前进', english: 'swimming' },
-      { word: '跑步', pinyin: 'pǎo bù', chinese: '快速用脚移动身体', english: 'running' },
-      { word: '健康', pinyin: 'jiàn kāng', chinese: '身体和心理状态良好', english: 'healthy' },
-      { word: '锻炼', pinyin: 'duàn liàn', chinese: '通过运动增强体质', english: 'exercise; work out' },
-      { word: '球场', pinyin: 'qiú chǎng', chinese: '进行球类运动的场地', english: 'court; field' },
-      { word: '教练', pinyin: 'jiào liàn', chinese: '指导运动训练的人', english: 'coach; trainer' },
-      { word: '团队', pinyin: 'tuán duì', chinese: '一起工作的小组', english: 'team' },
-      { word: '比分', pinyin: 'bǐ fēn', chinese: '比赛中双方的得分情况', english: 'score' }
-    ],
-    gameQuestions: [
-      { text: '每天___对身体有好处。', english: 'Daily ___ is good for the body.', answer: '运动', answerEnglish: 'exercise', options: ['运动', '比分', '球场', '教练'], optionsEnglish: ['exercise', 'score', 'field', 'coach'] },
-      { text: '他们在球场上踢___。', english: 'They are playing ___ on the field.', answer: '足球', answerEnglish: 'soccer', options: ['游泳', '足球', '跑步', '团队'], optionsEnglish: ['swimming', 'soccer', 'running', 'team'] },
-      { text: '夏天我喜欢___。', english: 'I like ___ in summer.', answer: '游泳', answerEnglish: 'swimming', options: ['健康', '游泳', '锻炼', '比分'], optionsEnglish: ['healthy', 'swimming', 'exercise', 'score'] },
-      { text: '早上___是个好习惯。', english: '___ in the morning is a good habit.', answer: '跑步', answerEnglish: 'Running', options: ['跑步', '球场', '教练', '足球'], optionsEnglish: ['Running', 'field', 'coach', 'soccer'] },
-      { text: '运动让我们保持___。', english: 'Sports help us stay ___.', answer: '健康', answerEnglish: 'healthy', options: ['团队', '健康', '游泳', '运动'], optionsEnglish: ['team', 'healthy', 'swimming', 'exercise'] },
-      { text: '我每天都要___身体。', english: 'I need to ___ my body every day.', answer: '锻炼', answerEnglish: 'exercise', options: ['锻炼', '比分', '跑步', '球场'], optionsEnglish: ['exercise', 'score', 'running', 'field'] },
-      { text: '这个___很适合踢足球。', english: 'This ___ is perfect for playing soccer.', answer: '球场', answerEnglish: 'field', options: ['教练', '球场', '健康', '团队'], optionsEnglish: ['coach', 'field', 'healthy', 'team'] },
-      { text: '___教我们正确的动作。', english: 'The ___ teaches us correct movements.', answer: '教练', answerEnglish: 'coach', options: ['游泳', '足球', '教练', '锻炼'], optionsEnglish: ['swimming', 'soccer', 'coach', 'exercise'] },
-      { text: '我们的___合作得很好。', english: 'Our ___ works together very well.', answer: '团队', answerEnglish: 'team', options: ['比分', '运动', '团队', '球场'], optionsEnglish: ['score', 'exercise', 'team', 'field'] },
-      { text: '现在的___是2比1。', english: 'The current ___ is 2 to 1.', answer: '比分', answerEnglish: 'score', options: ['跑步', '健康', '教练', '比分'], optionsEnglish: ['running', 'healthy', 'coach', 'score'] }
-    ],
-    chineseSentences: [
-      '小华是学校足球队的一员。',
-      '他每天放学后都会在球场上锻炼。',
-      '教练教他们各种足球技巧。',
-      '除了足球，小华还喜欢跑步和游泳。',
-      '运动让他保持健康的体魄。',
-      '他的团队合作精神很强。',
-      '在上次比赛中，他们的比分是3比2获胜。',
-      '小华认为运动不仅锻炼身体，还能交到朋友。',
-      '他计划继续坚持运动。',
-      '他的梦想是成为一名专业的足球运动员。'
-    ],
-    englishSentences: [
-      'Xiao Hua is a member of the school soccer team.',
-      'He exercises on the field every day after school.',
-      'The coach teaches them various soccer skills.',
-      'Besides soccer, Xiao Hua also likes running and swimming.',
-      'Sports help him maintain a healthy body.',
-      'His team spirit is very strong.',
-      'In the last match, they won with a score of 3 to 2.',
-      'Xiao Hua believes that sports not only exercise the body but also help make friends.',
-      'He plans to continue exercising.',
-      'His dream is to become a professional soccer player.'
-    ]
-  };
-
-  // 第八篇数据
-  const chapter8Data = {
-    vocabulary: [
-      { word: '春天', pinyin: 'chūn tiān', chinese: '一年四季中的第一个季节', english: 'spring' },
-      { word: '花朵', pinyin: 'huā duǒ', chinese: '植物开的花', english: 'flower; blossom' },
-      { word: '绿叶', pinyin: 'lǜ yè', chinese: '绿色的叶子', english: 'green leaves' },
-      { word: '温和', pinyin: 'wēn hé', chinese: '气候不冷不热，很舒适', english: 'mild; gentle' },
-      { word: '播种', pinyin: 'bō zhǒng', chinese: '把种子种在土里', english: 'sow seeds' },
-      { word: '发芽', pinyin: 'fā yá', chinese: '种子开始长出嫩芽', english: 'sprout; germinate' },
-      { word: '蝴蝶', pinyin: 'hú dié', chinese: '有美丽翅膀的昆虫', english: 'butterfly' },
-      { word: '蜜蜂', pinyin: 'mì fēng', chinese: '采花蜜的昆虫', english: 'bee' },
-      { word: '公园', pinyin: 'gōng yuán', chinese: '供人们休闲娱乐的地方', english: 'park' },
-      { word: '野餐', pinyin: 'yě cān', chinese: '在户外吃饭', english: 'picnic' }
-    ],
-    gameQuestions: [
-      { text: '___来了，万物开始复苏。', english: '___ has arrived, and everything begins to revive.', answer: '春天', answerEnglish: 'Spring', options: ['春天', '花朵', '公园', '野餐'], optionsEnglish: ['Spring', 'flower', 'park', 'picnic'] },
-      { text: '树上开满了美丽的___。', english: 'The trees are full of beautiful ___.', answer: '花朵', answerEnglish: 'flowers', options: ['绿叶', '花朵', '蝴蝶', '蜜蜂'], optionsEnglish: ['green leaves', 'flowers', 'butterfly', 'bee'] },
-      { text: '___在阳光下显得特别翠绿。', english: 'The ___ look especially green in the sunlight.', answer: '绿叶', answerEnglish: 'green leaves', options: ['温和', '播种', '绿叶', '发芽'], optionsEnglish: ['mild', 'sow seeds', 'green leaves', 'sprout'] },
-      { text: '春天的气候很___。', english: 'The climate in spring is very ___.', answer: '温和', answerEnglish: 'mild', options: ['温和', '花朵', '公园', '蝴蝶'], optionsEnglish: ['mild', 'flower', 'park', 'butterfly'] },
-      { text: '农民开始在田里___。', english: 'Farmers begin to ___ in the fields.', answer: '播种', answerEnglish: 'sow seeds', options: ['野餐', '播种', '蜜蜂', '绿叶'], optionsEnglish: ['picnic', 'sow seeds', 'bee', 'green leaves'] },
-      { text: '种子在温暖的土壤中___。', english: 'Seeds ___ in the warm soil.', answer: '发芽', answerEnglish: 'sprout', options: ['发芽', '温和', '公园', '花朵'], optionsEnglish: ['sprout', 'mild', 'park', 'flower'] },
-      { text: '美丽的___在花丛中飞舞。', english: 'Beautiful ___ dance among the flowers.', answer: '蝴蝶', answerEnglish: 'butterflies', options: ['春天', '蝴蝶', '播种', '野餐'], optionsEnglish: ['spring', 'butterflies', 'sow seeds', 'picnic'] },
-      { text: '___忙着采集花蜜。', english: '___ are busy collecting nectar.', answer: '蜜蜂', answerEnglish: 'Bees', options: ['蜜蜂', '绿叶', '发芽', '温和'], optionsEnglish: ['Bees', 'green leaves', 'sprout', 'mild'] },
-      { text: '我们去___赏花。', english: 'We go to the ___ to enjoy the flowers.', answer: '公园', answerEnglish: 'park', options: ['蝴蝶', '公园', '蜜蜂', '播种'], optionsEnglish: ['butterfly', 'park', 'bee', 'sow seeds'] },
-      { text: '天气好的时候适合___。', english: 'Good weather is perfect for a ___.', answer: '野餐', answerEnglish: 'picnic', options: ['花朵', '发芽', '春天', '野餐'], optionsEnglish: ['flower', 'sprout', 'spring', 'picnic'] }
-    ],
-    chineseSentences: [
-      '春天来了，大地重新充满了生机。',
-      '公园里的花朵竞相开放，五彩缤纷。',
-      '树木长出了嫩绿的新叶。',
-      '温和的阳光照耀着大地。',
-      '农民们忙着在田里播种。',
-      '埋在土里的种子开始发芽。',
-      '蝴蝶在花丛中翩翩起舞。',
-      '勤劳的蜜蜂忙着采集花蜜。',
-      '人们喜欢到公园里散步赏花。',
-      '许多家庭选择在春天的周末去野餐。'
-    ],
-    englishSentences: [
-      'Spring has arrived, and the earth is full of vitality again.',
-      'Flowers in the park are blooming in competition, colorful and beautiful.',
-      'Trees have grown tender green new leaves.',
-      'Gentle sunlight shines on the earth.',
-      'Farmers are busy sowing seeds in the fields.',
-      'Seeds buried in the soil begin to sprout.',
-      'Butterflies dance gracefully among the flowers.',
-      'Hardworking bees are busy collecting nectar.',
-      'People like to take walks and enjoy flowers in the park.',
-      'Many families choose to have picnics on spring weekends.'
-    ]
-  };
-
-  // 第九篇数据
-  const chapter9Data = {
-    vocabulary: [
-      { word: '生日', pinyin: 'shēng rì', chinese: '一个人出生的日子', english: 'birthday' },
-      { word: '蛋糕', pinyin: 'dàn gāo', chinese: '用面粉、鸡蛋等做的甜食', english: 'cake' },
-      { word: '礼物', pinyin: 'lǐ wù', chinese: '送给别人的东西', english: 'gift; present' },
-      { word: '蜡烛', pinyin: 'là zhú', chinese: '用蜡做的照明用品', english: 'candle' },
-      { word: '祝福', pinyin: 'zhù fú', chinese: '表达美好愿望的话语', english: 'blessing; wish' },
-      { word: '聚会', pinyin: 'jù huì', chinese: '大家聚在一起的活动', english: 'party; gathering' },
-      { word: '音乐', pinyin: 'yīn yuè', chinese: '好听的声音艺术', english: 'music' },
-      { word: '跳舞', pinyin: 'tiào wǔ', chinese: '随着音乐做各种动作', english: 'dance' },
-      { word: '拍手', pinyin: 'pāi shǒu', chinese: '两只手掌相击发出声音', english: 'clap hands' },
-      { word: '许愿', pinyin: 'xǔ yuàn', chinese: '心里希望实现某个愿望', english: 'make a wish' }
-    ],
-    gameQuestions: [
-      { text: '今天是小明的___。', english: 'Today is Xiao Ming\'s ___.', answer: '生日', answerEnglish: 'birthday', options: ['生日', '蛋糕', '音乐', '聚会'], optionsEnglish: ['birthday', 'cake', 'music', 'party'] },
-      { text: '妈妈为他准备了一个大___。', english: 'Mom prepared a big ___ for him.', answer: '蛋糕', answerEnglish: 'cake', options: ['礼物', '蛋糕', '蜡烛', '跳舞'], optionsEnglish: ['gift', 'cake', 'candle', 'dance'] },
-      { text: '朋友们都带来了___。', english: 'Friends all brought ___.', answer: '礼物', answerEnglish: 'gifts', options: ['祝福', '拍手', '礼物', '许愿'], optionsEnglish: ['blessing', 'clap hands', 'gifts', 'make a wish'] },
-      { text: '蛋糕上插着十根___。', english: 'There are ten ___ on the cake.', answer: '蜡烛', answerEnglish: 'candles', options: ['蜡烛', '生日', '音乐', '聚会'], optionsEnglish: ['candles', 'birthday', 'music', 'party'] },
-      { text: '大家给他送上美好的___。', english: 'Everyone gave him wonderful ___.', answer: '祝福', answerEnglish: 'blessings', options: ['蛋糕', '祝福', '跳舞', '礼物'], optionsEnglish: ['cake', 'blessings', 'dance', 'gift'] },
-      { text: '生日___非常热闹。', english: 'The birthday ___ was very lively.', answer: '聚会', answerEnglish: 'party', options: ['许愿', '聚会', '蜡烛', '拍手'], optionsEnglish: ['make a wish', 'party', 'candle', 'clap hands'] },
-      { text: '他们播放了好听的___。', english: 'They played beautiful ___.', answer: '音乐', answerEnglish: 'music', options: ['音乐', '祝福', '生日', '蛋糕'], optionsEnglish: ['music', 'blessing', 'birthday', 'cake'] },
-      { text: '小朋友们一起___。', english: 'The children ___ together.', answer: '跳舞', answerEnglish: 'danced', options: ['礼物', '蜡烛', '跳舞', '聚会'], optionsEnglish: ['gift', 'candle', 'danced', 'party'] },
-      { text: '大家为他___庆祝。', english: 'Everyone ___ to celebrate for him.', answer: '拍手', answerEnglish: 'clapped hands', options: ['拍手', '音乐', '许愿', '祝福'], optionsEnglish: ['clapped hands', 'music', 'make a wish', 'blessing'] },
-      { text: '吹蜡烛前要先___。', english: 'Before blowing out the candles, you must first ___.', answer: '许愿', answerEnglish: 'make a wish', options: ['跳舞', '拍手', '许愿', '音乐'], optionsEnglish: ['dance', 'clap hands', 'make a wish', 'music'] }
-    ],
-    chineseSentences: [
-      '今天是小红十岁的生日。',
-      '妈妈为她准备了一个漂亮的生日蛋糕。',
-      '好朋友们都来参加她的生日聚会。',
-      '每个人都带来了精美的礼物。',
-      '蛋糕上插着十根彩色的蜡烛。',
-      '大家一起唱生日歌，为小红送上祝福。',
-      '聚会上播放着欢快的音乐。',
-      '小朋友们高兴地跳舞。',
-      '当小红吹蜡烛时，大家都在拍手。',
-      '小红闭上眼睛许愿，希望家人朋友都健康快乐。'
-    ],
-    englishSentences: [
-      'Today is Xiao Hong\'s tenth birthday.',
-      'Mom prepared a beautiful birthday cake for her.',
-      'Good friends all came to attend her birthday party.',
-      'Everyone brought exquisite gifts.',
-      'There are ten colorful candles on the cake.',
-      'Everyone sang the birthday song together and gave blessings to Xiao Hong.',
-      'Cheerful music was playing at the party.',
-      'The children danced happily.',
-      'When Xiao Hong blew out the candles, everyone was clapping.',
-      'Xiao Hong closed her eyes and made a wish, hoping that her family and friends would all be healthy and happy.'
-    ]
-  };
-
-  // 第十篇数据
-  const chapter10Data = {
-    vocabulary: [
-      { word: '超市', pinyin: 'chāo shì', chinese: '大型的自选商店', english: 'supermarket' },
-      { word: '购物', pinyin: 'gòu wù', chinese: '买东西', english: 'shopping' },
-      { word: '推车', pinyin: 'tuī chē', chinese: '在超市里用来装商品的车', english: 'shopping cart' },
-      { word: '收银', pinyin: 'shōu yín', chinese: '计算商品价格并收钱', english: 'cashier; checkout' },
-      { word: '蔬菜', pinyin: 'shū cài', chinese: '可以食用的植物', english: 'vegetables' },
-      { word: '水果', pinyin: 'shuǐ guǒ', chinese: '植物结的可以吃的果实', english: 'fruit' },
-      { word: '面包', pinyin: 'miàn bāo', chinese: '用面粉做的食物', english: 'bread' },
-      { word: '牛奶', pinyin: 'niú nǎi', chinese: '奶牛产的白色液体', english: 'milk' },
-      { word: '价格', pinyin: 'jià gé', chinese: '商品的售价', english: 'price' },
-      { word: '找零', pinyin: 'zhǎo líng', chinese: '找回多余的钱', english: 'give change' }
-    ],
-    gameQuestions: [
-      { text: '我们去___买东西。', english: 'We go to the ___ to buy things.', answer: '超市', answerEnglish: 'supermarket', options: ['超市', '购物', '推车', '收银'], optionsEnglish: ['supermarket', 'shopping', 'shopping cart', 'cashier'] },
-      { text: '周末全家一起去___。', english: 'The whole family goes ___ on weekends.', answer: '购物', answerEnglish: 'shopping', options: ['蔬菜', '购物', '水果', '面包'], optionsEnglish: ['vegetables', 'shopping', 'fruit', 'bread'] },
-      { text: '进超市先要拿一个___。', english: 'First take a ___ when entering the supermarket.', answer: '推车', answerEnglish: 'shopping cart', options: ['推车', '牛奶', '价格', '找零'], optionsEnglish: ['shopping cart', 'milk', 'price', 'give change'] },
-      { text: '买完东西要去___台付款。', english: 'After shopping, go to the ___ counter to pay.', answer: '收银', answerEnglish: 'cashier', options: ['超市', '收银', '购物', '蔬菜'], optionsEnglish: ['supermarket', 'cashier', 'shopping', 'vegetables'] },
-      { text: '妈妈买了很多新鲜的___。', english: 'Mom bought many fresh ___.', answer: '蔬菜', answerEnglish: 'vegetables', options: ['水果', '推车', '蔬菜', '收银'], optionsEnglish: ['fruit', 'shopping cart', 'vegetables', 'cashier'] },
-      { text: '孩子们最喜欢吃甜___。', english: 'Children love eating sweet ___.', answer: '水果', answerEnglish: 'fruit', options: ['面包', '牛奶', '价格', '水果'], optionsEnglish: ['bread', 'milk', 'price', 'fruit'] },
-      { text: '早餐我们吃___和牛奶。', english: 'For breakfast we eat ___ and milk.', answer: '面包', answerEnglish: 'bread', options: ['面包', '找零', '超市', '购物'], optionsEnglish: ['bread', 'give change', 'supermarket', 'shopping'] },
-      { text: '小宝宝每天都要喝___。', english: 'The baby drinks ___ every day.', answer: '牛奶', answerEnglish: 'milk', options: ['蔬菜', '水果', '牛奶', '推车'], optionsEnglish: ['vegetables', 'fruit', 'milk', 'shopping cart'] },
-      { text: '这个苹果的___是五元。', english: 'The ___ of this apple is five yuan.', answer: '价格', answerEnglish: 'price', options: ['价格', '收银', '面包', '牛奶'], optionsEnglish: ['price', 'cashier', 'bread', 'milk'] },
-      { text: '付了十元，要___两元。', english: 'Paid ten yuan, need to ___ two yuan.', answer: '找零', answerEnglish: 'give change', options: ['超市', '购物', '蔬菜', '找零'], optionsEnglish: ['supermarket', 'shopping', 'vegetables', 'give change'] }
-    ],
-    chineseSentences: [
-      '星期六，妈妈带小李去超市购物。',
-      '他们进入超市后，先拿了一个推车。',
-      '妈妈想买一些新鲜的蔬菜。',
-      '小李选了他最喜欢的水果。',
-      '他们还买了面包和牛奶。',
-      '妈妈仔细检查每样商品的价格。',
-      '购物结束后，他们去收银台排队。',
-      '收银员帮他们算出了总价。',
-      '妈妈付了钱，收银员找了零钱。',
-      '他们满意地带着购买的东西回家了。'
-    ],
-    englishSentences: [
-      'On Saturday, mom took Xiao Li to the supermarket for shopping.',
-      'After entering the supermarket, they first took a shopping cart.',
-      'Mom wanted to buy some fresh vegetables.',
-      'Xiao Li chose his favorite fruits.',
-      'They also bought bread and milk.',
-      'Mom carefully checked the price of each item.',
-      'After shopping, they went to queue at the cashier counter.',
-      'The cashier helped them calculate the total price.',
-      'Mom paid the money, and the cashier gave change.',
-      'They went home satisfied with their purchases.'
-    ]
-  };
-
-  // 第十一篇数据
-  const chapter11Data = {
-    vocabulary: [
-      { word: '医院', pinyin: 'yī yuán', chinese: '治疗疾病的地方', english: 'hospital' },
-      { word: '医生', pinyin: 'yī shēng', chinese: '治疗疾病的专业人员', english: 'doctor' },
-      { word: '护士', pinyin: 'hù shi', chinese: '照顾病人的医务人员', english: 'nurse' },
-      { word: '生病', pinyin: 'shēng bìng', chinese: '身体不健康', english: 'get sick; fall ill' },
-      { word: '检查', pinyin: 'jiǎn chá', chinese: '仔细查看身体状况', english: 'examine; check' },
-      { word: '药物', pinyin: 'yào wù', chinese: '治疗疾病的物质', english: 'medicine; medication' },
-      { word: '注射', pinyin: 'zhù shè', chinese: '用针管把药物注入身体', english: 'injection; shot' },
-      { word: '康复', pinyin: 'kāng fù', chinese: '从疾病中恢复健康', english: 'recovery; heal' },
-      { word: '体温', pinyin: 'tǐ wēn', chinese: '身体的温度', english: 'body temperature' },
-      { word: '处方', pinyin: 'chǔ fāng', chinese: '医生开的药单', english: 'prescription' }
-    ],
-    gameQuestions: [
-      { text: '小明感冒了，妈妈带他去___。', english: 'Xiao Ming caught a cold, so mom took him to the ___.', answer: '医院', answerEnglish: 'hospital', options: ['医院', '医生', '护士', '药物'], optionsEnglish: ['hospital', 'doctor', 'nurse', 'medicine'] },
-      { text: '___仔细地给他检查身体。', english: 'The ___ carefully examined his body.', answer: '医生', answerEnglish: 'doctor', options: ['生病', '医生', '检查', '注射'], optionsEnglish: ['get sick', 'doctor', 'examine', 'injection'] },
-      { text: '___帮忙测量体温。', english: 'The ___ helped measure body temperature.', answer: '护士', answerEnglish: 'nurse', options: ['护士', '康复', '体温', '处方'], optionsEnglish: ['nurse', 'recovery', 'body temperature', 'prescription'] },
-      { text: '因为___，所以要去看医生。', english: 'Because of ___, he needs to see a doctor.', answer: '生病', answerEnglish: 'getting sick', options: ['医院', '生病', '医生', '护士'], optionsEnglish: ['hospital', 'getting sick', 'doctor', 'nurse'] },
-      { text: '医生要先___病情。', english: 'The doctor needs to first ___ the condition.', answer: '检查', answerEnglish: 'examine', options: ['药物', '注射', '检查', '康复'], optionsEnglish: ['medicine', 'injection', 'examine', 'recovery'] },
-      { text: '医生给他开了一些___。', english: 'The doctor gave him some ___.', answer: '药物', answerEnglish: 'medicine', options: ['体温', '处方', '药物', '生病'], optionsEnglish: ['body temperature', 'prescription', 'medicine', 'get sick'] },
-      { text: '护士给小明打了一针___。', english: 'The nurse gave Xiao Ming an ___.', answer: '注射', answerEnglish: 'injection', options: ['检查', '注射', '医院', '医生'], optionsEnglish: ['examine', 'injection', 'hospital', 'doctor'] },
-      { text: '吃药后，小明很快___了。', english: 'After taking medicine, Xiao Ming quickly ___.', answer: '康复', answerEnglish: 'recovered', options: ['护士', '康复', '药物', '注射'], optionsEnglish: ['nurse', 'recovered', 'medicine', 'injection'] },
-      { text: '护士先测量他的___。', english: 'The nurse first measured his ___.', answer: '体温', answerEnglish: 'body temperature', options: ['体温', '生病', '检查', '处方'], optionsEnglish: ['body temperature', 'get sick', 'examine', 'prescription'] },
-      { text: '医生写了一张___。', english: 'The doctor wrote a ___.', answer: '处方', answerEnglish: 'prescription', options: ['康复', '医院', '处方', '体温'], optionsEnglish: ['recovery', 'hospital', 'prescription', 'body temperature'] }
-    ],
-    chineseSentences: [
-      '小东昨天晚上开始发烧，感觉很不舒服。',
-      '早上妈妈发现他生病了，赶紧带他去医院。',
-      '到了医院，护士先帮他测量体温。',
-      '医生仔细地检查了小东的身体状况。',
-      '医生说小东得了感冒，需要吃药治疗。',
-      '护士给小东打了一针退烧的注射。',
-      '医生开了处方，让他去买药物。',
-      '妈妈按照医生的建议给小东吃药。',
-      '几天后，小东完全康复了。',
-      '这次经历让小东明白了健康的重要性。'
-    ],
-    englishSentences: [
-      'Xiao Dong started having a fever last night and felt very uncomfortable.',
-      'In the morning, mom found that he was sick and quickly took him to the hospital.',
-      'At the hospital, the nurse first helped measure his body temperature.',
-      'The doctor carefully examined Xiao Dong\'s physical condition.',
-      'The doctor said Xiao Dong had a cold and needed to take medicine for treatment.',
-      'The nurse gave Xiao Dong an injection to reduce the fever.',
-      'The doctor wrote a prescription and asked him to buy medicine.',
-      'Mom gave Xiao Dong medicine according to the doctor\'s advice.',
-      'A few days later, Xiao Dong completely recovered.',
-      'This experience made Xiao Dong understand the importance of health.'
-    ]
-  };
-
-  // 第十二篇数据
-  const chapter12Data = {
-    vocabulary: [
-      { word: '环保', pinyin: 'huán bǎo', chinese: '保护环境，不污染自然', english: 'environmental protection' },
-      { word: '垃圾', pinyin: 'lā jī', chinese: '不要的废物', english: 'garbage; trash' },
-      { word: '回收', pinyin: 'huí shōu', chinese: '重新利用废旧物品', english: 'recycle' },
-      { word: '节约', pinyin: 'jié yuē', chinese: '不浪费，省着用', english: 'save; conserve' },
-      { word: '植树', pinyin: 'zhí shù', chinese: '种植树木', english: 'plant trees' },
-      { word: '污染', pinyin: 'wū rǎn', chinese: '使环境变脏变坏', english: 'pollution; pollute' },
-      { word: '绿色', pinyin: 'lǜ sè', chinese: '环保的，对环境友好的', english: 'green; eco-friendly' },
-      { word: '能源', pinyin: 'néng yuán', chinese: '提供能量的资源', english: 'energy' },
-      { word: '地球', pinyin: 'dì qiú', chinese: '我们生活的星球', english: 'Earth' },
-      { word: '未来', pinyin: 'wèi lái', chinese: '将要到来的时间', english: 'future' }
-    ],
-    gameQuestions: [
-      { text: '我们要保护___，爱护环境。', english: 'We need to protect ___ and care for the environment.', answer: '地球', answerEnglish: 'Earth', options: ['地球', '垃圾', '污染', '未来'], optionsEnglish: ['Earth', 'garbage', 'pollution', 'future'] },
-      { text: '不要随便扔___。', english: 'Don\'t throw ___ everywhere.', answer: '垃圾', answerEnglish: 'garbage', options: ['环保', '垃圾', '回收', '节约'], optionsEnglish: ['environmental protection', 'garbage', 'recycle', 'save'] },
-      { text: '塑料瓶可以___利用。', english: 'Plastic bottles can be ___.', answer: '回收', answerEnglish: 'recycled', options: ['植树', '污染', '回收', '绿色'], optionsEnglish: ['plant trees', 'pollution', 'recycled', 'green'] },
-      { text: '我们应该___用水。', english: 'We should ___ water.', answer: '节约', answerEnglish: 'save', options: ['节约', '能源', '地球', '未来'], optionsEnglish: ['save', 'energy', 'Earth', 'future'] },
-      { text: '春天是___的好季节。', english: 'Spring is a good season for ___.', answer: '植树', answerEnglish: 'planting trees', options: ['环保', '垃圾', '植树', '回收'], optionsEnglish: ['environmental protection', 'garbage', 'planting trees', 'recycle'] },
-      { text: '工厂的废气会___空气。', english: 'Factory exhaust will ___ the air.', answer: '污染', answerEnglish: 'pollute', options: ['节约', '污染', '绿色', '能源'], optionsEnglish: ['save', 'pollute', 'green', 'energy'] },
-      { text: '我们要选择___的生活方式。', english: 'We should choose a ___ lifestyle.', answer: '绿色', answerEnglish: 'green', options: ['植树', '污染', '绿色', '地球'], optionsEnglish: ['plant trees', 'pollution', 'green', 'Earth'] },
-      { text: '太阳___是清洁能源。', english: 'Solar ___ is clean energy.', answer: '能源', answerEnglish: 'energy', options: ['未来', '环保', '能源', '垃圾'], optionsEnglish: ['future', 'environmental protection', 'energy', 'garbage'] },
-      { text: '___是我们共同的家园。', english: '___ is our common home.', answer: '地球', answerEnglish: 'Earth', options: ['地球', '回收', '节约', '植树'], optionsEnglish: ['Earth', 'recycle', 'save', 'plant trees'] },
-      { text: '为了___，我们要环保。', english: 'For the ___, we need to protect the environment.', answer: '未来', answerEnglish: 'future', options: ['污染', '绿色', '能源', '未来'], optionsEnglish: ['pollution', 'green', 'energy', 'future'] }
-    ],
-    chineseSentences: [
-      '环保是每个人的责任。',
-      '我们不应该随便乱扔垃圾。',
-      '学会回收利用是很重要的。',
-      '节约用水用电可以保护环境。',
-      '每年春天，学校都组织同学们植树。',
-      '汽车尾气会污染空气。',
-      '我们要选择绿色环保的产品。',
-      '太阳能是一种清洁能源。',
-      '地球是我们共同的家园。',
-      '为了美好的未来，让我们一起保护环境。'
-    ],
-    englishSentences: [
-      'Environmental protection is everyone\'s responsibility.',
-      'We should not throw garbage everywhere.',
-      'Learning to recycle is very important.',
-      'Saving water and electricity can protect the environment.',
-      'Every spring, the school organizes students to plant trees.',
-      'Car exhaust pollutes the air.',
-      'We should choose green and eco-friendly products.',
-      'Solar energy is a clean energy source.',
-      'Earth is our common home.',
-      'For a beautiful future, let\'s protect the environment together.'
+      'In front of our house is a small courtyard, where Grandma planted many pots of beautiful flowers.',
+      'One day, I asked Grandma to teach me how to plant flowers. She happily agreed right away.',
+      'First, she gave me a small flower pot and told me to find some soil to fill it.',
+      'Then, she gave me some flower seeds. I copied Grandma\'s way of burying the seeds in the soil.',
+      'Day by day, time passed, and finally, my little flower sprout broke through the soil. I was thrilled.',
+      'I carefully nurtured my flower sprout, and it eventually grew up.',
+      'Grandma told me that I am just like that flower sprout, and parents are the gardeners who cultivate us.',
+      'Without their effort and care, how could a seedling grow strong and healthy?',
+      'I understood how hard my parents work for me, and I want to be an obedient and motivated child.'
     ]
   };
 
@@ -894,20 +546,49 @@ const ChineseLearningCompleteApp = () => {
     }
   };
 
+  // 双语朗读功能
+  const speakBilingual = (chineseText, englishText) => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      
+      let cleanChineseText = chineseText.replace(/\s*[\/\|]\s*[a-zA-Z].*/g, '')
+                                        .replace(/_/g, ' ')
+                                        .replace(/underscore/gi, '')
+                                        .replace(/\bslash\b/gi, '')
+                                        .replace(/\s+/g, ' ')
+                                        .trim();
+      
+      let cleanEnglishText = englishText.replace(/[\/\|]/g, ' ')
+                                        .replace(/_/g, ' ')
+                                        .replace(/underscore/gi, '')
+                                        .replace(/\bslash\b/gi, '')
+                                        .replace(/\s+/g, ' ')
+                                        .trim();
+      
+      const chineseUtterance = new SpeechSynthesisUtterance(cleanChineseText);
+      chineseUtterance.lang = 'zh-CN';
+      chineseUtterance.rate = isAppleDevice ? 0.7 : 0.8;
+      chineseUtterance.pitch = 1.2;
+      chineseUtterance.volume = 1.0;
+      
+      chineseUtterance.onend = () => {
+        const englishUtterance = new SpeechSynthesisUtterance(cleanEnglishText);
+        englishUtterance.lang = 'en-US';
+        englishUtterance.rate = isAppleDevice ? 0.7 : 0.8;
+        englishUtterance.pitch = 1.2;
+        englishUtterance.volume = 1.0;
+        window.speechSynthesis.speak(englishUtterance);
+      };
+      
+      window.speechSynthesis.speak(chineseUtterance);
+    }
+  };
+
   const getCurrentData = () => {
     if (currentChapter === 'chapter1') return chapter1Data;
     if (currentChapter === 'chapter2') return chapter2Data;
     if (currentChapter === 'chapter3') return chapter3Data;
-    if (currentChapter === 'chapter4') return chapter4Data;
-    if (currentChapter === 'chapter5') return chapter5Data;
-    if (currentChapter === 'chapter6') return chapter6Data;
-    if (currentChapter === 'chapter7') return chapter7Data;
-    if (currentChapter === 'chapter8') return chapter8Data;
-    if (currentChapter === 'chapter9') return chapter9Data;
-    if (currentChapter === 'chapter10') return chapter10Data;
-    if (currentChapter === 'chapter11') return chapter11Data;
-    if (currentChapter === 'chapter12') return chapter12Data;
-    return chapter1Data; // Default fallback
+    return chapter4Data;
   };
 
   const resetChapterData = () => {
@@ -939,16 +620,8 @@ const ChineseLearningCompleteApp = () => {
 
   const chapterTitle = currentChapter === 'chapter1' ? '第一篇：华国的办法' : 
                       currentChapter === 'chapter2' ? '第二篇：好朋友' : 
-                      currentChapter === 'chapter3' ? '第三篇：小狗的家' :
-                      currentChapter === 'chapter4' ? '第四篇：旅行记' :
-                      currentChapter === 'chapter5' ? '第五篇：厨房小帮手' :
-                      currentChapter === 'chapter6' ? '第六篇：图书馆之行' :
-                      currentChapter === 'chapter7' ? '第七篇：运动健将' :
-                      currentChapter === 'chapter8' ? '第八篇：春天来了' :
-                      currentChapter === 'chapter9' ? '第九篇：生日快乐' :
-                      currentChapter === 'chapter10' ? '第十篇：超市购物' :
-                      currentChapter === 'chapter11' ? '第十一篇：看医生' :
-                      currentChapter === 'chapter12' ? '第十二篇：环保小卫士' : '学习章节';
+                      currentChapter === 'chapter3' ? '第三篇：小狗的家' : 
+                      '第四篇：种花的体会';
 
   const handleViewChinese = () => {
     setViewedChinese(true);
@@ -1013,26 +686,80 @@ const ChineseLearningCompleteApp = () => {
     }
   };
 
-  // Main menu page
+  const handleReading = (language) => {
+    setReadingLanguage(language);
+    setCurrentSentence(0);
+    setIsReading(true);
+    
+    setTimeout(() => {
+      const sentences = language === 'chinese' ? getCurrentData().chineseSentences : getCurrentData().englishSentences;
+      speakText(sentences[0], language === 'chinese' ? 'zh-CN' : 'en-US');
+    }, 500);
+  };
+
+  const handleNextSentence = () => {
+    const sentences = readingLanguage === 'chinese' ? getCurrentData().chineseSentences : getCurrentData().englishSentences;
+    if (currentSentence < sentences.length - 1) {
+      const nextIndex = currentSentence + 1;
+      setCurrentSentence(nextIndex);
+      
+      setTimeout(() => {
+        speakText(sentences[nextIndex], readingLanguage === 'chinese' ? 'zh-CN' : 'en-US');
+      }, 300);
+    } else {
+      setIsReading(false);
+      alert('朗读完成！你学得很棒！');
+    }
+  };
+
+  // 主菜单页面
   if (currentChapter === 'menu') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-6">
-        <div className="max-w-7xl mx-auto">
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 p-6">
+        <div className="max-w-6xl mx-auto">
           <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-12">
             <div className="text-center mb-12">
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-                🎓 中文学习天地 🎓
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+                📚 第一套：基础故事集
               </h1>
               <h2 className="text-3xl font-semibold text-gray-600 mb-2">
-                Chinese Learning Paradise - Complete Edition!
+                Set 1: Basic Story Collection (Chapters 1-4)
               </h2>
               <p className="text-xl text-gray-500 mb-8">
-                选择你想学习的篇章 / Choose Your Learning Chapter
+                智慧解决问题、友谊、温暖家庭、成长教育<br/>
+                Problem solving, friendship, family warmth, growth education
               </p>
+
+              {/* Apple设备特别说明 */}
+              <div className="bg-blue-50 p-6 rounded-xl border-2 border-blue-200 mb-8">
+                <h3 className="text-xl font-semibold text-blue-700 mb-3 flex items-center justify-center gap-2">
+                  🍎 Apple设备用户专用指南 / Apple Device User Guide
+                </h3>
+                <div className="text-blue-800 text-left max-w-4xl mx-auto space-y-3">
+                  <div className="bg-white p-4 rounded-lg">
+                    <h4 className="font-bold text-lg mb-2">📱 如果听不到声音，请按以下步骤：</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li>• <strong>🔇 检查静音开关</strong>：iPhone/iPad侧边的橙色开关要关闭</li>
+                      <li>• <strong>🔊 调高音量</strong>：按音量+键，确保媒体音量开启</li>
+                      <li>• <strong>👆 多次点击</strong>：朗读按钮可能需要点击2-3次才能激活</li>
+                      <li>• <strong>🌐 换浏览器</strong>：强烈建议下载<strong>Chrome浏览器</strong>使用</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg">
+                    <h4 className="font-bold text-lg mb-2">🌐 If you can't hear audio, please follow these steps:</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li>• <strong>🔇 Check silent switch</strong>: Turn off the orange switch on iPhone/iPad side</li>
+                      <li>• <strong>🔊 Turn up volume</strong>: Press volume+ button, ensure media volume is on</li>
+                      <li>• <strong>👆 Click multiple times</strong>: Audio buttons may need 2-3 clicks to activate</li>
+                      <li>• <strong>🌐 Switch browser</strong>: Strongly recommend downloading <strong>Chrome browser</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {/* Chapter 1 */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              {/* 第一篇 */}
               <div className="bg-gradient-to-br from-orange-50 to-red-100 p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 hover:shadow-lg">
                 <div className="text-center mb-6">
                   <div className="text-5xl mb-4">⚽</div>
@@ -1042,6 +769,10 @@ const ChineseLearningCompleteApp = () => {
                     学习关于解决问题的10个词汇<br/>
                     Learn 10 problem-solving words
                   </p>
+                  <div className="text-xs text-gray-500 mb-4">
+                    <strong>主题:</strong> 聪明解决问题<br/>
+                    <strong>Theme:</strong> Smart problem solving
+                  </div>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter1')}
@@ -1052,7 +783,7 @@ const ChineseLearningCompleteApp = () => {
                 </button>
               </div>
 
-              {/* Chapter 2 */}
+              {/* 第二篇 */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-lg">
                 <div className="text-center mb-6">
                   <div className="text-5xl mb-4">👫</div>
@@ -1062,6 +793,10 @@ const ChineseLearningCompleteApp = () => {
                     学习关于友谊的10个词汇<br/>
                     Learn 10 friendship words
                   </p>
+                  <div className="text-xs text-gray-500 mb-4">
+                    <strong>主题:</strong> 友谊和帮助<br/>
+                    <strong>Theme:</strong> Friendship and helping
+                  </div>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter2')}
@@ -1072,7 +807,7 @@ const ChineseLearningCompleteApp = () => {
                 </button>
               </div>
 
-              {/* Chapter 3 */}
+              {/* 第三篇 */}
               <div className="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-xl border-2 border-green-200 hover:border-green-400 transition-all duration-300 hover:shadow-lg">
                 <div className="text-center mb-6">
                   <div className="text-5xl mb-4">🐕</div>
@@ -1082,6 +817,10 @@ const ChineseLearningCompleteApp = () => {
                     学习关于温暖和关爱的10个词汇<br/>
                     Learn 10 warmth and care words
                   </p>
+                  <div className="text-xs text-gray-500 mb-4">
+                    <strong>主题:</strong> 家庭温暖<br/>
+                    <strong>Theme:</strong> Family warmth
+                  </div>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter3')}
@@ -1092,180 +831,24 @@ const ChineseLearningCompleteApp = () => {
                 </button>
               </div>
 
-              {/* Chapter 4 */}
+              {/* 第四篇 */}
               <div className="bg-gradient-to-br from-purple-50 to-violet-100 p-6 rounded-xl border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-lg">
                 <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">✈️</div>
-                  <h3 className="text-xl font-bold text-purple-700 mb-2">第四篇：旅行记</h3>
-                  <h4 className="text-lg font-semibold text-purple-600 mb-3">Chapter 4: Travel Story</h4>
+                  <div className="text-5xl mb-4">🌸</div>
+                  <h3 className="text-xl font-bold text-purple-700 mb-2">第四篇：种花的体会</h3>
+                  <h4 className="text-lg font-semibold text-purple-600 mb-3">Chapter 4: Learning from Flowers</h4>
                   <p className="text-gray-600 mb-3 text-sm">
-                    学习关于旅行的10个词汇<br/>
-                    Learn 10 travel words
+                    学习关于栽培和关怀的10个词汇<br/>
+                    Learn 10 cultivation and care words
                   </p>
+                  <div className="text-xs text-gray-500 mb-4">
+                    <strong>主题:</strong> 成长和教导<br/>
+                    <strong>Theme:</strong> Growth and guidance
+                  </div>
                 </div>
                 <button
                   onClick={() => handleChapterSelect('chapter4')}
                   className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  开始学习
-                </button>
-              </div>
-
-              {/* Chapter 5 */}
-              <div className="bg-gradient-to-br from-yellow-50 to-amber-100 p-6 rounded-xl border-2 border-yellow-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">👩‍🍳</div>
-                  <h3 className="text-xl font-bold text-yellow-700 mb-2">第五篇：厨房小帮手</h3>
-                  <h4 className="text-lg font-semibold text-yellow-600 mb-3">Chapter 5: Kitchen Helper</h4>
-                  <p className="text-gray-600 mb-3 text-sm">
-                    学习关于厨房的10个词汇<br/>
-                    Learn 10 kitchen words
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleChapterSelect('chapter5')}
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  开始学习
-                </button>
-              </div>
-
-              {/* Chapter 6 */}
-              <div className="bg-gradient-to-br from-indigo-50 to-blue-100 p-6 rounded-xl border-2 border-indigo-200 hover:border-indigo-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">📚</div>
-                  <h3 className="text-xl font-bold text-indigo-700 mb-2">第六篇：图书馆之行</h3>
-                  <h4 className="text-lg font-semibold text-indigo-600 mb-3">Chapter 6: Library Visit</h4>
-                  <p className="text-gray-600 mb-3 text-sm">
-                    学习关于图书馆的10个词汇<br/>
-                    Learn 10 library words
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleChapterSelect('chapter6')}
-                  className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  开始学习
-                </button>
-              </div>
-
-              {/* Chapter 7 */}
-              <div className="bg-gradient-to-br from-red-50 to-pink-100 p-6 rounded-xl border-2 border-red-200 hover:border-red-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">⚽</div>
-                  <h3 className="text-xl font-bold text-red-700 mb-2">第七篇：运动健将</h3>
-                  <h4 className="text-lg font-semibold text-red-600 mb-3">Chapter 7: Sports Champion</h4>
-                  <p className="text-gray-600 mb-3 text-sm">
-                    学习关于运动的10个词汇<br/>
-                    Learn 10 sports words
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleChapterSelect('chapter7')}
-                  className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  开始学习
-                </button>
-              </div>
-
-              {/* Chapter 8 */}
-              <div className="bg-gradient-to-br from-emerald-50 to-green-100 p-6 rounded-xl border-2 border-emerald-200 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">🌸</div>
-                  <h3 className="text-xl font-bold text-emerald-700 mb-2">第八篇：春天来了</h3>
-                  <h4 className="text-lg font-semibold text-emerald-600 mb-3">Chapter 8: Spring Arrives</h4>
-                  <p className="text-gray-600 mb-3 text-sm">
-                    学习关于春天的10个词汇<br/>
-                    Learn 10 spring words
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleChapterSelect('chapter8')}
-                  className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  开始学习
-                </button>
-              </div>
-
-              {/* Chapter 9 */}
-              <div className="bg-gradient-to-br from-pink-50 to-rose-100 p-6 rounded-xl border-2 border-pink-200 hover:border-pink-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">🎂</div>
-                  <h3 className="text-xl font-bold text-pink-700 mb-2">第九篇：生日快乐</h3>
-                  <h4 className="text-lg font-semibold text-pink-600 mb-3">Chapter 9: Happy Birthday</h4>
-                  <p className="text-gray-600 mb-3 text-sm">
-                    学习关于生日的10个词汇<br/>
-                    Learn 10 birthday words
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleChapterSelect('chapter9')}
-                  className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  开始学习
-                </button>
-              </div>
-
-              {/* Chapter 10 */}
-              <div className="bg-gradient-to-br from-cyan-50 to-blue-100 p-6 rounded-xl border-2 border-cyan-200 hover:border-cyan-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">🛒</div>
-                  <h3 className="text-xl font-bold text-cyan-700 mb-2">第十篇：超市购物</h3>
-                  <h4 className="text-lg font-semibold text-cyan-600 mb-3">Chapter 10: Supermarket Shopping</h4>
-                  <p className="text-gray-600 mb-3 text-sm">
-                    学习关于购物的10个词汇<br/>
-                    Learn 10 shopping words
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleChapterSelect('chapter10')}
-                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  开始学习
-                </button>
-              </div>
-
-              {/* Chapter 11 */}
-              <div className="bg-gradient-to-br from-teal-50 to-cyan-100 p-6 rounded-xl border-2 border-teal-200 hover:border-teal-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">👩‍⚕️</div>
-                  <h3 className="text-xl font-bold text-teal-700 mb-2">第十一篇：看医生</h3>
-                  <h4 className="text-lg font-semibold text-teal-600 mb-3">Chapter 11: Seeing the Doctor</h4>
-                  <p className="text-gray-600 mb-3 text-sm">
-                    学习关于医院的10个词汇<br/>
-                    Learn 10 hospital words
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleChapterSelect('chapter11')}
-                  className="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  开始学习
-                </button>
-              </div>
-
-              {/* Chapter 12 */}
-              <div className="bg-gradient-to-br from-lime-50 to-green-100 p-6 rounded-xl border-2 border-lime-200 hover:border-lime-400 transition-all duration-300 hover:shadow-lg">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-4">🌍</div>
-                  <h3 className="text-xl font-bold text-lime-700 mb-2">第十二篇：环保小卫士</h3>
-                  <h4 className="text-lg font-semibold text-lime-600 mb-3">Chapter 12: Eco Guardian</h4>
-                  <p className="text-gray-600 mb-3 text-sm">
-                    学习关于环保的10个词汇<br/>
-                    Learn 10 environmental words
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleChapterSelect('chapter12')}
-                  className="w-full bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors duration-300 flex items-center justify-center gap-2"
                 >
                   <BookOpen className="w-5 h-5" />
                   开始学习
@@ -1278,7 +861,7 @@ const ChineseLearningCompleteApp = () => {
                 <h3 className="text-xl font-semibold text-gray-700 mb-3">
                   💡 学习说明 / Learning Instructions
                 </h3>
-                <div className="text-gray-600 text-left max-width-4xl mx-auto space-y-2">
+                <div className="text-gray-600 text-left max-w-4xl mx-auto space-y-2">
                   <p>• 📚 <strong>词汇学习</strong>：学习新词汇的发音和含义 / <strong>Vocabulary Learning</strong>: Learn pronunciation and meaning</p>
                   <p>• 🎮 <strong>填空练习</strong>：通过练习题巩固学习 / <strong>Fill-in-the-blank</strong>: Reinforce learning with exercises</p>
                   <p>• 📖 <strong>作文朗读</strong>：朗读完整故事提高理解 / <strong>Essay Reading</strong>: Read complete stories for comprehension</p>
@@ -1292,9 +875,12 @@ const ChineseLearningCompleteApp = () => {
     );
   }
 
-  // Vocabulary learning phase
+  // 以下是学习程序的代码
+  const currentData = getCurrentData();
+
+  // 词汇学习阶段
   if (currentPhase === 'learning') {
-    const currentWord = getCurrentData().vocabulary[currentWordIndex];
+    const currentWord = currentData.vocabulary[currentWordIndex];
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-6">
         <div className="max-w-4xl mx-auto">
@@ -1306,7 +892,7 @@ const ChineseLearningCompleteApp = () => {
               </h1>
               <div className="flex items-center gap-4">
                 <div className="text-lg text-gray-600">
-                  {currentWordIndex + 1} / {getCurrentData().vocabulary.length}
+                  {currentWordIndex + 1} / {currentData.vocabulary.length}
                 </div>
                 <button
                   onClick={backToMenu}
@@ -1372,7 +958,7 @@ const ChineseLearningCompleteApp = () => {
                       onClick={handleNextWord}
                       className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors"
                     >
-                      {currentWordIndex < getCurrentData().vocabulary.length - 1 ? '下一个词汇' : '开始练习'}
+                      {currentWordIndex < currentData.vocabulary.length - 1 ? '下一个词汇' : '开始练习'}
                     </button>
                   </div>
                 ) : (
@@ -1396,9 +982,9 @@ const ChineseLearningCompleteApp = () => {
     );
   }
 
-  // Game phase
+  // 填空练习阶段
   if (currentPhase === 'game') {
-    const currentQ = getCurrentData().gameQuestions[currentQuestion];
+    const currentQ = currentData.gameQuestions[currentQuestion];
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 p-6">
         <div className="max-w-4xl mx-auto">
@@ -1410,7 +996,7 @@ const ChineseLearningCompleteApp = () => {
               </h1>
               <div className="flex items-center gap-4">
                 <div className="text-lg text-gray-600">
-                  第 {currentQuestion + 1} 题 / {getCurrentData().gameQuestions.length}
+                  第 {currentQuestion + 1} 题 / {currentData.gameQuestions.length}
                 </div>
                 <button
                   onClick={backToMenu}
@@ -1457,6 +1043,13 @@ const ChineseLearningCompleteApp = () => {
                     >
                       {option} ({currentQ.optionsEnglish[index]})
                     </button>
+                    <button
+                      onClick={() => speakBilingual(option, currentQ.optionsEnglish[index])}
+                      className="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full ml-3 transition-colors"
+                      title="朗读选项"
+                    >
+                      <Speaker className="w-5 h-5" />
+                    </button>
                   </div>
                 ))}
               </div>
@@ -1480,19 +1073,16 @@ const ChineseLearningCompleteApp = () => {
     );
   }
 
-  // Reading phase
+  // 作文朗读阶段
   if (currentPhase === 'reading') {
-    const currentData = getCurrentData();
-    
-    // If no reading language selected, show language selection
-    if (!readingLanguage) {
+    if (!isReading) {
       return (
         <div className="min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 p-6">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <div className="flex items-center justify-between mb-6">
+            <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+              <div className="flex items-center justify-between mb-8">
                 <h1 className="text-3xl font-bold text-purple-600 flex items-center gap-2">
-                  <BookOpen className="w-8 h-8" />
+                  <Volume2 className="w-8 h-8" />
                   作文朗读 - {chapterTitle}
                 </h1>
                 <button
@@ -1503,75 +1093,48 @@ const ChineseLearningCompleteApp = () => {
                   返回主页
                 </button>
               </div>
+              <p className="text-xl text-gray-700 mb-8">
+                恭喜完成所有练习！选择语言开始朗读：<br/>
+                Congratulations on completing all exercises! Choose a language to start reading:
+              </p>
               
-              <div className="text-center">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-8">选择阅读语言 / Choose Reading Language</h2>
-                
-                <div className="space-y-4 max-w-md mx-auto">
-                  <button
-                    onClick={() => {
-                      setReadingLanguage('chinese');
-                      setCurrentSentence(0);
-                    }}
-                    className="w-full bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors flex items-center justify-center gap-3"
-                  >
-                    <span className="text-2xl">🇨🇳</span>
-                    中文朗读
-                  </button>
-                  
-                  <button
-                    onClick={() => {
-                      setReadingLanguage('english');
-                      setCurrentSentence(0);
-                    }}
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors flex items-center justify-center gap-3"
-                  >
-                    <span className="text-2xl">🇺🇸</span>
-                    English Reading
-                  </button>
-                </div>
-                
-                <div className="mt-8 p-6 bg-gray-50 rounded-lg border">
-                  <p className="text-gray-600">
-                    📖 恭喜完成填空练习！现在可以阅读完整的故事了。<br/>
-                    🎉 Congratulations on completing the fill-in exercises! Now you can read the complete story.
-                  </p>
-                </div>
+              <div className="space-y-4">
+                <button
+                  onClick={() => handleReading('chinese')}
+                  className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-lg text-xl font-semibold mr-4 transition-colors"
+                >
+                  中文朗读 / Chinese Reading
+                </button>
+                <button
+                  onClick={() => handleReading('english')}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors"
+                >
+                  英文朗读 / English Reading
+                </button>
               </div>
+              
+              <button
+                onClick={() => resetChapterData()}
+                className="mt-8 bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-colors"
+              >
+                <RotateCcw className="w-5 h-5" />
+                重新开始本章 / Restart Chapter
+              </button>
             </div>
           </div>
         </div>
       );
-    }
-    
-    // Reading interface
-    const sentences = readingLanguage === 'chinese' ? currentData.chineseSentences : currentData.englishSentences;
-    const currentSentenceText = sentences[currentSentence];
-    const language = readingLanguage === 'chinese' ? 'zh-CN' : 'en-US';
-    
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 p-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <div className="flex items-center justify-between mb-6">
-              <h1 className="text-3xl font-bold text-purple-600 flex items-center gap-2">
-                <BookOpen className="w-8 h-8" />
-                {readingLanguage === 'chinese' ? '中文朗读' : 'English Reading'} - {chapterTitle}
-              </h1>
-              <div className="flex items-center gap-4">
-                <div className="text-lg text-gray-600">
-                  {currentSentence + 1} / {sentences.length}
-                </div>
-                <button
-                  onClick={() => {
-                    setReadingLanguage('');
-                    setCurrentSentence(-1);
-                  }}
-                  className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors"
-                >
-                  <ArrowLeft className="w-5 h-5" />
-                  重选语言
-                </button>
+    } else {
+      const sentences = readingLanguage === 'chinese' ? currentData.chineseSentences : currentData.englishSentences;
+      
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 p-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <div className="flex items-center justify-between mb-8">
+                <h1 className="text-3xl font-bold text-purple-600 text-center">
+                  {readingLanguage === 'chinese' ? '中文朗读 / Chinese Reading' : 'English Reading / 英文朗读'}
+                </h1>
                 <button
                   onClick={backToMenu}
                   className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors"
@@ -1580,100 +1143,79 @@ const ChineseLearningCompleteApp = () => {
                   返回主页
                 </button>
               </div>
-            </div>
-            
-            <div className="text-center mb-8">
-              <div className="bg-gray-50 p-8 rounded-lg border-2 border-gray-200 mb-6">
-                <p className="text-xl text-gray-800 leading-relaxed mb-4">
-                  {currentSentenceText}
-                </p>
+              
+              <div className="text-lg text-gray-600 mb-4 text-center">
+                {readingLanguage === 'chinese' 
+                  ? `第 ${currentSentence + 1} 句 / ${sentences.length} | Sentence ${currentSentence + 1} of ${sentences.length}`
+                  : `Sentence ${currentSentence + 1} of ${sentences.length} | 第 ${currentSentence + 1} 句 / ${sentences.length}`
+                }
+              </div>
+              
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold mb-4 text-center text-gray-700">
+                  {readingLanguage === 'chinese' ? '完整作文：' : 'Complete Essay:'}
+                </h3>
+                <div className="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-400">
+                  {sentences.map((sentence, index) => (
+                    <p 
+                      key={index} 
+                      className={`text-lg mb-3 ${
+                        index === currentSentence 
+                          ? 'bg-yellow-200 p-2 rounded font-semibold text-blue-800' 
+                          : 'text-gray-700'
+                      }`}
+                    >
+                      {sentence}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <div className="bg-blue-50 p-4 rounded-lg mb-6 border-l-4 border-blue-400">
+                  <p className="text-xl font-semibold text-blue-800 mb-2">
+                    {readingLanguage === 'chinese' ? '正在朗读：Now Reading:' : 'Now Reading: 正在朗读：'}
+                  </p>
+                  <p className="text-lg text-gray-800">{sentences[currentSentence]}</p>
+                </div>
                 
                 <div className="flex justify-center gap-4">
                   <button
-                    onClick={() => speakText(currentSentenceText, language)}
-                    className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2"
-                    disabled={isReading}
+                    onClick={() => speakText(sentences[currentSentence], readingLanguage === 'chinese' ? 'zh-CN' : 'en-US')}
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors"
                   >
-                    <Volume2 className="w-5 h-5" />
-                    {isReading ? '朗读中...' : '朗读句子'}
+                    <Speaker className="w-5 h-5" />
+                    {readingLanguage === 'chinese' ? '重新朗读这句 / Repeat This Sentence' : 'Repeat This Sentence / 重新朗读这句'}
                   </button>
                   
                   <button
-                    onClick={() => {
-                      const fullText = sentences.join(' ');
-                      speakText(fullText, language);
-                    }}
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2"
+                    onClick={handleNextSentence}
+                    className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors flex items-center gap-2"
                   >
-                    <Play className="w-5 h-5" />
-                    朗读全文
+                    <Play className="w-6 h-6" />
+                    {currentSentence < sentences.length - 1 
+                      ? (readingLanguage === 'chinese' ? '下一句 / Next Sentence' : 'Next Sentence / 下一句')
+                      : (readingLanguage === 'chinese' ? '完成朗读 / Complete Reading' : 'Complete Reading / 完成朗读')
+                    }
                   </button>
                 </div>
-              </div>
-              
-              <div className="flex justify-center gap-4">
-                {currentSentence > 0 && (
-                  <button
-                    onClick={() => setCurrentSentence(currentSentence - 1)}
-                    className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-colors flex items-center gap-2"
-                  >
-                    <ArrowLeft className="w-5 h-5" />
-                    上一句
-                  </button>
-                )}
                 
-                {currentSentence < sentences.length - 1 ? (
-                  <button
-                    onClick={() => setCurrentSentence(currentSentence + 1)}
-                    className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors"
-                  >
-                    下一句
-                  </button>
-                ) : (
-                  <button
-                    onClick={backToMenu}
-                    className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors"
-                  >
-                    完成学习
-                  </button>
-                )}
-              </div>
-              
-              {/* Progress bar */}
-              <div className="mt-8">
-                <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div 
-                    className="bg-purple-500 h-3 rounded-full transition-all duration-300"
-                    style={{ width: `${((currentSentence + 1) / sentences.length) * 100}%` }}
-                  ></div>
-                </div>
-                <p className="text-sm text-gray-500 mt-2">
-                  阅读进度: {Math.round(((currentSentence + 1) / sentences.length) * 100)}%
-                </p>
+                <button
+                  onClick={() => {
+                    setIsReading(false);
+                    setReadingLanguage('');
+                  }}
+                  className="mt-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+                >
+                  {readingLanguage === 'chinese' ? '返回选择语言 / Back to Language Selection' : 'Back to Language Selection / 返回选择语言'}
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
-  
-  // Default fallback (should not reach here)
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 p-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-          <h1 className="text-3xl font-bold text-purple-600 mb-4">加载中...</h1>
-          <button
-            onClick={backToMenu}
-            className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors"
-          >
-            返回主页
-          </button>
-        </div>
-      </div>
-    </div>
-  );
 };
 
-export default ChineseLearningCompleteApp;
+export default ChineseLearningSet1;
