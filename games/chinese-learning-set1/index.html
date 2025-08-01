@@ -40,36 +40,403 @@
           const [isReading, setIsReading] = useState(false);
 
           // Data for all chapters
-          const chapter1Data = {
-            vocabulary: [
-              { word: '办法', pinyin: 'bàn fǎ', chinese: '处理事情或解决问题的方法', english: 'way; method; solution' },
-              { word: '脑筋', pinyin: 'nǎo jīn', chinese: '思维和理解能力；想法', english: 'brain; mind; ideas' },
-              { word: '浮', pinyin: 'fú', chinese: '漂在水面上，不下沉', english: 'to float' },
-              { word: '树洞', pinyin: 'shù dòng', chinese: '树干上的空洞', english: 'tree hollow' },
-              { word: '着急', pinyin: 'zháo jí', chinese: '心里紧张，不安', english: 'anxious; worried' }
-            ],
-            gameQuestions: [
-              { 
-                text: '一个不___，皮球跳进一棵大树的树洞里去了。', 
-                english: 'One of them was not ___, and the ball bounced into a tree hollow.',
-                answer: '小心', 
-                options: ['聪明', '小心', '着急', '办法']
-              },
-              { 
-                text: '皮球跳进一棵大树的___里去了。', 
-                english: 'The ball bounced into a ___ of a big tree.',
-                answer: '树洞', 
-                options: ['树枝', '情形', '树洞', '脑筋']
-              }
-            ],
-            chineseSentences: [
-              '几个孩子在一棵大树下拍球，一个不小心，皮球跳进一棵大树的树洞里去了。',
-              '大家很着急，争着把手伸进树洞里去拿球。'
-            ],
-            englishSentences: [
-              'A few children were playing with a ball under a big tree. One of them was not careful, and the ball bounced into a tree hollow.',
-              'Everyone became anxious and tried to reach into the hole to get the ball.'
-            ]
+          const chaptersData = {
+            chapter1: {
+              vocabulary: [
+                { word: '办法', pinyin: 'bàn fǎ', chinese: '处理事情或解决问题的方法', english: 'way; method; solution' },
+                { word: '脑筋', pinyin: 'nǎo jīn', chinese: '思维和理解能力；想法', english: 'brain; mind; ideas' },
+                { word: '浮', pinyin: 'fú', chinese: '漂在水面上，不下沉', english: 'to float' },
+                { word: '树洞', pinyin: 'shù dòng', chinese: '树干上的空洞', english: 'tree hollow' },
+                { word: '着急', pinyin: 'zháo jí', chinese: '心里紧张，不安', english: 'anxious; worried' },
+                { word: '小心', pinyin: 'xiǎo xīn', chinese: '注意谨慎，不马虎', english: 'careful; cautious' },
+                { word: '争', pinyin: 'zhēng', chinese: '力求获得或取胜', english: 'to compete; to strive' },
+                { word: '伸', pinyin: 'shēn', chinese: '展开，拉长', english: 'to stretch; to extend' },
+                { word: '情形', pinyin: 'qíng xíng', chinese: '事物的状态或情况', english: 'situation; condition' },
+                { word: '聪明', pinyin: 'cōng míng', chinese: '智力强，理解力好', english: 'smart; intelligent' }
+              ],
+              gameQuestions: [
+                { 
+                  text: '一个不___，皮球跳进一棵大树的树洞里去了。', 
+                  english: 'One of them was not ___, and the ball bounced into a tree hollow.',
+                  answer: '小心', 
+                  options: ['聪明', '小心', '着急', '办法']
+                },
+                { 
+                  text: '皮球跳进一棵大树的___里去了。', 
+                  english: 'The ball bounced into a ___ of a big tree.',
+                  answer: '树洞', 
+                  options: ['树枝', '情形', '树洞', '脑筋']
+                },
+                { 
+                  text: '大家很___，争着把手伸进树洞里去拿球。', 
+                  english: 'Everyone was very ___, trying to reach into the hole to get the ball.',
+                  answer: '着急', 
+                  options: ['小心', '着急', '聪明', '浮']
+                },
+                { 
+                  text: '争着把手___进树洞里去拿球。', 
+                  english: 'Trying to ___ their hands into the hole to get the ball.',
+                  answer: '伸', 
+                  options: ['伸', '争', '浮', '办法']
+                },
+                { 
+                  text: '华国想了一个___。', 
+                  english: 'Hua Guo thought of a ___.',
+                  answer: '办法', 
+                  options: ['脑筋', '办法', '情形', '树洞']
+                },
+                { 
+                  text: '华国想了想___说。', 
+                  english: 'Hua Guo thought and used his ___ to say.',
+                  answer: '脑筋', 
+                  options: ['办法', '脑筋', '着急', '小心']
+                },
+                { 
+                  text: '皮球会___起来的。', 
+                  english: 'The ball will ___ up.',
+                  answer: '浮', 
+                  options: ['浮', '伸', '争', '聪明']
+                },
+                { 
+                  text: '华国真___啊！', 
+                  english: 'Hua Guo is really ___!',
+                  answer: '聪明', 
+                  options: ['着急', '小心', '聪明', '浮']
+                },
+                { 
+                  text: '这种___下，大家都不知道怎么办。', 
+                  english: 'In this ___, everyone didn\'t know what to do.',
+                  answer: '情形', 
+                  options: ['办法', '情形', '树洞', '脑筋']
+                },
+                { 
+                  text: '大家___着把手伸进树洞里。', 
+                  english: 'Everyone was ___ to put their hands into the tree hole.',
+                  answer: '争', 
+                  options: ['争', '伸', '浮', '小心']
+                }
+              ],
+              chineseSentences: [
+                '几个孩子在一棵大树下拍球，一个不小心，皮球跳进一棵大树的树洞里去了。',
+                '大家很着急，争着把手伸进树洞里去拿球。',
+                '可是，树洞很深，谁的手也伸不到球。',
+                '这时候，华国想了想脑筋说："我有办法了。"',
+                '"什么办法？"大家问。',
+                '"你们去拿水来，"华国说，"把水倒进树洞里，皮球会浮起来的。"',
+                '大家照华国的办法去做，果然，皮球浮起来了。',
+                '"华国真聪明啊！"大家都这样说。'
+              ],
+              englishSentences: [
+                'A few children were playing with a ball under a big tree. One of them was not careful, and the ball bounced into a tree hollow.',
+                'Everyone became anxious and tried to reach into the hole to get the ball.',
+                'However, the tree hole was very deep, and no one could reach the ball.',
+                'At this moment, Hua Guo thought for a moment and said: "I have a solution."',
+                '"What solution?" everyone asked.',
+                '"Go get some water," Hua Guo said, "pour the water into the tree hole, and the ball will float up."',
+                'Everyone followed Hua Guo\'s method, and indeed, the ball floated up.',
+                '"Hua Guo is really smart!" everyone said.'
+              ]
+            },
+            chapter2: {
+              vocabulary: [
+                { word: '朋友', pinyin: 'péng yǒu', chinese: '彼此友好的人', english: 'friend' },
+                { word: '一起', pinyin: 'yì qǐ', chinese: '同时；共同', english: 'together' },
+                { word: '游戏', pinyin: 'yóu xì', chinese: '娱乐活动', english: 'game; to play' },
+                { word: '分享', pinyin: 'fēn xiǎng', chinese: '与别人共同享受', english: 'to share' },
+                { word: '帮助', pinyin: 'bāng zhù', chinese: '协助别人做事', english: 'to help' },
+                { word: '快乐', pinyin: 'kuài lè', chinese: '感到幸福或满意', english: 'happy; joyful' },
+                { word: '困难', pinyin: 'kùn nán', chinese: '遇到阻碍，不容易解决', english: 'difficult; difficulty' },
+                { word: '支持', pinyin: 'zhī chí', chinese: '赞成并给予帮助', english: 'to support' },
+                { word: '信任', pinyin: 'xìn rèn', chinese: '相信并依赖', english: 'to trust' },
+                { word: '珍惜', pinyin: 'zhēn xī', chinese: '重视并爱护', english: 'to cherish; to treasure' }
+              ],
+              gameQuestions: [
+                {
+                  text: '小明和小华是好___。',
+                  english: 'Xiao Ming and Xiao Hua are good ___.',
+                  answer: '朋友',
+                  options: ['朋友', '游戏', '困难', '支持']
+                },
+                {
+                  text: '他们喜欢___玩游戏。',
+                  english: 'They like to play games ___.',
+                  answer: '一起',
+                  options: ['分享', '一起', '帮助', '珍惜']
+                },
+                {
+                  text: '小明很喜欢玩电子___。',
+                  english: 'Xiao Ming likes to play electronic ___.',
+                  answer: '游戏',
+                  options: ['朋友', '游戏', '快乐', '信任']
+                },
+                {
+                  text: '好朋友会___自己的玩具。',
+                  english: 'Good friends will ___ their toys.',
+                  answer: '分享',
+                  options: ['分享', '困难', '支持', '一起']
+                },
+                {
+                  text: '当朋友遇到困难时，我们要___他。',
+                  english: 'When friends encounter difficulties, we should ___ them.',
+                  answer: '帮助',
+                  options: ['游戏', '帮助', '快乐', '珍惜']
+                },
+                {
+                  text: '和好朋友在一起总是很___。',
+                  english: 'Being with good friends is always very ___.',
+                  answer: '快乐',
+                  options: ['困难', '快乐', '信任', '支持']
+                },
+                {
+                  text: '学习新东西有时会遇到___。',
+                  english: 'Learning new things sometimes encounters ___.',
+                  answer: '困难',
+                  options: ['朋友', '困难', '分享', '一起']
+                },
+                {
+                  text: '真正的朋友会___你的决定。',
+                  english: 'True friends will ___ your decisions.',
+                  answer: '支持',
+                  options: ['支持', '游戏', '帮助', '快乐']
+                },
+                {
+                  text: '朋友之间要互相___。',
+                  english: 'Friends should ___ each other.',
+                  answer: '信任',
+                  options: ['困难', '信任', '珍惜', '分享']
+                },
+                {
+                  text: '我们应该___友谊。',
+                  english: 'We should ___ friendship.',
+                  answer: '珍惜',
+                  options: ['珍惜', '游戏', '一起', '支持']
+                }
+              ],
+              chineseSentences: [
+                '小明和小华是一对好朋友，他们总是一起玩游戏。',
+                '有一天，小明带了一个新玩具到学校，小华很羡慕。',
+                '小明看到小华的表情，马上说："我们一起玩吧！"',
+                '小华很高兴，他们整个休息时间都在分享这个玩具。',
+                '当小华遇到数学困难时，小明总是耐心地帮助他。',
+                '小华也会在小明忘记带午餐时，分享自己的食物。',
+                '他们的友谊让周围的同学都很羡慕。',
+                '老师经常夸奖他们，说真正的朋友就应该互相支持和信任。',
+                '小明和小华都知道，他们要珍惜这份珍贵的友谊。',
+                '因为有了彼此的陪伴，他们的学校生活变得更加快乐。'
+              ],
+              englishSentences: [
+                'Xiao Ming and Xiao Hua are a pair of good friends who always play games together.',
+                'One day, Xiao Ming brought a new toy to school, and Xiao Hua was very envious.',
+                'Seeing Xiao Hua\'s expression, Xiao Ming immediately said: "Let\'s play together!"',
+                'Xiao Hua was very happy, and they spent the entire break time sharing this toy.',
+                'When Xiao Hua encountered difficulties in math, Xiao Ming always patiently helped him.',
+                'Xiao Hua would also share his food when Xiao Ming forgot to bring lunch.',
+                'Their friendship made all the surrounding classmates very envious.',
+                'The teacher often praised them, saying that true friends should support and trust each other.',
+                'Both Xiao Ming and Xiao Hua knew they should cherish this precious friendship.',
+                'Because of each other\'s companionship, their school life became more joyful.'
+              ]
+            },
+            chapter3: {
+              vocabulary: [
+                { word: '小狗', pinyin: 'xiǎo gǒu', chinese: '幼小的狗', english: 'puppy; little dog' },
+                { word: '家', pinyin: 'jiā', chinese: '居住的地方', english: 'home; family' },
+                { word: '温暖', pinyin: 'wēn nuǎn', chinese: '不冷不热，让人舒适', english: 'warm; cozy' },
+                { word: '关爱', pinyin: 'guān ài', chinese: '关心和爱护', english: 'to care for; love' },
+                { word: '主人', pinyin: 'zhǔ rén', chinese: '房屋或宠物的拥有者', english: 'owner; master' },
+                { word: '忠诚', pinyin: 'zhōng chéng', chinese: '忠实可靠', english: 'loyal; faithful' },
+                { word: '陪伴', pinyin: 'péi bàn', chinese: '在旁边一起', english: 'to accompany; companionship' },
+                { word: '保护', pinyin: 'bǎo hù', chinese: '不让受到损害', english: 'to protect' },
+                { word: '舒适', pinyin: 'shū shì', chinese: '身心感到轻松愉快', english: 'comfortable' },
+                { word: '安全', pinyin: 'ān quán', chinese: '没有危险', english: 'safe; safety' }
+              ],
+              gameQuestions: [
+                {
+                  text: '小花是一只可爱的___。',
+                  english: 'Xiao Hua is a lovely ___.',
+                  answer: '小狗',
+                  options: ['小狗', '主人', '家', '温暖']
+                },
+                {
+                  text: '小花的___在市中心的一栋公寓里。',
+                  english: 'Xiao Hua\'s ___ is in an apartment in the city center.',
+                  answer: '家',
+                  options: ['忠诚', '家', '陪伴', '保护']
+                },
+                {
+                  text: '冬天的时候，屋子里很___。',
+                  english: 'In winter, the house is very ___.',
+                  answer: '温暖',
+                  options: ['温暖', '安全', '舒适', '小狗']
+                },
+                {
+                  text: '小花的___对它充满了___。',
+                  english: 'Xiao Hua\'s ___ is full of ___ for it.',
+                  answer: '关爱',
+                  options: ['关爱', '忠诚', '家', '主人']
+                },
+                {
+                  text: '李阿姨是小花的___。',
+                  english: 'Aunt Li is Xiao Hua\'s ___.',
+                  answer: '主人',
+                  options: ['小狗', '主人', '温暖', '陪伴']
+                },
+                {
+                  text: '小花对主人非常___。',
+                  english: 'Xiao Hua is very ___ to its owner.',
+                  answer: '忠诚',
+                  options: ['忠诚', '舒适', '安全', '保护']
+                },
+                {
+                  text: '小花喜欢___主人看电视。',
+                  english: 'Xiao Hua likes to ___ its owner while watching TV.',
+                  answer: '陪伴',
+                  options: ['关爱', '陪伴', '温暖', '家']
+                },
+                {
+                  text: '小花会___家里的安全。',
+                  english: 'Xiao Hua will ___ the safety of the home.',
+                  answer: '保护',
+                  options: ['保护', '忠诚', '陪伴', '主人']
+                },
+                {
+                  text: '小花的小床很___。',
+                  english: 'Xiao Hua\'s little bed is very ___.',
+                  answer: '舒适',
+                  options: ['安全', '舒适', '温暖', '小狗']
+                },
+                {
+                  text: '在主人的关爱下，小花感到很___。',
+                  english: 'Under the owner\'s care, Xiao Hua feels very ___.',
+                  answer: '安全',
+                  options: ['舒适', '安全', '保护', '关爱']
+                }
+              ],
+              chineseSentences: [
+                '小花是一只可爱的小狗，它的家在市中心的一栋公寓里。',
+                '这个家虽然不大，但是很温暖，充满了关爱。',
+                '小花的主人是李阿姨，她对小花就像对自己的孩子一样好。',
+                '每天早上，李阿姨都会给小花准备营养丰富的早餐。',
+                '小花很忠诚，总是陪伴在李阿姨身边。',
+                '当李阿姨看电视的时候，小花就安静地躺在她的脚边。',
+                '小花也很勇敢，会保护这个家。',
+                '晚上，小花睡在客厅里自己舒适的小床上。',
+                '在这个充满爱的家里，小花感到非常安全和幸福。',
+                '小花知道，这里就是它永远的家。'
+              ],
+              englishSentences: [
+                'Xiao Hua is a lovely little dog whose home is in an apartment in the city center.',
+                'Although this home is not big, it is very warm and full of love.',
+                'Xiao Hua\'s owner is Aunt Li, who treats Xiao Hua like her own child.',
+                'Every morning, Aunt Li prepares a nutritious breakfast for Xiao Hua.',
+                'Xiao Hua is very loyal and always stays by Aunt Li\'s side.',
+                'When Aunt Li watches TV, Xiao Hua quietly lies at her feet.',
+                'Xiao Hua is also very brave and will protect this home.',
+                'At night, Xiao Hua sleeps on its comfortable little bed in the living room.',
+                'In this home full of love, Xiao Hua feels very safe and happy.',
+                'Xiao Hua knows that this is its forever home.'
+              ]
+            },
+            chapter4: {
+              vocabulary: [
+                { word: '种花', pinyin: 'zhòng huā', chinese: '栽培花朵', english: 'to plant flowers; flower planting' },
+                { word: '体会', pinyin: 'tǐ huì', chinese: '经历后的感受和理解', english: 'experience; understanding' },
+                { word: '耐心', pinyin: 'nài xīn', chinese: '不急躁，能持久等待', english: 'patience; patient' },
+                { word: '责任', pinyin: 'zé rèn', chinese: '应该做的事情', english: 'responsibility' },
+                { word: '成长', pinyin: 'chéng zhǎng', chinese: '发育长大', english: 'to grow; growth' },
+                { word: '观察', pinyin: 'guān chá', chinese: '仔细看', english: 'to observe' },
+                { word: '浇水', pinyin: 'jiāo shuǐ', chinese: '给植物淋水', english: 'to water (plants)' },
+                { word: '阳光', pinyin: 'yáng guāng', chinese: '太阳的光', english: 'sunlight' },
+                { word: '努力', pinyin: 'nǔ lì', chinese: '用心去做', english: 'to work hard; effort' },
+                { word: '收获', pinyin: 'shōu huò', chinese: '得到成果', english: 'harvest; to gain' }
+              ],
+              gameQuestions: [
+                {
+                  text: '小丽学会了___。',
+                  english: 'Xiao Li learned ___.',
+                  answer: '种花',
+                  options: ['种花', '体会', '耐心', '责任']
+                },
+                {
+                  text: '通过种花，小丽___到了很多道理。',
+                  english: 'Through planting flowers, Xiao Li ___ many truths.',
+                  answer: '体会',
+                  options: ['观察', '体会', '努力', '收获']
+                },
+                {
+                  text: '种花需要很多___。',
+                  english: 'Planting flowers requires a lot of ___.',
+                  answer: '耐心',
+                  options: ['耐心', '阳光', '浇水', '成长']
+                },
+                {
+                  text: '照顾花朵是小丽的___。',
+                  english: 'Taking care of flowers is Xiao Li\'s ___.',
+                  answer: '责任',
+                  options: ['责任', '努力', '观察', '种花']
+                },
+                {
+                  text: '小丽看着花朵慢慢___。',
+                  english: 'Xiao Li watched the flowers slowly ___.',
+                  answer: '成长',
+                  options: ['成长', '收获', '浇水', '体会']
+                },
+                {
+                  text: '小丽每天都要___花朵的变化。',
+                  english: 'Xiao Li has to ___ the changes in the flowers every day.',
+                  answer: '观察',
+                  options: ['耐心', '观察', '责任', '阳光']
+                },
+                {
+                  text: '每天早上，小丽都要给花___。',
+                  english: 'Every morning, Xiao Li has to ___ the flowers.',
+                  answer: '浇水',
+                  options: ['浇水', '努力', '成长', '种花']
+                },
+                {
+                  text: '花朵需要充足的___才能长得好。',
+                  english: 'Flowers need sufficient ___ to grow well.',
+                  answer: '阳光',
+                  options: ['观察', '阳光', '体会', '耐心']
+                },
+                {
+                  text: '小丽很___地照顾每一朵花。',
+                  english: 'Xiao Li very ___ takes care of every flower.',
+                  answer: '努力',
+                  options: ['努力', '责任', '浇水', '收获']
+                },
+                {
+                  text: '经过几个月的努力，小丽终于有了___。',
+                  english: 'After several months of effort, Xiao Li finally had a ___.',
+                  answer: '收获',
+                  options: ['成长', '收获', '阳光', '观察']
+                }
+              ],
+              chineseSentences: [
+                '小丽从奶奶那里学会了种花，这给了她很多珍贵的体会。',
+                '刚开始的时候，小丽觉得种花很简单，只要把种子埋进土里就行。',
+                '但是奶奶告诉她，种花需要很多耐心和责任心。',
+                '小丽开始每天仔细观察花朵的成长过程。',
+                '她学会了定时浇水，确保花朵有足够的水分。',
+                '她也学会了让花朵接受适当的阳光照射。',
+                '通过努力照顾，小丽看到花朵一天天长大。',
+                '有时候花朵会生病，小丽就向奶奶请教如何治疗。',
+                '几个月后，小丽的花朵终于开花了，她感到非常有成就感。',
+                '通过种花，小丽体会到了耐心、责任和努力的重要性，这些都是人生宝贵的收获。'
+              ],
+              englishSentences: [
+                'Xiao Li learned to plant flowers from her grandmother, which gave her many precious experiences.',
+                'At the beginning, Xiao Li thought planting flowers was simple, just burying seeds in the soil.',
+                'But grandmother told her that planting flowers requires a lot of patience and responsibility.',
+                'Xiao Li began to carefully observe the growth process of flowers every day.',
+                'She learned to water regularly, ensuring the flowers had enough moisture.',
+                'She also learned to let the flowers receive appropriate sunlight.',
+                'Through careful care, Xiao Li saw the flowers grow day by day.',
+                'Sometimes the flowers got sick, and Xiao Li would ask grandmother how to treat them.',
+                'After several months, Xiao Li\'s flowers finally bloomed, and she felt very accomplished.',
+                'Through planting flowers, Xiao Li experienced the importance of patience, responsibility, and effort, which are precious gains in life.'
+              ]
+            }
           };
 
           const encouragementWords = ['很厉害！', '你棒棒的！', '太棒了！', '继续加油！', '你真聪明！'];
@@ -88,7 +455,15 @@
             }
           };
 
-          const getCurrentData = () => chapter1Data; // Simplified for now
+          const getCurrentData = () => {
+            switch (currentChapter) {
+              case 'chapter1': return chaptersData.chapter1;
+              case 'chapter2': return chaptersData.chapter2;
+              case 'chapter3': return chaptersData.chapter3;
+              case 'chapter4': return chaptersData.chapter4;
+              default: return chaptersData.chapter1;
+            }
+          };
 
           const resetChapterData = () => {
             setCurrentPhase('learning');
@@ -355,22 +730,24 @@
                     <div className="text-center mb-8">
                       <div className="space-y-4 mb-8">
                         <div className="p-6 bg-gray-50 rounded-lg">
-                          <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center justify-between mb-4">
                             <span className="text-xl text-gray-800 flex-1">{currentQ.text}</span>
                             <button
                               onClick={() => speakText(currentQ.text)}
-                              className="bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-full ml-4 transition-colors"
+                              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg ml-4 transition-colors font-semibold"
+                              title="朗读中文题目"
                             >
-                              🔊
+                              🔊 中文朗读
                             </button>
                           </div>
                           <div className="flex items-center justify-between">
                             <span className="text-lg text-gray-600 flex-1">{currentQ.english}</span>
                             <button
                               onClick={() => speakText(currentQ.english, 'en-US')}
-                              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full ml-4 transition-colors"
+                              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg ml-4 transition-colors font-semibold"
+                              title="Read English translation"
                             >
-                              🔊
+                              🔊 English
                             </button>
                           </div>
                         </div>
@@ -439,6 +816,15 @@
                         恭喜完成所有练习！选择语言开始朗读：<br/>
                         Congratulations! Choose a language to start reading:
                       </p>
+                      
+                      {isAppleDevice && (
+                        <div className="bg-yellow-50 p-4 rounded-lg mb-6 border-l-4 border-yellow-400">
+                          <p className="text-sm text-yellow-800">
+                            📱 <strong>Apple设备用户请注意：</strong>首次使用语音功能时，请先点击任意朗读按钮激活音频功能。<br/>
+                            <strong>For Apple device users:</strong> Please tap any read-aloud button first to activate audio functionality.
+                          </p>
+                        </div>
+                      )}
                       
                       <div className="space-y-4">
                         <button
