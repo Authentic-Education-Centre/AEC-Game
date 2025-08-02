@@ -948,7 +948,6 @@
             
             if (isCorrect) {
                 const randomEncouragement = encouragementWords[Math.floor(Math.random() * encouragementWords.length)];
-                alert(randomEncouragement);
                 speakText(randomEncouragement);
                 
                 gameState.gameAnswers[gameState.currentQuestion] = selectedAnswer;
@@ -966,13 +965,11 @@
                 gameState.wrongCount = newWrongCount;
                 
                 if (newWrongCount >= 3) {
-                    alert('需要重新开始练习！');
                     speakText('需要重新开始练习！');
                     gameState.currentQuestion = 0;
                     gameState.gameAnswers = {};
                     gameState.wrongCount = 0;
                 } else {
-                    alert('答错了，再试试！');
                     speakText('答错了，再试试！');
                 }
                 render();
@@ -1006,7 +1003,7 @@
             } else {
                 gameState.isReading = false;
                 gameState.currentPhase = 'completed';
-                alert('朗读完成！你学得很棒！');
+                speakText('朗读完成！你学得很棒！');
                 render();
             }
         }
@@ -1019,7 +1016,7 @@
                 gameState.currentChapter = chapters[currentIndex + 1];
                 resetChapterData();
             } else {
-                alert('恭喜完成第二套所有作文！🎉');
+                speakText('恭喜完成第二套所有作文！');
                 gameState.currentChapter = 'menu';
                 resetChapterData();
             }
