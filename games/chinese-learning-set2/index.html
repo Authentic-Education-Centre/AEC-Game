@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Learning Set 2 - AEC Educational Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+
+        .max-w-6xl {
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        .max-w-4xl {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        .bg-white-90 {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .backdrop-blur {
+            backdrop-filter: blur(10px);
+        }
+
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+
+        .rounded-2xl {
+            border-radius: 1rem;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .shadow-2xl {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .p-12 { padding: 3rem; }
+
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+
+        .m-4 { margin: 1rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .ml-3 { margin-left: 0.75rem; }
+        .ml-4 { margin-left: 1rem; }
+        .mr-4 { margin-right: 1rem; }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-5xl { font-size: 3rem; }
+        .text-6xl { font-size: 3.75rem; }
+
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+
+        .text-gray-500 { color: #6b7280; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-700 { color: #374151; }
+        .text-gray-800 { color: #1f2937; }
+        .text-blue-600 { color: #2563eb; }
+        .text-blue-700 { color: #1d4ed8; }
+        .text-blue-800 { color: #1e40af; }
+        .text-green-600 { color: #16a34a; }
+        .text-green-700 { color: #15803d; }
+        .text-purple-600 { color: #9333ea; }
+        .text-red-500 { color: #ef4444; }
+        .text-white { color: white; }
+
+        .bg-blue-50 { background-color: #eff6ff; }
+        .bg-blue-200 { background-color: #bfdbfe; }
+        .bg-blue-500 { background-color: #3b82f6; }
+        .bg-blue-600 { background-color: #2563eb; }
+        .bg-gray-50 { background-color: #f9fafb; }
+        .bg-gray-200 { background-color: #e5e7eb; }
+        .bg-gray-400 { background-color: #9ca3af; }
+        .bg-gray-500 { background-color: #6b7280; }
+        .bg-gray-600 { background-color: #4b5563; }
+        .bg-green-500 { background-color: #22c55e; }
+        .bg-green-600 { background-color: #16a34a; }
+        .bg-purple-500 { background-color: #a855f7; }
+        .bg-purple-600 { background-color: #9333ea; }
+        .bg-red-500 { background-color: #ef4444; }
+        .bg-red-600 { background-color: #dc2626; }
+        .bg-yellow-50 { background-color: #fefce8; }
+        .bg-yellow-200 { background-color: #fde047; }
+        .bg-yellow-400 { background-color: #facc15; }
+        .bg-yellow-500 { background-color: #eab308; }
+        .bg-yellow-600 { background-color: #ca8a04; }
+
+        .border-2 { border-width: 2px; }
+        .border-l-4 { border-left-width: 4px; }
+        .border-blue-200 { border-color: #bfdbfe; }
+        .border-blue-300 { border-color: #93c5fd; }
+        .border-blue-400 { border-color: #60a5fa; }
+        .border-gray-200 { border-color: #e5e7eb; }
+        .border-yellow-300 { border-color: #fde047; }
+        .border-yellow-400 { border-color: #facc15; }
+
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .gap-3 { gap: 0.75rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+
+        .flex { display: flex; }
+        .flex-1 { flex: 1 1 0%; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+
+        .w-5 { width: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .w-8 { width: 2rem; }
+        .h-5 { height: 1.25rem; }
+        .h-6 { height: 1.5rem; }
+        .h-8 { height: 2rem; }
+        .w-full { width: 100%; }
+
+        .max-w-2xl { max-width: 42rem; margin: 0 auto; }
+        .max-w-4xl-mx { max-width: 56rem; margin: 0 auto; }
+
+        .cursor-pointer { cursor: pointer; }
+
+        .transition-colors { transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; }
+
+        .hover\:bg-blue-600:hover { background-color: #2563eb; }
+        .hover\:bg-gray-500:hover { background-color: #6b7280; }
+        .hover\:bg-gray-600:hover { background-color: #4b5563; }
+        .hover\:bg-green-600:hover { background-color: #16a34a; }
+        .hover\:bg-purple-600:hover { background-color: #9333ea; }
+        .hover\:bg-red-600:hover { background-color: #dc2626; }
+        .hover\:bg-yellow-600:hover { background-color: #ca8a04; }
+        .hover\:border-blue-300:hover { border-color: #93c5fd; }
+
+        .hidden { display: none; }
+
+        .bg-gradient-to-br {
+            background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+        }
+        .from-green-100 { --tw-gradient-from: #dcfce7; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(220, 252, 231, 0)); }
+        .via-emerald-50 { --tw-gradient-stops: var(--tw-gradient-from), #ecfdf5, var(--tw-gradient-to, rgba(236, 253, 245, 0)); }
+        .to-teal-100 { --tw-gradient-to: #ccfbf1; }
+        .from-blue-100 { --tw-gradient-from: #dbeafe; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(219, 234, 254, 0)); }
+        .to-purple-100 { --tw-gradient-to: #e9d5ff; }
+        .from-green-100-alt { --tw-gradient-from: #dcfce7; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(220, 252, 231, 0)); }
+        .to-blue-100 { --tw-gradient-to: #dbeafe; }
+        .from-purple-100 { --tw-gradient-from: #e9d5ff; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(233, 213, 255, 0)); }
+        .to-pink-100 { --tw-gradient-to: #fce7f3; }
+        .from-green-100-emerald { --tw-gradient-from: #dcfce7; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(220, 252, 231, 0)); }
+        .to-emerald-100 { --tw-gradient-to: #d1fae5; }
+
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        .text-transparent {
+            color: transparent;
+        }
+
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--tw-gradient-stops));
+        }
+        .from-green-600 { --tw-gradient-from: #16a34a; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(22, 163, 74, 0)); }
+        .to-emerald-600 { --tw-gradient-to: #059669; }
+
+        .rounded-full { border-radius: 9999px; }
+
+        button {
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .chapter-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        .chapter-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .p-12 { padding: 2rem; }
+            .text-5xl { font-size: 2rem; }
+            .text-3xl { font-size: 1.5rem; }
+            .grid-cols-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // Global state management
+        let gameState = {
+            currentChapter: 'menu',
+            currentPhase: 'learning',
+            currentWordIndex: 0,
+            viewedChinese: false,
+            viewedEnglish: false,
+            gameAnswers: {},
+            wrongCount: 0,
+            currentQuestion: 0,
+            gameCompleted: false,
+            readingLanguage: '',
+            currentSentence: -1,
+            isReading: false
+        };
+
+        // Data for all chapters
+        const gameData = {
+            chapter5: {
+                vocabulary: [
+                    { word: '电流', pinyin: 'diàn liú', chinese: '电在电线中流动的现象', english: 'electric current' },
+                    { word: '点燃', pinyin: 'diǎn rán', chinese: '把火点着；使燃烧', english: 'to ignite; to light' },
+                    { word: '电光', pinyin: 'diàn guāng', chinese: '闪电时发出的亮光', english: 'lightning flash' },
+                    { word: '中断', pinyin: 'zhōng duàn', chinese: '暂时停止，不能继续', english: 'to interrupt; to cut off' },
+                    { word: '聊天', pinyin: 'liáo tiān', chinese: '轻松谈话；闲聊', english: 'to chat' },
+                    { word: '看报纸', pinyin: 'kàn bào zhǐ', chinese: '阅读报纸内容', english: 'to read the newspaper' },
+                    { word: '大雨', pinyin: 'dà yǔ', chinese: '很大的雨；强降雨', english: 'heavy rain' },
+                    { word: '做功课', pinyin: 'zuò gōng kè', chinese: '完成学校的学习任务', english: 'to do homework' },
+                    { word: '天空', pinyin: 'tiān kōng', chinese: '头顶上的自然空间', english: 'sky' },
+                    { word: '狂风', pinyin: 'kuáng fēng', chinese: '非常猛烈的风', english: 'strong wind; gale' }
+                ],
+                gameQuestions: [
+                    { 
+                        text: '窗外雷声轰隆，___闪闪。', 
+                        english: 'Thunder rumbled outside the window, and ___ flashed brightly.',
+                        answer: '电光', 
+                        answerEnglish: 'lightning',
+                        options: ['大雨', '电光', '狂风', '天空'],
+                        optionsEnglish: ['heavy rain', 'lightning', 'strong wind', 'sky']
+                    },
+                    { 
+                        text: '___一片灰暗。', 
+                        english: 'The ___ was dark and grey.',
+                        answer: '天空', 
+                        answerEnglish: 'sky',
+                        options: ['电光', '聊天', '天空', '中断'],
+                        optionsEnglish: ['lightning', 'chat', 'sky', 'interrupt']
+                    },
+                    { 
+                        text: '椰树都被___吹得弯下了腰。', 
+                        english: 'The coconut trees were bent by the ___.',
+                        answer: '狂风', 
+                        answerEnglish: 'strong wind',
+                        options: ['点燃', '做功课', '狂风', '电流'],
+                        optionsEnglish: ['ignite', 'do homework', 'strong wind', 'electric current']
+                    },
+                    { 
+                        text: '屋外便下起___来了。', 
+                        english: '___ began to fall.',
+                        answer: '大雨', 
+                        answerEnglish: 'heavy rain',
+                        options: ['大雨', '电光', '聊天', '看报纸'],
+                        optionsEnglish: ['heavy rain', 'lightning', 'chat', 'read newspaper']
+                    },
+                    { 
+                        text: '我和弟妹们正在客厅里___。', 
+                        english: 'My younger siblings and I were in the living room ___.',
+                        answer: '做功课', 
+                        answerEnglish: 'doing homework',
+                        options: ['中断', '天空', '做功课', '点燃'],
+                        optionsEnglish: ['interrupt', 'sky', 'doing homework', 'ignite']
+                    },
+                    { 
+                        text: '爸爸则在___。', 
+                        english: 'Dad was ___.',
+                        answer: '看报纸', 
+                        answerEnglish: 'reading the newspaper',
+                        options: ['看报纸', '狂风', '大雨', '电流'],
+                        optionsEnglish: ['reading the newspaper', 'strong wind', 'heavy rain', 'electric current']
+                    },
+                    { 
+                        text: '原来是电流___。', 
+                        english: 'It turned out the electricity had been ___.',
+                        answer: '中断', 
+                        answerEnglish: 'cut off',
+                        options: ['聊天', '中断', '电光', '做功课'],
+                        optionsEnglish: ['chat', 'cut off', 'lightning', 'do homework']
+                    },
+                    { 
+                        text: '把___了的蜡烛放在客厅的桌上。', 
+                        english: 'She placed a ___ candle on the table.',
+                        answer: '点燃', 
+                        answerEnglish: 'lit',
+                        options: ['天空', '点燃', '看报纸', '狂风'],
+                        optionsEnglish: ['sky', 'lit', 'read newspaper', 'strong wind']
+                    },
+                    { 
+                        text: '我们只好坐在客厅___。', 
+                        english: 'So we sat in the living room and ___.',
+                        answer: '聊天', 
+                        answerEnglish: 'chatted',
+                        options: ['大雨', '电流', '聊天', '中断'],
+                        optionsEnglish: ['heavy rain', 'electric current', 'chatted', 'interrupt']
+                    },
+                    { 
+                        text: '___恢复了供应。', 
+                        english: 'The ___ supply resumed.',
+                        answer: '电流', 
+                        answerEnglish: 'electricity',
+                        options: ['做功课', '电光', '点燃', '电流'],
+                        optionsEnglish: ['do homework', 'lightning', 'ignite', 'electricity']
+                    }
+                ],
+                chineseSentences: [
+                    '傍晚时分，窗外雷声轰隆，电光闪闪。',
+                    '天空一片灰暗，屋外的椰树都被狂风吹得弯下了腰。',
+                    '不久，屋外便下起大雨来了。',
+                    '这个时候，我和弟妹们正在客厅里做功课，爸爸则在看报纸。',
+                    '忽然屋内一片漆黑，伸手不见五指，原来是电流中断。',
+                    '我们无法做功课，爸爸也无法看报纸。',
+                    '就在这时候，妈妈从厨房里走出来，把点燃了的蜡烛放在客厅的桌上。',
+                    '于是，我们只好坐在客厅聊天。',
+                    '大约半小时后，电流恢复了供应，我们才能再次如常地进行各自的活动。',
+                    '由此可见，电流是多么重要。'
+                ],
+                englishSentences: [
+                    'At dusk, thunder rumbled outside the window, and lightning flashed brightly.',
+                    'The sky was dark and grey, and the coconut trees outside were bent by the strong wind.',
+                    'Soon, heavy rain began to fall.',
+                    'At that time, my younger siblings and I were in the living room doing homework, while Dad was reading the newspaper.',
+                    'Suddenly, the whole house turned dark—it was pitch black. It turned out the electricity had been cut off.',
+                    'We couldn\'t continue our homework, and Dad couldn\'t read his paper.',
+                    'Just then, Mum came out from the kitchen and placed a lit candle on the table in the living room.',
+                    'So we sat in the living room and chatted.',
+                    'About half an hour later, the electricity supply resumed, and we were able to carry on with our activities as usual.',
+                    'This shows just how important electricity is.'
+                ]
+            },
+            chapter6: {
+                vocabulary: [
+                    { word: '工具', pinyin: 'gōng jù', chinese: '用于制作或劳动的器具', english: 'tools' },
+                    { word: '做工', pinyin: 'zuò gōng', chinese: '从事体力或技术劳动', english: 'to work (manual/labor)' },
+                    { word: '懒惰', pinyin: 'lǎn duò', chinese: '不愿意动、不勤劳', english: 'lazy' },
+                    { word: '讨', pinyin: 'tǎo', chinese: '向人请求要某物', english: 'to ask for; to request' },
+                    { word: '勤劳', pinyin: 'qín láo', chinese: '努力工作、不怕辛苦', english: 'hardworking' },
+                    { word: '传家之宝', pinyin: 'chuán jiā zhī bǎo', chinese: '世代相传的贵重物品', english: 'family heirloom' },
+                    { word: '赚', pinyin: 'zhuàn', chinese: '通过劳动获得金钱或利益', english: 'to earn' },
+                    { word: '不料', pinyin: 'bù liào', chinese: '没想到，出乎意料', english: 'unexpectedly' },
+                    { word: '丢', pinyin: 'diū', chinese: '抛弃、扔掉', english: 'to throw away; to lose' },
+                    { word: '高兴', pinyin: 'gāo xìng', chinese: '快乐、喜悦', english: 'happy; glad' }
+                ],
+                gameQuestions: [
+                    { 
+                        text: '他有一个___的儿子名叫南山。', 
+                        english: 'He had a ___ son named Nanshan.',
+                        answer: '懒惰', 
+                        answerEnglish: 'lazy',
+                        options: ['勤劳', '懒惰', '高兴', '工具'],
+                        optionsEnglish: ['hardworking', 'lazy', 'happy', 'tools']
+                    },
+                    { 
+                        text: '就把___送给他。', 
+                        english: 'I will give you our ___.',
+                        answer: '传家之宝', 
+                        answerEnglish: 'family heirloom',
+                        options: ['做工', '传家之宝', '讨', '赚'],
+                        optionsEnglish: ['work', 'family heirloom', 'ask for', 'earn']
+                    },
+                    { 
+                        text: '南山向母亲___了一块银子。', 
+                        english: 'Nanshan ___ his mother for a silver coin.',
+                        answer: '讨', 
+                        answerEnglish: 'asked',
+                        options: ['丢', '不料', '讨', '懒惰'],
+                        optionsEnglish: ['threw', 'unexpectedly', 'asked', 'lazy']
+                    },
+                    { 
+                        text: '铁匠却把它___进火炉里。', 
+                        english: 'But the blacksmith ___ it into the furnace.',
+                        answer: '丢', 
+                        answerEnglish: 'threw',
+                        options: ['丢', '高兴', '传家之宝', '勤劳'],
+                        optionsEnglish: ['threw', 'happy', 'family heirloom', 'hardworking']
+                    },
+                    { 
+                        text: '南山去帮邻居___。', 
+                        english: 'Nanshan went to ___ for a neighbor.',
+                        answer: '做工', 
+                        answerEnglish: 'work',
+                        options: ['工具', '赚', '做工', '讨'],
+                        optionsEnglish: ['tools', 'earn', 'work', 'ask for']
+                    },
+                    { 
+                        text: '___，铁匠又把银子丢进火炉里。', 
+                        english: '___, the blacksmith threw that coin into the furnace again.',
+                        answer: '不料', 
+                        answerEnglish: 'unexpectedly',
+                        options: ['不料', '懒惰', '丢', '高兴'],
+                        optionsEnglish: ['unexpectedly', 'lazy', 'threw', 'happy']
+                    },
+                    { 
+                        text: '这时，铁匠才___地说。', 
+                        english: 'At that moment, the blacksmith ___ said.',
+                        answer: '高兴', 
+                        answerEnglish: 'happily',
+                        options: ['传家之宝', '工具', '高兴', '做工'],
+                        optionsEnglish: ['family heirloom', 'tools', 'happily', 'work']
+                    },
+                    { 
+                        text: '只有用自己劳力___来的钱。', 
+                        english: 'Only money ___ through your own labor.',
+                        answer: '赚', 
+                        answerEnglish: 'earned',
+                        options: ['勤劳', '讨', '不料', '赚'],
+                        optionsEnglish: ['hardworking', 'ask for', 'unexpectedly', 'earned']
+                    },
+                    { 
+                        text: '便把一箱___送给南山。', 
+                        english: 'Then gave Nanshan a box of ___.',
+                        answer: '工具', 
+                        answerEnglish: 'tools',
+                        options: ['工具', '丢', '懒惰', '传家之宝'],
+                        optionsEnglish: ['tools', 'threw', 'lazy', 'family heirloom']
+                    },
+                    { 
+                        text: '叫他以后要___做工。', 
+                        english: 'And told him to always be ___ in the future.',
+                        answer: '勤劳', 
+                        answerEnglish: 'hardworking',
+                        options: ['高兴', '赚', '勤劳', '不料'],
+                        optionsEnglish: ['happy', 'earn', 'hardworking', 'unexpectedly']
+                    }
+                ],
+                chineseSentences: [
+                    '从前有一个铁匠。他有一个懒惰的儿子名叫南山。',
+                    '有一天，铁匠对南山说，如果他能做工赚到一块银子，就把传家之宝送给他。',
+                    '第二天，南山向母亲讨了一块银子，交给父亲。',
+                    '铁匠却把它丢进火炉里。',
+                    '后来，南山去帮邻居做工，他很辛苦才赚到一块银子，就把它交给父亲。',
+                    '不料，铁匠又把银子丢进火炉里，南山见了便大哭起来。',
+                    '这时，铁匠才高兴地说："只有用自己劳力赚来的钱，才会爱惜。"',
+                    '于是铁匠便把一箱工具送给南山。',
+                    '并叫他以后要勤劳做工。'
+                ],
+                englishSentences: [
+                    'Once upon a time, there was a blacksmith. He had a lazy son named Nanshan.',
+                    'One day, the blacksmith said to him, "If you can earn one silver coin through hard work, I will give you our family heirloom."',
+                    'The next day, Nanshan asked his mother for a silver coin and handed it to his father.',
+                    'But the blacksmith threw it into the furnace.',
+                    'Later, Nanshan went to work for a neighbor. He worked very hard to earn a silver coin and gave it to his father.',
+                    'Unexpectedly, the blacksmith threw that coin into the furnace again. Nanshan burst into tears.',
+                    'At that moment, the blacksmith happily said, "Only money earned through your own labor will you truly cherish."',
+                    'Then, the blacksmith gave Nanshan a box of tools.',
+                    'And told him to always be hardworking in the future.'
+                ]
+            },
+            chapter7: {
+                vocabulary: [
+                    { word: '浪费', pinyin: 'làng fèi', chinese: '无谓地消耗金钱、时间或资源', english: 'to waste' },
+                    { word: '趁', pinyin: 'chèn', chinese: '抓住时机', english: 'to take advantage of (time/opportunity)' },
+                    { word: '歌喉', pinyin: 'gē hóu', chinese: '指唱歌的声音或能力', english: 'singing voice' },
+                    { word: '故意', pinyin: 'gù yì', chinese: '明知道却有意去做', english: 'on purpose; deliberately' },
+                    { word: '妨碍', pinyin: 'fáng ài', chinese: '阻碍别人或造成影响', english: 'to disturb; to hinder' },
+                    { word: '逗', pinyin: 'dòu', chinese: '引人发笑、开心', english: 'to tease; to amuse' },
+                    { word: '时候', pinyin: 'shí hòu', chinese: '某一时间或时间段', english: 'time; moment' },
+                    { word: '惭愧', pinyin: 'cán kuì', chinese: '因做错事而感到羞愧', english: 'ashamed; guilty' },
+                    { word: '安静', pinyin: 'ān jìng', chinese: '没有声音、不吵闹', english: 'quiet' },
+                    { word: '自修', pinyin: 'zì xiū', chinese: '自己复习或学习功课', english: 'self-study' }
+                ],
+                gameQuestions: [
+                    { 
+                        text: '陈宝强___数学老师还没来。', 
+                        english: 'Chen Baoqiang ___ when the math teacher hadn\'t arrived yet.',
+                        answer: '趁', 
+                        answerEnglish: 'took the chance',
+                        options: ['浪费', '趁', '故意', '妨碍'],
+                        optionsEnglish: ['waste', 'took the chance', 'deliberately', 'disturb']
+                    },
+                    { 
+                        text: '便跑到教室前大展___。', 
+                        english: 'And stood at the front to show off his ___.',
+                        answer: '歌喉', 
+                        answerEnglish: 'singing voice',
+                        options: ['逗', '时候', '歌喉', '惭愧'],
+                        optionsEnglish: ['amuse', 'moment', 'singing voice', 'ashamed']
+                    },
+                    { 
+                        text: '___得全班同学大笑起来。', 
+                        english: '___ the whole class into laughter.',
+                        answer: '逗', 
+                        answerEnglish: 'amusing',
+                        options: ['安静', '自修', '浪费', '逗'],
+                        optionsEnglish: ['quiet', 'self-study', 'waste', 'amusing']
+                    },
+                    { 
+                        text: '班长陈志光劝他们___。', 
+                        english: 'The class monitor advised them to ___.',
+                        answer: '安静', 
+                        answerEnglish: 'be quiet',
+                        options: ['安静', '趁', '歌喉', '故意'],
+                        optionsEnglish: ['be quiet', 'take chance', 'singing voice', 'deliberately']
+                    },
+                    { 
+                        text: '小彬还___敲得更大声。', 
+                        english: 'Xiaobin ___ banged even louder.',
+                        answer: '故意', 
+                        answerEnglish: 'deliberately',
+                        options: ['妨碍', '故意', '时候', '惭愧'],
+                        optionsEnglish: ['disturb', 'deliberately', 'moment', 'ashamed']
+                    },
+                    { 
+                        text: '就在这个___，老师走进教室。', 
+                        english: 'At that ___, the teacher walked in.',
+                        answer: '时候', 
+                        answerEnglish: 'moment',
+                        options: ['逗', '自修', '时候', '浪费'],
+                        optionsEnglish: ['amuse', 'self-study', 'moment', 'waste']
+                    },
+                    { 
+                        text: '你们应该利用时间___。', 
+                        english: 'You should use the time to ___.',
+                        answer: '自修', 
+                        answerEnglish: 'self-study',
+                        options: ['安静', '歌喉', '趁', '自修'],
+                        optionsEnglish: ['quiet', 'singing voice', 'take chance', 'self-study']
+                    },
+                    { 
+                        text: '不但___时间。', 
+                        english: 'You will not only ___ time.',
+                        answer: '浪费', 
+                        answerEnglish: 'waste',
+                        options: ['浪费', '故意', '逗', '妨碍'],
+                        optionsEnglish: ['waste', 'deliberately', 'amuse', 'disturb']
+                    },
+                    { 
+                        text: '而且___其他同学上课。', 
+                        english: 'But also ___ other classmates.',
+                        answer: '妨碍', 
+                        answerEnglish: 'disturb',
+                        options: ['时候', '妨碍', '惭愧', '自修'],
+                        optionsEnglish: ['moment', 'disturb', 'ashamed', 'self-study']
+                    },
+                    { 
+                        text: '同学们听了都觉得很___。', 
+                        english: 'Everyone felt very ___ after hearing that.',
+                        answer: '惭愧', 
+                        answerEnglish: 'ashamed',
+                        options: ['浪费', '趁', '惭愧', '歌喉'],
+                        optionsEnglish: ['waste', 'take chance', 'ashamed', 'singing voice']
+                    }
+                ],
+                chineseSentences: [
+                    '今天，陈宝强趁数学老师还没来，便跑到教室前大展歌喉。',
+                    '顽皮的小彬也跟着歌曲的节拍敲打桌子，逗得全班同学大笑起来。',
+                    '班长陈志光劝他们安静，他们不但不听，小彬还故意敲得更大声。',
+                    '就在这个时候，老师走进教室，全班立刻安静下来。',
+                    '老师对我们说："当老师不在的时候，你们应该利用时间自修。',
+                    '如果吵吵闹闹，不但浪费时间，而且妨碍其他同学上课。"',
+                    '同学们听了都觉得很惭愧。'
+                ],
+                englishSentences: [
+                    'Today, Chen Baoqiang took the chance when the math teacher hadn\'t arrived yet, and stood at the front of the classroom to show off his singing voice.',
+                    'The mischievous Xiaobin followed along, tapping on the desk to the beat, amusing the whole class into laughter.',
+                    'The class monitor, Chen Zhiguang, advised them to be quiet, but they didn\'t listen. Instead, Xiaobin deliberately banged even louder.',
+                    'At that moment, the teacher walked into the classroom, and the whole class immediately quieted down.',
+                    'The teacher said, "When the teacher is not around, you should use the time to self-study.',
+                    'If you fool around, you will not only waste time but also disturb other classmates."',
+                    'Everyone felt very ashamed after hearing that.'
+                ]
+            },
+            chapter8: {
+                vocabulary: [
+                    { word: '干', pinyin: 'gān', chinese: '没有水分；枯竭', english: 'dry' },
+                    { word: '担心', pinyin: 'dān xīn', chinese: '放心不下；忧虑', english: 'worried; anxious' },
+                    { word: '难受', pinyin: 'nán shòu', chinese: '身体或心情不舒服', english: 'uncomfortable; unwell' },
+                    { word: '地方', pinyin: 'dì fāng', chinese: '场所；区域', english: 'place' },
+                    { word: '急忙', pinyin: 'jí máng', chinese: '匆忙；赶快', english: 'hurriedly; in a rush' },
+                    { word: '井', pinyin: 'jǐng', chinese: '从地面打下去取得地下水的坑道', english: 'well' },
+                    { word: '天气', pinyin: 'tiān qì', chinese: '大气的冷热、阴晴、风雨情况', english: 'weather' },
+                    { word: '怎样', pinyin: 'zěn yàng', chinese: '用什么方法；如何', english: 'how; in what way' },
+                    { word: '别处', pinyin: 'bié chù', chinese: '其他的地方', english: 'another place' },
+                    { word: '离开', pinyin: 'lí kāi', chinese: '走开；不在原来的地方', english: 'leave; depart' }
+                ],
+                gameQuestions: [
+                    { 
+                        text: '几个月没下雨，池水都___了。', 
+                        english: 'It hadn\'t rained for several months, and the pond had ___ up.',
+                        answer: '干', 
+                        answerEnglish: 'dried',
+                        options: ['干', '担心', '难受', '地方'],
+                        optionsEnglish: ['dried', 'worried', 'uncomfortable', 'place']
+                    },
+                    { 
+                        text: '住在池里的大青蛙和小青蛙十分___。', 
+                        english: 'The big frog and the little frog living there were very ___.',
+                        answer: '担心', 
+                        answerEnglish: 'worried',
+                        options: ['急忙', '担心', '井', '天气'],
+                        optionsEnglish: ['hurriedly', 'worried', 'well', 'weather']
+                    },
+                    { 
+                        text: '水干了，渴得我真___。', 
+                        english: 'The water is gone, and I feel so ___ from thirst.',
+                        answer: '难受', 
+                        answerEnglish: 'uncomfortable',
+                        options: ['怎样', '别处', '离开', '难受'],
+                        optionsEnglish: ['how', 'another place', 'leave', 'uncomfortable']
+                    },
+                    { 
+                        text: '我们到有水的___去。', 
+                        english: 'We\'ll look for a ___ with water.',
+                        answer: '地方', 
+                        answerEnglish: 'place',
+                        options: ['地方', '干', '担心', '急忙'],
+                        optionsEnglish: ['place', 'dry', 'worried', 'hurriedly']
+                    },
+                    { 
+                        text: '看见一口井，便___跑过去。', 
+                        english: 'Saw a well and ___ ran over.',
+                        answer: '急忙', 
+                        answerEnglish: 'hurriedly',
+                        options: ['井', '天气', '怎样', '急忙'],
+                        optionsEnglish: ['well', 'weather', 'how', 'hurriedly']
+                    },
+                    { 
+                        text: '好极了！___里有水。', 
+                        english: 'Great! There\'s water in the ___.',
+                        answer: '井', 
+                        answerEnglish: 'well',
+                        options: ['别处', '离开', '井', '难受'],
+                        optionsEnglish: ['another place', 'leave', 'well', 'uncomfortable']
+                    },
+                    { 
+                        text: '这样热的___，再过几天不下雨。', 
+                        english: 'The ___ is so hot. In a few more days, if it doesn\'t rain.',
+                        answer: '天气', 
+                        answerEnglish: 'weather',
+                        options: ['地方', '干', '天气', '担心'],
+                        optionsEnglish: ['place', 'dry', 'weather', 'worried']
+                    },
+                    { 
+                        text: '那时候，我们___从井底跳上来呢？', 
+                        english: 'At that time, ___ will we get out from the bottom of the well?',
+                        answer: '怎样', 
+                        answerEnglish: 'how',
+                        options: ['急忙', '井', '怎样', '别处'],
+                        optionsEnglish: ['hurriedly', 'well', 'how', 'another place']
+                    },
+                    { 
+                        text: '我们还是到___去找水吧！', 
+                        english: 'We\'d better go to ___ to find water.',
+                        answer: '别处', 
+                        answerEnglish: 'another place',
+                        options: ['天气', '离开', '难受', '别处'],
+                        optionsEnglish: ['weather', 'leave', 'uncomfortable', 'another place']
+                    },
+                    { 
+                        text: '两只青蛙___了井边。', 
+                        english: 'So the two frogs ___ the well.',
+                        answer: '离开', 
+                        answerEnglish: 'left',
+                        options: ['地方', '干', '担心', '离开'],
+                        optionsEnglish: ['place', 'dry', 'worried', 'left']
+                    }
+                ],
+                chineseSentences: [
+                    '几个月没下雨，池水都干了。',
+                    '住在池里的大青蛙和小青蛙十分担心。',
+                    '大青蛙说："水干了，渴得我真难受。我还是到别处去找水吧！"',
+                    '"走吧！我们到有水的地方去。"',
+                    '两只青蛙走了半天，看见一口井，便急忙跑过去。',
+                    '"好极了！井里有水，我们跳下去吧。"小青蛙说。',
+                    '大青蛙望着井里的水，想了想说："不行啊！这样热的天气，再过几天不下雨，井里的水也会干的。',
+                    '那时候，我们怎样从井底跳上来呢？',
+                    '再忍一忍，我们还是到别处去找水吧！"',
+                    '两只青蛙离开了井边，又往别处去了。'
+                ],
+                englishSentences: [
+                    'It hadn\'t rained for several months, and the pond had dried up.',
+                    'The big frog and the little frog living there were very worried.',
+                    'The big frog said, "The water is gone, and I feel so uncomfortable from thirst. I\'d better go to another place to find water!"',
+                    '"Let\'s go! We\'ll look for a place with water," said the little frog.',
+                    'After walking for half a day, the two frogs saw a well and hurriedly ran over.',
+                    '"Great! There\'s water in the well. Let\'s jump in!" said the little frog.',
+                    'The big frog looked at the water in the well, thought for a moment, and said, "No, the weather is so hot. In a few more days, if it doesn\'t rain, the water in the well will also dry up.',
+                    'At that time, how will we get out from the bottom of the well?',
+                    'Let\'s wait a bit longer. We\'d better go to another place to find water."',
+                    'So the two frogs left the well and went elsewhere.'
+                ]
+            }
+        };
+
+        const encouragementWords = [
+            '很厉害！', '你棒棒的！', '加油下一题！', '太棒了！', 
+            '继续加油！', '你真聪明！', '做得很好！', '真厉害！',
+            '超级棒！', '你太厉害了！'
+        ];
+
+        // Speech synthesis functions
+        const isAppleDevice = /iPad|iPhone|iPod|Mac/.test(navigator.userAgent);
+
+        function speakText(text, language = 'zh-CN') {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                
+                let cleanText = text;
+                
+                if (language === 'zh-CN') {
+                    cleanText = cleanText.replace(/\s*[\/\|]\s*[a-zA-Z].*/g, '');
+                } else {
+                    cleanText = cleanText.replace(/[\/\|]/g, ' ');
+                }
+                
+                cleanText = cleanText.replace(/_/g, ' ')
+                                    .replace(/underscore/gi, '')
+                                    .replace(/\bslash\b/gi, '')
+                                    .replace(/\s+/g, ' ')
+                                    .trim();
+                
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.lang = language;
+                utterance.rate = 0.8;
+                utterance.pitch = 1.2;
+                utterance.volume = 1.0;
+                
+                if (isAppleDevice) {
+                    utterance.volume = 1.0;
+                    utterance.rate = 0.7;
+                }
+                
+                window.speechSynthesis.speak(utterance);
+                return utterance;
+            } else {
+                if (isAppleDevice) {
+                    alert('Apple设备语音功能受限，请：\n1. 检查静音开关\n2. 调高音量\n3. 尝试多次点击\n4. 建议使用Chrome浏览器');
+                } else {
+                    alert('您的浏览器不支持语音功能');
+                }
+                return null;
+            }
+        }
+
+        function speakBilingual(chineseText, englishText) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                
+                let cleanChineseText = chineseText.replace(/\s*[\/\|]\s*[a-zA-Z].*/g, '')
+                                                  .replace(/_/g, ' ')
+                                                  .replace(/underscore/gi, '')
+                                                  .replace(/\bslash\b/gi, '')
+                                                  .replace(/\s+/g, ' ')
+                                                  .trim();
+                
+                let cleanEnglishText = englishText.replace(/[\/\|]/g, ' ')
+                                                  .replace(/_/g, ' ')
+                                                  .replace(/underscore/gi, '')
+                                                  .replace(/\bslash\b/gi, '')
+                                                  .replace(/\s+/g, ' ')
+                                                  .trim();
+                
+                const chineseUtterance = new SpeechSynthesisUtterance(cleanChineseText);
+                chineseUtterance.lang = 'zh-CN';
+                chineseUtterance.rate = isAppleDevice ? 0.7 : 0.8;
+                chineseUtterance.pitch = 1.2;
+                chineseUtterance.volume = 1.0;
+                
+                chineseUtterance.onend = () => {
+                    const englishUtterance = new SpeechSynthesisUtterance(cleanEnglishText);
+                    englishUtterance.lang = 'en-US';
+                    englishUtterance.rate = isAppleDevice ? 0.7 : 0.8;
+                    englishUtterance.pitch = 1.2;
+                    englishUtterance.volume = 1.0;
+                    window.speechSynthesis.speak(englishUtterance);
+                };
+                
+                window.speechSynthesis.speak(chineseUtterance);
+            }
+        }
+
+        // Utility functions
+        function getCurrentData() {
+            return gameData[gameState.currentChapter] || gameData.chapter5;
+        }
+
+        function resetChapterData() {
+            gameState.currentPhase = 'learning';
+            gameState.currentWordIndex = 0;
+            gameState.viewedChinese = false;
+            gameState.viewedEnglish = false;
+            gameState.gameAnswers = {};
+            gameState.wrongCount = 0;
+            gameState.currentQuestion = 0;
+            gameState.gameCompleted = false;
+            gameState.readingLanguage = '';
+            gameState.currentSentence = -1;
+            gameState.isReading = false;
+        }
+
+        function handleChapterSelect(chapter) {
+            gameState.currentChapter = chapter;
+            resetChapterData();
+            render();
+        }
+
+        function backToMenu() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+            gameState.currentChapter = 'menu';
+            resetChapterData();
+            render();
+        }
+
+        function getChapterTitle() {
+            const titles = {
+                'chapter5': '第五篇：停电的夜晚',
+                'chapter6': '第六篇：传家之宝',
+                'chapter7': '第七篇：课堂行为',
+                'chapter8': '第八篇：青蛙找水'
+            };
+            return titles[gameState.currentChapter] || '第五篇：停电的夜晚';
+        }
+
+        // Event handlers
+        function handleViewChinese() {
+            gameState.viewedChinese = true;
+            const currentData = getCurrentData();
+            speakText(currentData.vocabulary[gameState.currentWordIndex].chinese);
+            render();
+        }
+
+        function handleViewEnglish() {
+            gameState.viewedEnglish = true;
+            const currentData = getCurrentData();
+            speakText(currentData.vocabulary[gameState.currentWordIndex].english, 'en-US');
+            render();
+        }
+
+        function handlePreviousWord() {
+            if (gameState.currentWordIndex > 0) {
+                gameState.currentWordIndex--;
+                gameState.viewedChinese = false;
+                gameState.viewedEnglish = false;
+                render();
+            }
+        }
+
+        function handleNextWord() {
+            const currentData = getCurrentData();
+            if (gameState.currentWordIndex < currentData.vocabulary.length - 1) {
+                gameState.currentWordIndex++;
+                gameState.viewedChinese = false;
+                gameState.viewedEnglish = false;
+                render();
+            } else {
+                gameState.currentPhase = 'game';
+                render();
+            }
+        }
+
+        function handleGameAnswer(selectedAnswer) {
+            const currentData = getCurrentData();
+            const currentQ = currentData.gameQuestions[gameState.currentQuestion];
+            const isCorrect = selectedAnswer === currentQ.answer;
+            
+            if (isCorrect) {
+                const randomEncouragement = encouragementWords[Math.floor(Math.random() * encouragementWords.length)];
+                alert(randomEncouragement);
+                speakText(randomEncouragement);
+                
+                gameState.gameAnswers[gameState.currentQuestion] = selectedAnswer;
+                gameState.wrongCount = 0;
+                
+                if (gameState.currentQuestion < currentData.gameQuestions.length - 1) {
+                    gameState.currentQuestion++;
+                } else {
+                    gameState.gameCompleted = true;
+                    gameState.currentPhase = 'reading';
+                }
+                render();
+            } else {
+                const newWrongCount = gameState.wrongCount + 1;
+                gameState.wrongCount = newWrongCount;
+                
+                if (newWrongCount >= 3) {
+                    alert('需要重新开始练习！');
+                    speakText('需要重新开始练习！');
+                    gameState.currentQuestion = 0;
+                    gameState.gameAnswers = {};
+                    gameState.wrongCount = 0;
+                } else {
+                    alert('答错了，再试试！');
+                    speakText('答错了，再试试！');
+                }
+                render();
+            }
+        }
+
+        function handleReading(language) {
+            gameState.readingLanguage = language;
+            gameState.currentSentence = 0;
+            gameState.isReading = true;
+            
+            setTimeout(() => {
+                const currentData = getCurrentData();
+                const sentences = language === 'chinese' ? currentData.chineseSentences : currentData.englishSentences;
+                speakText(sentences[0], language === 'chinese' ? 'zh-CN' : 'en-US');
+            }, 500);
+            render();
+        }
+
+        function handleNextSentence() {
+            const currentData = getCurrentData();
+            const sentences = gameState.readingLanguage === 'chinese' ? currentData.chineseSentences : currentData.englishSentences;
+            if (gameState.currentSentence < sentences.length - 1) {
+                const nextIndex = gameState.currentSentence + 1;
+                gameState.currentSentence = nextIndex;
+                
+                setTimeout(() => {
+                    speakText(sentences[nextIndex], gameState.readingLanguage === 'chinese' ? 'zh-CN' : 'en-US');
+                }, 300);
+                render();
+            } else {
+                gameState.isReading = false;
+                gameState.currentPhase = 'completed';
+                alert('朗读完成！你学得很棒！');
+                render();
+            }
+        }
+
+        function handleNextChapter() {
+            const chapters = ['chapter5', 'chapter6', 'chapter7', 'chapter8'];
+            const currentIndex = chapters.indexOf(gameState.currentChapter);
+            
+            if (currentIndex < chapters.length - 1) {
+                gameState.currentChapter = chapters[currentIndex + 1];
+                resetChapterData();
+            } else {
+                alert('恭喜完成第二套所有作文！🎉');
+                gameState.currentChapter = 'menu';
+                resetChapterData();
+            }
+            render();
+        }
+
+        // Render functions
+        function renderMenu() {
+            return `
+                <div class="container bg-gradient-to-br from-green-100 via-emerald-50 to-teal-100">
+                    <div class="max-w-6xl">
+                        <div class="bg-white-90 backdrop-blur rounded-2xl shadow-2xl p-12">
+                            <div class="text-center mb-12">
+                                <h1 class="text-5xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+                                    ⚡ 第二套：品德故事集
+                                </h1>
+                                <h2 class="text-3xl font-semibold text-gray-600 mb-2">
+                                    Set 2: Moral Story Collection (Chapters 5-8)
+                                </h2>
+                                <p class="text-xl text-gray-500 mb-8">
+                                    生活智慧、勤劳品德、学校纪律、明智思考<br/>
+                                    Life wisdom, work virtue, school discipline, wise thinking
+                                </p>
+
+                                <div class="bg-blue-50 p-6 rounded-xl border-2 border-blue-200 mb-8">
+                                    <h3 class="text-xl font-semibold text-blue-700 mb-3 flex items-center justify-center gap-2">
+                                        🍎 Apple设备用户专用指南 / Apple Device User Guide
+                                    </h3>
+                                    <div class="text-blue-800 text-left max-w-4xl-mx space-y-3">
+                                        <div class="bg-white p-4 rounded-lg">
+                                            <h4 class="font-bold text-lg mb-2">📱 如果听不到声音，请按以下步骤：</h4>
+                                            <ul class="space-y-2 text-sm">
+                                                <li>• <strong>🔇 检查静音开关</strong>：iPhone/iPad侧边的橙色开关要关闭</li>
+                                                <li>• <strong>🔊 调高音量</strong>：按音量+键，确保媒体音量开启</li>
+                                                <li>• <strong>👆 多次点击</strong>：朗读按钮可能需要点击2-3次才能激活</li>
+                                                <li>• <strong>🌐 换浏览器</strong>：强烈建议下载<strong>Chrome浏览器</strong>使用</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-white p-4 rounded-lg">
+                                            <h4 class="font-bold text-lg mb-2">🌐 If you can't hear audio, please follow these steps:</h4>
+                                            <ul class="space-y-2 text-sm">
+                                                <li>• <strong>🔇 Check silent switch</strong>: Turn off the orange switch on iPhone/iPad side</li>
+                                                <li>• <strong>🔊 Turn up volume</strong>: Press volume+ button, ensure media volume is on</li>
+                                                <li>• <strong>👆 Click multiple times</strong>: Audio buttons may need 2-3 clicks to activate</li>
+                                                <li>• <strong>🌐 Switch browser</strong>: Strongly recommend downloading <strong>Chrome browser</strong></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-6 mb-8">
+                                <div class="chapter-card bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-200" onclick="handleChapterSelect('chapter5')">
+                                    <div class="text-center mb-6">
+                                        <div class="chapter-emoji">⚡</div>
+                                        <h3 class="text-xl font-bold text-yellow-700 mb-2">第五篇：停电的夜晚</h3>
+                                        <h4 class="text-lg font-semibold text-yellow-600 mb-3">Chapter 5: Power Outage Night</h4>
+                                        <p class="text-gray-600 mb-3 text-sm">
+                                            学习关于天气和电力的10个词汇<br/>
+                                            Learn 10 weather and electricity words
+                                        </p>
+                                        <div class="text-xs text-gray-500 mb-4">
+                                            <strong>主题:</strong> 电力的重要性<br/>
+                                            <strong>Theme:</strong> Importance of electricity
+                                        </div>
+                                    </div>
+                                    <button class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors">
+                                        📖 开始学习
+                                    </button>
+                                </div>
+
+                                <div class="chapter-card bg-gradient-to-br from-teal-50 to-cyan-100 border-2 border-teal-200" onclick="handleChapterSelect('chapter6')">
+                                    <div class="text-center mb-6">
+                                        <div class="chapter-emoji">🔨</div>
+                                        <h3 class="text-xl font-bold text-teal-700 mb-2">第六篇：传家之宝</h3>
+                                        <h4 class="text-lg font-semibold text-teal-600 mb-3">Chapter 6: Family Heirloom</h4>
+                                        <p class="text-gray-600 mb-3 text-sm">
+                                            学习关于劳动和品德的10个词汇<br/>
+                                            Learn 10 work and virtue words
+                                        </p>
+                                        <div class="text-xs text-gray-500 mb-4">
+                                            <strong>主题:</strong> 勤劳的价值<br/>
+                                            <strong>Theme:</strong> Value of hard work
+                                        </div>
+                                    </div>
+                                    <button class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors">
+                                        📖 开始学习
+                                    </button>
+                                </div>
+
+                                <div class="chapter-card bg-gradient-to-br from-pink-50 to-rose-100 border-2 border-pink-200" onclick="handleChapterSelect('chapter7')">
+                                    <div class="text-center mb-6">
+                                        <div class="chapter-emoji">🏫</div>
+                                        <h3 class="text-xl font-bold text-pink-700 mb-2">第七篇：课堂行为</h3>
+                                        <h4 class="text-lg font-semibold text-pink-600 mb-3">Chapter 7: Classroom Behavior</h4>
+                                        <p class="text-gray-600 mb-3 text-sm">
+                                            学习关于纪律和自律的10个词汇<br/>
+                                            Learn 10 discipline and self-control words
+                                        </p>
+                                        <div class="text-xs text-gray-500 mb-4">
+                                            <strong>主题:</strong> 学校纪律<br/>
+                                            <strong>Theme:</strong> School discipline
+                                        </div>
+                                    </div>
+                                    <button class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors">
+                                        📖 开始学习
+                                    </button>
+                                </div>
+
+                                <div class="chapter-card bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200" onclick="handleChapterSelect('chapter8')">
+                                    <div class="text-center mb-6">
+                                        <div class="chapter-emoji">🐸</div>
+                                        <h3 class="text-xl font-bold text-emerald-700 mb-2">第八篇：青蛙找水</h3>
+                                        <h4 class="text-lg font-semibold text-emerald-600 mb-3">Chapter 8: Frogs Looking for Water</h4>
+                                        <p class="text-gray-600 mb-3 text-sm">
+                                            学习关于生存和智慧的10个词汇<br/>
+                                            Learn 10 survival and wisdom words
+                                        </p>
+                                        <div class="text-xs text-gray-500 mb-4">
+                                            <strong>主题:</strong> 智慧思考<br/>
+                                            <strong>Theme:</strong> Wise thinking
+                                        </div>
+                                    </div>
+                                    <button class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors">
+                                        📖 开始学习
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="bg-gray-50 p-6 rounded-xl border-2 border-gray-200">
+                                    <h3 class="text-xl font-semibold text-gray-700 mb-3">
+                                        💡 学习说明 / Learning Instructions
+                                    </h3>
+                                    <div class="text-gray-600 text-left max-w-4xl-mx space-y-2">
+                                        <p>• 📚 <strong>词汇学习</strong>：学习新词汇的发音和含义 / <strong>Vocabulary Learning</strong>: Learn pronunciation and meaning</p>
+                                        <p>• 🎮 <strong>填空练习</strong>：通过练习题巩固学习 / <strong>Fill-in-the-blank</strong>: Reinforce learning with exercises</p>
+                                        <p>• 📖 <strong>作文朗读</strong>：朗读完整故事提高理解 / <strong>Essay Reading</strong>: Read complete stories for comprehension</p>
+                                        <p>• 🎵 <strong>语音功能</strong>：所有内容都可以朗读 / <strong>Audio Feature</strong>: All content can be read aloud</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderLearning() {
+            const currentData = getCurrentData();
+            const currentWord = currentData.vocabulary[gameState.currentWordIndex];
+            const chapterTitle = getChapterTitle();
+
+            return `
+                <div class="container bg-gradient-to-br from-blue-100 to-purple-100">
+                    <div class="max-w-4xl">
+                        <div class="bg-white rounded-lg shadow-lg p-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <h1 class="text-3xl font-bold text-purple-600 flex items-center gap-2">
+                                    📖 词汇学习 - ${chapterTitle}
+                                </h1>
+                                <div class="flex items-center gap-4">
+                                    <div class="text-lg text-gray-600">
+                                        ${gameState.currentWordIndex + 1} / ${currentData.vocabulary.length}
+                                    </div>
+                                    <button onclick="backToMenu()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors">
+                                        🏠 返回主页
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mb-8">
+                                <div class="text-6xl font-bold text-blue-600 mb-4">
+                                    ${currentWord.word}
+                                </div>
+                                <div class="text-2xl text-gray-500 mb-4">${currentWord.pinyin}</div>
+                                
+                                <button onclick="speakText('${currentWord.word}')" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold mb-6 transition-colors">
+                                    朗读词语
+                                </button>
+                                
+                                <div class="space-y-4">
+                                    ${gameState.viewedChinese ? `
+                                        <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-400">
+                                            <p class="text-lg"><strong>中文解释：</strong>${currentWord.chinese}</p>
+                                        </div>
+                                    ` : `
+                                        <button onclick="handleViewChinese()" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors w-full">
+                                            查看华语解释
+                                        </button>
+                                    `}
+                                    
+                                    ${gameState.viewedEnglish ? `
+                                        <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
+                                            <p class="text-lg"><strong>English:</strong> ${currentWord.english}</p>
+                                        </div>
+                                    ` : `
+                                        <button onclick="handleViewEnglish()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors w-full">
+                                            查看英文解释
+                                        </button>
+                                    `}
+                                    
+                                    ${gameState.viewedChinese && gameState.viewedEnglish ? `
+                                        <div class="flex justify-center gap-4">
+                                            ${gameState.currentWordIndex > 0 ? `
+                                                <button onclick="handlePreviousWord()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-colors">
+                                                    返回上一词汇
+                                                </button>
+                                            ` : ''}
+                                            <button onclick="handleNextWord()" class="bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
+                                                ${gameState.currentWordIndex < currentData.vocabulary.length - 1 ? '下一个词汇' : '开始练习'}
+                                            </button>
+                                        </div>
+                                    ` : `
+                                        <div class="text-center py-4">
+                                            <p class="text-gray-500">请先查看华语和英文解释</p>
+                                            ${gameState.currentWordIndex > 0 ? `
+                                                <button onclick="handlePreviousWord()" class="mt-2 bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                                    返回上一词汇
+                                                </button>
+                                            ` : ''}
+                                        </div>
+                                    `}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGame() {
+            const currentData = getCurrentData();
+            const currentQ = currentData.gameQuestions[gameState.currentQuestion];
+            const chapterTitle = getChapterTitle();
+
+            return `
+                <div class="container bg-gradient-to-br from-green-100-alt to-blue-100">
+                    <div class="max-w-4xl">
+                        <div class="bg-white rounded-lg shadow-lg p-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <h1 class="text-3xl font-bold text-green-600 flex items-center gap-2">
+                                    🎮 填空练习 - ${chapterTitle}
+                                </h1>
+                                <div class="flex items-center gap-4">
+                                    <div class="text-lg text-gray-600">
+                                        第 ${gameState.currentQuestion + 1} 题 / ${currentData.gameQuestions.length}
+                                    </div>
+                                    <button onclick="backToMenu()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors">
+                                        🏠 返回主页
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mb-8">
+                                <div class="space-y-4 mb-8">
+                                    <div class="p-6 bg-gray-50 rounded-lg">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-xl text-gray-800 flex-1">${currentQ.text}</span>
+                                            <button onclick="speakText('${currentQ.text}')" class="bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-full ml-4 transition-colors" title="朗读中文题目">
+                                                🔊
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-lg text-gray-600 flex-1">${currentQ.english}</span>
+                                            <button onclick="speakText('${currentQ.english}', 'en-US')" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full ml-4 transition-colors" title="朗读英文题目">
+                                                🔊
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 gap-3 max-w-2xl">
+                                    ${currentQ.options.map((option, index) => `
+                                        <div class="flex items-center justify-between bg-white p-3 rounded-lg border-2 border-gray-200 hover:border-blue-300 transition-colors">
+                                            <button onclick="handleGameAnswer('${option}')" class="flex-1 text-left bg-blue-500 hover:bg-blue-600 text-white px-4 py-3 rounded-lg text-lg font-semibold transition-colors">
+                                                ${option} (${currentQ.optionsEnglish[index]})
+                                            </button>
+                                            <button onclick="speakBilingual('${option}', '${currentQ.optionsEnglish[index]}')" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full ml-3 transition-colors" title="朗读选项">
+                                                🔊
+                                            </button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                
+                                ${gameState.wrongCount > 0 ? `
+                                    <div class="mt-4 text-red-500 font-semibold">
+                                        错误次数: ${gameState.wrongCount}/3
+                                    </div>
+                                ` : ''}
+                                
+                                <button onclick="gameState.currentPhase = 'learning'; render();" class="mt-6 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                    返回词汇学习
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderReading() {
+            const currentData = getCurrentData();
+            const chapterTitle = getChapterTitle();
+
+            if (!gameState.isReading) {
+                return `
+                    <div class="container bg-gradient-to-br from-purple-100 to-pink-100">
+                        <div class="max-w-4xl">
+                            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                                <div class="flex items-center justify-between mb-8">
+                                    <h1 class="text-3xl font-bold text-purple-600 flex items-center gap-2">
+                                        🔊 作文朗读 - ${chapterTitle}
+                                    </h1>
+                                    <button onclick="backToMenu()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors">
+                                        🏠 返回主页
+                                    </button>
+                                </div>
+                                <p class="text-xl text-gray-700 mb-8">
+                                    恭喜完成所有练习！选择语言开始朗读：<br/>
+                                    Congratulations on completing all exercises! Choose a language to start reading:
+                                </p>
+                                
+                                <div class="space-y-4">
+                                    <button onclick="handleReading('chinese')" class="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-lg text-xl font-semibold mr-4 transition-colors">
+                                        中文朗读 / Chinese Reading
+                                    </button>
+                                    <button onclick="handleReading('english')" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors">
+                                        英文朗读 / English Reading
+                                    </button>
+                                </div>
+                                
+                                <div class="mt-8 flex justify-center gap-4">
+                                    <button onclick="resetChapterData(); render();" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors">
+                                        🔄 重新开始本章 / Restart Chapter
+                                    </button>
+                                    <button onclick="gameState.currentChapter = 'menu'; render();" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors">
+                                        📚 选择其他章节 / Select Other Chapter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                const sentences = gameState.readingLanguage === 'chinese' ? currentData.chineseSentences : currentData.englishSentences;
+                
+                return `
+                    <div class="container bg-gradient-to-br from-purple-100 to-pink-100">
+                        <div class="max-w-4xl">
+                            <div class="bg-white rounded-lg shadow-lg p-8">
+                                <div class="flex items-center justify-between mb-8">
+                                    <h1 class="text-3xl font-bold text-purple-600 text-center">
+                                        ${gameState.readingLanguage === 'chinese' ? '中文朗读 / Chinese Reading' : 'English Reading / 英文朗读'}
+                                    </h1>
+                                    <button onclick="backToMenu()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors">
+                                        🏠 返回主页
+                                    </button>
+                                </div>
+                                
+                                <div class="text-lg text-gray-600 mb-4 text-center">
+                                    ${gameState.readingLanguage === 'chinese' 
+                                        ? `第 ${gameState.currentSentence + 1} 句 / ${sentences.length} | Sentence ${gameState.currentSentence + 1} of ${sentences.length}`
+                                        : `Sentence ${gameState.currentSentence + 1} of ${sentences.length} | 第 ${gameState.currentSentence + 1} 句 / ${sentences.length}`
+                                    }
+                                </div>
+                                
+                                <div class="mb-8">
+                                    <h3 class="text-xl font-semibold mb-4 text-center text-gray-700">
+                                        ${gameState.readingLanguage === 'chinese' ? '完整作文：' : 'Complete Essay:'}
+                                    </h3>
+                                    <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-400">
+                                        ${sentences.map((sentence, index) => `
+                                            <p class="text-lg mb-3 ${
+                                                index === gameState.currentSentence 
+                                                    ? 'bg-yellow-200 p-2 rounded font-semibold text-blue-800' 
+                                                    : 'text-gray-700'
+                                            }">
+                                                ${sentence}
+                                            </p>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <div class="bg-blue-50 p-4 rounded-lg mb-6 border-l-4 border-blue-400">
+                                        <p class="text-xl font-semibold text-blue-800 mb-2">
+                                            ${gameState.readingLanguage === 'chinese' ? '正在朗读：Now Reading:' : 'Now Reading: 正在朗读：'}
+                                        </p>
+                                        <p class="text-lg text-gray-800">${sentences[gameState.currentSentence]}</p>
+                                    </div>
+                                    
+                                    <div class="flex justify-center gap-4">
+                                        <button onclick="speakText('${sentences[gameState.currentSentence]}', '${gameState.readingLanguage === 'chinese' ? 'zh-CN' : 'en-US'}')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors">
+                                            🔊 ${gameState.readingLanguage === 'chinese' ? '重新朗读这句 / Repeat This Sentence' : 'Repeat This Sentence / 重新朗读这句'}
+                                        </button>
+                                        
+                                        <button onclick="handleNextSentence()" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors flex items-center gap-2">
+                                            ▶️ ${gameState.currentSentence < sentences.length - 1 
+                                                ? (gameState.readingLanguage === 'chinese' ? '下一句 / Next Sentence' : 'Next Sentence / 下一句')
+                                                : (gameState.readingLanguage === 'chinese' ? '完成朗读 / Complete Reading' : 'Complete Reading / 完成朗读')
+                                            }
+                                        </button>
+                                    </div>
+                                    
+                                    <button onclick="gameState.isReading = false; gameState.readingLanguage = ''; render();" class="mt-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                        ${gameState.readingLanguage === 'chinese' ? '返回选择语言 / Back to Language Selection' : 'Back to Language Selection / 返回选择语言'}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function renderCompleted() {
+            const chapters = ['chapter5', 'chapter6', 'chapter7', 'chapter8'];
+            const currentIndex = chapters.indexOf(gameState.currentChapter);
+            const isLastChapter = currentIndex === chapters.length - 1;
+            const chapterTitle = getChapterTitle();
+            
+            return `
+                <div class="container bg-gradient-to-br from-green-100-emerald to-emerald-100">
+                    <div class="max-w-4xl">
+                        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                            <div class="flex items-center justify-between mb-8">
+                                <h1 class="text-3xl font-bold text-green-600 flex items-center gap-2">
+                                    🎉 恭喜完成！
+                                </h1>
+                                <button onclick="backToMenu()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors">
+                                    🏠 返回主页
+                                </button>
+                            </div>
+                            
+                            <div class="text-center mb-8">
+                                <div class="text-6xl mb-6">🌟</div>
+                                <h2 class="text-2xl font-bold text-gray-700 mb-4">
+                                    你已经完成了 ${chapterTitle} 的学习！
+                                </h2>
+                                <p class="text-lg text-gray-600 mb-8">
+                                    You have completed ${chapterTitle}!
+                                </p>
+                                
+                                ${!isLastChapter ? `
+                                    <div class="space-y-4">
+                                        <button onclick="handleNextChapter()" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-2xl font-semibold transition-colors flex items-center gap-3 mx-auto">
+                                            📖 下一篇作文 / Next Chapter
+                                        </button>
+                                        <p class="text-sm text-gray-500">
+                                            继续学习：${chapters[currentIndex + 1] === 'chapter6' ? '第六篇：传家之宝' : 
+                                                      chapters[currentIndex + 1] === 'chapter7' ? '第七篇：课堂行为' : 
+                                                      '第八篇：青蛙找水'}
+                                        </p>
+                                        <button onclick="gameState.currentChapter = 'menu'; render();" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors mt-4">
+                                            📚 返回章节选择 / Back to Chapter Menu
+                                        </button>
+                                    </div>
+                                ` : `
+                                    <div class="space-y-4">
+                                        <div class="bg-yellow-50 p-6 rounded-xl border-2 border-yellow-300">
+                                            <h3 class="text-xl font-bold text-yellow-700 mb-2">🏆 完成第二套所有作文！</h3>
+                                            <p class="text-lg text-yellow-600">
+                                                Congratulations! You've completed all Set 2 chapters!
+                                            </p>
+                                        </div>
+                                        <button onclick="gameState.currentChapter = 'menu'; render();" class="bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-colors flex items-center gap-2 mx-auto">
+                                            🏠 返回主页选择其他套装 / Back to Menu
+                                        </button>
+                                    </div>
+                                `}
+                                
+                                <div class="mt-8 space-x-4">
+                                    <button onclick="resetChapterData(); render();" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                                        重新学习这一篇 / Restart This Chapter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Main render function
+        function render() {
+            const app = document.getElementById('app');
+            
+            if (gameState.currentChapter === 'menu') {
+                app.innerHTML = renderMenu();
+            } else if (gameState.currentPhase === 'learning') {
+                app.innerHTML = renderLearning();
+            } else if (gameState.currentPhase === 'game') {
+                app.innerHTML = renderGame();
+            } else if (gameState.currentPhase === 'reading') {
+                app.innerHTML = renderReading();
+            } else if (gameState.currentPhase === 'completed') {
+                app.innerHTML = renderCompleted();
+            }
+        }
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>
